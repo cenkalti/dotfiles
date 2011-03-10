@@ -1,0 +1,12 @@
+[user]
+	name = Cenk Alti
+	email = cenkalti@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = true
+[core]
+	editor = emacs
+[push]
+	default = matching
