@@ -20,8 +20,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-<<<<<<< HEAD
-=======
-
-case "$-" in *i*) byobu-launcher && exit 0; esac;
->>>>>>> 0caa05f601ddaf4aeff18d59ad9fcafaf6f618a1
