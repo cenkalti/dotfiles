@@ -81,6 +81,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# my personal aliases
 alias istanbul='ssh -Y istanbul'
 alias ack='ack-grep'
 
