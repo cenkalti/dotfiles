@@ -83,8 +83,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # my personal aliases
-alias istanbul='ssh -Y istanbul'
-alias sshfs-putio='sshfs cenk@istanbul:/home/dev/projects/putio /home/cenk/putio'
+alias ssh='ssh -Y'
 alias ack='ack-grep'
 
 # Add an "alert" alias for long running commands.  Use like so:
