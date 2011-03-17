@@ -1,0 +1,1 @@
+(toogle-truncate-lines)
