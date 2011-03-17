@@ -1,1 +1,1 @@
-(toogle-truncate-lines)
+(toggle-truncate-lines)
