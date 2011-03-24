@@ -10,3 +10,8 @@
 	editor = emacs
 [push]
 	default = matching
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
