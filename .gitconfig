@@ -15,3 +15,4 @@
 	co = checkout
 	ci = commit
 	br = branch
+        df = diff -w
