@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export EDITOR="emacs"
 export LESS="-R"
 
 alias more='less'
