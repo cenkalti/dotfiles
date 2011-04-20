@@ -1,18 +1,23 @@
 [user]
-	name = Cenk Alti
-	email = cenkalti@gmail.com
-[color]
-	branch = auto
-	diff = auto
-	status = auto
-	ui = true
-[core]
-	editor = emacs
-[push]
-	default = matching
+        name = Cenk Alti
+        email = cenkalti@gmail.com
 [alias]
-	st = status
-	co = checkout
-	ci = commit
-	br = branch
+        st = status
+        co = checkout
+        ci = commit
+        br = branch
         df = diff -w
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+        ui = true
+[core]
+        editor = emacs
+        whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[merge]
+        summary = true
+[push]
+        default = current
