@@ -6,8 +6,14 @@
 (setq standart-indent 4)
 (setq-default indent-tabs-mode nil)
 
-;; Backup
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+;; Create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(setq auto-save-file-name-transforms '(("." "~/.emacs.d/autosaves/\\1" t)))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
+
+;; Backup settings
 (setq backup-by-copying t)
 (setq delete-old-versions t
       kept-new-versions 6
@@ -17,3 +23,6 @@
 ;; PHP mode
 (autoload 'php-mode "php-mode.el" "Php mode." t)
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;; Truncate long lines
+(setq-default truncate-lines t)
