@@ -10,12 +10,9 @@
         df = diff -w
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        w = whatchanged
 
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        interactive = auto
         ui = true
         pager = true
 
@@ -31,8 +28,8 @@
         new = green bold
 
 [color "status"]
-        added = yellow
-        changed = green
+        added = green
+        changed = yellow
         untracked = cyan
 
 [core]
