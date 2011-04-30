@@ -30,6 +30,8 @@ extract () {
   fi
 }
 
+umask 077
+
 export EDITOR="emacs"
 export LESS="-R"
 
