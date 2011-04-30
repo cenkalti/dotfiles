@@ -41,7 +41,6 @@ alias df='df -h'
 alias du='du -c -h'
 alias ping='ping -c 1'
 alias ..='cd ..'
-alias orphans=pacman -Rsn $(pacman -Qqdt)
 
 # ls
 alias ls='ls -F --color=always'
