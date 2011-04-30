@@ -37,14 +37,14 @@ alias more='less'
 alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -c -h'
-alias ping='ping -c 3'
+alias ping='ping -c 1'
 alias ..='cd ..'
 
 # ls
-alias ls='ls -hF --color=always'
+alias ls='ls -F --color=always'
 alias lr='ls -R'                    # recursive ls
-alias ll='ls -l'
-alias la='ll -A'
+alias ll='ls -lh'
+alias la='ll -Ah'
 alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
