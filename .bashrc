@@ -35,6 +35,7 @@ umask 077
 export EDITOR="emacs"
 export LESS="-R"
 
+alias orphans='pacman -Qqdt | xargs sudo pacman -Rsn'
 alias more='less'
 alias grep='grep --color=auto'
 alias df='df -h'
