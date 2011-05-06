@@ -35,7 +35,12 @@ umask 077
 export EDITOR="emacs"
 export LESS="-R"
 
-alias orphans='pacman -Qqdt | xargs sudo pacman -Rsn'
+# update pacman mirror list with 5 fastest mirrors and sort them based on rating
+alias reflector='sudo mv /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist && sudo reflector -l 5 --sort rate --save /etc/pacman.d/mirrorlist'
+
+# remove packages from system which are no longer in sync database
+alias orphans='pacman -Qqdt | xargs -p sudo pacman -Rsn --noconfirm'
+
 alias more='less'
 alias grep='grep --color=auto'
 alias df='df -h'
