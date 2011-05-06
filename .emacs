@@ -26,3 +26,6 @@
 
 ;; Truncate long lines
 (setq-default truncate-lines t)
+
+;; Put the scrollbar to the right side of the window
+(set-scroll-bar-mode 'right)
