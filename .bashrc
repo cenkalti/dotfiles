@@ -41,6 +41,7 @@ alias reflector='sudo mv /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlis
 # remove packages from system which are no longer in sync database
 alias orphans='pacman -Qqdt | xargs -p sudo pacman -Rsn --noconfirm'
 
+alias pacman='pacman-color'
 alias more='less'
 alias grep='grep --color=auto'
 alias df='df -h'
