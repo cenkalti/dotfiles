@@ -7,13 +7,13 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs.d/autosaves/" t)
+;;(make-directory "~/.emacs.d/autosaves/" t)
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-(setq auto-save-file-name-transforms '(("." "~/.emacs.d/autosaves/\\1" t)))
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
+;; Auto-save settings
+;;(setq auto-save-file-name-transforms '(("." "~/.emacs.d/autosaves/\\1" t)))
 
 ;; Backup settings
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
       kept-new-versions 6
@@ -28,4 +28,4 @@
 (setq-default truncate-lines t)
 
 ;; Put the scrollbar to the right side of the window
-(set-scroll-bar-mode 'right)
+;;(set-scroll-bar-mode 'right)
