@@ -18,4 +18,4 @@ umask 077
 export EDITOR="emacs"
 export LESS="-R"
 
-PS1='\h \W\$ '
+PS1='\$ '
