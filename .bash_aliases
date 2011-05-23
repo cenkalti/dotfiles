@@ -16,15 +16,14 @@ alias ping='ping -c 1'
 alias ..='cd ..'
 
 # ls
-alias l='ls'
 alias ls='ls -F --color=always'
+alias l='ls'
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -lh'
-alias la='ll -Ah'
+alias la='ll -a'
 alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
-alias lm='la | more'
 
 # safety features
 alias cp='cp -i'
