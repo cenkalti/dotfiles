@@ -20,4 +20,4 @@ export LESS="-R"
 
 STARTCOLOR='\e[0;32m';
 ENDCOLOR="\e[0m"
-export PS1="$STARTCOLOR\w \$$ENDCOLOR "
+PS1="$STARTCOLOR\w \$$ENDCOLOR "
