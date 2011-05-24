@@ -13,9 +13,11 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-umask 077
+umask 022
 
 export EDITOR="emacs"
 export LESS="-R"
 
-PS1='\$ '
+STARTCOLOR='\e[0;32m';
+ENDCOLOR="\e[0m"
+export PS1="$STARTCOLOR\w \$$ENDCOLOR "
