@@ -17,5 +17,3 @@ umask 022
 
 export EDITOR="emacs"
 export LESS="-R"
-
-PS1="\w \$ "

@@ -6,3 +6,5 @@ caption always '%{= dg} %H %{G}| %{B}%l %{G}|%=%?%{d}%-w%?%{r}(%{d}%n %t%? {%u} 
 
 # Change default escape command
 escape ^Oo
+
+shelltitle "$ |idle"
