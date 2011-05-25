@@ -16,7 +16,7 @@ alias ping='ping -c 1'
 alias ..='cd ..'
 
 # ls
-alias ls='ls -FG'
+alias ls='ls -F --color=always'
 alias l='ls'
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -lh'
