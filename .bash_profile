@@ -5,4 +5,4 @@ export PS1=${PS1}'\[\033k\033\\\]'  ##display running command for window name in
 export PS1=${PS1}'\[\033k'${HOSTNAME}'\033\\\]'  ##show hostname for window name on screen's caption line when idle
 export PS1='\w '${PS1}'\$ '
 
-exec screen -xRR
+#exec screen -xRR
