@@ -18,6 +18,4 @@ umask 022
 export EDITOR="emacs"
 export LESS="-R"
 
-STARTCOLOR='\e[0;32m';
-ENDCOLOR="\e[0m"
-PS1="$STARTCOLOR\w \$$ENDCOLOR "
+PS1="\w \$ "
