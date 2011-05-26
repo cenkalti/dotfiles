@@ -1,4 +1,3 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-
-#exec screen -xRR
+exec screen -xRR

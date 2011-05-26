@@ -1,12 +1,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
 fi
 
 if [ -f ~/.bash_functions ]; then
