@@ -30,3 +30,5 @@ alias ll='ls -lAh'
 #alias chown='chown --preserve-root'
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
+
+alias ack='/usr/bin/vendor_perl/ack'
