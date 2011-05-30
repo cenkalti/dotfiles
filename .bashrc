@@ -22,3 +22,7 @@ export PS1="\[\033]0;${HOSTNAME}\007\]"  ##display host in titlebar or "%h" scre
 export PS1=${PS1}'\[\033\\\]'  ##display running command for window name in screen's caption line
 #export PS1=${PS1}'\[\033k'${HOSTNAME}'\033\\\]'  ##show hostname for window name on screen's caption line when idle
 export PS1='\w '${PS1}'\$ '
+
+if [ -d /usr/local/bin ]; then
+    export PATH=$PATH:/usr/local/bin
+fi

@@ -16,8 +16,8 @@ alias du='du -c -h'
 #alias ls='ls -F --color=always'
 #alias l='ls'
 #alias lr='ls -R'                    # recursive ls
-alias ll='ls -lAh'
-#alias la='ll -a'
+alias ll='ls -lh'
+alias la='ll -a'
 #alias lx='ll -BX'                   # sort by extension
 #alias lz='ll -rS'                   # sort by size
 #alias lt='ll -rt'                   # sort by date
