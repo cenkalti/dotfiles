@@ -6,8 +6,10 @@
         st = status
         co = checkout
         ci = commit
+        cim = commit -a -m-
         br = branch
-        df = diff -w
+        df = diff
+        dfc = diff --cached
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
         w = whatchanged
