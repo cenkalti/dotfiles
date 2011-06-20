@@ -11,3 +11,6 @@
 
 ;; Reload file on change
 (global-auto-revert-mode t)
+
+;; Save backups in one place
+(setq backup-directory-alist `(("." . "~/.saves")))
