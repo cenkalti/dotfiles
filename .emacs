@@ -14,3 +14,4 @@
 
 ;; Save backups in one place
 (setq backup-directory-alist `(("." . "~/.saves")))
+(setq auto-save-file-name-transforms `((".*" "~/.saves" t)))
