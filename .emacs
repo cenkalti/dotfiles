@@ -19,3 +19,8 @@
 ;; Enable php-mode
 (autoload 'php-mode "php-mode.el" "Php mode." t)
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;; Enable mmm-mode
+(require 'mmm-mode)
+;;(require 'mmm-auto)
+(setq load-path (cons "/usr/share/emacs/site-lisp/mmm-mode" load-path))
