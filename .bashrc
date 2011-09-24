@@ -103,3 +103,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 EDITOR=emacs
+
+if [ -d ~/bin ]; then
+    PATH=~/bin:$PATH
+fi
