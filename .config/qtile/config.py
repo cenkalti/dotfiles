@@ -2,11 +2,7 @@
 from libqtile.manager import Key, Click, Drag, Screen, Group
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
-
 from libqtile import xcbq
-xcbq.keysyms["XF86AudioRaiseVolume"] = 0x1008ff13
-xcbq.keysyms["XF86AudioLowerVolume"] = 0x1008ff11
-xcbq.keysyms["XF86AudioMute"] = 0x1008ff12
 
 mod = "mod4"
 keys = [
@@ -22,10 +18,6 @@ keys = [
         lazy.layout.section_down()),
     Key([mod, "control"], "k",
         lazy.layout.section_up()),
-    Key([mod], "h",
-        lazy.layout.collapse_branch()),  # for tree layout
-    Key([mod], "l",
-        lazy.layout.expand_branch()),  # for tree layout
     Key([mod, "shift"], "h",
         lazy.layout.move_left()),
     Key([mod, "shift"], "l",
@@ -46,7 +38,6 @@ keys = [
         lazy.layout.rotate()),
     Key([mod, "shift"], "space",
         lazy.layout.toggle_split()),
-
     Key([mod], "w",
         lazy.to_screen(0)),
     Key([mod], "e",
@@ -59,31 +50,17 @@ keys = [
         lazy.window.disable_floating()),
     Key([mod, "shift"], "t",
         lazy.window.enable_floating()),
-    Key([mod], "p",
-        lazy.spawn("exec dmenu_run "
-            "-fn 'Consolas:size=13' -nb '#000000' -nf '#ffffff' -b")),
-    Key([mod], "q",
-        lazy.spawn('xtrlock')),
-    Key([mod, 'shift', 'control'], "s",
-        lazy.spawn('/home/cenk/bin/synergy.sh')),
-
-    Key([], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer sset Master 5%+")),
-    Key([], "XF86AudioLowerVolume",
-        lazy.spawn("amixer sset Master 5%-")),
-    Key([], "XF86AudioMute",
-        lazy.spawn("amixer sset Master toggle")),
-    Key(["shift"], "XF86AudioRaiseVolume",
-        lazy.spawn("mpc volume +5")),
-    Key(["shift"], "XF86AudioLowerVolume",
-        lazy.spawn("mpc volume -5")),
-    Key(["shift"], "XF86AudioMute",
-        lazy.spawn("mpc toggle")),
-
     Key([mod], "Left",
         lazy.prevgroup()),
     Key([mod], "Right",
         lazy.nextgroup()),
+    Key([mod], "p",
+        lazy.spawn("exec dmenu_run "
+            "-fn 'Consolas:size=13' -nb '#000000' -nf '#ffffff' -b")),
+    Key([mod, 'shift'], "s",
+        lazy.spawn('/home/cenk/bin/synergy.sh')),
+    Key([mod, 'shift'], "t",
+        lazy.spawn('terminal')),
 ]
 
 mouse = [
@@ -103,7 +80,6 @@ layouts = [
     layout.Tile(**border),
     layout.Max(),
     layout.Stack(**border),
-    layout.TreeTab(sections=['Surfing', 'E-mail', 'Docs', 'Incognito']),
     layout.Slice('left', 320, wmclass='pino',
         fallback=layout.Slice('right', 320, role='roster',
         fallback=layout.Stack(1, **border))),
