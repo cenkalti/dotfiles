@@ -29,7 +29,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set bash promt
-PS1='\h\[\033[01;32m\]$\[\033[00m\] '
+PS1='\h:\w\[\033[01;32m\]$\[\033[00m\] '
 
 # If this is an xterm set the title
 case "$TERM" in
