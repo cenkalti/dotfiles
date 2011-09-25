@@ -29,12 +29,12 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set bash promt
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[01;32m\]$\[\033[00m\] '
+PS1='\h\[\033[01;32m\]$\[\033[00m\] '
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm set the title
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\h: \w\a\]$PS1"
+xterm*|rxvt*|screen*)
+    PS1="\[\033]0;\h\007\]$PS1"
     ;;
 *)
     ;;
