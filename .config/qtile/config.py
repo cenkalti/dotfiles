@@ -77,8 +77,8 @@ border = dict(
     )
 
 layouts = [
-    layout.Tile(**border),
     layout.Max(),
+    layout.Tile(**border),
     layout.Stack(**border),
     layout.Slice('left', 320, wmclass='pino',
         fallback=layout.Slice('right', 320, role='roster',
