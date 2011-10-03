@@ -59,5 +59,5 @@ fi
 EDITOR=emacs
 
 if [ -d ~/bin ]; then
-    PATH=~/bin:$PATH
+    export PATH=~/bin:$PATH
 fi
