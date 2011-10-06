@@ -61,3 +61,7 @@ EDITOR=emacs
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
 fi
+
+if [ -f /usr/bin/tmux ]; then
+    tmux list-sessions
+fi
