@@ -65,3 +65,5 @@ fi
 if [ -f /usr/bin/tmux ]; then
     tmux list-sessions
 fi
+
+[ -s "~/.scm_breeze/scm_breeze.sh" ] && . "~/.scm_breeze/scm_breeze.sh"
