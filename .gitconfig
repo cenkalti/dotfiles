@@ -4,6 +4,7 @@
 
 [alias]
         st = status
+	stu = status -uno
         co = checkout
         ci = commit
 	cia = commit -a
