@@ -6,7 +6,8 @@
         st = status
         co = checkout
         ci = commit
-        cim = commit -a -m-
+	cia = commit -a
+        ciam = commit -a -m-
         cp = cherry-pick
         br = branch
         df = diff
@@ -14,6 +15,8 @@
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
         w = whatchanged
+	amend = commit --amend -C HEAD
+	xxx = reset --hard
 
 [color]
         ui = true
