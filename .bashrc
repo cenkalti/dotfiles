@@ -56,7 +56,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-EDITOR=emacs
+export EDITOR=emacs
 
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
@@ -65,5 +65,3 @@ fi
 if [ -f /usr/bin/tmux ]; then
     tmux list-sessions
 fi
-
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && . "$HOME/.scm_breeze/scm_breeze.sh"
