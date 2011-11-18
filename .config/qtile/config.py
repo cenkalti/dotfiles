@@ -59,8 +59,12 @@ keys = [
             "-fn 'Consolas:size=13' -nb '#000000' -nf '#ffffff' -b")),
     Key([mod, 'shift'], "s",
         lazy.spawn('/home/cenk/bin/synergy.sh')),
+    Key([mod, 'shift'], "r",
+        lazy.spawn('/home/cenk/bin/rotate.sh')),
     Key([mod, 'shift'], "t",
         lazy.spawn('terminal')),
+    Key([mod, 'shift'], "f",
+        lazy.spawn('firefox')),
 ]
 
 mouse = [
