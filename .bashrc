@@ -62,6 +62,8 @@ if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
 fi
 
-if [ -f /usr/bin/tmux ]; then
-    tmux list-sessions
+if [ -z "$TMUX" ] && [ -f /usr/bin/tmux ]; then
+    if [[ `tmux ls 2>/dev/null | wc -l` != "0" ]]; then
+	tmux ls
+    fi
 fi
