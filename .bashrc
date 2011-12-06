@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -41,27 +39,23 @@ xterm*|rxvt*|screen*)
 esac
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
 export EDITOR=emacs
 
+# append ~/bin to PATH
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
 fi
 
+# list running tmux sessions
 if [ -z "$TMUX" ] && [ -f /usr/bin/tmux ]; then
     if [[ `tmux ls 2>/dev/null | wc -l` != "0" ]]; then
 	tmux ls
