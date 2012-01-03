@@ -50,6 +50,8 @@ fi
 
 export EDITOR=emacs
 
+export LC_ALL="en_US.utf8"
+
 # append ~/bin to PATH
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
