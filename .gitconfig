@@ -6,9 +6,7 @@
         st = status
 	stu = status -uno
         co = checkout
-        ci = commit
-	cia = commit -a
-        ciam = commit -a -m
+        ci = commit -m
         cp = cherry-pick
         br = branch
         df = diff
@@ -18,9 +16,6 @@
         w = whatchanged
 	amend = commit --amend -C HEAD
 	xxx = reset --hard
-
-[branch]
-        autosetuprebase = always
 
 [color]
         ui = true
@@ -47,7 +42,7 @@
         excludesfile = ~/.gitignore_global
         autocrlf = input
         pager = less -FRSX
-        whitespace = fix,indent-with-non-tab,trailing-space
+        whitespace = fix,trailing-space
 
 [merge]
         summary = true
