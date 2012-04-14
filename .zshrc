@@ -24,7 +24,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -33,5 +33,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH=$HOME/bin:$PATH
+
 # Customize to your needs...
-export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/cenk/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+source $HOME/.zshrc-local
