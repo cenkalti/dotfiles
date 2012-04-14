@@ -36,4 +36,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$PATH
 
 # Customize to your needs...
-source $HOME/.zshrc-local
+if [[ -f $HOME/.zshrc-local ]]
+then
+    source $HOME/.zshrc-local
+fi
