@@ -36,6 +36,7 @@ plugins=(ssh-agent git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:$PATH
+export EDITOR=emacs
 
 # Customize to your needs...
 if [[ -f $HOME/.zshrc-local ]]
