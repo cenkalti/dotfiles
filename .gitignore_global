@@ -7,3 +7,4 @@ __pycache__
 PYSMELLTAGS
 *.sublime-workspace
 .DS_Store
+.idea
