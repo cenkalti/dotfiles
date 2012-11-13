@@ -51,5 +51,5 @@ fi
 # my ssh & tmux helper
 function ssht()
 {
-ssh -t $1 tmux a -t cenk
+ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 }
