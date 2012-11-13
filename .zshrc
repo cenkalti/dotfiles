@@ -47,3 +47,9 @@ if [[ -f $HOME/.zshrc-local ]]
 then
     source $HOME/.zshrc-local
 fi
+
+# my ssh & tmux helper
+function ssht()
+{
+ssh -t $1 tmux a -t cenk
+}
