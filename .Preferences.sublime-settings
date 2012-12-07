@@ -4,5 +4,5 @@
     "highlight_line": true,
     "rulers": [79],
     "translate_tabs_to_spaces": true,
-    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "_build", "dist", "build", "site"]
+    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "_build", "dist", "build", "site", ".idea"]
 }
