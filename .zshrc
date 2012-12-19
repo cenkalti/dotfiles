@@ -53,7 +53,7 @@ function ssht()
 {
 ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 }
-HOSTS=(lb lb2 mem zip zip2 db d01 d02 s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 x15 x16 x17 x18 x19 x20 uk)
+HOSTS=(lb lb2 mem zip zip2 db d01 d02 s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 x15 x16 x17 x18 x19 x20 uk munin)
 for host in $HOSTS
 do
 alias ${host}="ssht ${host}"
