@@ -14,8 +14,11 @@ ZSH_THEME="gentoo"
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
+# Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -40,7 +43,6 @@ export EDITOR=emacs
 
 # Must be run after PATHs are set
 source $ZSH/oh-my-zsh.sh
-
 
 # Customize to your needs...
 if [[ -f $HOME/.zshrc-local ]]
