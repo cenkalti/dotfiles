@@ -60,3 +60,6 @@ for host in $HOSTS
 do
 alias ${host}="ssht ${host}"
 done
+
+alias gpp="git pull --rebase && git push"
+
