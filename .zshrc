@@ -61,5 +61,5 @@ do
 alias ${host}="ssht ${host}"
 done
 
-alias gpp="git pull --rebase && git push"
+alias gpp="git stash && git pull --rebase && git push && git stash apply"
 
