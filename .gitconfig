@@ -3,7 +3,7 @@
         email = cenkalti@gmail.com
 
 [alias]
-        pull = pull --no-edit
+        pul = pull --no-edit
         st = status
         stu = status -uno
         co = checkout
