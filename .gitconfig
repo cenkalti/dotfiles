@@ -39,7 +39,7 @@
         untracked = cyan
 
 [core]
-        editor = emacs
+        editor = vim 
         excludesfile = ~/.gitignore_global
         autocrlf = input
         pager = less -FRSX
