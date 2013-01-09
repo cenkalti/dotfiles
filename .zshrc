@@ -40,6 +40,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 export PATH=/usr/local/share/python:${PATH}
 export PATH=$HOME/bin:${PATH}
 export EDITOR=emacs
+export WORKON_HOME=$HOME/.virtualenvs
 
 # Must be run after PATHs are set
 source $ZSH/oh-my-zsh.sh
