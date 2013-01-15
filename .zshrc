@@ -65,7 +65,7 @@ done
 alias gpp="git stash && git pull --rebase && git push && git stash apply"
 
 # nosecomplete
-utoload -U compinit
+autoload -U compinit
 compinit
 
 autoload -U bashcompinit
