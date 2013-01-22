@@ -62,7 +62,7 @@ do
 alias ${host}="ssht ${host}"
 done
 
-alias gpp="git stash && git pull --rebase && git push && git stash apply"
+alias gpp="git pull --no-edit && git push"
 
 # nosecomplete
 autoload -U compinit
