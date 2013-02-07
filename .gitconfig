@@ -41,7 +41,7 @@
 [core]
         editor = vim 
         excludesfile = ~/.gitignore_global
-        autocrlf = input
+        autocrlf = false
         pager = less -FRSX
         whitespace = fix,trailing-space
 
