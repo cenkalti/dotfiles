@@ -36,8 +36,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent id_rsa id_dev
 plugins=(ssh-agent git virtualenvwrapper)
 
-export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
-export PATH=/usr/local/share/python:${PATH}
 export PATH=$HOME/bin:${PATH}
 export EDITOR=emacs
 export WORKON_HOME=$HOME/.virtualenvs
