@@ -4,7 +4,7 @@
 
 [alias]
         pul = pull --no-edit
-        st = status
+        st = status --short --branch
         stu = status -uno
         co = checkout
         ci = commit -m
