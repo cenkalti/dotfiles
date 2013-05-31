@@ -50,3 +50,5 @@
 
 [push]
         default = current
+[diff]
+	algorithm = patience
