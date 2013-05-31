@@ -17,6 +17,9 @@
         w = whatchanged
         amend = commit --amend -C HEAD
         xxx = reset --hard
+        assume   = update-index --assume-unchanged
+        unassume = update-index --no-assume-unchanged
+        assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [color]
         ui = true
@@ -50,5 +53,6 @@
 
 [push]
         default = current
+
 [diff]
-	algorithm = patience
+        algorithm = patience
