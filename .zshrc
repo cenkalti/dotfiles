@@ -43,8 +43,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git, virtualenvwrapper)
 
 export PATH=$HOME/bin:${PATH}
-export EDITOR=emacs
-export WORKON_HOME=$HOME/.virtualenvs
+export EDITOR=vim
 
 # Must be run after PATHs are set
 source $ZSH/oh-my-zsh.sh
