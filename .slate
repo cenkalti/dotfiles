@@ -18,10 +18,10 @@ bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
 bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
 
 # Nudge Bindings
-bind right:shift;alt nudge +5% +0
-bind left:shift;alt  nudge -5% +0
-bind up:shift;alt    nudge +0   -5%
-bind down:shift;alt  nudge +0   +5%
+bind right:cmd;alt nudge +5% +0
+bind left:cmd;alt  nudge -5% +0
+bind up:cmd;alt    nudge +0   -5%
+bind down:cmd;alt  nudge +0   +5%
 
 # Throw Bindings
 #bind 1:ctrl;alt         throw 0 resize
