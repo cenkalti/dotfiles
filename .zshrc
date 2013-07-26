@@ -43,7 +43,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git, virtualenvwrapper)
 
 export PATH="/usr/local/share/python:$PATH"
-export PATH=$HOME/bin:${PATH}
 export EDITOR=vim
 
 # Must be run after PATHs are set
