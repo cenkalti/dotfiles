@@ -59,21 +59,22 @@ function ssht()
 {
 ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 }
+
+# make aliases for frequently used hosts
 HOSTS=(x04 x13 x06 zip zip2 db d01 d02 s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 x13 x15 x16 x17 x18 x19 x20 uk munin w24 w25 w26 w27 w28 w29 w30 w31 w32 w33 marvin)
-for host in $HOSTS
-do
-alias ${host}="ssht ${host}"
+for host in $HOSTS; do
+    alias ${host}="ssht ${host}"
 done
 
+# git aliases
 alias gpp="git pull --no-edit && git push"
+alias gppr="git pull --rebase && git push"
 
 # nosecomplete
 autoload -U compinit
 compinit
-
 autoload -U bashcompinit
 bashcompinit
-
 _nosetests()
 {
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -81,6 +82,7 @@ _nosetests()
 }
 complete -o nospace -F _nosetests nosetests
 
+# set perl home
 if [ -d ~/perl5 ]; then
     eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
 fi
