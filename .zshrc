@@ -42,7 +42,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git, virtualenvwrapper)
 
-export PATH="/usr/local/share/python:$PATH"
 export EDITOR=vim
 
 # Must be run after PATHs are set
