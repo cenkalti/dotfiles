@@ -10,8 +10,8 @@
         ci = commit -m
         cp = cherry-pick
         br = branch
-        df = diff
-        dfc = diff --cached
+        df = diff --word-diff
+        dfc = diff --word-diff --cached
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
         w = whatchanged
@@ -47,6 +47,9 @@
         autocrlf = false
         pager = less -FRSX
         whitespace = fix,trailing-space
+
+[branch]
+        autosetuprebase = always
 
 [merge]
         summary = true
