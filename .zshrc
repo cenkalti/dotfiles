@@ -66,6 +66,7 @@ for host in $HOSTS; do
 done
 
 # git aliases
+alias g="git st"
 alias gpp="git pull --no-edit && git push"
 alias gppr="git pull --rebase && git push"
 
