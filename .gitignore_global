@@ -9,3 +9,4 @@ PYSMELLTAGS
 *.sublime-workspace
 .DS_Store
 .idea
+*.iml
