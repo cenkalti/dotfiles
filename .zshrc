@@ -59,12 +59,6 @@ function ssht()
 ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 }
 
-# make aliases for frequently used hosts
-HOSTS=(zip2 db d01 d02 s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 x04 x06 x13 x15 x16 x17 x18 x19 x20 uk fr frc w24 w25 w26 w27 w28 w29 w30 w31 w32 w33 marvin)
-for host in $HOSTS; do
-    alias ${host}="ssht ${host}"
-done
-
 # git aliases
 alias g="git st"
 alias gpp="git pull --no-edit && git push"
