@@ -81,3 +81,5 @@ if [ -d ~/perl5 ]; then
     eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
 fi
 
+# colorize stderr
+exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
