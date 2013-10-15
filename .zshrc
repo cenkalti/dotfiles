@@ -64,6 +64,9 @@ alias g="git st"
 alias gpp="git pull --no-edit && git push"
 alias gppr="git pull --rebase && git push"
 
+# shows listening ports
+alias listen="sudo lsof -Pn -iTCP -sTCP:LISTEN"
+
 # nosecomplete
 autoload -U compinit
 compinit
