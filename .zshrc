@@ -85,4 +85,4 @@ if [ -d ~/perl5 ]; then
 fi
 
 # colorize stderr
-exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
+export DYLD_INSERT_LIBRARIES="/usr/local/lib/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
