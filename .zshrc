@@ -61,6 +61,7 @@ ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 
 # git aliases
 alias g="git st"
+alias gp="git pull --no-edit"
 alias gpp="git pull --no-edit && git push"
 alias gppr="git pull --rebase && git push"
 

@@ -3,8 +3,9 @@
         email = cenkalti@gmail.com
 
 [alias]
-        pul = pull --no-edit
         st = status --short --branch
+        pn = pull --no-edit
+        pr = pull --rebase
         stu = status -uno
         co = checkout
         ci = commit -m
@@ -47,9 +48,6 @@
         autocrlf = false
         pager = less -FRSX
         whitespace = fix,trailing-space
-
-[branch]
-        autosetuprebase = always
 
 [merge]
         summary = true
