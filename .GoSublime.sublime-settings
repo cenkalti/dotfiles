@@ -1,0 +1,4 @@
+{
+    "env": { "GOPATH": "$HOME/go:$GS_GOPATH" },
+    "use_gs_gopath": true
+}
