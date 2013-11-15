@@ -4,3 +4,4 @@ export PATH=$HOME/.gem/ruby/1.8/bin:${PATH}
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/bin:${PATH}
+export PATH=$PATH:$HOME/node_modules/.bin
