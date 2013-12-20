@@ -1,5 +1,6 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+    "enable_tab_scrolling": false,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -32,6 +33,7 @@
 		80,
 		120
 	],
+	"show_encoding": true,
 	"show_full_path": true,
 	"tab_size": 4,
 	"translate_tabs_to_spaces": true,
