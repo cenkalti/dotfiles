@@ -1,4 +1,5 @@
 {
     "env": { "GOPATH": "$HOME/go:$GS_GOPATH" },
-    "use_gs_gopath": true
+    "use_gs_gopath": true,
+    "fmt_cmd": ["goimports"]
 }
