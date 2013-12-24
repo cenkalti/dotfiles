@@ -47,6 +47,9 @@ export EDITOR=vim
 # Must be run after PATHs are set
 source $ZSH/oh-my-zsh.sh
 
+# Do not share history between sessions.
+unsetopt SHARE_HISTORY
+
 # Customize to your needs...
 if [[ -f $HOME/.zshrc-local ]]
 then
