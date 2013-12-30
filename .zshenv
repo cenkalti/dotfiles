@@ -5,4 +5,4 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:$HOME/node_modules/.bin
-export PATH=$PATH:/usr/local/go/bin/
+export PATH=$PATH:/usr/local/go/bin
