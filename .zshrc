@@ -88,7 +88,3 @@ if [ -d ~/perl5 ]; then
     eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
 fi
 
-# colorize stderr
-#export DYLD_INSERT_LIBRARIES="/usr/local/lib/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
-#export STDERRED_ESC_CODE=`echo -e "\e[91m"`
-#alias unset-dylib="unset DYLD_INSERT_LIBRARIES"
