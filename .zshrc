@@ -67,6 +67,7 @@ alias g="git st"
 alias gp="git pull --no-edit"
 alias gpp="git pull --no-edit && git push"
 alias gppr="git pull --rebase && git push"
+alias git-delete-merged="git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
 
 # shows listening ports
 alias listen="sudo lsof -Pn -iTCP -sTCP:LISTEN"
