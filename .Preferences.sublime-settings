@@ -18,9 +18,7 @@
 		".hg",
 		"CVS",
 		"_build",
-		"dist",
-		"build",
-		"site",
+		".build",
 		".idea"
 	],
 	"font_size": 12,
