@@ -1,0 +1,13 @@
+{
+  // Path to goimports binary
+  "goimports_bin": "/Users/cenk/go/bin/goimports",
+
+  // enable/disable plugin
+  "goimports_enabled": false,
+
+  // Use tabs to format the source (default: false)
+  "use_tabs": true,
+
+  // Tab width (default: 4)
+  "tab_width": 4
+}
