@@ -89,3 +89,18 @@ if [ -d ~/perl5 ]; then
     eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
 fi
 
+# press ctrl-z to toggle command auto-completion 
+autoload predict-on
+predict-toggle() {
+  ((predict_on=1-predict_on)) && predict-on || predict-off
+}
+zle -N predict-toggle
+bindkey '^Z'   predict-toggle
+zstyle ':predict' toggle true
+zstyle ':predict' verbose true
+
+# press ctrl-x then e to edit current command in editor
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
