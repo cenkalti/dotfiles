@@ -21,6 +21,9 @@
 		"CVS",
 		"_build",
 		".build",
+		"go/bin",
+		"go/build",
+		"go/pkg",
 		".idea"
 	],
 	"font_size": 12,
