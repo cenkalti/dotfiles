@@ -14,6 +14,7 @@ colorscheme solarized
 " index more files
 let g:ctrlp_max_files = 100000
 
+set gfn=Monaco:h12
 "set tabstop=4
 "set softtabstop=4
 "set shiftwidth=4
