@@ -104,3 +104,5 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
+# for tmux
+DISABLE_AUTO_TITLE=true
