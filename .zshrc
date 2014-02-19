@@ -104,5 +104,9 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
-# for tmux
+# for tmux: do not rename window names automatically
 DISABLE_AUTO_TITLE=true
+
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+
