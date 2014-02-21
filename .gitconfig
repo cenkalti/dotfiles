@@ -54,7 +54,7 @@
         summary = true
 
 [push]
-        default = current
+        default = simple
 
 [diff]
         algorithm = patience
