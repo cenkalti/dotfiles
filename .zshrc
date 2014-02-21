@@ -64,10 +64,7 @@ ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 
 # git aliases
 alias g="git st"
-alias gp="git pull --no-edit"
-alias gpp="git pull --no-edit && git push"
-alias gppr="git pull --rebase && git push"
-alias git-delete-merged="git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
+# ...other ones are in .gitconfig file
 
 # shows listening ports
 alias listen="sudo lsof -Pn -iTCP -sTCP:LISTEN"
@@ -89,7 +86,7 @@ if [ -d ~/perl5 ]; then
     eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
 fi
 
-# press ctrl-z to toggle command auto-completion 
+# press ctrl-z to toggle command auto-completion
 autoload predict-on
 predict-toggle() {
   ((predict_on=1-predict_on)) && predict-on || predict-off

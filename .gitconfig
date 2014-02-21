@@ -3,25 +3,58 @@
         email = cenkalti@gmail.com
 
 [alias]
-        st = status --short --branch
-        pn = pull --no-edit
-        pr = pull --rebase
+	# List aliases
+        ls = "!git config --get-regexp alias\\. | sed 's/^......//' | sed 's/ /	/'"
+
+        st  = status --short --branch
         stu = status -uno
+
+        ci    = commit -m
+
+        # Edit last commit message
+        edit  = commit --amend
+
+        # Amend the changes into previos commit
+        amend = commit --amend -C HEAD
+
+        # Dangerous commands
+        #
+        # pr  = pull --rebase
+        # prp = "!git pull --rebase && git push"
+        # pp  = "!git pull --no-edit && git push"
+
         co = checkout
-        ci = commit -m
         cp = cherry-pick
         br = branch
-        df = diff
+        wc = whatchanged
+
+        df  = diff
         dfc = diff --cached
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-        w = whatchanged
-        amend = commit --amend -C HEAD
-        xxx = reset --hard
+
+        lol  = log --graph --decorate --oneline --abbrev-commit
+        lola = log --graph --decorate --oneline --abbrev-commit --all
+
+        # Show commits between two refs. Pass argument like master...feature
+        lr   = log --graph --oneline --left-right --cherry-pick
+
+        # Show commits between master and the current branch
+        lrm  = "!git log --graph --oneline --left-right --cherry-pick master...`git rev-parse HEAD`"
+
+        xxx  = reset --hard
+        prev = reset HEAD^
+
         assume   = update-index --assume-unchanged
         unassume = update-index --no-assume-unchanged
         assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-        prev = reset HEAD^
+
+        # Delete local branch
+        db = branch -D
+
+        # Delete local branches that are merged into master
+        dm = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
+
+        # Delete remote branch
+        dr = push origin --delete
 
 [color]
         ui = true
@@ -44,7 +77,7 @@
         untracked = cyan
 
 [core]
-        editor = vim 
+        editor = vim
         excludesfile = ~/.gitignore_global
         autocrlf = false
         pager = less -FRSX
