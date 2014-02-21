@@ -31,6 +31,9 @@
         df  = diff
         dfc = diff --cached
 
+        # Show the fetched commits
+        lc   = log ORIG_HEAD.. --stat --no-merges
+
         lol  = log --graph --decorate --oneline --abbrev-commit
         lola = log --graph --decorate --oneline --abbrev-commit --all
 
