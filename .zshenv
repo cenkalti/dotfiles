@@ -7,6 +7,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:$HOME/node_modules/.bin
 
-if which go > /dev/null; then
+if type go &> /dev/null; then
 	export PATH=$PATH:$(go env GOROOT)/bin
 fi
