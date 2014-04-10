@@ -18,7 +18,7 @@ import System.IO
 
 main = do
    xmonad $ defaultConfig
-      { terminal = "gnome-terminal"
+      { terminal = "terminator"
       , focusedBorderColor = myActiveBorderColor
       , modMask = mod4Mask
       , keys = myKeys
