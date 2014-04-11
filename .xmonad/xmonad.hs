@@ -22,7 +22,7 @@ main = do
       , focusedBorderColor = myActiveBorderColor
       , modMask = mod4Mask
       , keys = myKeys
-      , borderWidth = 3
+      , borderWidth = 2
       , layoutHook = avoidStruts $ myLayoutHook
      }   
 
@@ -39,7 +39,7 @@ myFgColor = "white"
 myBgColor = "#099999"
 myHighlightedFgColor = "white"
 myHighlightedBgColor = "#FF3300"
-myActiveBorderColor = "#099999"
+myActiveBorderColor = "#FF0000"
 
 -- Prompt config
 myXPConfig = defaultXPConfig {
