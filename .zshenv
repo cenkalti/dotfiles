@@ -5,7 +5,6 @@ export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:$HOME/node_modules/.bin
 
 if type go &> /dev/null; then
-	export GOROOT=/usr/local/Cellar/go/1.2/libexec
 	export GOPATH=$HOME/go
 	export PATH=$PATH:$GOPATH/bin
 	export PATH=$PATH:$(go env GOROOT)/bin
