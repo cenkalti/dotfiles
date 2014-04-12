@@ -17,6 +17,7 @@ import qualified Data.Map as M
 import System.IO
 
 main = do
+   xmproc <- spawnPipe "xmobar"
    xmonad $ defaultConfig
       { terminal = "terminator"
       , focusedBorderColor = myActiveBorderColor
