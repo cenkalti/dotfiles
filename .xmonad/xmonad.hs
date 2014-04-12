@@ -39,7 +39,7 @@ myFgColor = "white"
 myBgColor = "#099999"
 myHighlightedFgColor = "white"
 myHighlightedBgColor = "#FF3300"
-myActiveBorderColor = "#FF0000"
+myActiveBorderColor = "#C80003"
 
 -- Prompt config
 myXPConfig = defaultXPConfig {
