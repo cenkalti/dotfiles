@@ -11,7 +11,7 @@ Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
 URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: chromium
 URxvt.matcher.button: 1
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
