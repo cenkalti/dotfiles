@@ -3,6 +3,7 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
+import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
 
 main = do
@@ -45,5 +46,7 @@ myKeys x = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 -- Add new and/or redefine key bindings
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     -- Use shellPrompt instead of default dmenu
-    ((modm, xK_p), shellPrompt myXPConfig)
+    ((modm, xK_p), shellPrompt myXPConfig),
+    ((mod4Mask, xF86XK_MonBrightnessUp), spawn "xbacklight +4 -time 0"),
+    ((mod4Mask, xF86XK_MonBrightnessDown), spawn "xbacklight -4 -time 0")
     ]
