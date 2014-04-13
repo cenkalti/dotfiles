@@ -1,8 +1,9 @@
 import XMonad
 import XMonad.Prompt
 import XMonad.Prompt.Shell
-import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
 
@@ -17,6 +18,7 @@ main = do
         , borderWidth        = 2
         , layoutHook         = myLayout
         , manageHook         = manageHook defaultConfig <+> manageDocks
+	, handleEventHook    = fullscreenEventHook
         }
 
 -- The available layouts.  Note that each layout is separated by |||, which
