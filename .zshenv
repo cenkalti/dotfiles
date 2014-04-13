@@ -3,6 +3,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 export PATH=$HOME/.gem/ruby/1.8/bin:${PATH}
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:$HOME/node_modules/.bin
+export PATH=$PATH:$HOME/.cabal/bin
 
 if type go &> /dev/null; then
 	export GOPATH=$HOME/go
