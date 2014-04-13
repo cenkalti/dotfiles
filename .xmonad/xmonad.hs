@@ -9,10 +9,11 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig
         { terminal           = "terminator"
+        , normalBorderColor  = "black"
         , focusedBorderColor = "#C80003"
         , modMask            = mod4Mask
         , keys               = myKeys
-        , borderWidth        = 2
+        , borderWidth        = 3
         , layoutHook         = myLayout
         , focusFollowsMouse  = False
         }
