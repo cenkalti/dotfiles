@@ -17,7 +17,6 @@ main = do
         , borderWidth        = 2
         , layoutHook         = myLayout
         , manageHook         = manageHook defaultConfig <+> manageDocks
-        , focusFollowsMouse  = False
         }
 
 -- The available layouts.  Note that each layout is separated by |||, which
