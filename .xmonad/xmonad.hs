@@ -16,6 +16,7 @@ main = do
         , keys               = myKeys
         , borderWidth        = 4
         , layoutHook         = myLayout
+        , manageHook         = manageHook defaultConfig <+> manageDocks
         , focusFollowsMouse  = False
         }
 

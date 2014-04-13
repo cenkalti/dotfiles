@@ -1,9 +1,7 @@
 Config { font    = "xft:Bitstream Vera Sans Mono:size=12:antialias=true"
-       -- , bgColor = "black"
-       -- , fgColor = "grey"
        , position = BottomW L 90
        , lowerOnStart = True
-       , commands = [ Run Network "wlp2s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+       , commands = [ Run Network "wlp2s0" ["-L","1","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","24","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
@@ -12,5 +10,5 @@ Config { font    = "xft:Bitstream Vera Sans Mono:size=12:antialias=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %wlp2s0% }{ <fc=#ee9a00>%date%</fc> | %uname%"
+       , template = "%cpu% | %memory% | %swap% | %wlp2s0% }{ <fc=#ee9a00>%date%</fc> | %uname%"
        }
