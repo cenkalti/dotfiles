@@ -14,7 +14,7 @@ main = do
         , focusedBorderColor = "#C80003"
         , modMask            = mod4Mask
         , keys               = myKeys
-        , borderWidth        = 3
+        , borderWidth        = 4
         , layoutHook         = myLayout
         , focusFollowsMouse  = False
         }
