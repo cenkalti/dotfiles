@@ -14,6 +14,7 @@ main = do
         , keys               = myKeys
         , borderWidth        = 2
         , layoutHook         = myLayout
+        , focusFollowsMouse  = False
         }
 
 -- The available layouts.  Note that each layout is separated by |||, which
