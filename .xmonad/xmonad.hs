@@ -11,10 +11,10 @@ main = do
     xmonad $ defaultConfig
         { terminal           = "xterm"
         , normalBorderColor  = "black"
-        , focusedBorderColor = "#C80003"
+        , focusedBorderColor = "red"
         , modMask            = mod4Mask
         , keys               = myKeys
-        , borderWidth        = 4
+        , borderWidth        = 2
         , layoutHook         = myLayout
         , manageHook         = manageHook defaultConfig <+> manageDocks
         , focusFollowsMouse  = False
