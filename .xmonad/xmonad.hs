@@ -21,7 +21,7 @@ main = do
 
 -- The available layouts.  Note that each layout is separated by |||, which
 -- denotes layout choice.
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full
     where
         -- default tiling algorithm partitions the screen into two panes
         tiled   = Tall nmaster delta ratio
