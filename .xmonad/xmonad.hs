@@ -9,7 +9,7 @@ import qualified Data.Map as M
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig
-        { terminal           = "urxvt"
+        { terminal           = "xterm"
         , normalBorderColor  = "black"
         , focusedBorderColor = "#C80003"
         , modMask            = mod4Mask
