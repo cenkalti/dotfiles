@@ -34,7 +34,7 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 
 -- Prompt config
 myXPConfig = defaultXPConfig
-    { font              = "-misc-fixed-Medium-*-*-*-20-*-*-*-*-*-*-*"
+    { font              = "xft:Bitstream Vera Sans Mono:size=12:antialias=true"
     , position          = Top
     , promptBorderWidth = 0
     , height            = 20
