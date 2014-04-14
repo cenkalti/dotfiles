@@ -1,5 +1,5 @@
-*foreground: rgb:b2/b2/b2
-*background: rgb:08/08/08
+xterm*foreground: rgb:b2/b2/b2
+xterm*background: rgb:08/08/08
 xterm*saveLines: 4096
 xterm*vt100*geometry: 80x32
 xterm*loginShell: true
