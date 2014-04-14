@@ -4,6 +4,7 @@ export PATH=$HOME/.gem/ruby/1.8/bin:${PATH}
 export PATH=$HOME/bin:${PATH}
 export PATH=$PATH:$HOME/node_modules/.bin
 export PATH=$PATH:$HOME/.cabal/bin
+export WORKON_HOME=$HOME/.virtualenvs
 
 if type go &> /dev/null; then
 	export GOPATH=$HOME/go
