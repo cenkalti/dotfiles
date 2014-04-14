@@ -1,4 +1,4 @@
-Config { font    = "xft:Bitstream Vera Sans Mono:size=12:antialias=false"
+Config { font    = "xft:Terminus:size=12:antialias=false"
        , position = Bottom
        , lowerOnStart = True
        , commands = [ Run Uptime [] 10
