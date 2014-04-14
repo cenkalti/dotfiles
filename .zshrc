@@ -109,3 +109,19 @@ DISABLE_AUTO_TITLE=true
 
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
+
+# set env vars
+export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
+export PATH=$HOME/.gem/ruby/1.8/bin:${PATH}
+export PATH=$HOME/bin:${PATH}
+export PATH=$PATH:$HOME/node_modules/.bin
+export PATH=$PATH:$HOME/.cabal/bin
+export WORKON_HOME=$HOME/.virtualenvs
+
+# set go vars
+if type go &> /dev/null; then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
+    export PATH=$PATH:$(go env GOROOT)/bin
+fi
