@@ -1,14 +1,15 @@
 import XMonad
 import XMonad.Prompt
 import XMonad.Prompt.Shell
-import XMonad.Hooks.DynamicLog
+import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
 
 main = do
-    xmonad =<< xmobar defaultConfig
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ defaultConfig
         { terminal           = "xterm"
         , normalBorderColor  = "black"
         , focusedBorderColor = "red"
