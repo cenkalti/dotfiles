@@ -7,10 +7,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gentoo"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -104,17 +100,14 @@ bindkey '^Xe' edit-command-line
 # for tmux: do not rename window names automatically
 DISABLE_AUTO_TITLE=true
 
-# for tmux: export 256color
-[ -n "$TMUX" ] && export TERM=screen-256color
-
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
 # set env vars
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
-export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
-export PATH=$HOME/.gem/ruby/1.8/bin:${PATH}
-export PATH=$HOME/bin:${PATH}
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/.gem/ruby/1.8/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$HOME/node_modules/.bin
 export PATH=$PATH:$HOME/.cabal/bin
 export WORKON_HOME=$HOME/.virtualenvs
