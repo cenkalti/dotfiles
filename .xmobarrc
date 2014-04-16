@@ -10,10 +10,7 @@ Config { font    = "xft:Terminus:size=12:antialias=false"
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run BatteryP ["BAT0"]
                                    ["-t", "Batt: <left>", "--suffix", "True",
-                                    "-L", "10", "-H", "80", "-p", "3",
-                                    "--", "-O", "<fc=green>On</fc> - ", "-i", "",
-                                    "-L", "-15", "-H", "-5",
-                                    "-l", "red", "-m", "blue", "-h", "green"]
+                                    "-L", "10", "-l", "red" ]
                                    10
                     ]
        , sepChar = "%"
