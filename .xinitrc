@@ -13,6 +13,7 @@ fi
 
 xsetroot -cursor_name left_ptr
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+syndaemon -t -k -i 1 &
 
 exec xmonad
 
