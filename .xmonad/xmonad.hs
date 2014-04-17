@@ -4,6 +4,7 @@ import XMonad.Prompt.Shell
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Layout.NoBorders
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
 
@@ -23,7 +24,7 @@ main = do
 
 -- The available layouts.  Note that each layout is separated by |||, which
 -- denotes layout choice.
-myLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
     where
         -- default tiling algorithm partitions the screen into two panes
         tiled   = Tall nmaster delta ratio
