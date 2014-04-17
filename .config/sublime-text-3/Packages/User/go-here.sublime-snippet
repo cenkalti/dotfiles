@@ -1,7 +1,0 @@
-<snippet>
-    <content><![CDATA[
-fmt.Println("--- ${1:HERE}")
-]]></content>
-    <tabTrigger>here</tabTrigger>
-    <scope>source.go</scope>
-</snippet>
