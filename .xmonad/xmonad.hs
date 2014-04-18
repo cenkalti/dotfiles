@@ -50,9 +50,9 @@ myKeys x = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     -- Use shellPrompt instead of default dmenu
     ((modm, xK_p), shellPrompt myXPConfig),
-    ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +9 -time 0"),
+    ((0, xF86XK_MonBrightnessUp),   spawn "xbacklight +9 -time 0"),
     ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -9 -time 0"),
-    ((0, xF86XK_AudioRaiseVolume), spawn "amixer sset Master 10%+"),
-    ((0, xF86XK_AudioLowerVolume), spawn "amixer sset Master 10%-"),
-    ((0, xF86XK_AudioMute), spawn "amixer sset Master toggle")
+    ((0, xF86XK_AudioRaiseVolume),  spawn "/home/cenk/.xmonad/xosd_volume incr"),
+    ((0, xF86XK_AudioLowerVolume),  spawn "/home/cenk/.xmonad/xosd_volume decr"),
+    ((0, xF86XK_AudioMute),         spawn "/home/cenk/.xmonad/xosd_volume mute")
     ]
