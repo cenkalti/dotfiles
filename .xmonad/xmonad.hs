@@ -50,6 +50,6 @@ myKeys x = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     -- Use shellPrompt instead of default dmenu
     ((modm, xK_p), shellPrompt myXPConfig),
-    ((mod4Mask, xF86XK_MonBrightnessUp), spawn "xbacklight +4 -time 0"),
-    ((mod4Mask, xF86XK_MonBrightnessDown), spawn "xbacklight -4 -time 0")
+    ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +9 -time 0"),
+    ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -9 -time 0")
     ]
