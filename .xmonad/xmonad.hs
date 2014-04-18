@@ -52,7 +52,7 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     ((modm, xK_p), shellPrompt myXPConfig),
     ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +9 -time 0"),
     ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -9 -time 0"),
-    ((0, xF86XK_AudioRaiseVolume), spawn " amixer sset Master 10%+"),
-    ((0, xF86XK_AudioLowerVolume), spawn " amixer sset Master 10%-"),
-    ((0, xF86XK_AudioMute), spawn " amixer sset Master toggle")
+    ((0, xF86XK_AudioRaiseVolume), spawn "amixer sset Master 10%+"),
+    ((0, xF86XK_AudioLowerVolume), spawn "amixer sset Master 10%-"),
+    ((0, xF86XK_AudioMute), spawn "amixer sset Master toggle")
     ]
