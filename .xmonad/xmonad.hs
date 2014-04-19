@@ -37,10 +37,9 @@ myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 
 -- Prompt config
 myXPConfig = defaultXPConfig
-    { font              = "xft:Bitstream Vera Sans Mono:size=12:antialias=true"
+    { font              = "xft:Terminus:size=10:antialias=false"
     , position          = Top
     , promptBorderWidth = 0
-    , height            = 20
     }
 
 -- Union default and new key bindings
