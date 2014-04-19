@@ -1,3 +1,4 @@
+Xft.dpi: 165.0
 xterm*foreground: rgb:b2/b2/b2
 xterm*background: rgb:08/08/08
 xterm*saveLines: 4096
