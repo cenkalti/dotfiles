@@ -1,4 +1,4 @@
-Config { font    = "xft:Terminus:size=10:antialias=false"
+Config { font    = "xft:Terminus:size=8:antialias=false"
        , position = Bottom
        , lowerOnStart = True
        , commands = [ Run Uptime [] 10
@@ -12,8 +12,9 @@ Config { font    = "xft:Terminus:size=10:antialias=false"
                                    ["-t", "Batt: <left>", "--suffix", "True",
                                     "-L", "10", "-l", "red" ]
                                    10
+                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% | %battery% | %wlp2s0wi% | %wlp2s0% }{ <fc=#ee9a00>%date%</fc> | %uptime% | %uname%"
+       , template = "%cpu% | %memory% | %battery% | %wlp2s0wi% | %wlp2s0% %StdinReader%}{ <fc=#ee9a00>%date%</fc> | %uptime% | %uname%"
        }
