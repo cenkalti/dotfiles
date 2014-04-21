@@ -16,5 +16,5 @@ Config { font    = "xft:Terminus:size=8:antialias=false"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% %memory% %battery% %wlp2s0wi% %wlp2s0% %StdinReader%}{ <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu% %memory% %battery% %wlp2s0wi% %wlp2s0%| <fc=#ee9a00>%date%</fc>"
        }
