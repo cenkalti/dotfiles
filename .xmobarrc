@@ -2,7 +2,7 @@ Config { font    = "xft:Terminus:size=8:antialias=false"
        , position = Bottom
        , lowerOnStart = True
        , commands = [ Run Uptime [] 10
-                    , Run Network "wlp2s0" ["--minwidth", "3"] 10
+                    , Run Network "wlp2s0" ["--minwidth", "4"] 10
                     , Run Wireless "wlp2s0" ["--suffix", "True"] 100
                     , Run Cpu ["-L","3","-H","24", "-t", "CPU: <total>", "--suffix", "True", "--minwidth", "3"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
