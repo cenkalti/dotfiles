@@ -5,6 +5,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ResizableTile
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
 
@@ -26,7 +27,7 @@ main = do
 myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
     where
         -- default tiling algorithm partitions the screen into two panes
-        tiled   = Tall nmaster delta ratio
+        tiled   = ResizableTall nmaster delta ratio []
         -- The default number of windows in the master pane
         nmaster = 1
         -- Default proportion of screen occupied by master pane
@@ -48,6 +49,8 @@ myKeys x = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     -- Use shellPrompt instead of default dmenu
     ((modm, xK_p), shellPrompt myXPConfig),
+    ((modm, xK_a), sendMessage MirrorShrink),
+    ((modm, xK_z), sendMessage MirrorExpand),
     ((0, xF86XK_MonBrightnessUp),   spawn "xbacklight +9 -time 0"),
     ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -9 -time 0"),
     ((0, xF86XK_AudioRaiseVolume),  spawn "/home/cenk/.xmonad/xosd_volume incr"),
