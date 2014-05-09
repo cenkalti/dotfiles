@@ -4,6 +4,7 @@ import XMonad.Prompt.Shell
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import Graphics.X11.ExtraTypes.XF86
@@ -20,6 +21,7 @@ main = do
         , layoutHook         = myLayout
         , manageHook         = manageHook defaultConfig <+> manageDocks
 	    , handleEventHook    = fullscreenEventHook
+        , startupHook        = ewmhDesktopsStartup >> setWMName "LG3D"
         }
 
 -- The available layouts.  Note that each layout is separated by |||, which
