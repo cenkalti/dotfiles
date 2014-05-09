@@ -65,6 +65,9 @@ alias g="git st"
 # shows listening ports
 alias listen="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 
+# '[r]emove [o]rphans' - recursively remove ALL orphaned packages
+alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')"
+
 # nosecomplete
 autoload -U compinit
 compinit
