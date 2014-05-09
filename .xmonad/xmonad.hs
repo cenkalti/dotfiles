@@ -5,6 +5,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.SetWMName
+import XMonad.Actions.UpdatePointer
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import Graphics.X11.ExtraTypes.XF86
@@ -20,8 +21,9 @@ main = do
         , borderWidth        = 2
         , layoutHook         = myLayout
         , manageHook         = manageHook defaultConfig <+> manageDocks
-	    , handleEventHook    = fullscreenEventHook
+        , handleEventHook    = fullscreenEventHook
         , startupHook        = ewmhDesktopsStartup >> setWMName "LG3D"
+        , logHook            = updatePointer (Relative 0.5 0.5)
         }
 
 -- The available layouts.  Note that each layout is separated by |||, which
