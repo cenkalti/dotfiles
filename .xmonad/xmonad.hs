@@ -55,8 +55,8 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
     ((modm, xK_p), shellPrompt myXPConfig),
     ((modm, xK_a), sendMessage MirrorShrink),
     ((modm, xK_z), sendMessage MirrorExpand),
-    ((0, xF86XK_MonBrightnessUp),   spawn "xbacklight +9 -time 0"),
-    ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -9 -time 0"),
+    ((0, xF86XK_MonBrightnessUp),   spawn "xbacklight +4 -time 0"),
+    ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -4 -time 0"),
     ((0, xF86XK_AudioRaiseVolume),  spawn "/home/cenk/.xmonad/xosd_volume incr"),
     ((0, xF86XK_AudioLowerVolume),  spawn "/home/cenk/.xmonad/xosd_volume decr"),
     ((0, xF86XK_AudioMute),         spawn "/home/cenk/.xmonad/xosd_volume mute")
