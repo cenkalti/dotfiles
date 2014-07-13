@@ -1,6 +1,7 @@
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
 if [[ -f /usr/local/bin/brew ]]; then
+    export PATH=/usr/local/sbin:$PATH
     export PATH=/usr/local/bin:$PATH
 fi
 
