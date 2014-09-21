@@ -86,6 +86,9 @@
         pager = less -FRSX
         whitespace = fix,trailing-space
 
+[clean]
+	requireForce = false
+
 [merge]
         summary = true
 
