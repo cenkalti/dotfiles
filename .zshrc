@@ -43,7 +43,13 @@ unsetopt SHARE_HISTORY
 # my ssh & tmux helper
 function ssht()
 {
-ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
+    ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
+}
+
+# my sed helper
+function searchandreplace()
+{
+    find . -type f -name '*.'$1 -exec sed -i '' "s/$2/$3/" {} +
 }
 
 # git aliases
