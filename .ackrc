@@ -1,3 +1,4 @@
 --ignore-dir=.build
 --ignore-dir=.idea
+--ignore-dir=.srclib-cache
 

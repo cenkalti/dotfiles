@@ -1,2 +1,3 @@
 .ssh/
 .zshrc-local
+.srclib-cache/
