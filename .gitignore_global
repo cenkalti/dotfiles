@@ -11,3 +11,5 @@ PYSMELLTAGS
 .idea
 *.iml
 *.swp
+.srclib-cache/
+
