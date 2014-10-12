@@ -9,10 +9,11 @@
         st  = status --short --branch
         stu = status -uno
 
-        ci    = commit -m
+        ci = commit -m
+        ce = commit --allow-empty-message -m ''
 
         # Edit last commit message
-        edit  = commit --amend
+        edit = commit --amend
 
         # Amend the changes into previos commit
         amend = commit --amend -C HEAD
