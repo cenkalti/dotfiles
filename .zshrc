@@ -12,7 +12,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="gentoo"
+ZSH_THEME="robbyrussell"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 #DISABLE_AUTO_TITLE="true"  # good for tmux
