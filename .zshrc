@@ -15,7 +15,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"  # good for tmux
+#DISABLE_AUTO_TITLE="true"  # good for tmux
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
