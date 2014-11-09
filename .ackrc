@@ -2,4 +2,5 @@
 --ignore-dir=.idea
 --ignore-dir=.srclib-cache
 --ignore-dir=Godeps
+--ignore-dir=vendor
 
