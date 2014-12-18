@@ -52,6 +52,8 @@ function searchandreplace()
     find . -type f -name '*.'$1 -exec sed -i '' "s/$2/$3/" {} +
 }
 
+alias go-tip="$HOME/projects/go-tip/bin/go"
+
 # git aliases
 alias g="git st"
 # ...other ones are in .gitconfig file
