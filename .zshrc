@@ -52,6 +52,21 @@ function searchandreplace()
     find . -type f -name '*.'$1 -exec sed -i '' "s/$2/$3/" {} +
 }
 
+# COMPLETION SETTINGS
+# add custom completion scripts
+fpath=(~/.zsh/completion $fpath)
+
+# compsys initialization
+autoload -U compinit
+compinit
+
+# show completion menu when number of options is at least 2
+zstyle ':completion:*' menu select=2
+
+function cg() {
+    cd $GOPATH/src/$1;
+}
+
 alias go-tip="$HOME/projects/go-tip/bin/go"
 
 # git aliases
