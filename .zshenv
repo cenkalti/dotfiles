@@ -3,8 +3,6 @@ case ":$PATH:" in
 	*) PATH=$HOME/bin:$PATH ;;  # in every other case, add it to the front
 esac
 
-export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
-
 if [[ -f /usr/local/bin/brew ]]; then
     export PATH=$PATH:/usr/local/sbin
     export PATH=$PATH:/usr/local/bin
