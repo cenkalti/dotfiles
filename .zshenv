@@ -1,8 +1,13 @@
+case ":$PATH:" in
+	*:$HOME/bin:*) ;;     # do nothing if $PATH already contains $HOME/bin
+	*) PATH=$HOME/bin:$PATH ;;  # in every other case, add it to the front
+esac
+
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 
 if [[ -f /usr/local/bin/brew ]]; then
-    export PATH=/usr/local/sbin:$PATH
-    export PATH=/usr/local/bin:$PATH
+    export PATH=$PATH:/usr/local/sbin
+    export PATH=$PATH:/usr/local/bin
 fi
 
 if [[ -d $HOME/.gem/ruby/1.9/bin ]]; then
