@@ -31,3 +31,7 @@ if [[ -d ~/perl5 ]]; then
         eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
     fi
 fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
