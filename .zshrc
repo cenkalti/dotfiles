@@ -46,6 +46,11 @@ function ssht()
     ssh -t $1 'tmux attach -t cenk || tmux new -s cenk'
 }
 
+function psh()
+{
+    ssh -t db.put.io 'tmux attach -t cenk-shell || tmux new -s cenk-shell \; new-window "/putio/env/bin/python /putio/shell.py"'
+}
+
 # my sed helper
 function searchandreplace()
 {
