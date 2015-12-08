@@ -42,7 +42,6 @@ unsetopt SHARE_HISTORY
 
 # my ssh & tmux helper
 function ssht() { ssh -t $1 'tmux attach -t cenk || tmux new -s cenk' }
-function psh() { ssh -t db.put.io '/putio/env/bin/python /putio/shell.py' }
 
 # my sed helper
 function searchandreplace()
@@ -118,3 +117,6 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
+
+source .zshrc_private
+
