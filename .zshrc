@@ -118,5 +118,5 @@ man() {
     man "$@"
 }
 
-source .zshrc_private
+source ~/.zshrc_private
 
