@@ -20,9 +20,9 @@
 
         # Dangerous commands
         #
-        # pr  = pull --rebase
-        # prp = "!git pull --rebase && git push"
-        # pp  = "!git pull --no-edit && git push"
+        pr  = pull --rebase
+        prp = "!git pull --rebase && git push"
+        pp  = "!git pull --no-edit && git push"
 
         co = checkout
         cp = cherry-pick
