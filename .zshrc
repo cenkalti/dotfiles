@@ -68,6 +68,7 @@ alias go-tip="$HOME/projects/go-tip/bin/go"
 
 # git aliases
 alias g="git st"
+alias gti=git
 # ...other ones are in .gitconfig file
 
 # shows listening ports
