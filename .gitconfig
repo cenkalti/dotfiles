@@ -11,6 +11,7 @@
 
         ci = commit -m
         ce = commit --allow-empty-message -m ''
+	pom = pull origin master --no-edit
 
         # Edit last commit message
         edit = commit --amend
