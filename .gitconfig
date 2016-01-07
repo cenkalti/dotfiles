@@ -12,6 +12,7 @@
         ci = commit -m
         ce = commit --allow-empty-message -m ''
 	pom = pull origin master --no-edit
+	pomp = "!git pull origin master --no-edit && git push"
 
         # Edit last commit message
         edit = commit --amend
