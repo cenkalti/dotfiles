@@ -21,9 +21,9 @@ if [[ -d $HOME/.cabal/bin ]]; then
 fi
 
 if type go &> /dev/null; then
+    export GOROOT=$(go env GOROOT)
     export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH/bin
-    export PATH=$PATH:$(go env GOROOT)/bin
+    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
 if [[ -d ~/perl5 ]]; then
