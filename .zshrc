@@ -64,8 +64,6 @@ function cg() {
     cd $GOPATH/src/$1;
 }
 
-alias go-tip="$HOME/projects/go-tip/bin/go"
-
 # git aliases
 alias g="git st"
 alias gti=git
@@ -76,6 +74,10 @@ alias listen="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 
 # '[r]emove [o]rphans' - recursively remove ALL orphaned packages
 alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')"
+
+# docker aliases
+alias docker-remove-containers="docker ps -a | tail -n +2 | awk '{print $1}' | xargs docker rm"
+alias docker-remove-untagged-images="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
 
 # nosecomplete
 autoload -U compinit
