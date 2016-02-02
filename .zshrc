@@ -40,6 +40,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 # Do not share history between sessions.
 unsetopt SHARE_HISTORY
 
+# Do not change directory without "cd" command
+unsetopt AUTO_CD 
+
 # my ssh & tmux helper
 function ssht() { ssh -t $1 'tmux attach -t cenk || tmux new -s cenk' }
 
