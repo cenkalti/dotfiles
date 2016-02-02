@@ -3,4 +3,6 @@
 --ignore-dir=.srclib-cache
 --ignore-dir=Godeps
 --ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=logs
 
