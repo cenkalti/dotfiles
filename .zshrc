@@ -69,6 +69,7 @@ function cg() {
 
 # git aliases
 alias g="git st"
+alias gp="git push"
 alias gti=git
 # ...other ones are in .gitconfig file
 
