@@ -88,7 +88,7 @@
         editor = vim
         excludesfile = ~/.gitignore_global
         autocrlf = false
-        pager = less -RSF
+        pager = less -RS
         whitespace = fix,trailing-space
 
 [clean]
@@ -105,5 +105,5 @@
         algorithm = patience
 
 [pager]
-        diff = "diff-so-fancy | less --tabs=1,5 -RSF"
-        show = "diff-so-fancy | less --tabs=1,5 -RSF"
+        diff = "diff-so-fancy | less --tabs=1,5 -RS"
+        show = "diff-so-fancy | less --tabs=1,5 -RS"
