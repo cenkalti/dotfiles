@@ -1,0 +1,8 @@
+.build
+.idea
+.srclib-cache
+Godeps
+vendor
+log
+logs
+
