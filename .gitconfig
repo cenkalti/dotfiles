@@ -107,3 +107,5 @@
 [pager]
         diff = "diff-so-fancy | less --tabs=1,5 -RS"
         show = "diff-so-fancy | less --tabs=1,5 -RS"
+[credential]
+	helper = osxkeychain
