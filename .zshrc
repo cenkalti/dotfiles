@@ -83,6 +83,9 @@ alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/p
 alias docker-remove-containers="docker ps -a | tail -n +2 | awk '{print \$1}' | xargs docker rm --force"
 alias docker-remove-untagged-images="docker images | grep '<none>' | awk '{print \$3}' | xargs docker rmi"
 
+alias gi="go install"
+alias gr="go run *.go"
+
 # nosecomplete
 autoload -U compinit
 compinit
