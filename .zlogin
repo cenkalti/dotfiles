@@ -1,2 +1,2 @@
-yap
+yap list pending
 
