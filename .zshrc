@@ -86,6 +86,8 @@ alias docker-remove-untagged-images="docker images | grep '<none>' | awk '{print
 alias gi="go install"
 alias gr="go run *.go"
 
+alias t="task"
+
 # nosecomplete
 autoload -U compinit
 compinit
