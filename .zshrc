@@ -132,3 +132,5 @@ man() {
 
 source ~/.zshrc_private
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
