@@ -10,12 +10,10 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
-Plug 'Xuyuanp/nerdtree-git-pluetin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 " color theme
@@ -26,9 +24,6 @@ colorscheme base16-solarized
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
-
-" airline
-let g:airline#extensions#tabline#enabled = 1
 
 " startify
 highlight StartifyBracket ctermfg=240
@@ -64,4 +59,7 @@ noremap <Right> <NOP>
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" fly between buffers
+nnoremap <leader>l :ls<CR>:b<space>
 
