@@ -1,18 +1,20 @@
 " vim-plug
 call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'altercation/vim-colors-solarized'
-Plug 'mhinz/vim-startify'
-Plug 'scrooloose/nerdtree'
 Plug 'rking/ag.vim'
-Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " color theme
