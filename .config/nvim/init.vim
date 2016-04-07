@@ -11,6 +11,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " color theme
