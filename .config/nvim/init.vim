@@ -14,6 +14,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " color theme
@@ -35,6 +36,8 @@ highlight StartifySlash   ctermfg=240
 highlight StartifySpecial ctermfg=240
 
 " basic vim settings
+set showcmd
+set noshowmode
 set relativenumber
 set splitbelow
 set splitright
