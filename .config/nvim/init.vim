@@ -25,6 +25,15 @@ map <C-n> :NERDTreeToggle<CR>
 " airline
 let g:airline#extensions#tabline#enabled = 1
 
+" startify
+highlight StartifyBracket ctermfg=240
+highlight StartifyFooter  ctermfg=240
+highlight StartifyHeader  ctermfg=114
+highlight StartifyNumber  ctermfg=215
+highlight StartifyPath    ctermfg=245
+highlight StartifySlash   ctermfg=240
+highlight StartifySpecial ctermfg=240
+
 " basic vim settings
 set relativenumber
 set splitbelow
