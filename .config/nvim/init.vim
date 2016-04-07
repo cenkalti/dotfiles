@@ -15,6 +15,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
+Plug 'Xuyuanp/nerdtree-git-pluetin'
 call plug#end()
 
 " color theme
@@ -42,9 +43,18 @@ highlight StartifySpecial ctermfg=240
 set relativenumber
 set splitbelow
 set splitright
+set cursorline
+set cursorcolumn
 let mapleader="\<SPACE>"
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 nnoremap ; :
+
+" search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
 
 " disable arrow keys
 noremap <Up> <NOP>
