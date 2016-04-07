@@ -64,5 +64,5 @@ noremap <Right> <NOP>
 nmap <F8> :TagbarToggle<CR>
 
 " fly between buffers
-nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>l :ls<CR>:b
 
