@@ -12,6 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 " color theme
@@ -48,4 +49,7 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 
