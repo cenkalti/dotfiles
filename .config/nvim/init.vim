@@ -10,12 +10,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
-" solarized
+" color theme
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256 
+colorscheme base16-solarized
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
