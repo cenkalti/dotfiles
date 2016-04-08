@@ -48,7 +48,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nnoremap <Leader>l :nohlsearch<CR>
 
 " disable arrow keys
 noremap <Up> <NOP>
@@ -56,9 +56,13 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-"split navigations
+" split navigations
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <bs> <c-w>h " hack for neovim
 nnoremap <c-h> <bs>
+
+" force yaml syntax on sls files
+au BufNewFile,BufRead *.sls set filetype=yaml
+
