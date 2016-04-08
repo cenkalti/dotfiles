@@ -2,16 +2,17 @@
 call plug#begin()
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sensible'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-sleuth'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
 " color theme
