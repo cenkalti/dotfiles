@@ -38,11 +38,11 @@ set cursorcolumn
 " shortcuts
 nnoremap ; :
 let mapleader="\<SPACE>"
-nnoremap <leader>b :ls<CR>:b
+nnoremap <Leader>b :ls<CR>:b<space>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>r :source %<CR>
+nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
 " search
 set hlsearch
@@ -52,36 +52,14 @@ set smartcase
 set showmatch
 nnoremap <Leader>l :nohlsearch<CR>
 
-" disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 " split navigations
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <bs> <c-w>h " hack for neovim
-nnoremap <c-h> <bs>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 " force yaml syntax on sls files
 au BufNewFile,BufRead *.sls set filetype=yaml
 
 " signify
 let g:signify_update_on_focusgained = 1
-
-" easymotion
-"
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
