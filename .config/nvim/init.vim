@@ -23,6 +23,9 @@ set rtp+=/usr/local/opt/fzf
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
+" tagbar
+map <C-t> :TagbarToggle<CR>
+
 " basic vim settings
 set showcmd
 set relativenumber
@@ -54,7 +57,4 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-" tagbar
-map <C-t> :TagbarToggle<CR>
 
