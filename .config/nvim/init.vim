@@ -8,6 +8,7 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
 " color theme
