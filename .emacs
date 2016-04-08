@@ -23,6 +23,3 @@
 ;; Add your library directory to the front of your load-path
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
 
-;; Enable php-mode
-(autoload 'php-mode "php-mode.el" "PHP mode" t)
-(setq auto-mode-alist (append '(("\\.php$" . php-mode)) auto-mode-alist))
