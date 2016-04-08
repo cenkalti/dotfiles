@@ -11,6 +11,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
 " color theme
