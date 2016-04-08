@@ -13,7 +13,7 @@ call plug#end()
 " color theme
 syntax enable
 set background=dark
-let base16colorspace=256 
+let base16colorspace=256
 colorscheme base16-solarized
 
 " fzf
@@ -65,4 +65,7 @@ nnoremap <c-h> <bs>
 
 " force yaml syntax on sls files
 au BufNewFile,BufRead *.sls set filetype=yaml
+
+" signify
+let g:signify_update_on_focusgained = 1
 
