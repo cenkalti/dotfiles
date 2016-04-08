@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " color theme
