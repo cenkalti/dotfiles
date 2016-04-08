@@ -5,7 +5,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-sensible'
-Plug 'wellle/targets.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
@@ -41,7 +40,6 @@ nnoremap <leader>b :ls<CR>:b
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>w :w<CR>
 nnoremap <Leader>r :source %<CR>
 
 " search
@@ -57,4 +55,10 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+"split navigations
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
 
