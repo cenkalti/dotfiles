@@ -10,6 +10,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " color theme
@@ -22,10 +23,10 @@ colorscheme base16-solarized
 set rtp+=/usr/local/opt/fzf
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader>q :NERDTreeToggle<CR>
 
 " tagbar
-map <C-t> :TagbarToggle<CR>
+nnoremap <Leader>p :TagbarToggle<CR>
 
 " basic vim settings
 set showcmd
