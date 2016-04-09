@@ -47,7 +47,6 @@ let g:signify_update_on_focusgained = 1
 " shortcuts
 let mapleader="\<SPACE>"
 nnoremap ; :
-nnoremap <Leader>b :ls<CR>:b<space>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
