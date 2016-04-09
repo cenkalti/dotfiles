@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
@@ -49,7 +50,6 @@ nnoremap ; :
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>q :NERDTreeToggle<CR>
 nnoremap <Leader>p :TagbarToggle<CR>
