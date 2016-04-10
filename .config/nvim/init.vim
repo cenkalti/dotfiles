@@ -18,7 +18,6 @@ Plug 'blueyed/vim-diminactive'
 call plug#end()
 
 " color theme
-syntax enable
 set background=dark
 let base16colorspace=256
 colorscheme base16-solarized
@@ -30,8 +29,6 @@ set splitbelow
 set splitright
 set cursorline
 set cursorcolumn
-set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 set showmatch
