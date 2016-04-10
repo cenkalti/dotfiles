@@ -10,6 +10,8 @@ Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree'
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -41,9 +43,6 @@ set rtp+=/usr/local/opt/fzf
 " force yaml syntax on sls files
 au BufNewFile,BufRead *.sls set filetype=yaml
 
-" signify
-let g:signify_update_on_focusgained = 1
-
 " shortcuts
 let mapleader="\<SPACE>"
 nnoremap ; :
@@ -61,4 +60,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
+" override plugin options
+let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
+let g:airline_powerline_fonts = 1
