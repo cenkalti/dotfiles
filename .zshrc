@@ -87,6 +87,7 @@ alias gi="go install"
 alias gr="go run *.go"
 
 alias t="task"
+function tc() { task $1 modify project:$2 priority:$3 }
 
 # nosecomplete
 autoload -U compinit

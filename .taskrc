@@ -16,8 +16,8 @@ data.location=~/.task
 # Color theme (uncomment one to use)
 #include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/light-16.theme
 #include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/light-256.theme
-#include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-16.theme
-include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-256.theme
+include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-16.theme
+#include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-256.theme
 #include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-red-256.theme
 #include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-green-256.theme
 #include /usr/local/Cellar/task/2.5.0_1/share/doc/task/rc/dark-blue-256.theme
@@ -42,3 +42,7 @@ default.project=Inbox
 context.work=project:Inbox or project:Putio
 context.home=project:Inbox or project:Personal
 
+report.inbox.description=Tasks that needs to be categorized and prioritized
+report.inbox.columns=id,entry.age,description.count
+report.inbox.labels=ID,Age,Description
+report.inbox.filter=status:pending project:Inbox
