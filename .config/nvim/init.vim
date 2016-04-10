@@ -8,7 +8,8 @@ Plug 'tpope/vim-sensible'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree'
-Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -59,3 +60,5 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+let g:deoplete#enable_at_startup = 1
