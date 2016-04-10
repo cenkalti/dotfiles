@@ -14,6 +14,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'blueyed/vim-diminactive'
 call plug#end()
 
 " color theme
