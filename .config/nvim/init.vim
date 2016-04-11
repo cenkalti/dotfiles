@@ -7,6 +7,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sensible'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
+Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'zchee/deoplete-jedi'
 Plug 'raimondi/delimitmate'
@@ -46,7 +47,6 @@ au BufNewFile,BufRead *.sls set filetype=yaml
 
 " shortcuts
 let mapleader="\<SPACE>"
-nnoremap ; :
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
