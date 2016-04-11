@@ -34,7 +34,6 @@ set relativenumber
 set splitbelow
 set splitright
 set cursorline
-set cursorcolumn
 set ignorecase
 set smartcase
 set showmatch
