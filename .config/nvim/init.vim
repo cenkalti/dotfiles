@@ -64,3 +64,4 @@ nnoremap <C-h> <C-w>h
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
+let g:buffergator_viewport_split_policy = "B"
