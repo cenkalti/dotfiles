@@ -1,6 +1,5 @@
 " vim-plug
 call plug#begin()
-Plug 'rking/ag.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-eunuch'
@@ -49,6 +48,7 @@ let mapleader="\<SPACE>"
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>` :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
