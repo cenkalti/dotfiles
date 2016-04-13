@@ -55,7 +55,7 @@ nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>l :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 
-" split navigations
+" window management
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -67,7 +67,6 @@ nnoremap <C-c> <C-w>c
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
-let g:buffergator_viewport_split_policy = "B"
 
 " jedi
 let g:jedi#auto_initialization = 0
