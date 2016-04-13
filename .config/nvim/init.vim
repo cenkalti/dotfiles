@@ -7,7 +7,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sensible'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
-Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'zchee/deoplete-jedi'
@@ -52,9 +51,10 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>q :NERDTreeToggle<CR>
-nnoremap <Leader>p :TagbarToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>l :nohlsearch<CR>
+nnoremap <Leader>m :Neomake<CR>
 
 " split navigations
 nnoremap <C-j> <C-w>j
@@ -67,5 +67,4 @@ let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
 let g:buffergator_viewport_split_policy = "B"
-let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:jedi#completions_enabled = 0
