@@ -14,6 +14,7 @@ Plug 'raimondi/delimitmate'
 Plug 'Shougo/deoplete.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -66,3 +67,4 @@ let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
 let g:buffergator_viewport_split_policy = "B"
 let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:jedi#completions_enabled = 0
