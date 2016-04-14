@@ -48,7 +48,7 @@ let mapleader="\<SPACE>"
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>b :ls<CR>:b<space>
+nnoremap <Leader>b :ls<CR>:b
 nnoremap <Leader>` :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
