@@ -64,8 +64,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
-nnoremap <C-o> <C-w>o
-nnoremap <C-c> <C-w>c
 
 " override plugin options
 let NERDTreeIgnore = ['\.pyc$']
