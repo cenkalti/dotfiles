@@ -2,7 +2,6 @@
 call plug#begin()
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
-Plug 'blueyed/vim-diminactive'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'chriskempson/base16-vim'
 Plug 'davidhalter/jedi-vim'
