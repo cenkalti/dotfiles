@@ -66,6 +66,7 @@ nnoremap <C-c> <C-w>c
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
+let NERDTreeIgnore = ['\.pyc$']
 
 " jedi
 let g:jedi#auto_initialization = 0
