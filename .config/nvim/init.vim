@@ -3,9 +3,9 @@ call plug#begin()
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'chriskempson/base16-vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
@@ -22,9 +22,10 @@ Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " color theme
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-let base16colorspace=256
-colorscheme base16-solarized
+colorscheme solarized
+highlight SignColumn guibg=#073642 "base02
 
 " basic vim settings
 set showcmd
