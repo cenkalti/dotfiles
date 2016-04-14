@@ -53,6 +53,10 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>l :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
+nnoremap <leader>a :call jedi#goto_assignments()<CR>
+nnoremap <leader>d :call jedi#goto_definitions()<CR>
+nnoremap <leader>u :call jedi#usages()<CR>
+nnoremap <leader>r :call jedi#rename()<CR>
 
 " window management
 nnoremap <C-j> <C-w>j
@@ -63,18 +67,9 @@ nnoremap <C-o> <C-w>o
 nnoremap <C-c> <C-w>c
 
 " override plugin options
+let NERDTreeIgnore = ['\.pyc$']
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
-let NERDTreeIgnore = ['\.pyc$']
-
-" jedi
 let g:jedi#auto_initialization = 0
 let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_enabled = 0
-autocmd FileType python setlocal completeopt-=preview
-nnoremap <leader>a :call jedi#goto_assignments()<CR>
-nnoremap <leader>d :call jedi#goto_definitions()<CR>
-nnoremap <leader>u :call jedi#usages()<CR>
-nnoremap <leader>r :call jedi#rename()<CR>
