@@ -28,13 +28,13 @@ colorscheme base16-solarized
 
 " basic vim settings
 set showcmd
-set relativenumber
+set number
 set splitbelow
 set splitright
-set cursorline
 set ignorecase
 set smartcase
 set showmatch
+let &colorcolumn="80,120"
 
 " fzf
 set rtp+=/usr/local/opt/fzf
