@@ -53,10 +53,10 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>l :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
-nnoremap <leader>a :call jedi#goto_assignments()<CR>
-nnoremap <leader>d :call jedi#goto_definitions()<CR>
-nnoremap <leader>u :call jedi#usages()<CR>
-nnoremap <leader>r :call jedi#rename()<CR>
+autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
+autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
+autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
+autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 
 " window management
 nnoremap <C-j> <C-w>j
