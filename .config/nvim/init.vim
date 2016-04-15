@@ -5,7 +5,6 @@ Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
@@ -18,14 +17,14 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'whatyouhide/vim-gotham'
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " color theme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme solarized
-highlight SignColumn guibg=#073642 "base02
+colorscheme gotham
 
 " basic vim settings
 set showcmd
