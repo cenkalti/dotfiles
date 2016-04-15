@@ -48,7 +48,6 @@ let mapleader="\<SPACE>"
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>b :ls<CR>:b
 nnoremap <Leader>` :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
@@ -74,5 +73,6 @@ let g:airline_powerline_fonts = 1
 let g:jedi#auto_initialization = 0
 let g:jedi#auto_vim_configuration = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
