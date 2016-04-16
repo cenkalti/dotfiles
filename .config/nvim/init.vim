@@ -54,6 +54,7 @@ nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>l :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
+nnoremap <leader>d :bp <BAR> bd #<CR>
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
