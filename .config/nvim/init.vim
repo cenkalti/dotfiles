@@ -27,6 +27,7 @@ set background=dark
 colorscheme gotham
 
 " basic vim settings
+set hidden
 set showcmd
 set number
 set splitbelow
