@@ -46,3 +46,6 @@ report.inbox.description=Tasks that needs to be categorized and prioritized
 report.inbox.columns=id,entry.age,description.count
 report.inbox.labels=ID,Age,Description
 report.inbox.filter=status:pending project:Inbox
+
+search.case.sensitive=no
+weekstart=monday
