@@ -61,6 +61,9 @@ nnoremap <Leader>o :BTags<CR>
 nnoremap <leader>d :bp <BAR> bd #<CR>
 noremap <F7> :bp<CR>
 noremap <F8> :bn<CR>
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
@@ -89,3 +92,5 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep= ''
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
