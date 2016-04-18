@@ -86,7 +86,7 @@ alias docker-remove-untagged-images="docker images | grep '<none>' | awk '{print
 alias gi="go install"
 alias gr="go run *.go"
 
-alias t="clear; task"
+alias t="task"
 function tc() { task $1 modify project:$2 priority:$3 }
 
 # nosecomplete
