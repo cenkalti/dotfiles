@@ -48,6 +48,10 @@ autocmd BufNewFile,BufRead *.sls set filetype=yaml
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" run neomake on save
+autocmd! BufWritePost * Neomake
+let g:neomake_open_list = 2
+
 " shortcuts
 let mapleader="\<SPACE>"
 nnoremap <Leader>f :Files<CR>
