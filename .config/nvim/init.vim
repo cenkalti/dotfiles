@@ -65,6 +65,7 @@ nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <leader>d :bp <BAR> bd #<CR>
+nnoremap <Leader>c :lclose<CR>
 noremap <F7> :bp<CR>
 noremap <F8> :bn<CR>
 nmap s <Plug>(easymotion-overwin-f2)
