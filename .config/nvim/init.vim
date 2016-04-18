@@ -59,6 +59,8 @@ nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <leader>d :bp <BAR> bd #<CR>
+noremap <F7> :bp<CR>
+noremap <F8> :bn<CR>
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
