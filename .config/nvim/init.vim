@@ -43,7 +43,10 @@ set fillchars="vert: "
 set rtp+=/usr/local/opt/fzf
 
 " force yaml syntax on sls files
-au BufNewFile,BufRead *.sls set filetype=yaml
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " shortcuts
 let mapleader="\<SPACE>"
