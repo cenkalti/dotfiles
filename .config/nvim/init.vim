@@ -27,21 +27,20 @@ colorscheme gotham
 
 " basic vim settings
 set hidden
-set showcmd
 set number
 set splitbelow
 set splitright
 set ignorecase
 set smartcase
 set showmatch
-let &colorcolumn="80,120"
+set colorcolumn=80,120
 set fillchars="vert: "
 set scrolloff=6
 
 " fzf
 set rtp+=/usr/local/opt/fzf
 
-" force yaml syntax on sls files
+" force yaml syntax on salt states
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
 
 " close vim if the only window left open is a NERDTree
@@ -63,13 +62,13 @@ nnoremap <Leader>l :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
-nnoremap <leader>d :bp <BAR> bd #<CR>
+nnoremap <Leader>d :bprevious <BAR> bdelete #<CR>
 nnoremap <Leader>c :lclose<CR>
-noremap <F7> :bp<CR>
-noremap <F8> :bn<CR>
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+noremap <F7> :bprevious<CR>
+noremap <F8> :bnext<CR>
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
