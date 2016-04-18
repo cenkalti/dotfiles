@@ -37,6 +37,7 @@ set smartcase
 set showmatch
 let &colorcolumn="80,120"
 set fillchars="vert: "
+set scrolloff=6
 
 " fzf
 set rtp+=/usr/local/opt/fzf
