@@ -36,6 +36,7 @@ set showmatch
 set colorcolumn=80,120
 set fillchars="vert: "
 set scrolloff=6
+set completeopt-=preview
 
 " fzf
 set rtp+=/usr/local/opt/fzf
@@ -63,7 +64,7 @@ nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :bprevious <BAR> bdelete #<CR>
-nnoremap <Leader>c :lclose<CR>
+nnoremap <Leader>c :lclose<CR><BAR>:cclose<CR>
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
