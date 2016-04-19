@@ -24,6 +24,8 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 colorscheme gotham
+hi WarningMsg guifg=#c23127
+hi Error guifg=#c23127 guibg=#11151c
 
 " basic vim settings
 set hidden
