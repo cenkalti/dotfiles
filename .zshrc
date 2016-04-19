@@ -63,10 +63,6 @@ compinit
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=2
 
-function cg() {
-    cd $GOPATH/src/$1;
-}
-
 # git aliases
 alias g="git st"
 alias gp="git push"

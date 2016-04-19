@@ -35,3 +35,4 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export CDPATH=$HOME/projects:$GOPATH/src/github.com:$GOPATH/src/bitbucket.org
