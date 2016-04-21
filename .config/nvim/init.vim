@@ -83,6 +83,7 @@ autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
 " word movements in insert mode
 inoremap <A-b> <C-o>b
 inoremap <A-f> <C-o>w
+inoremap <A-w> <C-o>dw
 " window management
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
