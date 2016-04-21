@@ -78,6 +78,8 @@ autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+inoremap <A-b> <C-o>b
+inoremap <A-f> <C-o>w
 
 " window management
 nnoremap <C-j> <C-w>j
