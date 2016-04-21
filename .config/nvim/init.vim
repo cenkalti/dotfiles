@@ -53,6 +53,7 @@ let g:neomake_open_list = 2
 
 " shortcuts
 let mapleader="\<SPACE>"
+nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
