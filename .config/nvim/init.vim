@@ -1,6 +1,7 @@
 " vim-plug
 call plug#begin()
 Plug 'Shougo/deoplete.nvim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'davidhalter/jedi-vim'
@@ -12,6 +13,7 @@ Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
