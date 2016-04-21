@@ -32,11 +32,11 @@ set splitbelow
 set splitright
 set ignorecase
 set smartcase
-set showmatch
 set colorcolumn=80,120
 set fillchars="vert: "
 set scrolloff=6
 set completeopt-=preview
+let loaded_matchparen = 1
 
 " fzf
 set rtp+=/usr/local/opt/fzf
