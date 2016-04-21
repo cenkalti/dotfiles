@@ -71,6 +71,8 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 noremap <F7> :bprevious<CR>
 noremap <F8> :bnext<CR>
+nmap <A-o> o<Esc>0d$k
+" language specific key bindings
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
@@ -78,9 +80,9 @@ autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+" word movements in insert mode
 inoremap <A-b> <C-o>b
 inoremap <A-f> <C-o>w
-
 " window management
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
