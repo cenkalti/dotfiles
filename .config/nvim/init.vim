@@ -54,6 +54,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 2
 
+" refresh signify when fugitive commands are run
+autocmd User Fugitive SignifyRefresh
+
 " shortcuts
 let mapleader="\<SPACE>"
 nnoremap <Leader>a :Ag<space>
