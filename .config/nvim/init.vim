@@ -82,6 +82,7 @@ map <Leader>k <Plug>(easymotion-k)
 noremap <F7> :bprevious<CR>
 noremap <F8> :bnext<CR>
 nmap <A-o> o<Esc>0d$k
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " language specific key bindings
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
