@@ -75,7 +75,7 @@ nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :bprevious <BAR> bwipeout #<CR>
-nnoremap <Leader>c :lclose<CR><BAR>:cclose<CR>
+nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
