@@ -24,9 +24,13 @@ Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " color theme
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme gotham
+if $TERM_PROGRAM == "iTerm.app"
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    colorscheme gotham
+elseif $TERM == "xterm-256color"
+    colorscheme gotham256
+endif
 
 " basic vim settings
 set hidden
