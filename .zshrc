@@ -87,9 +87,8 @@ man() {
     man "$@"
 }
 
-autoload -Uz promptinit
-promptinit
-prompt redhat
+source ~/.zsh-git-prompt/zshrc.sh
+PROMPT='%B%m%~%b$(git_super_status) %# '
 
 source ~/.zshrc_private
 
