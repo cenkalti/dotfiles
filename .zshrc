@@ -9,6 +9,7 @@
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
 export EDITOR=vim
+bindkey -e
 export PAGER=less
 export LESS="-i"  # ignore case
 export WORKON_HOME=$HOME/.virtualenvs
