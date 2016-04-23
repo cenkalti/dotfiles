@@ -15,13 +15,15 @@ zplug "olivierverdier/zsh-git-prompt", of:"zshrc.sh"
 zplug load
 
 export EDITOR=vim
-bindkey -e
+bindkey -e # use emacs key bindings
 export PAGER=less
 export LESS="-i"  # ignore case
 export WORKON_HOME=$HOME/.virtualenvs
 
-# Do not share history between sessions.
-unsetopt SHARE_HISTORY
+# History settings
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+unsetopt SHARE_HISTORY # Do not share history between sessions.
 
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
@@ -29,7 +31,6 @@ unsetopt AUTO_CD
 # my ssh & tmux helper
 function ssht() { ssh -t $1 'tmux attach -t cenk || tmux new -s cenk' }
 
-# my sed helper
 function searchandreplace()
 {
     find . -type f -name '*.'$1 -exec sed -i '' "s/$2/$3/" {} +
@@ -47,7 +48,7 @@ zstyle ':completion:*' menu select=2
 alias g="git st"
 alias gp="git push"
 alias gti=git
-# ...other ones are in .gitconfig file
+# ...others are in .gitconfig file
 
 # shows listening ports
 alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
