@@ -96,6 +96,10 @@ man() {
 
 PROMPT='%B%m%~%b$(git_super_status) %# '
 
+zmodload zsh/terminfo
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
 source ~/.zshrc_private
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
