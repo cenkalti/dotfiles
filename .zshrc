@@ -12,7 +12,7 @@ source ~/.zplug/zplug
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-history-substring-search"
 zplug "olivierverdier/zsh-git-prompt", of:"zshrc.sh"
-zplug load --verbose
+zplug load
 
 export EDITOR=vim
 bindkey -e
