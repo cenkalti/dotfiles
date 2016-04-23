@@ -28,7 +28,7 @@ set background=dark
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     colorscheme gotham
-elseif $TERM == "xterm-256color"
+elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
 endif
 
