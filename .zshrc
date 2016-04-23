@@ -8,6 +8,12 @@
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
+source ~/.zplug/zplug
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-history-substring-search"
+zplug "olivierverdier/zsh-git-prompt", of:"zshrc.sh"
+zplug load --verbose
+
 export EDITOR=vim
 bindkey -e
 export PAGER=less
@@ -88,7 +94,6 @@ man() {
     man "$@"
 }
 
-source ~/.zsh-git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
 
 source ~/.zshrc_private
