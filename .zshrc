@@ -95,7 +95,7 @@ man() {
     man "$@"
 }
 
-PROMPT='%B%m%~%b$(git_super_status) %# '
+PROMPT='%B%1~%b$(git_super_status)%# '
 
 zmodload zsh/terminfo
 bindkey -M emacs '^P' history-substring-search-up
