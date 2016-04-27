@@ -103,6 +103,7 @@ nnoremap <C-h> <C-w>h
 
 " override plugin options
 let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
