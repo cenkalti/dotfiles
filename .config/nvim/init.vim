@@ -79,8 +79,8 @@ nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-noremap <A-j> :bnext<CR>
-noremap <A-k> :bprevious<CR>
+noremap <A-k> :bnext<CR>
+noremap <A-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " language specific key bindings
