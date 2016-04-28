@@ -19,7 +19,7 @@ export EDITOR=vim
 bindkey -e # use emacs key bindings
 export PAGER=less
 export LESS="-i"  # ignore case
-export WORKON_HOME=$HOME/.virtualenvs
+PROMPT='%B%1~%b$(git_super_status)%# '
 
 # History settings
 SAVEHIST=1000
@@ -32,8 +32,7 @@ unsetopt AUTO_CD
 # my ssh & tmux helper
 function ssht() { ssh -t $1 'tmux attach -t cenk || tmux new -s cenk' }
 
-function searchandreplace()
-{
+function searchandreplace() {
     find . -type f -name '*.'$1 -exec sed -i '' "s/$2/$3/" {} +
 }
 
@@ -72,8 +71,7 @@ alias t="task"
 function tc() { task $1 modify project:$2 priority:$3 }
 
 # nosecomplete
-_nosetests()
-{
+function _nosetests() {
     cur="${COMP_WORDS[COMP_CWORD]}"
     COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
 }
@@ -85,7 +83,7 @@ zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
 # colorize man pages
-man() {
+function man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
@@ -95,8 +93,6 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
-
-PROMPT='%B%1~%b$(git_super_status)%# '
 
 zmodload zsh/terminfo
 bindkey -M emacs '^P' history-substring-search-up
