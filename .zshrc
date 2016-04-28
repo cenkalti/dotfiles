@@ -8,10 +8,10 @@
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-history-substring-search"
-zplug "olivierverdier/zsh-git-prompt", of:"zshrc.sh"
+zplug "olivierverdier/zsh-git-prompt", use:"zshrc.sh"
 zplug "jreese/zsh-titles"
 zplug load
 
