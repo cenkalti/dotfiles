@@ -77,8 +77,10 @@ nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :bprevious <BAR> bwipeout #<CR>
 nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
 noremap <A-k> :bnext<CR>
 noremap <A-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
