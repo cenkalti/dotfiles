@@ -10,6 +10,7 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
+Plug 'qpkorr/vim-bufkill'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -17,8 +18,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'whatyouhide/vim-gotham'
 Plug 'wellle/targets.vim'
+Plug 'whatyouhide/vim-gotham'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
@@ -75,7 +76,7 @@ nnoremap <A-l> :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
-nnoremap <Leader>d :bprevious <BAR> bwipeout #<CR>
+nnoremap <Leader>d :BW<CR>
 nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>l <Plug>(easymotion-lineforward)
