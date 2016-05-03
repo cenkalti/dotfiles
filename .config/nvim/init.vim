@@ -63,14 +63,15 @@ autocmd User Fugitive SignifyRefresh
 
 " shortcuts
 let mapleader="\<SPACE>"
-nnoremap <Leader>a :Ag<space>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>g :GitFiles<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <Leader>s :source $MYVIMRC<CR>
+nnoremap <Leader>fa :Ag<space>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>fg :GitFiles<CR>
+nnoremap <Leader>fh :History<CR>
+nnoremap <Leader>sr :SignifyRefresh<CR>
+nnoremap <F5> :source $MYVIMRC<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
-nnoremap <Leader>l :nohlsearch<CR>
+nnoremap <A-l> :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
