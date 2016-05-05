@@ -89,28 +89,6 @@ autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
-inoremap 1 !
-inoremap 2 @
-inoremap 3 #
-inoremap 4 $
-inoremap 5 %
-inoremap 6 ^
-inoremap 7 &
-inoremap 8 *
-inoremap 9 (
-inoremap 0 )
-inoremap - _
-inoremap ! 1
-inoremap @ 2
-inoremap # 3
-inoremap $ 4
-inoremap % 5
-inoremap ^ 6
-inoremap & 7
-inoremap * 8
-inoremap ( 9
-inoremap ) 0
-inoremap _ -
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
