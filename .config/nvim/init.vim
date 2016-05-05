@@ -1,4 +1,3 @@
-" vim-plug
 call plug#begin()
 Plug 'Shougo/deoplete.nvim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -24,7 +23,6 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
-" color theme
 set background=dark
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -33,7 +31,6 @@ elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
 endif
 
-" basic vim settings
 set hidden
 set number
 set splitbelow
@@ -44,29 +41,17 @@ set colorcolumn=80,120
 set fillchars="vert: "
 set scrolloff=6
 set completeopt-=preview
+set rtp+=/usr/local/opt/fzf
 let loaded_matchparen = 1
 
-" fzf
-set rtp+=/usr/local/opt/fzf
-
-" force yaml syntax on salt states
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
-
-" close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 autocmd FocusLost * :wa
-
-" run neomake on save
-autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 2
-
-" refresh signify when fugitive commands are run
 autocmd User Fugitive SignifyRefresh
+autocmd! BufWritePost * Neomake
 
-" shortcuts
 let mapleader="\<SPACE>"
-nnoremap <Leader>fa :Ag<space>
+nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
@@ -89,7 +74,13 @@ noremap <A-k> :bnext<CR>
 noremap <A-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" language specific key bindings
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+inoremap <A-b> <C-o>b
+inoremap <A-f> <C-o>w
+inoremap <A-w> <C-o>dw
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
@@ -97,17 +88,7 @@ autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
-" word movements in insert mode
-inoremap <A-b> <C-o>b
-inoremap <A-f> <C-o>w
-inoremap <A-w> <C-o>dw
-" window management
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
 
-" override plugin options
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
@@ -127,3 +108,4 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+let g:neomake_open_list = 2
