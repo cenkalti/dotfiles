@@ -61,7 +61,7 @@ nnoremap <Leader>sr :SignifyRefresh<CR>
 nnoremap <F5> :source $MYVIMRC<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
-nnoremap <A-l> :nohlsearch<CR>
+nnoremap <C-l> :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
@@ -72,14 +72,10 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
-noremap <A-k> :bnext<CR>
-noremap <A-j> :bprevious<CR>
+noremap <C-k> :bnext<CR>
+noremap <C-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
 inoremap <A-b> <C-o>b
 inoremap <A-f> <C-o>w
 inoremap <A-w> <C-o>dw
@@ -99,6 +95,22 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+nnoremap [q           :cprevious<cr>
+nnoremap ]q           :cnext<cr>
+nnoremap [Q           :cfirst<cr>
+nnoremap ]Q           :clast<cr>
+nnoremap [l           :lprevious<cr>
+nnoremap ]l           :lnext<cr>
+nnoremap [L           :lfirst<cr>
+nnoremap ]L           :llast<cr>
+nnoremap <left>       <c-w>>
+nnoremap <right>      <c-w><
+nnoremap <up>         <c-w>-
+nnoremap <down>       <c-w>+
+nnoremap <a-h>        <c-w>h
+nnoremap <a-j>        <c-w>j
+nnoremap <a-k>        <c-w>k
+nnoremap <a-l>        <c-w>l
 
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeMinimalUI = 1
