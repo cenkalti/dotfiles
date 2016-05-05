@@ -25,6 +25,7 @@ Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 set background=dark
+autocmd ColorScheme * highlight NonText guifg=#0c1014
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     colorscheme gotham
