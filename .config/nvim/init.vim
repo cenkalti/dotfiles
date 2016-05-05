@@ -140,3 +140,4 @@ let g:airline_right_sep=''
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:neomake_open_list = 2
+let g:startify_change_to_dir = 0
