@@ -76,6 +76,7 @@ noremap <C-k> :bnext<CR>
 noremap <C-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
 inoremap <A-b> <C-o>b
 inoremap <A-f> <C-o>w
 inoremap <A-w> <C-o>dw
