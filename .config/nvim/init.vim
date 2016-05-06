@@ -1,6 +1,4 @@
 call plug#begin()
-Plug 'Shougo/deoplete.nvim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'davidhalter/jedi-vim'
@@ -9,10 +7,12 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
-Plug 'qpkorr/vim-bufkill'
 Plug 'mhinz/vim-startify'
+Plug 'qpkorr/vim-bufkill'
+Plug 'saltstack/salt-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'shougo/deoplete.nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -20,6 +20,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
 Plug 'whatyouhide/vim-gotham'
+Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
@@ -46,7 +47,6 @@ set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 let loaded_matchparen = 1
 
-autocmd BufNewFile,BufRead *.sls set filetype=yaml
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd FocusLost * :wa
 autocmd User Fugitive SignifyRefresh
