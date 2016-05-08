@@ -68,7 +68,9 @@ alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{
 
 # taskwarrior
 alias t="task"
-function tc() { task $1 modify project:$2 priority:$3 }
+alias in='task add +in'
+alias put='task add +putio'
+function tc() { task $1 modify -in +$2 priority:$3 }
 
 # nosecomplete
 function _nosetests() {

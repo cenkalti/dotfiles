@@ -36,16 +36,17 @@ uda.priority.values=H,M,,L
 urgency.uda.priority.H.coefficient=6.0
 urgency.uda.priority.M.coefficient=0.0
 urgency.uda.priority.L.coefficient=-6.0
+urgency.user.tag.in.coefficient=15.0
 
-default.project=Inbox
+report.in.columns           = id,description
+report.in.description       = Inbox
+report.in.filter            = status:pending limit:page (+in)
+report.in.labels            = ID,Description
 
-context.work=project:Inbox or project:Putio
-context.home=project:Inbox or project:Personal
+color.tagged = none
 
-report.inbox.description=Tasks that needs to be categorized and prioritized
-report.inbox.columns=id,entry.age,description.count
-report.inbox.labels=ID,Age,Description
-report.inbox.filter=status:pending project:Inbox
+context.work=+in or +putio
+context.home=+in or -putio
 
 search.case.sensitive=no
 weekstart=monday
