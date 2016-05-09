@@ -22,9 +22,22 @@ export LESS="-i"  # ignore case
 PROMPT='%B%1~%b$(git_super_status)%# '
 
 # History settings
+HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-unsetopt SHARE_HISTORY # Do not share history between sessions.
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_VERIFY
+
+bindkey '^?' backward-delete-char  # [Backspace] - delete backward
+bindkey "\e[3~" delete-char  # [Delete] - delete forward
+
+setopt interactivecomments  # recognize comments
+
+# ls colors
+autoload -U colors && colors
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
