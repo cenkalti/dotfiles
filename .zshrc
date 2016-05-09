@@ -12,7 +12,6 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-history-substring-search"
 zplug "olivierverdier/zsh-git-prompt", use:"zshrc.sh"
-zplug "jreese/zsh-titles"
 zplug load
 
 export EDITOR=vim
@@ -116,3 +115,43 @@ bindkey -M emacs '^N' history-substring-search-down
 source ~/.zshrc_private
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function title {
+  emulate -L zsh
+  setopt prompt_subst
+
+  # if $2 is unset use $1 as default
+  # if it is set and empty, leave it as is
+  : ${2=$1}
+
+  case "$TERM" in
+    cygwin|xterm*|putty*|rxvt*|ansi)
+      print -Pn "\e]2;$2:q\a" # set window name
+      print -Pn "\e]1;$1:q\a" # set tab name
+      ;;
+    screen*)
+      print -Pn "\ek$1:q\e\\" # set screen hardstatus
+      ;;
+  esac
+}
+
+# Runs before showing the prompt
+function precmd {
+  emulate -L zsh
+  title "%1~" "%n@%m: %~"
+}
+
+# Runs before executing the command
+function preexec {
+  emulate -L zsh
+  setopt extended_glob
+
+  # cmd name only, or if this is sudo or ssh, the next cmd
+  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}
+  local LINE="${2:gs/%/%%}"
+
+  title '$CMD' '$LINE'
+}
+
+precmd_functions+=(precmd)
+preexec_functions+=(preexec)
