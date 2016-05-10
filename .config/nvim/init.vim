@@ -69,11 +69,21 @@ nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :BW<CR>
 nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
-nmap s <Plug>(easymotion-overwin-f2)
+map s <Plug>(easymotion-s2)
+map f <Plug>(easymotion-fl)
+map F <Plug>(easymotion-Fl)
+map t <Plug>(easymotion-tl)
+map T <Plug>(easymotion-Tl)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>W <Plug>(easymotion-bd-W)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 noremap <C-k> :bnext<CR>
 noremap <C-j> :bprevious<CR>
 nmap <A-o> o<Esc>0d$k
@@ -142,3 +152,4 @@ let g:list_of_insert_keys = []
 let g:hardtime_showmsg = 1
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_ignore_quickfix = 1
+let g:EasyMotion_keys = 'qpwoeirutyzmxncbvghalskfj'
