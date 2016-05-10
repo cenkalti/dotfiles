@@ -13,6 +13,7 @@ Plug 'saltstack/salt-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim'
+Plug 'takac/vim-hardtime'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -133,3 +134,4 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:neomake_open_list = 2
 let g:startify_change_to_dir = 0
+let g:hardtime_default_on = 1
