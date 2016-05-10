@@ -153,4 +153,6 @@ let g:list_of_insert_keys = []
 let g:hardtime_showmsg = 1
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 6
 let g:EasyMotion_keys = 'qpwoeirutyzmxncbvghalskfj'
