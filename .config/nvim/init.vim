@@ -61,6 +61,7 @@ nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>sr :SignifyRefresh<CR>
 nnoremap <F5> :source $MYVIMRC<CR>
+nnoremap <F7> mzgg=G`z
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <C-l> :nohlsearch<CR>
@@ -86,6 +87,7 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 noremap <C-k> :bnext<CR>
 noremap <C-j> :bprevious<CR>
+noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
 nmap <A-o> o<Esc>0d$k
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
