@@ -158,3 +158,4 @@ let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 6
 let g:EasyMotion_keys = 'qpwoeirutyzmxncbvghalskfj'
+let g:airline_section_y = ''
