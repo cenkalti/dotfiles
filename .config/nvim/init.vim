@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -68,6 +69,8 @@ nnoremap <Leader>m :Neomake<CR>
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :BW<CR>
+nnoremap <Leader>q :%bd<CR>
+nnoremap <Leader>b :BufOnly<CR>
 nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 map s <Plug>(easymotion-s2)
 map f <Plug>(easymotion-fl)
