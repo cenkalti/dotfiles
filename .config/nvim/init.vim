@@ -53,6 +53,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd FocusLost * :wa
 autocmd User Fugitive SignifyRefresh
 autocmd! BufWritePost * Neomake
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
 
 let mapleader="\<SPACE>"
 nnoremap <Leader>a :Ag<space>
