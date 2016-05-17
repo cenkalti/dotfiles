@@ -8,6 +8,9 @@
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
+autoload -U select-word-style
+select-word-style bash
+
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-history-substring-search"
