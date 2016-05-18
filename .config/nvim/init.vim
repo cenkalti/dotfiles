@@ -59,6 +59,7 @@ augroup qf
 augroup END
 
 let mapleader="\<SPACE>"
+inoremap jj <Esc>
 nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
