@@ -1,3 +1,4 @@
+" vim-plug plugin manager
 call plug#begin()
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
@@ -31,6 +32,7 @@ Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 set background=dark
+" Hide ~ characters after EOF by making them same color as background.
 autocmd ColorScheme * highlight NonText guifg=#0c1014
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -47,16 +49,18 @@ set splitright
 set ignorecase
 set smartcase
 set colorcolumn=80,120
+" Hide vertical fill characters between windows.
 set fillchars="vert: "
 set scrolloff=6
 set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
-let loaded_matchparen = 1
 
+" Quit program if only open buffer is NERDTree.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd FocusLost * :wa
 autocmd User Fugitive SignifyRefresh
 autocmd! BufWritePost * Neomake
+" Hide quickfix in buffer list.
 augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
@@ -69,40 +73,51 @@ nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>sr :SignifyRefresh<CR>
-nnoremap <F5> :source $MYVIMRC<CR>
-nnoremap <F7> mzgg=G`z
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
-nnoremap <C-l> :nohlsearch<CR>
 nnoremap <Leader>m :Neomake<CR>
+" Reveal current buffer in NERDTree window.
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :BW<CR>
+" Wipe all buffers.
 nnoremap <Leader>q :%bd<CR>
+" Wipe all buffers other than current one.
 nnoremap <Leader>b :BufOnly<CR>
-nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
-map s <Plug>(easymotion-s2)
-map f <Plug>(easymotion-fl)
-map F <Plug>(easymotion-Fl)
-map t <Plug>(easymotion-tl)
-map T <Plug>(easymotion-Tl)
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>h <Plug>(easymotion-linebackward)
-map <Leader>w <Plug>(easymotion-bd-w)
-map <Leader>W <Plug>(easymotion-bd-W)
+
+nnoremap <F5> :source $MYVIMRC<CR>
+" Indent whole file.
+nnoremap <F7> mzgg=G`z
+
+" Replace some default motion keys with EasyMotion equivalents.
+map  s <Plug>(easymotion-s2)
+map  f <Plug>(easymotion-fl)
+map  F <Plug>(easymotion-Fl)
+map  t <Plug>(easymotion-tl)
+map  T <Plug>(easymotion-Tl)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-noremap <C-k> :bnext<CR>
-noremap <C-j> :bprevious<CR>
+
+" Swith buffers with Ctrl-jk keys.
+noremap <A-n> :bnext<CR>
+noremap <A-p> :bprevious<CR>
+
+" Highlight word under cursor.
 noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
+
+" Clear highlighted text.
+nnoremap <C-l> :nohlsearch<CR>
+
+" Insert new line under cursor without leaving normal mode.
 nmap <A-o> o<Esc>0d$k
+
+" Complete with <Tab> key.
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
-inoremap <A-b> <C-o>b
-inoremap <A-f> <C-o>w
-inoremap <A-w> <C-o>dw
+
+" Language specific commands with LocalLeader key.
 autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
 autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
@@ -110,6 +125,8 @@ autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+
+" Jump to buffer with index number.
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -119,23 +136,60 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-nnoremap [q           :cprevious<cr>
-nnoremap ]q           :cnext<cr>
-nnoremap [Q           :cfirst<cr>
-nnoremap ]Q           :clast<cr>
-nnoremap [l           :lprevious<cr>
-nnoremap ]l           :lnext<cr>
-nnoremap [L           :lfirst<cr>
-nnoremap ]L           :llast<cr>
+
+" Move to items in quickfix and location list.
+nnoremap [q :cprevious<cr>
+nnoremap ]q :cnext<cr>
+nnoremap [Q :cfirst<cr>
+nnoremap ]Q :clast<cr>
+nnoremap [l :lprevious<cr>
+nnoremap ]l :lnext<cr>
+nnoremap [L :lfirst<cr>
+nnoremap ]L :llast<cr>
+
+" Close quickfix and location list windows.
+nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
+
+" Resize windows with arrow keys.
 nnoremap <left>       <c-w>>
 nnoremap <right>      <c-w><
 nnoremap <up>         <c-w>-
 nnoremap <down>       <c-w>+
-nnoremap <a-h>        <c-w>h
-nnoremap <a-j>        <c-w>j
-nnoremap <a-k>        <c-w>k
-nnoremap <a-l>        <c-w>l
 
+" Switch windows with Alt+hjks keys.
+nnoremap <A-h>        <c-w>h
+nnoremap <A-j>        <c-w>j
+nnoremap <A-k>        <c-w>k
+nnoremap <A-l>        <c-w>l
+
+" Better shortcut for scrolling window.
+nmap <C-j> <C-e>
+nmap <C-k> <C-y>
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+
+" Make Y yank everything from the cursor to the end of the line. This makes Y
+" act more like C or D because by default, Y yanks the current line (i.e. the
+" same as yy).
+noremap Y y$
+
+" Insert mode movements with Ctrl key.
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>0
+
+" Insert mode movements with Alt key.
+inoremap <A-b> <C-o>b
+inoremap <A-f> <C-o>w
+inoremap <A-w> <C-o>dw
+
+let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
