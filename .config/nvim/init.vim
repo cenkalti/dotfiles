@@ -85,7 +85,10 @@ nnoremap <Leader>q :%bd<CR>
 " Wipe all buffers other than current one.
 nnoremap <Leader>b :BufOnly<CR>
 
+" Work on vimrc easily.
+nnoremap <F4> :e! $MYVIMRC<cr>
 nnoremap <F5> :source $MYVIMRC<CR>
+
 " Indent whole file.
 nnoremap <F7> mzgg=G`z
 
