@@ -37,6 +37,7 @@ endif
 
 set hidden
 set number
+set relativenumber
 set splitbelow
 set splitright
 set ignorecase
@@ -81,8 +82,6 @@ map F <Plug>(easymotion-Fl)
 map t <Plug>(easymotion-tl)
 map T <Plug>(easymotion-Tl)
 map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>w <Plug>(easymotion-bd-w)
 map <Leader>W <Plug>(easymotion-bd-W)
