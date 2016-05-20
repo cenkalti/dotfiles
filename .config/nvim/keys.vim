@@ -59,6 +59,7 @@ autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions(
 autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
 autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
 autocmd FileType python map <buffer> <LocalLeader>y :0,$!yapf<CR>
+autocmd FileType python setlocal formatprg=yapf
 autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
 autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
 autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
