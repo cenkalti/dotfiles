@@ -76,9 +76,12 @@ let g:airline_section_y = ''
 let g:airline_section_z = '%l/%L :%c'
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'QPWOEIRUTYZMXNCBVGHALSKFJ'
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_enter_jump_first = 1
 let g:neomake_open_list = 2
 let g:startify_change_to_dir = 0
-let g:EasyMotion_keys = 'qpwoeirutyzmxncbvghalskfj'
 
 " Quit program if only open buffer is NERDTree.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
