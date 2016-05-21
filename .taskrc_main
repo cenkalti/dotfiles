@@ -34,3 +34,6 @@ context.home=+in or -putio
 
 search.case.sensitive=no
 weekstart=monday
+
+alias.tomorrow=modify wait:tomorrow
+alias.monday=modify wait:monday
