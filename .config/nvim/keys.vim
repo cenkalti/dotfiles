@@ -27,10 +27,10 @@ nnoremap <F7> mzgg=G`z
 
 " Replace some default motion keys with EasyMotion equivalents.
 map  s <Plug>(easymotion-s2)
-map  f <Plug>(easymotion-fl)
-map  F <Plug>(easymotion-Fl)
-map  t <Plug>(easymotion-tl)
-map  T <Plug>(easymotion-Tl)
+map  f <Plug>(easymotion-bd-f)
+map  F <Plug>(easymotion-bd-fl)
+map  t <Plug>(easymotion-bd-t)
+map  T <Plug>(easymotion-bd-tl)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
