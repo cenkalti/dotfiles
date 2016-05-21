@@ -32,10 +32,10 @@ Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 set background=dark
-" Hide ~ characters after EOF by making them same color as background.
-autocmd ColorScheme * highlight NonText guifg=#0c1014
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    " Hide ~ characters after EOF by making them same color as background.
+    autocmd ColorScheme * highlight NonText guifg=#0c1014
     colorscheme gotham
 elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
