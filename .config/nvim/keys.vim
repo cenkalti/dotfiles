@@ -46,8 +46,9 @@ noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR
 " Clear highlighted text.
 nnoremap <C-l> :nohlsearch<CR>
 
-" Insert new line under cursor without leaving normal mode.
-nmap <A-o> o<Esc>0d$k
+" Insert new line without leaving normal mode.
+nmap <A-o> mzo<Esc>0d$`z
+nmap <A-O> mzO<Esc>0d$`z
 
 " Complete with <Tab> key.
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
