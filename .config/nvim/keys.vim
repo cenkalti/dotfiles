@@ -55,15 +55,18 @@ inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
 
 " Language specific commands with LocalLeader key.
-autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
-autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
-autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
-autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
-autocmd FileType python map <buffer> <LocalLeader>y :0,$!yapf<CR>
-autocmd FileType python setlocal formatprg=yapf
-autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
-autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
-autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+augroup language
+    autocmd!
+    autocmd FileType python map <buffer> <LocalLeader>a :call jedi#goto_assignments()<CR>
+    autocmd FileType python map <buffer> <LocalLeader>d :call jedi#goto_definitions()<CR>
+    autocmd FileType python map <buffer> <LocalLeader>u :call jedi#usages()<CR>
+    autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
+    autocmd FileType python map <buffer> <LocalLeader>y :0,$!yapf<CR>
+    autocmd FileType python setlocal formatprg=yapf
+    autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
+    autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
+    autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+augroup END
 
 " Jump to buffer with index number.
 nmap <leader>1 <Plug>AirlineSelectTab1

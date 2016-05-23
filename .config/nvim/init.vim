@@ -34,8 +34,11 @@ call plug#end()
 set background=dark
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    " Hide ~ characters after EOF by making them same color as background.
-    autocmd ColorScheme * highlight NonText guifg=#0c1014
+    augroup nontext
+        " Hide ~ characters after EOF by making them same color as background.
+        autocmd!
+        autocmd ColorScheme * highlight NonText guifg=#0c1014
+    augroup END
     colorscheme gotham
 elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
@@ -83,14 +86,14 @@ let g:EasyMotion_enter_jump_first = 1
 let g:neomake_open_list = 2
 let g:startify_change_to_dir = 0
 
-" Quit program if only open buffer is NERDTree.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd FocusLost * :wa
-autocmd User Fugitive SignifyRefresh
-autocmd! BufWritePost * Neomake
-" Hide quickfix in buffer list.
-augroup qf
+augroup vimrc
     autocmd!
+    " Quit program if only open buffer is NERDTree.
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    autocmd FocusLost * :wa
+    autocmd User Fugitive SignifyRefresh
+    autocmd BufWritePost * Neomake
+    " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
 augroup END
 
