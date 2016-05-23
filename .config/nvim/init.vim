@@ -57,6 +57,7 @@ set fillchars="vert: "
 set scrolloff=6
 set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
+set sessionoptions=buffers,curdir,folds
 
 let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$']
