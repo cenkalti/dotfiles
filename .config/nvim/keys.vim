@@ -25,6 +25,9 @@ nnoremap <F5> :source $MYVIMRC<CR>
 " Indent whole file.
 nnoremap <F7> mzgg=G`z
 
+" Save all buffers and close program.
+nnoremap <F12> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
+
 " Replace some default motion keys with EasyMotion equivalents.
 map  s <Plug>(easymotion-s2)
 map  f <Plug>(easymotion-bd-f)
