@@ -124,12 +124,3 @@ vnoremap > >gv
 " act more like C or D because by default, Y yanks the current line (i.e. the
 " same as yy).
 noremap Y y$
-
-" Insert mode movements with Ctrl key.
-inoremap <C-e> <C-o>$
-inoremap <C-a> <C-o>0
-
-" Insert mode movements with Alt key.
-inoremap <A-b> <C-o>b
-inoremap <A-f> <C-o>w
-inoremap <A-w> <C-o>dw
