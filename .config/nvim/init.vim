@@ -32,12 +32,13 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
+" Set color theme.
 set background=dark
 if $TERM_PROGRAM == "iTerm.app"
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     augroup nontext
-        " Hide ~ characters after EOF by making them same color as background.
         autocmd!
+        " Hide ~ characters after EOF by making them same color as background.
         autocmd ColorScheme * highlight NonText guifg=#0c1014
     augroup END
     colorscheme gotham
@@ -45,6 +46,7 @@ elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
 endif
 
+" Adjust basic vim options.
 set hidden
 set number
 set relativenumber
@@ -53,13 +55,13 @@ set splitright
 set ignorecase
 set smartcase
 set colorcolumn=80,120
-" Hide vertical fill characters between windows.
-set fillchars="vert: "
+set fillchars="vert: "  " Hide vertical fill characters between windows.
 set scrolloff=6
 set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
 
+" Override plugin options.
 let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeMinimalUI = 1
@@ -90,11 +92,11 @@ let g:startify_change_to_dir = 0
 
 augroup vimrc
     autocmd!
-    " Quit program if only open buffer is NERDTree.
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     autocmd FocusLost * :wa
     autocmd User Fugitive SignifyRefresh
     autocmd BufWritePost * Neomake
+    " Quit program if only open buffer is NERDTree.
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
 augroup END
