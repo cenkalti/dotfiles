@@ -30,10 +30,10 @@ nnoremap <F12> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
 
 " Replace some default motion keys with EasyMotion equivalents.
 map  s <Plug>(easymotion-s2)
-map  f <Plug>(easymotion-bd-f)
-map  F <Plug>(easymotion-bd-fl)
-map  t <Plug>(easymotion-bd-t)
-map  T <Plug>(easymotion-bd-tl)
+map  f <Plug>(easymotion-bd-fl)
+map  F <Plug>(easymotion-bd-f)
+map  t <Plug>(easymotion-bd-tl)
+map  T <Plug>(easymotion-bd-t)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
