@@ -37,3 +37,5 @@ weekstart=monday
 
 alias.tomorrow=modify wait:tomorrow
 alias.monday=modify wait:monday
+
+nag=""
