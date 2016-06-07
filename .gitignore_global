@@ -12,4 +12,4 @@ PYSMELLTAGS
 *.iml
 *.swp
 .srclib-cache/
-
+Session.vim
