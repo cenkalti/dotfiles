@@ -26,7 +26,10 @@ nnoremap <F5> :source $MYVIMRC<CR>
 nnoremap <F7> mzgg=G`z
 
 " Save all buffers and close program.
-nnoremap <F12> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
+nnoremap <F8> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
+
+" Abort with non-zero exit code.
+nnoremap <F12> :cq<CR>
 
 " Replace some default motion keys with EasyMotion equivalents.
 map  s <Plug>(easymotion-s2)
