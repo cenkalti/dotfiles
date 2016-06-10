@@ -65,7 +65,7 @@ set noshowmode
 
 " Override plugin options.
 let loaded_matchparen = 1
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'Session.vim']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
