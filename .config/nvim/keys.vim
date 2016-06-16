@@ -19,8 +19,12 @@ nnoremap <Leader>q :%bd<CR>
 nnoremap <Leader>b :BufOnly<CR>
 
 " Work on vimrc easily.
-nnoremap <F4> :e! $MYVIMRC<cr>
-nnoremap <F5> :source $MYVIMRC<CR>
+nnoremap <F2> :e! $MYVIMRC<CR>
+nnoremap <F3> :e! ~/.config/nvim/keys.vim<CR>
+nnoremap <F4> :source $MYVIMRC<CR>
+
+" Reset file from disk.
+nnoremap <F5> :e!<CR>
 
 " Indent whole file.
 nnoremap <F7> mzgg=G`z
