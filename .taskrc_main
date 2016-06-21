@@ -35,7 +35,13 @@ context.home=+in or -putio
 search.case.sensitive=no
 weekstart=monday
 
-alias.tomorrow=modify wait:tomorrow
-alias.monday=modify wait:monday
+alias.tomorrow  = modify wait:tomorrow
+alias.monday    = modify wait:monday
+alias.tuesday   = modify wait:tuesday
+alias.wednesday = modify wait:wednesday
+alias.thursday  = modify wait:thursday
+alias.friday    = modify wait:friday
+alias.saturday  = modify wait:saturday
+alias.sunday    = modify wait:sunday
 
 nag=
