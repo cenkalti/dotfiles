@@ -1,6 +1,6 @@
 let mapleader="\<SPACE>"
 
-inoremap jj <Esc>
+inoremap hh <Esc>
 nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
