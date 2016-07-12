@@ -123,10 +123,6 @@ function title {
   emulate -L zsh
   setopt prompt_subst
 
-  # if $2 is unset use $1 as default
-  # if it is set and empty, leave it as is
-  : ${2=$1}
-
   case "$TERM" in
     cygwin|xterm*|putty*|rxvt*|ansi)
       print -Pn "\e]2;$2:q\a" # set window name
@@ -150,8 +146,13 @@ function preexec {
   setopt extended_glob
 
   # cmd name only, or if this is sudo or ssh, the next cmd
-  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}
+  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|-*)]:gs/%/%%}
   local LINE="${2:gs/%/%%}"
+
+  # show current dir on tab when vim is open
+  if [[ $CMD == vi* ]]; then
+    CMD="$CMD (%1~)"
+  fi
 
   title '$CMD' '$LINE'
 }
