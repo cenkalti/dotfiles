@@ -46,9 +46,9 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-" Swith buffers with Ctrl-jk keys.
-noremap <A-n> :bnext<CR>
-noremap <A-p> :bprevious<CR>
+" Swith buffers with Ctrl-0 and Ctrl-9 keys.
+noremap <C-0> :bnext<CR>
+noremap <C-9> :bprevious<CR>
 
 " Highlight word under cursor.
 noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
@@ -57,8 +57,7 @@ noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR
 nnoremap <C-l> :nohlsearch<CR>
 
 " Insert new line without leaving normal mode.
-nmap <A-o> mzo<Esc>0d$`z
-nmap <A-O> mzO<Esc>0d$`z
+nmap <C-> mzo<Esc>0d$`z
 
 " Complete with <Tab> key.
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -100,7 +99,7 @@ nnoremap [L :lfirst<cr>
 nnoremap ]L :llast<cr>
 
 " Close quickfix and location list windows.
-nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
+nnoremap <LocalLeader>x :lclose<CR><BAR>:cclose<CR>
 
 " Resize windows with arrow keys.
 nnoremap <left>       <c-w>>
