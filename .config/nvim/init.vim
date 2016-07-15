@@ -1,11 +1,5 @@
 " vim-plug plugin manager
 call plug#begin()
-
-" Color schemes
-Plug 'whatyouhide/vim-gotham'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'vim-airline/vim-airline-themes'
-
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
@@ -32,6 +26,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wellle/targets.vim'
+Plug 'whatyouhide/vim-gotham'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
@@ -50,10 +45,6 @@ if $TERM_PROGRAM == "iTerm.app"
 elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
     colorscheme gotham256
 endif
-
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set background=light
-"colorscheme lucius
 
 " Adjust basic vim options.
 set hidden
