@@ -1,5 +1,13 @@
 " vim-plug plugin manager
 call plug#begin()
+
+" Color schemes
+Plug 'jonathanfilip/vim-lucius'
+"Plug 'whatyouhide/vim-gotham'
+"Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'vim-airline/vim-airline-themes'
+
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
@@ -26,25 +34,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wellle/targets.vim'
-Plug 'whatyouhide/vim-gotham'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 " Set color theme.
-set background=dark
-if $TERM_PROGRAM == "iTerm.app"
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    augroup nontext
-        autocmd!
-        " Hide ~ characters after EOF by making them same color as background.
-        autocmd ColorScheme * highlight NonText guifg=#0c1014
-    augroup END
-    colorscheme gotham
-elseif (index(['xterm-256color', 'screen-256color'], $TERM) >= 0)
-    colorscheme gotham256
-endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=light
+colorscheme lucius
 
 " Adjust basic vim options.
 set hidden
@@ -102,6 +100,8 @@ augroup vimrc
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
+    autocmd VimEnter * command! -bang -nargs=* Ag
+        \ call fzf#vim#ag(<q-args>, {'down': '40%', 'options': '--no-color'})
 augroup END
 
 source ~/.config/nvim/keys.vim
