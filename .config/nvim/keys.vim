@@ -17,6 +17,9 @@ nnoremap <Leader>d :BW<CR>
 nnoremap <Leader>q :%bd<CR>
 " Wipe all buffers other than current one.
 nnoremap <Leader>b :BufOnly<CR>
+" Toggle quoting style.
+nnoremap <Leader>' :normal cs"'<CR>
+nnoremap <Leader>" :normal cs'"<CR>
 
 " Work on vimrc easily.
 nnoremap <F2> :e! $MYVIMRC<CR>
