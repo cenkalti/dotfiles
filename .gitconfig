@@ -112,3 +112,7 @@
 	helper = osxkeychain
 [interactive]
         diffFilter = "diff-so-fancy | less --tabs=4 -RFX"
+[github]
+	user = cenk
+[ghi]
+	token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
