@@ -100,8 +100,6 @@ augroup vimrc
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
-    autocmd VimEnter * command! -bang -nargs=* Ag
-        \ call fzf#vim#ag(<q-args>, {'down': '40%', 'options': '--no-color'})
 augroup END
 
 source ~/.config/nvim/keys.vim
