@@ -110,12 +110,6 @@ nnoremap <right>      <c-w><
 nnoremap <up>         <c-w>-
 nnoremap <down>       <c-w>+
 
-" Switch windows with Alt+hjks keys.
-nnoremap <A-h>        <c-w>h
-nnoremap <A-j>        <c-w>j
-nnoremap <A-k>        <c-w>k
-nnoremap <A-l>        <c-w>l
-
 " Better shortcut for scrolling window.
 nmap <C-j> <C-e>
 nmap <C-k> <C-y>
