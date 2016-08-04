@@ -40,10 +40,10 @@ nnoremap <F12> :cq<CR>
 
 " Replace some default motion keys with EasyMotion equivalents.
 map  s <Plug>(easymotion-s2)
-map  f <Plug>(easymotion-bd-fl)
-map  F <Plug>(easymotion-bd-f)
-map  t <Plug>(easymotion-bd-tl)
-map  T <Plug>(easymotion-bd-t)
+map  f <Plug>(easymotion-fl)
+map  F <Plug>(easymotion-Fl)
+map  t <Plug>(easymotion-tl)
+map  T <Plug>(easymotion-Tl)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
