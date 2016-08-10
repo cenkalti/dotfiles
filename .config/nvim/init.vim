@@ -3,9 +3,6 @@ call plug#begin()
 
 " Color schemes
 Plug 'jonathanfilip/vim-lucius'
-"Plug 'whatyouhide/vim-gotham'
-"Plug 'chriskempson/base16-vim'
-"Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'benekastah/neomake'
