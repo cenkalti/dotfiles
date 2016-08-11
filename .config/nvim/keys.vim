@@ -105,10 +105,16 @@ nnoremap ]L :llast<cr>
 nnoremap <LocalLeader>x :lclose<CR><BAR>:cclose<CR>
 
 " Resize windows with arrow keys.
-nnoremap <left>       <c-w>>
-nnoremap <right>      <c-w><
-nnoremap <up>         <c-w>-
-nnoremap <down>       <c-w>+
+nnoremap <left>  <c-w>>
+nnoremap <right> <c-w><
+nnoremap <up>    <c-w>-
+nnoremap <down>  <c-w>+
+
+" Change window with <Leader> + HJKL keys.
+nmap <leader>h <c-w>h
+nmap <leader>j <c-w>j
+nmap <leader>k <c-w>k
+nmap <leader>l <c-w>l
 
 " Better shortcut for scrolling window.
 nmap <C-j> <C-e>
