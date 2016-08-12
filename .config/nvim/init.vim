@@ -43,6 +43,7 @@ colorscheme lucius
 
 " Adjust basic vim options.
 set hidden
+set number
 set relativenumber
 set splitbelow
 set splitright
