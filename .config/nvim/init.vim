@@ -87,6 +87,9 @@ let g:EasyMotion_enter_jump_first = 1
 let g:neomake_open_list = 2
 let g:startify_change_to_dir = 0
 let g:go_fmt_command = "goimports"
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
 
 augroup vimrc
     autocmd!
