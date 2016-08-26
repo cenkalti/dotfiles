@@ -3,7 +3,7 @@
         email = cenkalti@gmail.com
 
 [alias]
-	# List aliases
+        # List aliases
         ls = "!git config --get-regexp alias\\. | sed 's/^......//' | sed 's/ /	/'"
 
         st  = status --short --branch
@@ -11,8 +11,8 @@
 
         ci = commit -m
         ce = commit --allow-empty-message -m ''
-	pom = pull origin master --no-edit
-	pomp = "!git pull origin master --no-edit && git push"
+        pom = pull origin master --no-edit
+        pomp = "!git pull origin master --no-edit && git push"
 
         # Edit last commit message
         edit = commit --amend
@@ -25,7 +25,7 @@
         pr  = pull --rebase
         prp = "!git pull --rebase && git push"
         pp  = "!git pull --no-edit && git push"
-	ss  = "!git stash && git pull --rebase --no-edit && git push && git stash apply"
+        ss  = "!git stash && git pull --rebase --no-edit && git push && git stash apply"
 
         co = checkout
         cp = cherry-pick
@@ -77,7 +77,7 @@
         frag = magenta bold
         old = red bold
         new = green bold
-	whitespace = red reverse
+        whitespace = red reverse
 
 [color "status"]
         added = green
@@ -92,11 +92,11 @@
         whitespace = fix,trailing-space
 
 [clean]
-	requireForce = false
+        requireForce = false
 
 [merge]
         summary = true
-	conflictstyle = diff3
+        conflictstyle = diff3
 
 [push]
         default = current
@@ -108,11 +108,15 @@
 [pager]
         diff = "diff-so-fancy | less --tabs=1,5 -RS"
         show = "diff-so-fancy | less --tabs=1,5 -RS"
+
 [credential]
-	helper = osxkeychain
+        helper = osxkeychain
+
 [interactive]
         diffFilter = "diff-so-fancy | less --tabs=4 -RFX"
+
 [github]
-	user = cenk
+        user = cenk
+
 [ghi]
-	token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
+        token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
