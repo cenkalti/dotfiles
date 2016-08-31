@@ -90,7 +90,6 @@
         excludesfile = ~/.gitignore_global
         autocrlf = false
         pager = less -RS
-        whitespace = fix,trailing-space
 
 [clean]
         requireForce = false
