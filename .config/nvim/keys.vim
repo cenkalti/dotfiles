@@ -5,6 +5,7 @@ nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
+nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>sr :SignifyRefresh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>t :TagbarToggle<CR>
