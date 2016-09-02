@@ -18,9 +18,13 @@ zplug "olivierverdier/zsh-git-prompt", use:"zshrc.sh"
 zplug load
 
 export EDITOR=vim
-bindkey -e # use emacs key bindings
 export PAGER=less
 export LESS="-i"  # ignore case
+
+# use emacs key bindings
+bindkey -e
+
+# Better prompt
 PROMPT='%B%1~%b$(git_super_status)%# '
 
 # History settings
@@ -31,6 +35,7 @@ setopt APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_VERIFY
 
+# Fix backspace and delete keys
 bindkey '^?' backward-delete-char  # [Backspace] - delete backward
 bindkey "\e[3~" delete-char  # [Delete] - delete forward
 
