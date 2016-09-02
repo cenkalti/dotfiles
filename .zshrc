@@ -26,6 +26,7 @@ bindkey -e
 
 # Better prompt
 PROMPT='%B%1~%b$(git_super_status)%# '
+export ZSH_THEME_GIT_PROMPT_CACHE=1
 
 # History settings
 HISTSIZE=1000
