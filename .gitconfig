@@ -3,6 +3,9 @@
         email = cenkalti@gmail.com
         signingkey = 2DB2EA6FD1BF1761
 
+[commit]
+        gpgsign = true
+
 [alias]
         # List aliases
         ls = "!git config --get-regexp alias\\. | sed 's/^......//' | sed 's/ /	/'"
