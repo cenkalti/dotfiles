@@ -11,12 +11,6 @@
 autoload -U select-word-style
 select-word-style bash
 
-source ~/.zplug/init.zsh
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "zsh-users/zsh-history-substring-search"
-zplug "olivierverdier/zsh-git-prompt", use:"zshrc.sh"
-zplug load
-
 export EDITOR=vim
 export PAGER=less
 export LESS="-i"  # ignore case
@@ -24,9 +18,8 @@ export LESS="-i"  # ignore case
 # use emacs key bindings
 bindkey -e
 
-# Better prompt
-PROMPT='%B%1~%b$(git_super_status)%# '
-export ZSH_THEME_GIT_PROMPT_CACHE=1
+# Shorter prompt
+PROMPT='%# '
 
 # History settings
 HISTSIZE=1000
@@ -118,8 +111,8 @@ function man() {
 }
 
 zmodload zsh/terminfo
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+bindkey -M emacs '^P' history-beginning-search-backward
+bindkey -M emacs '^N' history-beginning-search-forward
 
 source ~/.zshrc_private
 
