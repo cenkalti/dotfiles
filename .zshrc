@@ -18,8 +18,8 @@ export LESS="-i"  # ignore case
 # use emacs key bindings
 bindkey -e
 
-# Cooler prompt
-PROMPT="%(?.%F{green}.%F{red})●%f "
+# Minimal prompt
+PROMPT="%(?..%F{red})$%f "
 
 # History settings
 HISTSIZE=1000
