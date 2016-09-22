@@ -60,7 +60,7 @@ zstyle ':completion:*' menu select=2
 
 # git aliases
 alias g="git st"
-alias gp="git push"
+alias gp="git push || git pull --rebase && git push"
 alias gti=git
 # ...others are in .gitconfig file
 
