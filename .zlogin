@@ -1,1 +1,1 @@
-task rc.verbose=nothing next
+task rc.verbose=nothing next || true
