@@ -44,7 +44,7 @@ ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G
 unsetopt AUTO_CD
 
 # my ssh & tmux helper
-function ssht() { ssh -t $1 'tmux attach -t cenk || tmux new -s cenk' }
+function ssht() { ssh -t $1 "tmux attach -t $USER || tmux new -s $USER" }
 
 function searchandreplace() {
     LC_ALL=C find . -path ./.git -prune -o -type f -name "*.$1" -exec sed -i '' "s/$2/$3/" {} +
