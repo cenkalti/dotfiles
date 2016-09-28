@@ -105,7 +105,7 @@ nnoremap [L :lfirst<cr>
 nnoremap ]L :llast<cr>
 
 " Close quickfix and location list windows.
-nnoremap <LocalLeader>x :lclose<CR><BAR>:cclose<CR>
+nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
 
 " Resize windows with arrow keys.
 nnoremap <left>  <c-w>>
