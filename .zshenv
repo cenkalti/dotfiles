@@ -37,5 +37,7 @@ export LANG=en_US.UTF-8
 
 export CDPATH=$HOME:$HOME/projects:$GOPATH/src/github.com:$GOPATH/src/bitbucket.org
 
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+if [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+fi

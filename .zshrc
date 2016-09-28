@@ -114,7 +114,9 @@ zmodload zsh/terminfo
 bindkey -M emacs '^P' history-beginning-search-backward
 bindkey -M emacs '^N' history-beginning-search-forward
 
-source ~/.zshrc_private
+if [[ -f ~/.zshrc_private ]]; then
+  source ~/.zshrc_private
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
