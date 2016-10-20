@@ -25,6 +25,8 @@ nnoremap <Leader>' :normal cs"'<CR>
 nnoremap <Leader>" :normal cs'"<CR>
 " Search word under cursor with EasyMotion.
 nnoremap <Leader>s :call EasyMotion#S(-1, 0, 2)<CR><C-r><C-w><CR><CR><S-n>
+" Search word under cursor with Ag.
+nnoremap <Leader>e :Ag<space><C-r><C-w><CR>
 
 " Work on vimrc easily.
 nnoremap <F2> :e! $MYVIMRC<CR>
