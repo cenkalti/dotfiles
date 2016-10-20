@@ -18,6 +18,8 @@ nnoremap <Leader>d :BW<CR>
 nnoremap <Leader>q :%bd<CR>
 " Wipe all buffers other than current one.
 nnoremap <Leader>b :BufOnly<CR>
+" Close all windows except current one.
+nnoremap <Leader>w <C-w>o
 " Toggle quoting style.
 nnoremap <Leader>' :normal cs"'<CR>
 nnoremap <Leader>" :normal cs'"<CR>
