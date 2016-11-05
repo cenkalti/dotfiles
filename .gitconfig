@@ -39,6 +39,8 @@
         df  = diff
         dfc = diff --cached
 
+        today = log --since="6am"
+
         # Show the fetched commits
         lc   = log ORIG_HEAD.. --stat --no-merges
 
