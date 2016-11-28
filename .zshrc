@@ -44,6 +44,8 @@ ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G
 alias l="ls -l"
 alias d="pwd"
 
+alias p="ptpython"
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
