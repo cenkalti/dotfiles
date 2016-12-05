@@ -144,7 +144,15 @@ function title {
 # Runs before showing the prompt
 function precmd {
   emulate -L zsh
+
   title "%1~" "%n@%m: %~"
+
+  # Auto activate environment if dirname matches a virtualenv
+  if [ "$PWD" != "$MYOLDPWD" ]; then
+    MYOLDPWD="$PWD"
+    PROJECT="${PWD:t}"
+    test -d "$WORKON_HOME/$PROJECT" && workon "$PROJECT"
+  fi
 }
 
 # Runs before executing the command
