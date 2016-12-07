@@ -160,16 +160,32 @@ function preexec {
   emulate -L zsh
   setopt extended_glob
 
-  # cmd name only, or if this is sudo or ssh, the next cmd
-  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|-*)]:gs/%/%%}
-  local LINE="${2:gs/%/%%}"
+  # Get the command name that is under job control.
+  if [[ "${2[(w)1]}" == (fg|%*)(\;|) ]]; then
+    # Get the job name, and, if missing, set it to the default %+.
+    local job_name="${${2[(wr)%*(\;|)]}:-%+}"
 
-  # show current dir on tab when vim is open
-  if [[ $CMD == vi* ]]; then
-    CMD="$CMD (%1~)"
+    # Make a local copy for use in the subshell.
+    local -A jobtexts_from_parent_shell
+    jobtexts_from_parent_shell=(${(kv)jobtexts})
+
+    jobs "$job_name" 2>/dev/null > >(
+      read index discarded
+      # The index is already surrounded by brackets: [1].
+      preexec "${(e):-\$jobtexts_from_parent_shell$index}"
+    )
+  else
+    # cmd name only, or if this is sudo or ssh, the next cmd
+    local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|-*)]:gs/%/%%}
+    local LINE="${2:gs/%/%%}"
+
+    # show current dir on tab when vim is open
+    if [[ $CMD == vi* ]]; then
+      CMD="$CMD (%1~)"
+    fi
+
+    title '$CMD' '$LINE'
   fi
-
-  title '$CMD' '$LINE'
 }
 
 precmd_functions+=(precmd)
