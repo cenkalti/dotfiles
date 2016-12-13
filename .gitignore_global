@@ -13,3 +13,4 @@ PYSMELLTAGS
 *.swp
 .srclib-cache/
 Session.vim
+.envrc
