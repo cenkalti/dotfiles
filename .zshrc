@@ -19,7 +19,7 @@ export LESS="-i"  # ignore case
 bindkey -e
 
 # Minimal prompt
-PROMPT="%(?..%F{red})$%f "
+PROMPT="%(?.%F{green}.%F{red})$%f "
 
 # History settings
 HISTSIZE=1000
