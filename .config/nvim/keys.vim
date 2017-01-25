@@ -60,8 +60,8 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " Swith buffers with Ctrl-0 and Ctrl-9 keys.
-noremap <C-0> :bnext<CR>
-noremap <C-9> :bprevious<CR>
+noremap <C-n> :bnext<CR>
+noremap <C-p> :bprevious<CR>
 
 " Highlight word under cursor.
 noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
