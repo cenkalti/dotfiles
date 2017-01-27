@@ -5,6 +5,7 @@ call plug#begin()
 Plug 'jonathanfilip/vim-lucius'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
@@ -14,7 +15,6 @@ Plug 'evanmiller/nginx-vim-syntax'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'qpkorr/vim-bufkill'
@@ -62,7 +62,6 @@ set noshowmode
 let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$']
 let NERDTreeMinimalUI = 1
-let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:jedi#auto_initialization = 0
 let g:jedi#auto_vim_configuration = 0
@@ -96,7 +95,6 @@ let g:python3_host_prog = '/usr/local/bin/python3.6'
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
-    autocmd User Fugitive SignifyRefresh
     autocmd BufWritePost * Neomake
     " Quit program if only open buffer is NERDTree.
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
