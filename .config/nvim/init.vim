@@ -62,6 +62,7 @@ set noshowmode
 let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$']
 let NERDTreeMinimalUI = 1
+let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:jedi#auto_initialization = 0
 let g:jedi#auto_vim_configuration = 0
