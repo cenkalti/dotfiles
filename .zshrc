@@ -18,8 +18,8 @@ export LESS="-i"  # ignore case
 # use emacs key bindings
 bindkey -e
 
-# Minimal prompt
-PROMPT="%(?.%F{green}.%F{red})$%f "
+# Customize prompt
+PROMPT="[%m:%1~]%(?.%F{green}.%F{red})%#%f "
 
 # History settings
 HISTSIZE=1000
