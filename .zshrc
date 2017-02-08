@@ -47,6 +47,8 @@ alias d="pwd"
 alias p="ptpython"
 alias h="hostname"
 
+alias myip="curl http://ipecho.net/plain && echo"
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
