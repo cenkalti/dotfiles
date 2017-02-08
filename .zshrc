@@ -146,7 +146,7 @@ function title {
 function precmd {
   emulate -L zsh
 
-  title "%1~" "%n@%m: %~"
+  title "%m:%1~" "%n@%m: %~"
 }
 
 # Runs before executing the command
@@ -175,7 +175,7 @@ function preexec {
 
     # show current dir on tab when vim is open
     if [[ $CMD == vi* ]]; then
-      CMD="$CMD (%1~)"
+      CMD="$CMD (%m:%1~)"
     fi
 
     title '$CMD' '$LINE'
