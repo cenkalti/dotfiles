@@ -129,17 +129,20 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-function title {
+function set_title {
   emulate -L zsh
   setopt prompt_subst
 
+  local tab_name=$1
+  local window_name=$2
+
   case "$TERM" in
     cygwin|xterm*|putty*|rxvt*|ansi)
-      print -Pn "\e]2;$2:q\a" # set window name
-      print -Pn "\e]1;$1:q\a" # set tab name
+      print -Pn "\e]1;$tab_name:q\a"
+      print -Pn "\e]2;$window_name:q\a"
       ;;
     screen*)
-      print -Pn "\ek$1:q\e\\" # set screen hardstatus
+      print -Pn "\ek$tab_name:q\e\\" # set screen hardstatus
       ;;
   esac
 }
@@ -147,8 +150,7 @@ function title {
 # Runs before showing the prompt
 function precmd {
   emulate -L zsh
-
-  title "%m:%1~" "%n@%m: %~"
+  set_title "%m:%1~" "%m:%~"
 }
 
 # Runs before executing the command
@@ -173,14 +175,13 @@ function preexec {
   else
     # cmd name only, or if this is sudo or ssh, the next cmd
     local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|-*)]:gs/%/%%}
-    local LINE="${2:gs/%/%%}"
 
     # show current dir on tab when vim is open
     if [[ $CMD == vi* ]]; then
       CMD="$CMD (%m:%1~)"
     fi
 
-    title '$CMD' '$LINE'
+    set_title '$CMD'
   fi
 }
 
