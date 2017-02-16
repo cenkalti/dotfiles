@@ -19,7 +19,21 @@ export LESS="-i"  # ignore case
 bindkey -e
 
 # Customize prompt
-PROMPT="[%m:%1~]%(?.%F{green}.%F{red})%#%f "
+function virtualenv_info {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    venv=$(basename $VIRTUAL_ENV)
+    echo "($venv)"
+  fi
+}
+function git_info {
+  head=$(git symbolic-ref HEAD 2>/dev/null)
+  if [ -n "$head" ]; then
+    ref=$(echo $head | cut -d '/' -f 3)
+    echo "{$ref}"
+  fi
+}
+setopt promptsubst
+PROMPT='$(virtualenv_info)[%m:%1~]$(git_info)%(?.%F{green}.%F{red})%#%f '
 
 # History settings
 HISTSIZE=1000
