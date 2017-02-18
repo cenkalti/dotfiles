@@ -50,6 +50,7 @@ set splitright
 set ignorecase
 set smartcase
 set colorcolumn=80,120
+set synmaxcol=128
 set fillchars="vert: "  " Hide vertical fill characters between windows.
 set scrolloff=6
 set completeopt-=preview
