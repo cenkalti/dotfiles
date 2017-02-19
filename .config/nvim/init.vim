@@ -98,7 +98,6 @@ let g:python3_host_prog = '/usr/local/bin/python3.6'
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
-    autocmd User Fugitive SignifyRefresh
     autocmd BufWritePost * Neomake
     " Quit program if only open buffer is NERDTree.
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
