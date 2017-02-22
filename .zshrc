@@ -33,7 +33,7 @@ function git_info {
   fi
 }
 setopt promptsubst
-PROMPT='$(virtualenv_info)[%m:%1~]$(git_info)%(?.%F{green}.%F{red})%#%f '
+PROMPT='[%m:%1~]$(virtualenv_info)$(git_info)%(?.%F{green}.%F{red})%#%f '
 
 # History settings
 HISTSIZE=1000
