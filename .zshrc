@@ -63,6 +63,8 @@ alias h="hostname"
 
 alias myip="curl http://ipecho.net/plain && echo"
 
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
