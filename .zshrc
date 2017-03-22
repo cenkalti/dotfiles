@@ -65,6 +65,10 @@ alias myip="curl http://ipecho.net/plain && echo"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+alias disk-usage='sudo du -xcms * 2>/dev/null | sort -rn | head -11'
+
+alias remove-old-files="find . -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf '{}' +"
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
