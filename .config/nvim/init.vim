@@ -88,6 +88,7 @@ let g:EasyMotion_keys = 'QPWOEIRUTYZMXNCBVGHALSKFJ'
 let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:neomake_open_list = 2
+let g:neomake_python_enabled_makers = ['python', 'pylama']
 let g:startify_change_to_dir = 0
 let g:go_fmt_command = "goimports"
 let g:NERDSpaceDelims = 1
