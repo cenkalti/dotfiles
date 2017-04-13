@@ -64,7 +64,6 @@ set noshowmode
 set lazyredraw
 
 " Override plugin options.
-let loaded_matchparen = 1
 let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
