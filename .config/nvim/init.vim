@@ -5,21 +5,17 @@ call plug#begin()
 Plug 'jonathanfilip/vim-lucius'
 Plug 'vim-airline/vim-airline-themes'
 
+" General plugins
 Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
-Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'evanmiller/nginx-vim-syntax'
-Plug 'fatih/vim-go'
-Plug 'glench/vim-jinja2-syntax'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'qpkorr/vim-bufkill'
-Plug 'saltstack/salt-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim'
@@ -33,6 +29,13 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wellle/targets.vim'
 Plug 'xuyuanp/nerdtree-git-plugin'
+
+" Language specific plugins
+Plug 'davidhalter/jedi-vim'
+Plug 'evanmiller/nginx-vim-syntax'
+Plug 'fatih/vim-go'
+Plug 'glench/vim-jinja2-syntax'
+Plug 'saltstack/salt-vim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 call plug#end()
