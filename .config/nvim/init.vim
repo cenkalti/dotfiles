@@ -33,6 +33,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'fatih/vim-go'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'lambdatoast/elm.vim'
 Plug 'saltstack/salt-vim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
