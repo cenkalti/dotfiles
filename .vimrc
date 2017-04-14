@@ -1,2 +1,1 @@
-syntax on
-set number
+.config/nvim/init.vim

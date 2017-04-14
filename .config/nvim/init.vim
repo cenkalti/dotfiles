@@ -1,48 +1,50 @@
-" vim-plug plugin manager
-call plug#begin()
+if has('nvim')
+    " vim-plug plugin manager
+    call plug#begin()
 
-" Color schemes
-Plug 'jonathanfilip/vim-lucius'
-Plug 'vim-airline/vim-airline-themes'
+    " Color schemes
+    Plug 'jonathanfilip/vim-lucius'
+    Plug 'vim-airline/vim-airline-themes'
 
-" General plugins
-Plug 'benekastah/neomake'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'christoomey/vim-sort-motion'
-Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-signify'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'qpkorr/vim-bufkill'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'shougo/deoplete.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'wellle/targets.vim'
-Plug 'xuyuanp/nerdtree-git-plugin'
+    " General plugins
+    Plug 'benekastah/neomake'
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'christoomey/vim-sort-motion'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'junegunn/fzf.vim'
+    Plug 'mhinz/vim-signify'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'qpkorr/vim-bufkill'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdtree'
+    Plug 'shougo/deoplete.nvim'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-rsi'
+    Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-surround'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-scripts/BufOnly.vim'
+    Plug 'vim-scripts/ReplaceWithRegister'
+    Plug 'wellle/targets.vim'
+    Plug 'xuyuanp/nerdtree-git-plugin'
 
-" Language specific plugins
-Plug 'davidhalter/jedi-vim'
-Plug 'evanmiller/nginx-vim-syntax'
-Plug 'fatih/vim-go'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'lambdatoast/elm.vim'
-Plug 'saltstack/salt-vim'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
-call plug#end()
+    " Language specific plugins
+    Plug 'davidhalter/jedi-vim'
+    Plug 'evanmiller/nginx-vim-syntax'
+    Plug 'fatih/vim-go'
+    Plug 'glench/vim-jinja2-syntax'
+    Plug 'lambdatoast/elm.vim'
+    Plug 'saltstack/salt-vim'
+    Plug 'zchee/deoplete-go', { 'do': 'make'}
+    Plug 'zchee/deoplete-jedi'
+    call plug#end()
 
-" Set color theme.
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=light
-colorscheme lucius
+    " Set color theme.
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set background=light
+    colorscheme lucius
+end
 
 " Adjust basic vim options.
 set hidden
