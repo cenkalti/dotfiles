@@ -36,8 +36,8 @@ setopt promptsubst
 PROMPT='[%m:%1~]$(virtualenv_info)$(git_info)%(?.%F{green}.%F{red})%#%f '
 
 # History settings
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
