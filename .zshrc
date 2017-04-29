@@ -77,7 +77,7 @@ unsetopt AUTO_CD
 function ssht() { ssh -t $1 "tmux attach -t $USER || tmux new -s $USER" }
 
 function searchandreplace() {
-    LC_ALL=C find . -path ./.git -prune -o -type f -name "*.$1" -exec sed -i '' "s/$2/$3/" {} +
+    LC_ALL=C find . -path './.*' -prune -o -type f -name "*.$1" -exec sed -i '' "s/$2/$3/" {} +
 }
 
 # completion settings
