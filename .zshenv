@@ -32,3 +32,7 @@ if [[ -d ~/perl5 ]]; then
         eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
     fi
 fi
+
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
