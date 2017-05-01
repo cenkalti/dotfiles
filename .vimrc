@@ -135,7 +135,6 @@ nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>g :SignifyRefresh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>m :Neomake<CR>
 " Reveal current buffer in NERDTree window.
 nnoremap <Leader>r :NERDTreeFind<CR>
@@ -162,7 +161,6 @@ nnoremap <LocalLeader>W ciW
 
 " Work on vimrc easily.
 nnoremap <F2> :e! $MYVIMRC<CR>
-nnoremap <F3> :e! ~/.config/nvim/keys.vim<CR>
 nnoremap <F4> :source $MYVIMRC<CR>
 
 " Reset file from disk.
