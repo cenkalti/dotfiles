@@ -80,6 +80,10 @@ function searchandreplace() {
     LC_ALL=C find . -path './.*' -prune -o -type f -name "*.$1" -exec sed -i '' "s/$2/$3/" {} +
 }
 
+function searchanddelete() {
+    LC_ALL=C find . -path './.*' -prune -o -type f -name "*.$1" -exec sed -i '' "/$2/d" {} +
+}
+
 # completion settings
 autoload -U compinit bashcompinit
 compinit
