@@ -77,11 +77,11 @@ unsetopt AUTO_CD
 function ssht() { ssh -t $1 "tmux attach -t $USER || tmux new -s $USER" }
 
 function searchandreplace() {
-    LC_ALL=C find . -path './.*' -prune -o -type f -name "*.$1" -exec sed -i '' "s/$2/$3/" {} +
+    LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -i '' "s/$3/$4/" {} +
 }
 
 function searchanddelete() {
-    LC_ALL=C find . -path './.*' -prune -o -type f -name "*.$1" -exec sed -i '' "/$2/d" {} +
+    LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -i '' "/$3/d" {} +
 }
 
 # completion settings
