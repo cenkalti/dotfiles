@@ -29,7 +29,7 @@
         pr  = pull --rebase
         prp = "!git pull --rebase && git push"
         pp  = "!git pull --no-edit && git push"
-        ss  = "!git stash && git pull --rebase --no-edit && git push && git stash apply"
+        ss  = "!git stash && git pull --rebase --no-edit && git push && git stash pop"
 
         co = checkout
         cp = cherry-pick
