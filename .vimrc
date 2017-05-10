@@ -71,7 +71,7 @@ let mapleader="\<SPACE>"
 let maplocalleader = "\\"
 
 " Override plugin options.
-let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$']
+let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$', '__pycache__']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
