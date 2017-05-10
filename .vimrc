@@ -66,6 +66,7 @@ set sessionoptions=buffers,curdir,folds
 set nofoldenable
 set noshowmode
 set lazyredraw
+set mouse=a
 
 let mapleader="\<SPACE>"
 let maplocalleader = "\\"
