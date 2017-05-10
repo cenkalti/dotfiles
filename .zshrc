@@ -212,7 +212,3 @@ function preexec {
 
 precmd_functions+=(precmd)
 preexec_functions+=(preexec)
-
-if [[ -f /usr/local/bin/direnv ]]; then
-  eval "$(direnv hook zsh)"
-fi
