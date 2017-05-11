@@ -103,8 +103,6 @@ let g:go_fmt_command = "goimports"
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
-let g:python_host_prog = '/Users/cenk/.virtualenvs/neovim2/bin/python2.7'
-let g:python3_host_prog = '/Users/cenk/.virtualenvs/neovim3/bin/python3.6'
 
 " Define commands for common operations on files.
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
