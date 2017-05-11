@@ -33,8 +33,8 @@ if [[ -d ~/perl5 ]]; then
     fi
 fi
 
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-    VIRTUALENVWRAPPER_PYTHON=$(which python3)
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
