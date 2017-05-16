@@ -68,6 +68,11 @@ set noshowmode
 set lazyredraw
 set mouse=a
 
+if has ('gui_vimr')
+    set termguicolors
+    set title
+end
+
 let mapleader="\<SPACE>"
 let maplocalleader = "\\"
 
