@@ -1,7 +1,7 @@
 [user]
         name = Cenk Alti
         email = cenkalti@gmail.com
-        signingKey = 2DB2EA6FD1BF1761
+        signingKey = 45173BCEAB1B618F917DFFC12DB2EA6FD1BF1761
 
 [commit]
         gpgsign = true
@@ -125,3 +125,5 @@
 
 [ghi]
         token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
+[gpg]
+	program = /usr/local/bin/gpg2
