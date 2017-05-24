@@ -6,7 +6,6 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'vim-airline/vim-airline-themes'
 
 " General plugins
-Plug 'benekastah/neomake'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
 Plug 'easymotion/vim-easymotion'
@@ -24,6 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
@@ -101,13 +101,16 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'QPWOEIRUTYZMXNCBVGHALSKFJ'
 let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_enter_jump_first = 1
-let g:neomake_open_list = 2
-let g:neomake_python_enabled_makers = ['python', 'pylama', 'mypy']
 let g:startify_change_to_dir = 0
 let g:go_fmt_command = "goimports"
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+let g:ale_open_list = 1
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+let g:ale_linters = {
+\       'python': ['flake8', 'mypy'],
+\}
 
 " Define commands for common operations on files.
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
@@ -117,7 +120,6 @@ let g:NERDTrimTrailingWhitespace = 1
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
-    autocmd BufWritePost * Neomake
     " Quit program if only open buffer is NERDTree.
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Hide quickfix in buffer list.
@@ -141,7 +143,6 @@ nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>g :SignifyRefresh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>m :Neomake<CR>
 " Reveal current buffer in NERDTree window.
 nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
