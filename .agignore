@@ -6,4 +6,4 @@ vendor
 log
 logs
 .cocoapods
-
+node_modules
