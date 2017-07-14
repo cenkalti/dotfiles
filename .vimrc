@@ -194,7 +194,7 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-" Swith buffers with Ctrl-0 and Ctrl-9 keys.
+" Navigate between buffers.
 noremap <C-n> :bnext<CR>
 noremap <C-p> :bprevious<CR>
 
