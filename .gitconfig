@@ -69,6 +69,9 @@
         # Delete remote branch
         dr = push origin --delete
 
+        # Add only untracked files
+        au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
+
 [color]
         ui = true
         pager = true
