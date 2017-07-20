@@ -49,8 +49,6 @@ bindkey "\e[3~" delete-char  # [Delete] - delete forward
 
 setopt interactivecomments  # recognize comments
 
-setopt dotglob  # include hidden files in "*"
-
 # ls colors
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
