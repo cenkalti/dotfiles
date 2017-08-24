@@ -1,3 +1,4 @@
+" Plugins {{{
 " vim-plug plugin manager
 call plug#begin('~/.vim/bundle')
 
@@ -42,16 +43,18 @@ if has('nvim')
 end
 
 call plug#end()
+" }}}
 
-" Set color theme.
+" Color scheme {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
 colorscheme lucius
+" }}}
 
-" Adjust basic vim options.
+" Vim Options {{{
 set hidden
 set number
-set relativenumber
+set norelativenumber
 set splitbelow
 set splitright
 set ignorecase
@@ -63,10 +66,13 @@ set scrolloff=6
 set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
-set nofoldenable
+set foldenable
+set foldmethod=indent
 set noshowmode
+set wildmenu
 set lazyredraw
 set mouse=a
+set modelines=1
 
 if has ('gui_vimr')
     set termguicolors
@@ -75,8 +81,9 @@ end
 
 let mapleader="\<SPACE>"
 let maplocalleader = "\\"
+" }}}
 
-" Override plugin options.
+" Plugin Options {{{
 let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$', '__pycache__']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
@@ -102,7 +109,6 @@ let g:EasyMotion_keys = 'QPWOEIRUTYZMXNCBVGHALSKFJ'
 let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:startify_change_to_dir = 0
-let g:go_fmt_command = "goimports"
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
@@ -112,12 +118,15 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
 \       'python': ['flake8', 'mypy'],
 \}
+" }}}
 
-" Define commands for common operations on files.
+" Custom Commands {{{
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 :command! -range=% -nargs=0 TrimWhitespace execute ':%s/\s\+$//e'
+" }}}
 
+" Autogroup {{{
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
@@ -136,7 +145,9 @@ augroup vimrc
     autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
     autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
 augroup END
+" }}}
 
+" Leader and LocalLeader Key Bindings {{{
 nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
@@ -166,51 +177,6 @@ nnoremap <Leader>e :Ag<space><C-r><C-w><CR>
 nnoremap <LocalLeader>w ciw
 " Change WORD under cursor.
 nnoremap <LocalLeader>W ciW
-
-" Work on vimrc easily.
-nnoremap <F2> :e! $MYVIMRC<CR>
-nnoremap <F4> :source $MYVIMRC<CR>
-
-" Reset file from disk.
-nnoremap <F5> :e!<CR>
-
-" Indent whole file.
-nnoremap <F7> mzgg=G`z
-
-" Save all buffers and close program.
-nnoremap <F8> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
-
-" Abort with non-zero exit code.
-nnoremap <F12> :cq<CR>
-
-" Replace some default motion keys with EasyMotion equivalents.
-map  s <Plug>(easymotion-s2)
-map  f <Plug>(easymotion-fl)
-map  F <Plug>(easymotion-Fl)
-map  t <Plug>(easymotion-tl)
-map  T <Plug>(easymotion-Tl)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-" Navigate between buffers.
-noremap <C-n> :bnext<CR>
-noremap <C-p> :bprevious<CR>
-
-" Highlight word under cursor.
-noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
-
-" Clear highlighted text.
-nnoremap <C-l> :nohlsearch<CR>
-
-" Insert new line without leaving normal mode.
-nmap <C-> mzo<Esc>0d$`z
-
-" Complete with <Tab> key.
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
-
 " Jump to buffer with index number.
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -221,7 +187,95 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+" Close quickfix and location list windows.
+nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
+" Change window with <Leader> + HJKL keys.
+nmap <leader>h <c-w>h
+nmap <leader>j <c-w>j
+nmap <leader>k <c-w>k
+nmap <leader>l <c-w>l
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+" }}}
 
+" Function Key Bindings {{{
+" Work on vimrc easily.
+nnoremap <F2> :e! $MYVIMRC<CR>
+nnoremap <F4> :source $MYVIMRC<CR>
+
+" Reset file from disk.
+nnoremap <F5> :e!<CR>
+
+" Copy all file.
+nnoremap <F6> mzgg"+yG`z
+
+" Indent whole file.
+nnoremap <F7> mzgg=G`z
+
+" Save all buffers and close program.
+nnoremap <F8> :wa<CR><bar>:mksession!<CR><bar>:qa!<CR>
+
+" Abort with non-zero exit code.
+nnoremap <F12> :cq<CR>
+" }}}
+
+" Single Key Bindings {{{
+" Replace some default motion keys with EasyMotion equivalents.
+map  s <Plug>(easymotion-s2)
+map  f <Plug>(easymotion-fl)
+map  F <Plug>(easymotion-Fl)
+map  t <Plug>(easymotion-tl)
+map  T <Plug>(easymotion-Tl)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+" Resize windows with arrow keys.
+nnoremap <left>  <c-w>>
+nnoremap <right> <c-w><
+nnoremap <up>    <c-w>-
+nnoremap <down>  <c-w>+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+" Make Y yank everything from the cursor to the end of the line. This makes Y
+" act more like C or D because by default, Y yanks the current line (i.e. the
+" same as yy).
+noremap Y y$
+" Insert single character without switching into insert mode.
+:nnoremap , :exec "normal i".nr2char(getchar())."\e"<CR>
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+"}}}
+
+" Combination Key Bindings {{{
+" Navigate between buffers.
+noremap <C-n> :bnext<CR>
+noremap <C-p> :bprevious<CR>
+" Highlight word under cursor.
+noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
+" Clear highlighted text.
+nnoremap <C-l> :nohlsearch<CR>
+" Insert new line without leaving normal mode.
+nmap <C-> mzo<Esc>0d$`z
+" Better shortcut for scrolling window.
+nmap <C-j> <C-e>
+nmap <C-k> <C-y>
+"}}}
+
+" Other Key Bindings {{{
+" Complete with <Tab> key.
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
 " Move to items in quickfix and location list.
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
@@ -231,50 +285,8 @@ nnoremap [l :lprevious<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [L :lfirst<cr>
 nnoremap ]L :llast<cr>
-
-" Close quickfix and location list windows.
-nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
-
-" Resize windows with arrow keys.
-nnoremap <left>  <c-w>>
-nnoremap <right> <c-w><
-nnoremap <up>    <c-w>-
-nnoremap <down>  <c-w>+
-
-" Change window with <Leader> + HJKL keys.
-nmap <leader>h <c-w>h
-nmap <leader>j <c-w>j
-nmap <leader>k <c-w>k
-nmap <leader>l <c-w>l
-
-" Better shortcut for scrolling window.
-nmap <C-j> <C-e>
-nmap <C-k> <C-y>
-
-" Quickly select the text that was just pasted. This allows you to, e.g.,
-" indent it after pasting.
+" Highlight last inserted text.
 noremap gV `[v`]
+" }}}
 
-" Stay in visual mode when indenting. You will never have to run gv after
-" performing an indentation.
-vnoremap < <gv
-vnoremap > >gv
-
-" Make Y yank everything from the cursor to the end of the line. This makes Y
-" act more like C or D because by default, Y yanks the current line (i.e. the
-" same as yy).
-noremap Y y$
-
-" Insert single character without switching into insert mode.
-:nnoremap , :exec "normal i".nr2char(getchar())."\e"<CR>
-
-" Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-
-" Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+" vim:foldmethod=marker:foldlevel=0
