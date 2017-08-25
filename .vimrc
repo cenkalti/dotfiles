@@ -116,6 +116,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:ale_open_list = 1
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports skip'
 let g:ale_linters = {
 \       'python': ['flake8', 'mypy'],
 \}
