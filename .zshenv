@@ -41,3 +41,7 @@ fi
 if [[ -f /usr/local/bin/direnv ]]; then
   eval "$(direnv hook zsh)"
 fi
+
+if type docker-machine &> /dev/null; then
+  eval $(docker-machine env default &> /dev/null)
+fi
