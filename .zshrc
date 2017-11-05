@@ -105,8 +105,9 @@ alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')"
 
 # docker aliases
-alias docker-remove-containers="docker rm $(docker ps -a -f status=exited -f status=created -q)"
-alias docker-remove-images="docker rmi $(docker images -f dangling=true -q)"
+alias docker-clean-containers="docker ps -aq -f status=exited -f status=created | xargs docker rm --force"
+alias docker-remove-dangling-images="docker images -qf dangling=true | docker rmi"
+alias docker-remove-dangling-volumes="docker volume ls -qf dangling=true | docker volume rm"
 
 # go aliases
 alias gi="go install"
