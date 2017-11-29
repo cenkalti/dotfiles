@@ -30,7 +30,6 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 
 " Language specific plugins
 Plug 'davidhalter/jedi-vim'
-Plug 'evanmiller/nginx-vim-syntax'
 Plug 'fatih/vim-go'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'lambdatoast/elm.vim'
