@@ -272,8 +272,8 @@ nnoremap <C-l> :nohlsearch<CR>
 " Insert new line without leaving normal mode.
 nmap <C-> mzo<Esc>0d$`z
 " Better shortcut for scrolling window.
-nmap <C-j> <C-e>
-nmap <C-k> <C-y>
+nmap <C-j> 4<C-e>
+nmap <C-k> 4<C-y>
 "}}}
 
 " Other Key Bindings {{{
