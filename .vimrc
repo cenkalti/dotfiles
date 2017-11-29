@@ -151,7 +151,7 @@ augroup vimrc
 augroup END
 " }}}
 
-" Leader and LocalLeader Key Bindings {{{
+" Leader Key Bindings {{{
 nnoremap <Leader>a :Ag<space>
 nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
@@ -178,9 +178,9 @@ nnoremap <Leader>s :call EasyMotion#S(-1, 0, 2)<CR><C-r><C-w><CR><CR><S-n>
 " Search word under cursor with Ag.
 nnoremap <Leader>e :Ag<space><C-r><C-w><CR>
 " Change word under cursor.
-nnoremap <LocalLeader>w ciw
+nnoremap <Leader>w ciw
 " Change WORD under cursor.
-nnoremap <LocalLeader>W ciW
+nnoremap <Leader>W ciW
 " Jump to buffer with index number.
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -191,13 +191,10 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-" Close quickfix and location list windows.
-nnoremap <LocalLeader>c :lclose<CR><BAR>:cclose<CR>
-" Change window with <Leader> + HJKL keys.
-nmap <leader>h <c-w>h
-nmap <leader>j <c-w>j
-nmap <leader>k <c-w>k
-nmap <leader>l <c-w>l
+" Close quickfix list.
+nnoremap <Leader>c :cclose<CR>
+" Close location list.
+nnoremap <LocalLeader>c :lclose<CR>
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -207,6 +204,9 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 " }}}
 
 " Function Key Bindings {{{
