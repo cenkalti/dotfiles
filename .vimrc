@@ -274,6 +274,11 @@ nmap <C-> mzo<Esc>0d$`z
 " Better shortcut for scrolling window.
 nmap <C-j> 4<C-e>
 nmap <C-k> 4<C-y>
+" Better shortcut for navigating windows.
+nmap gh <c-w>h
+nmap gj <c-w>j
+nmap gk <c-w>k
+nmap gl <c-w>l
 "}}}
 
 " Other Key Bindings {{{
