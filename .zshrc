@@ -219,3 +219,6 @@ function preexec {
 
 precmd_functions+=(precmd)
 preexec_functions+=(preexec)
+
+# added by travis gem
+[ -f /Users/cenk/.travis/travis.sh ] && source /Users/cenk/.travis/travis.sh
