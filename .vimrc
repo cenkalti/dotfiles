@@ -15,7 +15,6 @@ Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'qpkorr/vim-bufkill'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
@@ -26,7 +25,6 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
-Plug 'xuyuanp/nerdtree-git-plugin'
 
 " Language specific plugins
 Plug 'davidhalter/jedi-vim'
@@ -84,8 +82,9 @@ let maplocalleader = "\\"
 " }}}
 
 " Plugin Options {{{
-let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$', '__pycache__']
-let NERDTreeMinimalUI = 1
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_list_hide= '^\.,\.swp$,\.pyc$,^__pycache__$,\.egg-info/$'
 let g:signify_update_on_focusgained = 1
 let g:deoplete#enable_at_startup = 1
 let g:jedi#auto_initialization = 0
@@ -134,8 +133,6 @@ let g:ale_go_gometalinter_options = '--fast --vendor --aggregate --disable=malig
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
-    " Quit program if only open buffer is NERDTree.
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
     " Language specific commands with LocalLeader key.
@@ -158,9 +155,7 @@ nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>g :SignifyRefresh<CR>
-nnoremap <Leader>n :NERDTreeToggle<CR>
-" Reveal current buffer in NERDTree window.
-nnoremap <Leader>r :NERDTreeFind<CR>
+nnoremap <Leader>n :Explore<cr>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :BW<CR>
 nnoremap <Leader>D :bd!<CR>
