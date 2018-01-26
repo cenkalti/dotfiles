@@ -14,7 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'qpkorr/vim-bufkill'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
@@ -109,7 +109,6 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:startify_change_to_dir = 0
 let g:NERDSpaceDelims = 1
-let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:ale_open_list = 1
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
