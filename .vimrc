@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " General plugins
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
