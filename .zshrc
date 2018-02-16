@@ -114,6 +114,14 @@ function docker-remove-images-pattern() {
 function docker-remove-container-pattern() {
   docker ps -a | grep "$1" | awk '{print $1}' | xargs docker rm
 }
+function docker-build-and-run() {
+  if [ -n "$1" ]; then
+    name="$1"
+  else
+    name="$(basename $(pwd))"
+  fi
+  docker build -t $name . && docker run -it $name
+}
 
 # go aliases
 alias gi="go install"
