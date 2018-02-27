@@ -1,54 +1,65 @@
 " Plugins {{{
 " vim-plug plugin manager
-call plug#begin('~/.vim/bundle')
+let s:plugindir = '~/.vim/bundle/'
+if !empty(glob('~/.vim/autoload/plug.vim'))
+    call plug#begin(s:plugindir)
 
-" Color schemes
-Plug 'jonathanfilip/vim-lucius'
-Plug 'vim-airline/vim-airline-themes'
+    " Color schemes
+    Plug 'jonathanfilip/vim-lucius'
+    Plug 'vim-airline/vim-airline-themes'
 
-" General plugins
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'chr4/nginx.vim'
-Plug 'christoomey/vim-sort-motion'
-Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-signify'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'qpkorr/vim-bufkill'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'w0rp/ale'
-Plug 'wellle/targets.vim'
-Plug 'xuyuanp/nerdtree-git-plugin'
+    " General plugins
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'chr4/nginx.vim'
+    Plug 'christoomey/vim-sort-motion'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'junegunn/fzf.vim'
+    Plug 'mhinz/vim-signify'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'qpkorr/vim-bufkill'
+    Plug 'scrooloose/nerdtree'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-rsi'
+    Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-surround'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-scripts/BufOnly.vim'
+    Plug 'vim-scripts/ReplaceWithRegister'
+    Plug 'w0rp/ale'
+    Plug 'wellle/targets.vim'
+    Plug 'xuyuanp/nerdtree-git-plugin'
 
-" Language specific plugins
-Plug 'davidhalter/jedi-vim'
-Plug 'fatih/vim-go'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'lambdatoast/elm.vim'
-Plug 'saltstack/salt-vim'
+    " Language specific plugins
+    Plug 'davidhalter/jedi-vim'
+    Plug 'fatih/vim-go'
+    Plug 'glench/vim-jinja2-syntax'
+    Plug 'lambdatoast/elm.vim'
+    Plug 'saltstack/salt-vim'
 
-if has('nvim')
-    Plug 'shougo/deoplete.nvim'
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
-    Plug 'zchee/deoplete-jedi'
-end
+    if has('nvim')
+        Plug 'shougo/deoplete.nvim'
+        Plug 'zchee/deoplete-go', { 'do': 'make'}
+        Plug 'zchee/deoplete-jedi'
+    end
 
-call plug#end()
+    call plug#end()
+endif
+
+function HasPlugin(name)
+    let dir = s:plugindir . a:name
+    return !empty(glob(dir))
+endfunction
+call HasPlugin("foo")
 " }}}
 
 " Color scheme {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
-colorscheme lucius
+if HasPlugin('vim-lucius')
+    colorscheme lucius
+endif
 " }}}
 
 " Vim Options {{{
@@ -232,15 +243,17 @@ nnoremap <F12> :cq<CR>
 
 " Single Key Bindings {{{
 " Replace some default motion keys with EasyMotion equivalents.
-map  s <Plug>(easymotion-s2)
-map  f <Plug>(easymotion-fl)
-map  F <Plug>(easymotion-Fl)
-map  t <Plug>(easymotion-tl)
-map  T <Plug>(easymotion-Tl)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+if HasPlugin('vim-easymotion')
+    map  s <Plug>(easymotion-s2)
+    map  f <Plug>(easymotion-fl)
+    map  F <Plug>(easymotion-Fl)
+    map  t <Plug>(easymotion-tl)
+    map  T <Plug>(easymotion-Tl)
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
+    map  n <Plug>(easymotion-next)
+    map  N <Plug>(easymotion-prev)
+endif
 " Resize windows with arrow keys.
 nnoremap <left>  <c-w>>
 nnoremap <right> <c-w><
