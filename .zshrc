@@ -127,13 +127,6 @@ alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
-# nosecomplete
-function _nosetests() {
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
-}
-complete -o nospace -F _nosetests nosetests
-
 # press ctrl-x then e to edit current command in editor
 autoload edit-command-line
 zle -N edit-command-line
