@@ -127,12 +127,6 @@ alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
-# taskwarrior
-alias t="task"
-alias in='task add +in'
-alias put='task add +putio'
-function tc() { task $1 modify -in +$2 priority:$3 }
-
 # nosecomplete
 function _nosetests() {
     cur="${COMP_WORDS[COMP_CWORD]}"
