@@ -62,6 +62,9 @@ alias u="sudo -iu"
 alias p="ptpython"
 alias h="hostname"
 
+# mmap is faster than read
+alias ag="ag --mmap"
+
 alias myip="curl http://ipecho.net/plain && echo"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
