@@ -136,7 +136,7 @@ endif
 let g:neomake_go_enabled_makers = ['go']
 if executable('gometalinter')
     call add(g:neomake_go_enabled_makers, 'gometalinter')
-    let g:neomake_go_gometalinter_args = ['--fast', '--vendor', '--aggregate', '--disable=maligned', '--disable=aligncheck', '--disable=gocyclo', '--exclude="be unexported"']
+    let g:neomake_go_gometalinter_args = ['--fast', '--vendor', '--aggregate', '--disable=maligned', '--disable=aligncheck', '--disable=gocyclo', '--exclude', 'be unexported']
 endif
 
 call neomake#configure#automake('w')
