@@ -51,7 +51,6 @@ function HasPlugin(name)
     let dir = s:plugindir . a:name
     return !empty(glob(dir))
 endfunction
-call HasPlugin("foo")
 " }}}
 
 " Color scheme {{{
