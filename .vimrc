@@ -16,6 +16,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'junegunn/fzf.vim'
     Plug 'mhinz/vim-signify'
     Plug 'michaeljsmith/vim-indent-object'
+    Plug 'neomake/neomake'
     Plug 'qpkorr/vim-bufkill'
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-commentary'
@@ -27,7 +28,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'vim-airline/vim-airline'
     Plug 'vim-scripts/BufOnly.vim'
     Plug 'vim-scripts/ReplaceWithRegister'
-    Plug 'w0rp/ale'
     Plug 'wellle/targets.vim'
     Plug 'xuyuanp/nerdtree-git-plugin'
 
@@ -122,16 +122,24 @@ let g:EasyMotion_enter_jump_first = 1
 let g:startify_change_to_dir = 0
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
-let g:ale_open_list = 1
-let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports skip'
-let g:ale_linters = {
-\       'python': ['flake8', 'mypy'],
-\       'go': ['gometalinter'],
-\}
-let g:ale_go_gometalinter_options = '--fast --vendor --aggregate --disable=maligned --disable=golint --disable=aligncheck --cyclo-over=20 --exclude="be unexported"'
+let g:neomake_open_list = 2
+
+let g:neomake_python_enabled_makers = ['python']
+if executable('flake8')
+    call add(g:neomake_python_enabled_makers, 'flake8')
+endif
+if executable('mypy')
+    call add(g:neomake_python_enabled_makers, 'mypy')
+    let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-imports=skip']
+endif
+
+let g:neomake_go_enabled_makers = ['go']
+if executable('gometalinter')
+    call add(g:neomake_go_enabled_makers, 'gometalinter')
+    let g:neomake_go_gometalinter_args = ['--fast', '--vendor', '--aggregate', '--disable=maligned', '--disable=aligncheck', '--disable=gocyclo', '--exclude="be unexported"']
+endif
+
+call neomake#configure#automake('w')
 " }}}
 
 " Custom Commands {{{
