@@ -90,6 +90,15 @@ function searchanddelete() {
     LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "/$3/d" {} +
 }
 
+function loop() {
+    seconds="$1"; shift
+    while true; do
+        echo "\$ $@"
+        $@
+        sleep $seconds
+    done
+}
+
 # completion settings
 autoload -U compinit bashcompinit
 compinit
