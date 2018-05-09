@@ -253,10 +253,6 @@ nnoremap <F12> :cq<CR>
 " Replace some default motion keys with EasyMotion equivalents.
 if HasPlugin('vim-easymotion')
     map  s <Plug>(easymotion-s2)
-    map  f <Plug>(easymotion-fl)
-    map  F <Plug>(easymotion-Fl)
-    map  t <Plug>(easymotion-tl)
-    map  T <Plug>(easymotion-Tl)
     map  / <Plug>(easymotion-sn)
     omap / <Plug>(easymotion-tn)
     map  n <Plug>(easymotion-next)
