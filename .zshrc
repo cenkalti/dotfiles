@@ -76,6 +76,9 @@ alias remove-old-files="find . -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf '{
 
 alias https='http --default-scheme=https'
 
+alias vu='vagrant up && vagrant ssh'
+alias vs='vagrant suspend && exit'
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
