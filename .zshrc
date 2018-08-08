@@ -216,7 +216,7 @@ function preexec {
     )
   else
     # cmd name only, or if this is sudo or ssh, the next cmd
-    local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|-*)]:gs/%/%%}
+    local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|mt|-*)]:gs/%/%%}
 
     # show current dir on tab when vim is open
     if [[ $CMD == vi* ]]; then
