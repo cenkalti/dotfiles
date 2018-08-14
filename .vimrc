@@ -9,6 +9,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'vim-airline/vim-airline-themes'
 
     " General plugins
+    Plug 'blueyed/vim-qf_resize'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'chr4/nginx.vim'
     Plug 'christoomey/vim-sort-motion'
