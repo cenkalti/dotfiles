@@ -79,6 +79,8 @@ alias https='http --default-scheme=https'
 alias vu='vagrant up && vagrant ssh'
 alias vs='vagrant suspend && exit'
 
+alias cloc='cloc --exclude-dir vendor'
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
