@@ -73,7 +73,7 @@
         au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
 
 [color]
-        ui = true
+	ui = true
         pager = true
 
 [color "branch"]
@@ -82,11 +82,12 @@
         remote = green
 
 [color "diff"]
-        meta = yellow bold
-        frag = magenta bold
-        old = red bold
-        new = green bold
-        whitespace = red reverse
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+	commit = yellow bold
 
 [color "status"]
         added = green
@@ -97,7 +98,7 @@
         editor = vim
         excludesfile = ~/.gitignore_global
         autocrlf = false
-        pager = less -RS
+        pager = "diff-so-fancy | less --tabs=4 -RFX"
 
 [clean]
         requireForce = false
@@ -114,15 +115,8 @@
         algorithm = patience
         compactionHeuristic = true
 
-[pager]
-        diff = "diff-so-fancy | less --tabs=1,5 -RS"
-        show = "diff-so-fancy | less --tabs=1,5 -RS"
-
 [credential]
         helper = osxkeychain
-
-[interactive]
-        diffFilter = "diff-so-fancy | less --tabs=4 -RFX"
 
 [github]
         user = cenk
@@ -131,3 +125,8 @@
         token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
 [gpg]
 	program = /usr/local/bin/gpg2
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
