@@ -18,3 +18,4 @@ Session.vim
 .vscode/
 .mypy_cache/
 .cache/
+xcuserdata/
