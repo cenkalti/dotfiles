@@ -140,7 +140,9 @@ if executable('gometalinter')
     let g:neomake_go_gometalinter_args = ['--fast', '--vendor', '--disable=maligned', '--disable=aligncheck', '--disable=gocyclo', '--exclude', 'be unexported.*golint', '--exclude', 'Errors unhandled.*gosec']
 endif
 
-call neomake#configure#automake('w')
+if HasPlugin('neomake')
+    call neomake#configure#automake('w')
+endif
 " }}}
 
 " Custom Commands {{{
