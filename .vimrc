@@ -124,6 +124,9 @@ let g:startify_change_to_dir = 0
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:neomake_open_list = 2
+let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ }
 
 let g:neomake_python_enabled_makers = ['python']
 if executable('flake8')
