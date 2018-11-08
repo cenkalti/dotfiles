@@ -60,14 +60,15 @@
         unassume = update-index --no-assume-unchanged
         assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
-        # Delete local branch
-        db = branch -D
-
         # Delete local branches that are merged into master
         dm = "!git branch --merged | grep -v '*' | grep -v 'master$' | xargs -n 1 git branch -d"
 
+        # Delete local brach
+        dl = branch -D
         # Delete remote branch
         dr = push origin --delete
+        # Delete local & remote branch
+        db = "!git dl $1 && git dr $1"
 
         # Add only untracked files
         au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
