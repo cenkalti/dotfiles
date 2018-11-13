@@ -282,6 +282,8 @@ noremap Y y$
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+" Delete matching braces
+nnoremap X %x``x
 "}}}
 
 " Combination Key Bindings {{{
