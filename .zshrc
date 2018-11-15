@@ -107,6 +107,8 @@ function loop() {
     done
 }
 
+function run-until-error() { while $@; do :; done; say "command is finished" }
+
 # completion settings
 autoload -U compinit bashcompinit
 compinit
