@@ -56,7 +56,7 @@ endfunction
 
 " Color scheme {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=light
+set background=dark
 if HasPlugin('vim-lucius')
     colorscheme lucius
 endif
