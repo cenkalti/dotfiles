@@ -17,7 +17,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'junegunn/fzf.vim'
     Plug 'mhinz/vim-signify'
     Plug 'michaeljsmith/vim-indent-object'
-    Plug 'neomake/neomake'
+    Plug 'neomake/neomake', { 'commit': 'e464202cfb0ea4d09ef359b12f3a489f51cfd471' }
     Plug 'qpkorr/vim-bufkill'
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-commentary'
