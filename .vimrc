@@ -207,6 +207,7 @@ nnoremap <Leader>r :NERDTreeFind<CR>
 nnoremap <Leader>o :BTags<CR>
 nnoremap <Leader>d :BW<CR>
 nnoremap <Leader>D :bd!<CR>
+nnoremap <Leader>Q :qa!<CR>
 " Wipe all buffers.
 nnoremap <Leader>q :%bd<CR>
 " Wipe all buffers other than current one.
