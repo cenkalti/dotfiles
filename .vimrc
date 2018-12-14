@@ -17,7 +17,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'junegunn/fzf.vim'
     Plug 'mhinz/vim-signify'
     Plug 'michaeljsmith/vim-indent-object'
-    Plug 'neomake/neomake'
     Plug 'qpkorr/vim-bufkill'
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-commentary'
@@ -44,6 +43,9 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
         Plug 'zchee/deoplete-go', { 'do': 'make'}
         Plug 'zchee/deoplete-jedi'
     end
+
+    " https://github.com/neomake/neomake/issues/2175
+    Plug 'neomake/neomake'
 
     call plug#end()
 endif
