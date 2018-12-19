@@ -15,9 +15,6 @@ export EDITOR=vim
 export PAGER=less
 export LESS="-i"  # ignore case
 
-# use emacs key bindings
-bindkey -e
-
 # Customize prompt
 function virtualenv_info {
   if [ -n "$VIRTUAL_ENV" ]; then
@@ -168,8 +165,8 @@ function man() {
 }
 
 zmodload zsh/terminfo
-bindkey -M emacs '^P' history-beginning-search-backward
-bindkey -M emacs '^N' history-beginning-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 
 if [[ -f ~/.zshrc_private ]]; then
   source ~/.zshrc_private
