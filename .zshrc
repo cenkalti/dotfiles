@@ -106,6 +106,47 @@ function loop() {
 
 function run-until-error() { while $@; do :; done; say "command is finished" }
 
+# Git Push Tag helper
+# https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
+function gpt() {
+  # get bump level
+  level="$1"; shift
+
+  # get highest tag number
+  version=$(git describe --abbrev=0 --tags | tr -d v)
+
+  # split from dots
+  parts=(${(s:.:)version})
+
+  #get number parts and increase last one by 1
+  VNUM1=${parts[1]}
+  VNUM2=${parts[2]}
+  VNUM3=${parts[3]}
+
+  case "$level" in
+    "major")
+      VNUM1=$((VNUM1+1))
+      ;;
+    "minor")
+      VNUM2=$((VNUM2+1))
+      ;;
+    "patch")
+      VNUM3=$((VNUM3+1))
+      ;;
+    *)
+      echo "Missing argument. (major, minor or patch)"
+      return -1
+  esac
+
+  #create new tag
+  new_tag="$VNUM1.$VNUM2.$VNUM3"
+
+  read \?"Press enter for tagging as $new_tag and push to remote..."
+
+  git tag $new_tag
+  git push --tags
+}
+
 # completion settings
 autoload -U compinit bashcompinit
 compinit
