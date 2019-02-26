@@ -71,7 +71,7 @@
         db = "!git dl $1 && git dr $1"
 
         # Delete tag from local and remote
-        dt = "!git push --delete origin $1"
+        dt = "!git tag -d $1 && git push --delete origin"
 
         # Add only untracked files
         au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
