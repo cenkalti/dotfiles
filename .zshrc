@@ -126,9 +126,12 @@ function gpt() {
   case "$level" in
     "major")
       VNUM1=$((VNUM1+1))
+      VNUM2=0
+      VNUM3=0
       ;;
     "minor")
       VNUM2=$((VNUM2+1))
+      VNUM3=0
       ;;
     "patch")
       VNUM3=$((VNUM3+1))
@@ -139,7 +142,7 @@ function gpt() {
   esac
 
   #create new tag
-  new_tag="$VNUM1.$VNUM2.$VNUM3"
+  new_tag="v$VNUM1.$VNUM2.$VNUM3"
 
   read \?"Press enter for tagging as $new_tag and push to remote..."
 
