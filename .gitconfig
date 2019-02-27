@@ -53,6 +53,9 @@
         # Show commits between master and the current branch
         lrm  = "!git log --graph --oneline --left-right --cherry-pick master...`git rev-parse HEAD`"
 
+        # Show commits in last week
+        lw = "!git log --since='8 days ago' --author=cenkalti --pretty='format:%cd %Cblue%h%Creset %s' --date='format:%a %d %b' --reverse"
+
         xxx  = reset --hard
         prev = reset HEAD^
 
