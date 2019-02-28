@@ -191,6 +191,8 @@ alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
+alias github-remove-draft-releases="hub release -f '%T (%S) %n' --include-drafts | grep ' (draft)' | awk '{print $1}' | xargs -t -n1 hub release delete"
+
 # press ctrl-x then e to edit current command in editor
 autoload edit-command-line
 zle -N edit-command-line
