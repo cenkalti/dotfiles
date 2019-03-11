@@ -50,7 +50,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     call plug#end()
 endif
 
-function HasPlugin(name)
+function! HasPlugin(name)
     let dir = s:plugindir . a:name
     return !empty(glob(dir))
 endfunction
