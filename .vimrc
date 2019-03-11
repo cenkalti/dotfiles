@@ -140,12 +140,6 @@ if executable('mypy')
     let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-imports=skip']
 endif
 
-let g:neomake_go_enabled_makers = ['go']
-if executable('gometalinter')
-    call add(g:neomake_go_enabled_makers, 'gometalinter')
-    let g:neomake_go_gometalinter_args = ['--fast', '--vendor', '--disable=maligned', '--disable=aligncheck', '--disable=gocyclo', '--exclude', 'be unexported.*golint', '--exclude', 'Errors unhandled.*gosec']
-endif
-
 if HasPlugin('neomake')
     call neomake#configure#automake('w')
 endif
