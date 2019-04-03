@@ -37,10 +37,14 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'glench/vim-jinja2-syntax'
     Plug 'lambdatoast/elm.vim'
     Plug 'saltstack/salt-vim'
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
 
     if has('nvim')
-        Plug 'shougo/deoplete.nvim'
-        Plug 'zchee/deoplete-go', { 'do': 'make'}
+        Plug 'shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+        Plug 'zchee/deoplete-go', { 'do': 'make' }
         Plug 'zchee/deoplete-jedi'
     end
 
@@ -130,6 +134,9 @@ let g:neomake_open_list = 2
 let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
+let g:LanguageClient_serverCommands = {
+    \ 'go': [glob('~/go/bin/gopls')],
+    \ }
 
 let g:neomake_python_enabled_makers = ['python']
 if executable('flake8')
@@ -183,7 +190,8 @@ augroup vimrc
     autocmd FileType python map <buffer> <LocalLeader>r :call jedi#rename()<CR>
     autocmd FileType python map <buffer> <LocalLeader>y :0,$!yapf<CR>
     autocmd FileType python setlocal formatprg=yapf
-    autocmd FileType go map <buffer> <LocalLeader>d :GoDef<CR>
+    autocmd FileType go map <buffer> <LocalLeader>d :call LanguageClient#textDocument_definition()<CR>
+    autocmd FileType go map <buffer> <LocalLeader>t :call LanguageClient#textDocument_typeDefinition()<CR>
     autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
     autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
 augroup END
