@@ -134,6 +134,7 @@ let g:neomake_open_list = 2
 let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'go': [glob('~/go/bin/gopls')],
     \ }
