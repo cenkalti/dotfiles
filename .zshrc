@@ -171,9 +171,10 @@ alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')"
 
 # docker aliases
-alias docker-clean-containers="docker ps -aq -f status=exited -f status=created | xargs docker rm --force"
+alias docker-remove-stopped-containers="docker ps -aq -f status=exited -f status=created | xargs docker rm --force"
 alias docker-remove-dangling-images="docker images -qf dangling=true | xargs docker rmi"
 alias docker-remove-dangling-volumes="docker volume ls -qf dangling=true | xargs docker volume rm"
+alias docker-clean="docker-remove-stopped-containers && docker-remove-dangling-volumes && docker-remove-dangling-images"
 function docker-remove-images-pattern() {
   docker images | grep "$1" | awk '{print $1":"$2}' | xargs docker rmi
 }
