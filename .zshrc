@@ -80,6 +80,8 @@ alias cloc='cloc --exclude-dir vendor'
 
 alias todo="ag TODO | tr -d '\t' | sed -e 's/\/\///' | grep --color TODO"
 
+alias nvims="nvim -S Session.vim"
+
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
 
