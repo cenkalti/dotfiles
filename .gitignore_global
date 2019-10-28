@@ -17,5 +17,6 @@ Session.vim
 .direnv/
 .vscode/
 .mypy_cache/
+.pytest_cache/
 .cache/
 xcuserdata/
