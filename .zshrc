@@ -274,6 +274,9 @@ function preexec {
     if [[ $CMD == vi* ]]; then
       CMD="$CMD (%m:%1~)"
     fi
+    if [[ $CMD == nvim* ]]; then
+      CMD="$CMD (%m:%1~)"
+    fi
 
     set_title '$CMD'
   fi
