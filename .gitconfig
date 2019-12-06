@@ -22,7 +22,7 @@
         edit = commit --amend
 
         # Amend the changes into previos commit
-        amend = commit --amend -C HEAD
+        amend = commit --amend --date="now" -C HEAD
 
         # Dangerous commands
         #
