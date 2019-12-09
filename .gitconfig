@@ -14,7 +14,7 @@
         stu = status -uno
 
         ci = commit -m
-        ce = commit --allow-empty-message -m ''
+        ce = "!f() { git commit --allow-empty --allow-empty-message -m \"$1\"; }; f"
         pom = pull origin master --no-edit
         pomp = "!git pull origin master --no-edit && git push"
 
