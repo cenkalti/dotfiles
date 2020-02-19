@@ -14,6 +14,7 @@ select-word-style bash
 export EDITOR=vim
 export PAGER=less
 export LESS="-i"  # ignore case
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Customize prompt
 function virtualenv_info {
