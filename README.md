@@ -4,7 +4,8 @@
 
 Clone using following command:
 ```sh
-REPO="git@github.com:cenkalti/dotfiles" curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
+export REPO="git@github.com:cenkalti/dotfiles"
+curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
 ```
 
 Add this to your `.bashrc`/`.zshrc` file:
