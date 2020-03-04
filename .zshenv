@@ -24,6 +24,10 @@ if type go &> /dev/null; then
     export PATH=$(go env GOPATH)/bin:$(go env GOROOT)/bin:$PATH
 fi
 
+if [[ -d /usr/local/opt/mysql-client/bin ]]; then
+    export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+fi
+
 if [[ -d ~/perl5 ]]; then
     if type perl &> /dev/null; then
         eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
