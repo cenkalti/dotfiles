@@ -35,7 +35,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'davidhalter/jedi-vim'
     Plug 'fatih/vim-go'
     Plug 'glench/vim-jinja2-syntax'
-    Plug 'lambdatoast/elm.vim'
     Plug 'saltstack/salt-vim'
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
