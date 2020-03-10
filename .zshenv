@@ -20,6 +20,10 @@ if [[ -d $HOME/.cabal/bin ]]; then
     export PATH=$PATH:$HOME/.cabal/bin
 fi
 
+if [[ -d /usr/local/opt/awscli@1 ]]; then
+    export PATH=$PATH:/usr/local/opt/awscli@1/bin
+fi
+
 if type go &> /dev/null; then
     export PATH=$(go env GOPATH)/bin:$(go env GOROOT)/bin:$PATH
 fi
