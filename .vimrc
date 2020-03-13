@@ -36,6 +36,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'fatih/vim-go'
     Plug 'glench/vim-jinja2-syntax'
     Plug 'saltstack/salt-vim'
+    Plug 'cespare/vim-toml'
 
     " Neovim specific plugins
     if has('nvim')
