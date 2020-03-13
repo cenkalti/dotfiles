@@ -32,12 +32,6 @@ if [[ -d /usr/local/opt/mysql-client/bin ]]; then
     export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 fi
 
-if [[ -d ~/perl5 ]]; then
-    if type perl &> /dev/null; then
-        eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib);
-    fi
-fi
-
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
