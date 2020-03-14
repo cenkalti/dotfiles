@@ -153,11 +153,6 @@ function gpt() {
   git push --tags
 }
 
-# completion settings
-autoload -U compinit bashcompinit
-compinit
-bashcompinit
-
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=2
 
@@ -289,9 +284,3 @@ preexec_functions+=(preexec)
 
 # added by travis gem
 [ -f /Users/cenk/.travis/travis.sh ] && source /Users/cenk/.travis/travis.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/cenk/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/cenk/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/cenk/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/cenk/google-cloud-sdk/completion.zsh.inc'; fi
