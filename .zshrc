@@ -8,6 +8,8 @@
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
+emulate sh -c 'source /etc/profile'
+
 autoload -U select-word-style
 select-word-style bash
 
