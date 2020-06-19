@@ -70,8 +70,6 @@
         dl = branch -D
         # Delete remote branch
         dr = push origin --delete
-        # Delete local & remote branch
-        db = "!git dl $1 && git dr $1"
 
         # Delete tag from local and remote
         dt = "!git tag -d $1 && git push --delete origin"
