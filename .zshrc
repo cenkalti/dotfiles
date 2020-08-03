@@ -66,7 +66,8 @@ alias h="hostname"
 # mmap is faster than read
 alias ag="ag --mmap"
 
-alias myip="curl http://ipecho.net/plain && echo"
+alias myip="curl http://ipinfo.io/ip"
+alias mycity="curl http://ipinfo.io/city"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
