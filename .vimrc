@@ -40,7 +40,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 
     " Neovim specific plugins
     if has('nvim')
-        Plug 'shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+        Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'zchee/deoplete-go', { 'do': 'make' }
         Plug 'zchee/deoplete-jedi'
     end
