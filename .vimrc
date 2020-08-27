@@ -145,6 +145,11 @@ if executable('mypy')
     let g:neomake_python_mypy_args = ['--ignore-missing-imports', '--follow-imports=skip']
 endif
 
+let g:neomake_typescript_enabled_makers = ['tsc']
+if executable('eslint')
+    call add(g:neomake_typescript_enabled_makers, 'eslint')
+endif
+
 if HasPlugin('neomake')
     call neomake#configure#automake('w')
 endif
