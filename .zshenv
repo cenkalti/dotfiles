@@ -12,6 +12,7 @@ if [[ -d $HOME/.gem/ruby/1.9/bin ]]; then
     export PATH=$PATH:$HOME/.gem/ruby/1.9/bin
 fi
 
+PATH=$PWD/node_modules/.bin:$PATH
 if [[ -d $HOME/node_modules/.bin ]]; then
     export PATH=$PATH:$HOME/node_modules/.bin
 fi
