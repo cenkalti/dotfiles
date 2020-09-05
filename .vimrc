@@ -211,6 +211,7 @@ augroup vimrc
     autocmd FileType go map <buffer> <LocalLeader>t :GoDefType<CR>
     autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
     autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
+    autocmd FileType typescript map <buffer> <LocalLeader>d :TSDef<CR>
     " Remove lines from quick fix window
     autocmd BufWinEnter quickfix if &bt ==# 'quickfix'
     autocmd BufWinEnter quickfix    nnoremap <silent><buffer>dd :call QFdelete(bufnr())<CR>
