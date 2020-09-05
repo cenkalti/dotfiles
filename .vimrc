@@ -79,7 +79,7 @@ set smartcase
 set colorcolumn=80,120
 set synmaxcol=240
 set fillchars="vert: "  " Hide vertical fill characters between windows.
-set scrolloff=6
+set scrolloff=5
 set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
