@@ -136,7 +136,7 @@ let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
 
-let g:neomake_python_enabled_makers = ['python']
+let g:neomake_python_enabled_makers = ['python3']
 if executable('flake8')
     call add(g:neomake_python_enabled_makers, 'flake8')
 endif
