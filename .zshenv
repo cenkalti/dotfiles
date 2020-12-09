@@ -33,6 +33,10 @@ if [[ -d /usr/local/opt/mysql-client/bin ]]; then
     export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 fi
 
+if [[ -d $HOME/.toolbox/bin ]]; then
+    export PATH="$HOME/.toolbox/bin:$PATH"
+fi
+
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
