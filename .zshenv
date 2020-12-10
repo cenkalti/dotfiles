@@ -8,6 +8,11 @@ if [[ -f /usr/local/bin/brew ]]; then
     export PATH=$PATH:/usr/local/bin
 fi
 
+if [[ -f /home/linuxbrew/.linuxbrew/bin ]]; then
+    export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+    export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin
+fi
+
 if [[ -d $HOME/.gem/ruby/1.9/bin ]]; then
     export PATH=$PATH:$HOME/.gem/ruby/1.9/bin
 fi
