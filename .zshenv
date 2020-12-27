@@ -34,6 +34,10 @@ if type go &> /dev/null; then
     export PATH=$(go env GOPATH)/bin:$(go env GOROOT)/bin:$PATH
 fi
 
+if [[ -d $HOME/go/bin ]] then
+    export PATH=$HOME/go/bin:$PATH
+fi
+
 if [[ -d /usr/local/opt/mysql-client/bin ]]; then
     export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 fi
