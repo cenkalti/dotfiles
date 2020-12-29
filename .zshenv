@@ -54,3 +54,6 @@ fi
 if [[ -f /usr/local/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
