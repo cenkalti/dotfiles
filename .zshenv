@@ -3,6 +3,11 @@ export LANG=en_US.UTF-8
 
 export CDPATH=$HOME:$HOME/projects
 
+if [[ -d /opt/homebrew ]]; then
+    export PATH=$PATH:/opt/homebrew/sbin
+    export PATH=$PATH:/opt/homebrew/bin
+fi
+
 if [[ -f /usr/local/bin/brew ]]; then
     export PATH=$PATH:/usr/local/sbin
     export PATH=$PATH:/usr/local/bin
