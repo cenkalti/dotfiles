@@ -51,7 +51,7 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-if [[ -f /usr/local/bin/direnv ]]; then
+if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
