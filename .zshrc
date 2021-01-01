@@ -1,14 +1,12 @@
 # zsh will read commands in order from:
 #
-# $ZDOTDIR/.zshenv
-# $ZDOTDIR/.zprofile
-# $ZDOTDIR/.zshrc
-# $ZDOTDIR/.zlogin
-# $ZDOTDIR/.zlogout
+# $ZDOTDIR/.zshenv    # sourced in all invocations
+# $ZDOTDIR/.zprofile  # sourced in login shells, before zshrc
+# $ZDOTDIR/.zshrc     # sourced in interactive shells
+# $ZDOTDIR/.zlogin    # sourced in login shells, after zshrc
+# $ZDOTDIR/.zlogout   # sourced in login shells, on logout
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
-
-emulate sh -c 'source /etc/profile'
 
 autoload -U select-word-style
 select-word-style bash
