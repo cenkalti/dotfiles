@@ -4,35 +4,19 @@ export LANG=en_US.UTF-8
 export CDPATH=$HOME:$HOME/projects
 
 if [[ -d /opt/homebrew ]]; then
-    export PATH=$PATH:/opt/homebrew/sbin
-    export PATH=$PATH:/opt/homebrew/bin
-fi
-
-if [[ -f /usr/local/bin/brew ]]; then
-    export PATH=$PATH:/usr/local/sbin
-    export PATH=$PATH:/usr/local/bin
-fi
-
-if [[ -f /home/linuxbrew/.linuxbrew/bin ]]; then
-    export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
-    export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin
-fi
-
-if [[ -d $HOME/.gem/ruby/1.9/bin ]]; then
-    export PATH=$PATH:$HOME/.gem/ruby/1.9/bin
+    export PATH=/opt/homebrew/sbin:$PATH
+    export PATH=/opt/homebrew/bin:$PATH
+elif [[ -f /usr/local/bin/brew ]]; then
+    export PATH=/usr/local/sbin:$PATH
+    export PATH=/usr/local/bin:$PATH
+elif [[ -f /home/linuxbrew/.linuxbrew/bin ]]; then
+    export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+    export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
 fi
 
 PATH=$PWD/node_modules/.bin:$PATH
 if [[ -d $HOME/node_modules/.bin ]]; then
-    export PATH=$PATH:$HOME/node_modules/.bin
-fi
-
-if [[ -d $HOME/.cabal/bin ]]; then
-    export PATH=$PATH:$HOME/.cabal/bin
-fi
-
-if [[ -d /usr/local/opt/awscli@1 ]]; then
-    export PATH=$PATH:/usr/local/opt/awscli@1/bin
+    export PATH=/node_modules/.bin:$PATH
 fi
 
 if type go &> /dev/null; then
@@ -40,20 +24,11 @@ if type go &> /dev/null; then
 fi
 
 if [[ -d $HOME/go/bin ]] then
-    export PATH=$HOME/go/bin:$PATH
-fi
-
-if [[ -d /usr/local/opt/mysql-client/bin ]]; then
-    export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+    export PATH=/go/bin:$PATH
 fi
 
 if [[ -d $HOME/.toolbox/bin ]]; then
     export PATH="$HOME/.toolbox/bin:$PATH"
-fi
-
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 if type direnv &> /dev/null; then
