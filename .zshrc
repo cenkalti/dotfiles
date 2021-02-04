@@ -216,12 +216,6 @@ zmodload zsh/terminfo
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
-if [[ -f ~/.zshrc_private ]]; then
-  source ~/.zshrc_private
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 function set_title {
   emulate -L zsh
   setopt prompt_subst
@@ -284,5 +278,10 @@ function preexec {
 precmd_functions+=(precmd)
 preexec_functions+=(preexec)
 
-# added by travis gem
-[ -f /Users/cenk/.travis/travis.sh ] && source /Users/cenk/.travis/travis.sh
+if [[ -f ~/.zshrc_private ]]; then
+  source ~/.zshrc_private
+fi
+
+################################################################################
+# Anything added after this line must go into .zprofile or .zshrc_private file.
+################################################################################
