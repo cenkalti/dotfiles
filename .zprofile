@@ -5,7 +5,7 @@ if [[ -d /opt/homebrew ]]; then  # m1 macos
     export PATH=/opt/homebrew/sbin:$PATH
     export PATH=/opt/homebrew/bin:$PATH
 elif [[ -f /usr/local/bin/brew ]]; then  # intel macos
-    export BREW_PREFIX=/usr/local/bin
+    export BREW_PREFIX=/usr/local
     export PATH=/usr/local/sbin:$PATH
     export PATH=/usr/local/bin:$PATH
 elif [[ -d /home/linuxbrew/.linuxbrew ]]; then  # linux
