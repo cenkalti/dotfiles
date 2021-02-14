@@ -56,5 +56,7 @@ function lazynvm() {
 if [[ ! "$PATH" == *$BREW_PREFIX/opt/fzf/bin* ]]; then
     export PATH="${PATH:+${PATH}:}$BREW_PREFIX/opt/fzf/bin"
     [[ $- == *i* ]] && source "$BREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
-    source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+    if [[ -f $BREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
+        source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+    fi
 fi
