@@ -1,5 +1,5 @@
 #!/bin/bash -e
-tempdir=$(mktemp -d -t dotfiles)
+tempdir=$(mktemp -d -t dotfiles.XXX)
 git clone --separate-git-dir=$HOME/.dotfiles $REPO $tempdir
 rm -r $tempdir
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config status.showUntrackedFiles no
