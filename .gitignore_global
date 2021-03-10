@@ -21,3 +21,6 @@ Session.vim
 .pytest_cache/
 .cache/
 xcuserdata/
+/build
+build/
+.classpath
