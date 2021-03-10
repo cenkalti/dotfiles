@@ -8,3 +8,6 @@ logs
 .cocoapods
 node_modules
 Pods
+build
+env
+.bemol

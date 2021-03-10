@@ -16,6 +16,7 @@ Session.vim
 .envrc
 .direnv/
 .vscode/
+.bemol/
 .mypy_cache/
 .pytest_cache/
 .cache/
