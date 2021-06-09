@@ -14,6 +14,10 @@ elif [[ -d /home/linuxbrew/.linuxbrew ]]; then  # linux
     export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
 fi
 
+if [[ -d /opt/homebrew/opt/mysql-client/bin ]]; then
+    export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+fi
+
 if [[ -d $HOME/go/bin ]]; then
     export PATH=$HOME/go/bin:$PATH
 fi
