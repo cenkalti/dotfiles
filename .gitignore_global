@@ -25,3 +25,4 @@ xcuserdata/
 build/
 .classpath
 .factorypath
+node_modules/
