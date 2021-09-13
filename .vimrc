@@ -38,7 +38,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'saltstack/salt-vim'
     Plug 'cespare/vim-toml'
     Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
     " Neovim specific plugins
     if has('nvim')
