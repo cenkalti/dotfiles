@@ -14,8 +14,8 @@ elif [[ -d /home/linuxbrew/.linuxbrew ]]; then  # linux
     export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
 fi
 
-if [[ -d /opt/homebrew/opt/mysql-client/bin ]]; then
-    export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+if [[ -d "$BREW_PREFIX/opt/mysql-client/bin" ]]; then
+    export PATH="$BREW_PREFIX/opt/mysql-client/bin:$PATH"
 fi
 
 if [[ -d $HOME/go/bin ]]; then
@@ -38,24 +38,9 @@ if [[ -s "$HOME/.travis/travis.sh" ]]; then
     source "$HOME.travis/travis.sh"
 fi
 
-function nvm()  { lazynvm; nvm  $@ }
-function node() { lazynvm; node $@ }
-function npm()  { lazynvm; npm  $@ }
-function npx()  { lazynvm; npx  $@ }
-function lazynvm() {
-    unset -f nvm node npm npx
-    if [[ -d "$HOME/.nvm" ]]; then
-        export NVM_DIR="$HOME/.nvm"
-    elif [[ -d "/usr/local/opt/nvm" ]]; then
-        export NVM_DIR="/usr/local/opt/nvm"
-    elif [[ -d "/opt/homebrew/opt/nvm" ]]; then
-        export NVM_DIR="/opt/homebrew/opt/nvm"
-    fi
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-    if [ -f "$NVM_DIR/bash_completion" ]; then
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-    fi
-}
+if [[ -d "$BREW_PREFIX/opt/node@14/bin" ]]; then
+    export PATH="$BREW_PREFIX/opt/node@14/bin:$PATH"
+fi
 
 if [[ ! "$PATH" == *$BREW_PREFIX/opt/fzf/bin* ]]; then
     export PATH="${PATH:+${PATH}:}$BREW_PREFIX/opt/fzf/bin"
