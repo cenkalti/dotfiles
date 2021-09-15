@@ -11,7 +11,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     " General plugins
     Plug 'blueyed/vim-qf_resize'
     Plug 'bronson/vim-trailing-whitespace'
-    Plug 'chr4/nginx.vim'
     Plug 'christoomey/vim-sort-motion'
     Plug 'easymotion/vim-easymotion'
     Plug 'junegunn/fzf.vim'
@@ -38,6 +37,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
     Plug 'saltstack/salt-vim'
     Plug 'cespare/vim-toml'
     Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'chr4/nginx.vim'
 
     " Neovim specific plugins
     if has('nvim')
