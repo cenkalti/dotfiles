@@ -2,75 +2,65 @@ source ~/.vimrc
 
 " Plugins {{{
 " vim-plug plugin manager
-let s:plugindir = '~/.vim/bundle/'
-if !empty(glob('~/.vim/autoload/plug.vim'))
-    call plug#begin(s:plugindir)
+call plug#begin(stdpath('data') . '/plugged')
 
-    " Color schemes
-    Plug 'jonathanfilip/vim-lucius'
-    Plug 'vim-airline/vim-airline-themes'
+" Color schemes
+Plug 'jonathanfilip/vim-lucius'
+Plug 'vim-airline/vim-airline-themes'
 
-    " General plugins
-    Plug 'blueyed/vim-qf_resize'
-    Plug 'bronson/vim-trailing-whitespace'
-    Plug 'christoomey/vim-sort-motion'
-    Plug 'easymotion/vim-easymotion'
-    Plug 'junegunn/fzf.vim'
-    Plug 'mhinz/vim-signify'
-    Plug 'michaeljsmith/vim-indent-object'
-    Plug 'qpkorr/vim-bufkill'
-    Plug 'scrooloose/nerdtree'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-rsi'
-    Plug 'tpope/vim-sleuth'
-    Plug 'tpope/vim-surround'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-scripts/BufOnly.vim'
-    Plug 'vim-scripts/ReplaceWithRegister'
-    Plug 'wellle/targets.vim'
-    Plug 'xuyuanp/nerdtree-git-plugin'
+" General plugins
+Plug 'blueyed/vim-qf_resize'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'christoomey/vim-sort-motion'
+Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-signify'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'qpkorr/vim-bufkill'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'wellle/targets.vim'
+Plug 'xuyuanp/nerdtree-git-plugin'
 
-    " Language syntax plugins
-    Plug 'glench/vim-jinja2-syntax'
-    Plug 'saltstack/salt-vim'
-    Plug 'cespare/vim-toml'
-    Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'chr4/nginx.vim'
+" Language syntax plugins
+Plug 'glench/vim-jinja2-syntax'
+Plug 'saltstack/salt-vim'
+Plug 'cespare/vim-toml'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'chr4/nginx.vim'
 
-    " Language Server Protocol configurations
-    Plug 'neovim/nvim-lspconfig'
-    " Collection of configurations for built-in LSP client
-    Plug 'neovim/nvim-lspconfig'
-    " Autocompletion plugin
-    Plug 'hrsh7th/nvim-cmp'
-    " LSP source for nvim-cmp
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    " Snippets source for nvim-cmp
-    Plug 'saadparwaiz1/cmp_luasnip'
-    " Snippets plugin
-    Plug 'L3MON4D3/LuaSnip'
+" Language Server Protocol configurations
+Plug 'neovim/nvim-lspconfig'
+" Collection of configurations for built-in LSP client
+Plug 'neovim/nvim-lspconfig'
+" Autocompletion plugin
+Plug 'hrsh7th/nvim-cmp'
+" LSP source for nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Snippets source for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip'
+" Snippets plugin
+Plug 'L3MON4D3/LuaSnip'
 
-    " Neomake must be loaded last.
-    " https://github.com/neomake/neomake/issues/2175
-    Plug 'neomake/neomake'
+" Neomake must be loaded last.
+" https://github.com/neomake/neomake/issues/2175
+Plug 'neomake/neomake'
 
-    call plug#end()
-endif
-
-function! HasPlugin(name)
-    let dir = s:plugindir . a:name
-    return !empty(glob(dir))
-endfunction
+call plug#end()
 " }}}
 
 " Color scheme {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-if HasPlugin('vim-lucius')
-    colorscheme lucius
-endif
+colorscheme lucius
 " }}}
 
 " Plugin Options {{{
@@ -122,9 +112,7 @@ if executable('eslint')
 endif
 
 " Configure Neomake to run on save.
-" if HasPlugin('neomake')
-"     call neomake#configure#automake('w')
-" endif
+call neomake#configure#automake('w')
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -201,13 +189,11 @@ map <Leader>k <Plug>(easymotion-k)
 
 " Single Key Bindings {{{
 " Replace some default motion keys with EasyMotion equivalents.
-if HasPlugin('vim-easymotion')
-    map  s <Plug>(easymotion-s2)
-    map  / <Plug>(easymotion-sn)
-    omap / <Plug>(easymotion-tn)
-    map  n <Plug>(easymotion-next)
-    map  N <Plug>(easymotion-prev)
-endif
+map  s <Plug>(easymotion-s2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 " }}}
 
 " LSP {{{
