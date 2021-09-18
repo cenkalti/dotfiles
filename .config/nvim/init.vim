@@ -5,7 +5,7 @@ source ~/.vimrc
 call plug#begin(stdpath('data') . '/plugged')
 
 " Color schemes
-Plug 'jonathanfilip/vim-lucius'
+Plug 'ishan9299/nvim-solarized-lua'
 Plug 'vim-airline/vim-airline-themes'
 
 " General plugins
@@ -58,9 +58,9 @@ call plug#end()
 " }}}
 
 " Color scheme {{{
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-colorscheme lucius
+set termguicolors
+set background=light
+colorscheme solarized
 " }}}
 
 " Plugin Options {{{
