@@ -37,8 +37,6 @@ Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'chr4/nginx.vim'
 
-" Language Server Protocol configurations
-Plug 'neovim/nvim-lspconfig'
 " Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
 " Autocompletion plugin
@@ -245,6 +243,16 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = false,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+})
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
 EOF
 " }}}
 
