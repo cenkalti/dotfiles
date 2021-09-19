@@ -23,11 +23,6 @@ set mouse=a
 set modelines=1
 set nofixendofline
 
-if has ('gui_vimr')
-    set termguicolors
-    set title
-end
-
 let mapleader="\<SPACE>"
 let maplocalleader = "\\"
 " }}}
