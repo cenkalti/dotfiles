@@ -41,6 +41,11 @@ if executable('eslint')
     call add(g:neomake_typescript_enabled_makers, 'eslint')
 endif
 
+let g:neomake_go_enabled_makers = ['go']
+if executable('golangci-lint')
+    call add(g:neomake_go_enabled_makers, 'golangci_lint')
+endif
+
 " Configure Neomake to run on save.
 call neomake#configure#automake('w')
 
