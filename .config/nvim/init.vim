@@ -12,6 +12,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'blueyed/vim-qf_resize'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
+Plug 'darrikonn/vim-gofmt'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
@@ -152,6 +153,7 @@ augroup nvimrc
     autocmd FileType go map <buffer> <LocalLeader>u :GoCallers<CR>
     autocmd FileType go map <buffer> <LocalLeader>r :GoRename<CR>
     autocmd FileType typescript map <buffer> <LocalLeader>d :TSDef<CR>
+    autocmd BufWritePost *.go GoFmt
 augroup END
 " }}}
 
