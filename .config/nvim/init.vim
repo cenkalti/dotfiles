@@ -6,6 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 " Color schemes
 Plug 'ishan9299/nvim-solarized-lua'
+Plug 'jonathanfilip/vim-lucius'
 Plug 'vim-airline/vim-airline-themes'
 
 " General plugins
@@ -58,8 +59,8 @@ call plug#end()
 
 " Color scheme {{{
 set termguicolors
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme lucius
 " }}}
 
 " Plugin Options {{{
