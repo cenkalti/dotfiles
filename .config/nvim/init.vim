@@ -4,9 +4,7 @@ source ~/.vimrc
 call plug#begin(stdpath('data') . '/plugged')
 
 " Color schemes
-Plug 'ishan9299/nvim-solarized-lua'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'
 
 " General plugins
 Plug 'blueyed/vim-qf_resize'
