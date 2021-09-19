@@ -91,6 +91,8 @@ let g:startify_change_to_dir = 0
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:neomake_open_list = 2
+let g:neomake_echo_current_error = 0
+let g:neomake_virtualtext_current_error = 0
 let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
