@@ -51,9 +51,6 @@ endfunction
 augroup vimrc
     autocmd!
     autocmd FocusLost * :wa
-    " Prevent '1 more file to edit' error on quit when opened with file arguments from shell.
-    " https://vi.stackexchange.com/questions/25209/how-to-avoid-avoid-e173-n-more-files-to-edit
-    autocmd VimEnter * args %
     " Hide quickfix in buffer list.
     autocmd FileType qf set nobuflisted
     " Remove lines from quick fix window
