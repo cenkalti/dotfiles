@@ -111,6 +111,8 @@ function loop() {
 
 function run-until-error() { while $@; do :; done; say "command is finished" }
 
+function monitor() { watch -n 1 "pgrep -fa $@ | grep -v watch" }
+
 # Git Push Tag helper
 # https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
 function gpt() {
