@@ -26,3 +26,5 @@ build/
 .classpath
 .factorypath
 node_modules/
+.ccls-cache/
+compile_commands.json
