@@ -5,6 +5,8 @@
 Clone using following command:
 ```sh
 export REPO="git@github.com:cenkalti/dotfiles"
+# for read-only access
+# export REPO="https://github.com/cenkalti/dotfiles.git"
 curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
 ```
 
