@@ -113,6 +113,8 @@ function run-until-error() { while $@; do :; done; say "command is finished" }
 
 function monitor() { watch -n 1 "pgrep -fa ${@:q} | grep -v watch" }
 
+function etime() { ps -eo pid,comm,etime,args | grep $1 }
+
 # Git Push Tag helper
 # https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
 function gpt() {
