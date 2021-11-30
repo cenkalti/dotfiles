@@ -27,6 +27,9 @@ let g:neomake_open_list = 2
 let g:neomake_echo_current_error = 0
 let g:neomake_virtualtext_current_error = 1
 let g:go_fmt_options = {'gofmt': '-s'}
+let g:bookmark_sign = '>>'
+let g:bookmark_annotation_sign = '##'
+let g:bookmark_show_toggle_warning = 0
 
 let g:neomake_python_enabled_makers = ['python3']
 if executable('flake8')
