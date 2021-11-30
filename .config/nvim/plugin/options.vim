@@ -14,6 +14,7 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep= ''
 let g:airline#extensions#tabline#buffers_label = ''
+let g:airline#extensions#tagbar#flags = 'f'  " show full tag hierarchy
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_upper = 1

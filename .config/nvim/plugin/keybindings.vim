@@ -4,6 +4,7 @@ nnoremap <Leader>ff :Files<CR>
 nnoremap <Leader>fg :GitFiles<CR>
 nnoremap <Leader>fh :History<CR>
 nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>g :SignifyRefresh<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 " Reveal current buffer in NERDTree window.

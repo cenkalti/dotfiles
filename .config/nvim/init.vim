@@ -16,6 +16,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
