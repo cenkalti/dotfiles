@@ -12,6 +12,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
 Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go'
+Plug 'jgramacho/vim-mysql-mtr'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mattesgroeger/vim-bookmarks'
