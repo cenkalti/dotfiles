@@ -268,13 +268,18 @@ function preexec {
     # cmd name only, or if this is sudo or ssh, the next cmd
     local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|mt|-*)]:gs/%/%%}
 
-    # show current dir on tab when vim is open
-    if [[ $CMD == vi* ]]; then
-      CMD="$CMD (%m:%1~)"
-    fi
-    if [[ $CMD == nvim* ]]; then
-      CMD="$CMD (%m:%1~)"
-    fi
+    case "$CMD" in
+      # show current dir on tab when vim is open
+      vi*)
+        ;&
+      nvim*)
+        CMD="$CMD (%1~)"
+        ;;
+      # show current host when tmux is open
+      tmux*)
+        CMD="$CMD (%m)"
+        ;;
+    esac
 
     set_title '$CMD'
   fi
