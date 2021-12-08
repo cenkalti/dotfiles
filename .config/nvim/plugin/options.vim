@@ -30,6 +30,7 @@ let g:go_fmt_options = {'gofmt': '-s'}
 let g:bookmark_sign = '>>'
 let g:bookmark_annotation_sign = '##'
 let g:bookmark_show_toggle_warning = 0
+let g:BufKillActionWhenBufferDisplayedInAnotherWindow = 'kill'
 
 let g:neomake_python_enabled_makers = ['python3']
 if executable('flake8')
