@@ -126,8 +126,8 @@ vnoremap > >gv
 " act more like C or D because by default, Y yanks the current line (i.e. the
 " same as yy).
 noremap Y y$
-" Insert single character without switching into insert mode.
-:nnoremap , :exec "normal i".nr2char(getchar())."\e"<CR>
+" Repeat last macro
+map , @@
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
