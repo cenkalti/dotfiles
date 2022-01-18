@@ -51,6 +51,8 @@ if executable('golangci-lint')
     call add(g:neomake_go_enabled_makers, 'golangci_lint')
 endif
 
+let g:neomake_cpp_enabled_makers = ['clangtidy']
+
 " Configure Neomake to run on save.
 call neomake#configure#automake('w')
 
