@@ -14,7 +14,7 @@ set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
 set foldenable
-set foldmethod=indent
+set foldmethod=manual
 set foldlevelstart=99
 set noshowmode
 set wildmenu

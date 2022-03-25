@@ -15,8 +15,6 @@
 
         ci = commit -m
         ce = "!f() { git commit --allow-empty --allow-empty-message -m \"$1\"; }; f"
-        pom = pull origin master --no-edit
-        pomp = "!git pull origin master --no-edit && git push"
 
         # Edit last commit message
         edit = commit --amend
@@ -35,6 +33,7 @@
         cp = cherry-pick
         br = branch
         wc = whatchanged
+        up = branch --set-upstream-to
 
         df  = diff
         dfc = diff --cached

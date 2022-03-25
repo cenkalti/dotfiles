@@ -55,6 +55,7 @@ ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G
 # Aliases for easy navigation
 alias l="ls -l"
 alias la="ls -la"
+alias lt="ls -lt | head"
 alias d="pwd"
 alias u="sudo -iu"
 alias s="sudo su"
@@ -81,9 +82,16 @@ alias vs='vagrant suspend && exit'
 
 alias cloc='cloc --exclude-dir vendor'
 
-alias todo="ag TODO | tr -d '\t' | sed -e 's/\/\///' | grep --color TODO"
+alias todo="ag TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
 
 alias nvims="nvim -S Session.vim"
+
+# Enable core dump
+alias encoredump='ulimit -c unlimited'
+# Disable core dump
+alias nocoredump='ulimit -c 0'
+# Check core dump
+alias iscoredump='ulimit -c'
 
 # Do not change directory without "cd" command
 unsetopt AUTO_CD
@@ -114,6 +122,9 @@ function run-until-error() { while $@; do :; done; say "command is finished" }
 function monitor() { watch -n 1 "pgrep -fa ${@:q} | grep -v watch" }
 
 function etime() { ps -eo pid,comm,etime,args | grep $1 }
+
+# iTerm2 badge. https://iterm2.com/documentation-badges.html
+function badge { printf "\e]1337;SetBadgeFormat=$(echo "$@" | base64)\a"  }
 
 # Git Push Tag helper
 # https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
@@ -224,17 +235,10 @@ bindkey '^N' history-search-forward
 function set_title {
   emulate -L zsh
   setopt prompt_subst
-
   local tab_name=$1
-  local window_name=$2
-
   case "$TERM" in
     cygwin|xterm*|putty*|rxvt*|ansi)
-      print -Pn "\e]1;$tab_name:q\a"
-      print -Pn "\e]2;$window_name:q\a"
-      ;;
-    screen*)
-      print -Pn "\ek$tab_name:q\e\\" # set screen hardstatus
+      print -Pn "\e]0;$tab_name:q\a"
       ;;
   esac
 }
@@ -242,7 +246,7 @@ function set_title {
 # Runs before showing the prompt
 function precmd {
   emulate -L zsh
-  set_title "%m:%1~" "%m:%~"
+  set_title "%m:%1~"
 }
 
 # Runs before executing the command
@@ -250,21 +254,6 @@ function preexec {
   emulate -L zsh
   setopt extended_glob
 
-  # Get the command name that is under job control.
-  if [[ "${2[(w)1]}" == (fg|%*)(\;|) ]]; then
-    # Get the job name, and, if missing, set it to the default %+.
-    local job_name="${${2[(wr)%*(\;|)]}:-%+}"
-
-    # Make a local copy for use in the subshell.
-    local -A jobtexts_from_parent_shell
-    jobtexts_from_parent_shell=(${(kv)jobtexts})
-
-    jobs "$job_name" 2>/dev/null > >(
-      read index discarded
-      # The index is already surrounded by brackets: [1].
-      preexec "${(e):-\$jobtexts_from_parent_shell$index}"
-    )
-  else
     # cmd name only, or if this is sudo or ssh, the next cmd
     local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|mt|-*)]:gs/%/%%}
 
@@ -277,12 +266,11 @@ function preexec {
         ;;
       # show current host when tmux is open
       tmux*)
-        CMD="$CMD (%m)"
+        CMD="%m"
         ;;
     esac
 
-    set_title '$CMD'
-  fi
+  set_title '$CMD'
 }
 
 precmd_functions+=(precmd)
