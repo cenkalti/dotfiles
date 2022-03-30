@@ -80,6 +80,7 @@ nnoremap <Leader>W ciW
 nnoremap <Leader>c :cclose<CR>
 " Close location list.
 nnoremap <LocalLeader>c :lclose<CR>
+nnoremap <LocalLeader><CR> yypk:Commentary<CR>j
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
