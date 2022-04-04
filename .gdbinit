@@ -6,4 +6,4 @@ set history save on
 set history size 10000
 set history remove-duplicates 10
 set index-cache on
-set print elements 2000
+set print elements 0
