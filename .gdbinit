@@ -7,3 +7,4 @@ set history size 10000
 set history remove-duplicates 10
 set index-cache on
 set print elements 0
+set print object on
