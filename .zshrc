@@ -119,7 +119,8 @@ function loop() {
 
 function run-until-error() { while $@; do :; done; say "command is finished" }
 
-function monitor() { watch -n 1 "pgrep -fa ${@:q} | grep -v watch" }
+function monitor() { watch -n 1 "pgrep -l ${@:q} | grep -v watch" }
+function monitor-full() { watch -n 1 "pgrep -a ${@:q} | grep -v watch" }
 
 function etime() { ps -eo pid,comm,etime,args | grep $1 }
 
