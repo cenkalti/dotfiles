@@ -20,6 +20,10 @@ if [[ -d $HOME/go/bin ]]; then
     export PATH=$HOME/go/bin:$PATH
 fi
 
+if [[ -f $HOME/.cargo/env ]]; then
+    source "$HOME/.cargo/env"
+fi
+
 if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
