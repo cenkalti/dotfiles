@@ -15,6 +15,11 @@ Add this to your `.bashrc`/`.zshrc` file:
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
+Checkout files:
+```sh
+dotfiles reset --hard
+```
+
 ## Usage
 
 Use `dotfiles` command instead of `git`:
