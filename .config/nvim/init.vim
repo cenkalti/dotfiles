@@ -7,6 +7,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'arcticicestudio/nord-vim'
 
 " General plugins
+Plug 'RRethy/vim-illuminate'
 Plug 'blueyed/vim-qf_resize'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-sort-motion'
