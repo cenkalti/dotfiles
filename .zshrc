@@ -11,7 +11,7 @@
 autoload -U select-word-style
 select-word-style bash
 
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export LESS="-iR"  # ignore case
 export FZF_DEFAULT_COMMAND='fd --type f'
