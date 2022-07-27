@@ -218,6 +218,10 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
+# enable completion subsystem
+autoload -Uz compinit
+compinit
+
 # colorize man pages
 function man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
