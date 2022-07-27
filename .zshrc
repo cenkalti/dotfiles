@@ -60,6 +60,7 @@ alias d="pwd"
 alias u="sudo -iu"
 alias s="sudo su"
 alias e="etcdctl"
+alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
 
