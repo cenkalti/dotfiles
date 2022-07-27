@@ -172,9 +172,6 @@ function gpt() {
   git push --tags
 }
 
-# show completion menu when number of options is at least 2
-zstyle ':completion:*' menu select=2
-
 # git aliases
 alias g="git st"
 alias gp="git push || git pull --rebase && git push"
@@ -219,8 +216,14 @@ zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
 # enable completion subsystem
-autoload -Uz compinit
-compinit
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+# show completion menu when number of options is at least 2
+zstyle ':completion:*' menu select=2
+
+type kubectl &>/dev/null && source <(kubectl completion zsh)
+type aws &>/dev/null && type aws_completer &>/dev/null && complete -C aws_completer aws
 
 # colorize man pages
 function man() {
