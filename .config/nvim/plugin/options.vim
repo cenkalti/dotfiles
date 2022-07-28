@@ -32,7 +32,7 @@ let g:bookmark_annotation_sign = '##'
 let g:bookmark_show_toggle_warning = 0
 let g:BufKillActionWhenBufferDisplayedInAnotherWindow = 'kill'
 
-let g:neomake_python_enabled_makers = ['python3']
+let g:neomake_python_enabled_makers = ['python']
 if executable('flake8')
     call add(g:neomake_python_enabled_makers, 'flake8')
 endif
