@@ -320,6 +320,9 @@ n ()
     fi
 }
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
