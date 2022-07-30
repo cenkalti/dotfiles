@@ -16,6 +16,10 @@ if [[ -d "$HOMEBREW_PREFIX/opt/mysql-client/bin" ]]; then
     export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 fi
 
+if [[ -d $HOME/.local/bin ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [[ -d $HOME/go/bin ]]; then
     export PATH=$HOME/go/bin:$PATH
 fi
