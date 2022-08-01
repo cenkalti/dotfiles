@@ -12,6 +12,11 @@ elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then  # linux
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 if [[ -d "$HOMEBREW_PREFIX/opt/mysql-client/bin" ]]; then
     export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 fi
