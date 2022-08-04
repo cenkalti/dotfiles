@@ -323,6 +323,10 @@ n ()
 GPG_TTY=$(tty)
 export GPG_TTY
 
+if [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
