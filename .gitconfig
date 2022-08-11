@@ -40,6 +40,7 @@
         dfc = diff --cached
 
         today = log --since="6am"
+        contributors = shortlog -s -n
 
         # Show the fetched commits
         lc   = log ORIG_HEAD.. --stat --no-merges
