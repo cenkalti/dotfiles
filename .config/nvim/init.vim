@@ -54,6 +54,10 @@ Plug 'saadparwaiz1/cmp_luasnip'
 " Snippets plugin
 Plug 'L3MON4D3/LuaSnip'
 
+if !empty(glob("$HOME/.private.vimrc"))
+    source $HOME/.private.vimrc
+endif
+
 " Neomake must be loaded last.
 " https://github.com/neomake/neomake/issues/2175
 Plug 'neomake/neomake'
