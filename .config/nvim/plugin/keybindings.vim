@@ -34,3 +34,6 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
+" View http link for current buffer (requries Fugitive).
+nnoremap gb :GBrowse<CR>
+vnoremap gb :GBrowse<CR>
