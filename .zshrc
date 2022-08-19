@@ -87,6 +87,8 @@ alias todo="ag TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
 
 alias nvims="nvim -S Session.vim"
 
+alias isodate='date +"%Y-%m-%dT%H:%M:%S%z"'
+
 # Enable core dump
 alias encoredump='ulimit -c unlimited'
 # Disable core dump
