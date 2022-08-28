@@ -142,7 +142,7 @@ noremap <C-p> :bprevious<CR>
 " Highlight word under cursor.
 noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
 " Clear highlighted text.
-nnoremap <C-h> :nohlsearch<CR>
+nnoremap <C-l> :nohlsearch<CR>
 " Insert new line without leaving normal mode.
 nmap <C-> mzo<Esc>0d$`z
 " Better shortcut for scrolling window.
