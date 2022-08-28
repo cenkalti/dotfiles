@@ -37,7 +37,7 @@ Plug 'wellle/targets.vim'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
 " Language syntax plugins
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'glench/vim-jinja2-syntax'
 Plug 'saltstack/salt-vim'
 Plug 'cespare/vim-toml'
