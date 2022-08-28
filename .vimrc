@@ -81,9 +81,9 @@ nnoremap <Leader>c :cclose<CR>
 nnoremap <LocalLeader>c :lclose<CR>
 nnoremap <LocalLeader><CR> yypk:Commentary<CR>j
 " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+yg_
 " Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
