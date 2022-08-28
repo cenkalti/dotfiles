@@ -10,7 +10,6 @@ set colorcolumn=80,120
 set synmaxcol=240
 set fillchars="vert: "  " Hide vertical fill characters between windows.
 set scrolloff=5
-set completeopt-=preview
 set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
 set foldenable
@@ -157,9 +156,6 @@ nmap gl <c-w>l
 "}}}
 
 " Other Key Bindings {{{
-" Complete with <Tab> key.
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
 " Move to items in quickfix and location list.
 nnoremap [q :cprevious<cr>
 nnoremap ]q :cnext<cr>
