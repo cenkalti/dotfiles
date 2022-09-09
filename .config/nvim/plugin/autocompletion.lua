@@ -1,9 +1,6 @@
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  completion = {
-    autocomplete = false,
-  },
   view = {
     entries = {name = 'custom', selection_order = 'near_cursor' }
   },
