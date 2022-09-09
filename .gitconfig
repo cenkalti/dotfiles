@@ -38,6 +38,7 @@
 
         df  = diff
         dfc = diff --cached
+        dft = difftool
 
         today = log --since="6am"
         contributors = shortlog -s -n
@@ -108,6 +109,9 @@
         autocrlf = false
         pager = "diff-so-fancy | less --tabs=4 -R"
 
+[pager]
+        difftool = true
+
 [clean]
         requireForce = false
 
@@ -122,6 +126,13 @@
 [diff]
         algorithm = patience
         compactionHeuristic = true
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
 
 [credential]
         helper = osxkeychain
