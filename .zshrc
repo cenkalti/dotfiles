@@ -183,8 +183,9 @@ alias gti=git
 # shows listening ports
 alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 
-# '[r]emove [o]rphans' - recursively remove ALL orphaned packages
-alias pacman-remove-orphan="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')"
+# https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
+alias pacman-remove-orphans="pacman -Qtdq | sudo pacman -Rns -"
+alias pacman-leaves="expac -H M '%-20n\t%10d' $(comm -23 <(pacman -Qqt | sort) <({ pacman -Qqg base-devel; echo base; } | sort -u))"
 
 # docker aliases
 alias docker-remove-all-containers="docker ps -aq | xargs docker rm --force"
