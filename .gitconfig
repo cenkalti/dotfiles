@@ -33,7 +33,7 @@
         cp = cherry-pick
         br = branch
         wc = whatchanged
-        up = branch --set-upstream-to
+        up = branch --set-upstream-to # ... origin/<master> <branch>
         tr = branch -vv
 
         df  = diff
