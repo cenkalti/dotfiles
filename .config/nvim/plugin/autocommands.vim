@@ -28,7 +28,7 @@ augroup nvimrc
     autocmd!
     autocmd FileType python setlocal formatprg=yapf
     " Quit program if only open buffer is NERDTree.
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Map/unmap vim-bookmarks bindings on Nerdtree
     autocmd BufEnter * :call BookmarkMapKeys()
     autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
