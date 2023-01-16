@@ -1,6 +1,7 @@
 let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$', '__pycache__']
 let NERDTreeMinimalUI = 1
 let g:signify_update_on_focusgained = 1
+let g:signify_sign_overwrite = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_y = ''

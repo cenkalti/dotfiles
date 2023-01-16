@@ -24,3 +24,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require('gitsigns').setup()

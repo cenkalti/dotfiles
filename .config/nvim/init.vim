@@ -16,7 +16,7 @@ Plug 'jgramacho/vim-mysql-mtr'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mattesgroeger/vim-bookmarks'
-Plug 'mhinz/vim-signify'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
