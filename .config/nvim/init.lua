@@ -1,6 +1,5 @@
 -- TODO
 -- disable default lsp key bindings
--- disable default bufkill bindings
 -- check go linter setup
 -- replace nerdtree with
 --   https://github.com/nvim-tree/nvim-tree
