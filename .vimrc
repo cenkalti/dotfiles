@@ -61,16 +61,12 @@ augroup END
 " }}}
 
 " Leader Key Bindings {{{
-nnoremap <Leader>d :BW<CR>
 nnoremap <Leader>D :bd!<CR>
 nnoremap <Leader>Q :qa!<CR>
 " Wipe all buffers.
 nnoremap <Leader>q :%bd<CR>
 " Close all windows except current one.
 nnoremap <Leader>w <C-w>o
-" Toggle quoting style.
-nnoremap <Leader>' :normal cs"'<CR>
-nnoremap <Leader>" :normal cs'"<CR>
 " Change word under cursor.
 nnoremap <Leader>w ciw
 " Change WORD under cursor.
@@ -79,7 +75,6 @@ nnoremap <Leader>W ciW
 nnoremap <Leader>c :cclose<CR>
 " Close location list.
 nnoremap <LocalLeader>c :lclose<CR>
-nnoremap <LocalLeader><CR> yypk:Commentary<CR>j
 " Copy to clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
