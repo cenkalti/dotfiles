@@ -6,7 +6,10 @@ lsp.nvim_workspace()
 
 lsp.set_preferences({
   -- I'll set my own key bindings
-  set_lsp_keymaps = false
+  set_lsp_keymaps = false,
+
+  -- I'll manage LSP servers manually using :Mason
+  suggest_lsp_servers = false,
 })
 
 lsp.on_attach(function(client, bufnr)
