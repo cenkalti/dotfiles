@@ -96,6 +96,9 @@ return require('packer').startup(function(use)
   -- Tmux support (Tyank, Tput)
   use 'tpope/vim-tbone'
 
+  -- Golang support
+  use 'ray-x/go.nvim'
+
   -- Language syntax plugins
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
