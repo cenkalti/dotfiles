@@ -1,35 +1,51 @@
--- Learn the keybindings, see :help lsp-zero-keybindings
--- Learn to configure LSP servers, see :help lsp-zero-api-showcase
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
-lsp.setup()
+lsp.set_preferences({
+  -- I'll set my own key bindings
+  set_lsp_keymaps = false
+})
 
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-vim.keymap.set('n', 'L', vim.lsp.buf.signature_help)
+lsp.on_attach(function(client, bufnr)
+  require('illuminate').on_attach(client)
 
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
-vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', 'gR', vim.lsp.buf.references)
+  local opts = {buffer = bufnr, remap = false}
 
-vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder)
-vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder)
-vim.keymap.set('n', '<space>wl', function()
-  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'L', vim.lsp.buf.signature_help, opts)
+
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'gR', vim.lsp.buf.references, opts)
+
+  vim.keymap.set('n', '<localleader>r', vim.lsp.buf.rename, opts)
 end)
 
-vim.keymap.set('n', '<localleader>r', vim.lsp.buf.rename)
+local cmp = require('cmp')
+lsp.setup_nvim_cmp({
+  mapping = {
+    ['<C-e>'] = cmp.mapping.complete(),
+    ['<Tab>'] = cmp.mapping.confirm(),
+    ['<C-c>'] = cmp.mapping.close(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+  },
+})
+
+lsp.setup()
+
+local opts = { noremap=true, silent=true }
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
 -- Configure LSP diagnostic messages
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.config({
   virtual_text = false,
   signs = false,
   underline = true,

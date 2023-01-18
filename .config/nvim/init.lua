@@ -1,10 +1,10 @@
 -- TODO
--- disable default lsp key bindings
 -- check go linter setup
 -- replace nerdtree with
 --   https://github.com/nvim-tree/nvim-tree
 --   https://github.com/nvim-neo-tree/neo-tree.nvim
 -- remove vim-go
+-- switch to https://github.com/akinsho/bufferline.nvim
 
 -- Load legacy vim config
 vim.cmd('source ~/.vimrc')
