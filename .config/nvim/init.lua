@@ -1,6 +1,3 @@
--- TODO
--- remove vim-go
-
 -- Disable netrw for nvim-tree. Must be at the very start of init.lua.
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -68,9 +65,6 @@ return require('packer').startup(function(use)
 
   -- Custom bookmarks
   use 'mattesgroeger/vim-bookmarks'
-
-  -- Golang support
-  use 'fatih/vim-go'
 
   -- Delete indentation level with `dii`, 1 above with `dai`.
   use 'michaeljsmith/vim-indent-object'
