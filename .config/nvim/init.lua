@@ -54,6 +54,12 @@ return require('packer').startup(function(use)
   -- Show open buffers on top and switch with <leader>1..9
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 
+  -- Status line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   -- Delete buffer without changing window layout
   use 'qpkorr/vim-bufkill'
 
