@@ -1,5 +1,4 @@
 -- TODO
--- switch to https://github.com/akinsho/bufferline.nvim
 -- check go linter setup
 -- remove neomake
 -- remove vim-go
@@ -55,7 +54,7 @@ return require('packer').startup(function(use)
   use 'vim-scripts/BufOnly.vim'
 
   -- Show open buffers on top and switch with <leader>1..9
-  use 'vim-airline/vim-airline'
+  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 
   -- Delete buffer without changing window layout
   use 'qpkorr/vim-bufkill'
