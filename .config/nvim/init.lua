@@ -1,6 +1,4 @@
 -- TODO
--- check go linter setup
--- remove neomake
 -- remove vim-go
 
 -- Disable netrw for nvim-tree. Must be at the very start of init.lua.
@@ -128,9 +126,5 @@ return require('packer').startup(function(use)
   if vim.fn.filereadable('~/.config/nvim/lua/local.lua') then
     require('local').config(use)
   end
-
-  -- Runs linters on save. Must be loaded last.
-  -- https://github.com/neomake/neomake/issues/2175
-  use 'neomake/neomake'
 end)
 
