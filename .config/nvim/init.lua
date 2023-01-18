@@ -1,18 +1,15 @@
 -- TODO
--- check go linter setup
--- replace nerdtree with
---   https://github.com/nvim-tree/nvim-tree
---   https://github.com/nvim-neo-tree/neo-tree.nvim
--- remove vim-go
 -- switch to https://github.com/akinsho/bufferline.nvim
+-- check go linter setup
+-- remove neomake
+-- remove vim-go
+
+-- Disable netrw for nvim-tree. Must be at the very start of init.lua.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Load legacy vim config
 vim.cmd('source ~/.vimrc')
-
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -26,7 +23,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = {
       { 'nvim-lua/plenary.nvim' },
-      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
   }
 
@@ -46,8 +43,13 @@ return require('packer').startup(function(use)
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- File tree
-  use 'scrooloose/nerdtree'
-  use 'xuyuanp/nerdtree-git-plugin'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   -- Delete all buffers except current one
   use 'vim-scripts/BufOnly.vim'

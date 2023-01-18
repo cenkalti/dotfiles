@@ -10,7 +10,6 @@ set colorcolumn=80,120
 set synmaxcol=240
 set fillchars="vert: "  " Hide vertical fill characters between windows.
 set scrolloff=5
-set rtp+=/usr/local/opt/fzf
 set sessionoptions=buffers,curdir,folds
 set foldenable
 set foldmethod=manual

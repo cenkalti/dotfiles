@@ -1,7 +1,3 @@
-let NERDTreeIgnore = ['\.pyc$', 'Session.vim', '\.egg-info$', '__pycache__']
-let NERDTreeMinimalUI = 1
-let g:NERDSpaceDelims = 1
-let g:NERDTrimTrailingWhitespace = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_y = ''
