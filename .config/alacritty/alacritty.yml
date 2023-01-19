@@ -1,0 +1,11 @@
+font:
+  normal:
+    family: Inconsolata Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: Inconsolata Nerd Font Mono
+    style: Bold
+
+  size: 16.0
+
