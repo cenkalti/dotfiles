@@ -1,13 +1,12 @@
 import:
   - ~/.config/alacritty/nord.yml
+  - ~/.config/alacritty/key_bindings.yml
 font:
   normal:
-    family: Inconsolata Nerd Font Mono
+    family: Inconsolata Nerd Font
     style: Regular
-
   bold:
-    family: Inconsolata Nerd Font Mono
+    family: Inconsolata Nerd Font
     style: Bold
-
   size: 16.0
-
+live_config_reload: true
