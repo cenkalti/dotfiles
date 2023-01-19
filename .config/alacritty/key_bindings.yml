@@ -1,6 +1,18 @@
+key_bindings:
+
+# MacOS Improvements
+# https://github.com/alacritty/alacritty/wiki/Keyboard-mappings#macos
+  - { key: Comma,     mods: Command,      command:
+      {program: "sh", args: ["-c","open ~/.config/alacritty/alacritty.yml"]}     }
+  - { key: Space,     mods: Alt,          chars: " "                     }
+  - { key: Back,      mods: Super,        chars: "\x15"                  } # delete word/line
+  - { key: Left,     mods: Alt,     chars: "\x1bb"                       } # one word left
+  - { key: Right,    mods: Alt,     chars: "\x1bf"                       } # one word right
+  - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
+  - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
+
 # Use option as meta
 # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
-key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
   - { key: C,         mods: Alt,       chars: "\x1bc"                       }
