@@ -1,3 +1,5 @@
+# Use option as meta
+# https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
