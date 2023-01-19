@@ -1,3 +1,8 @@
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 -- Disable netrw for nvim-tree. Must be at the very start of init.lua.
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -126,7 +131,7 @@ return require('packer').startup(function(use)
   }
 
   -- Load local plugins
-  if vim.fn.filereadable('~/.config/nvim/lua/local.lua') then
+  if file_exists('~/.config/nvim/lua/local.lua') then
     require('local').config(use)
   end
 end)
