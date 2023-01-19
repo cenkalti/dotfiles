@@ -11,6 +11,9 @@ require("nvim-tree").setup({
   filesystem_watchers = {
     enable = false,
   },
+  update_focused_file = {
+    update_root = true,
+  },
 })
 
 vim.keymap.set('n', '<Leader>n', vim.cmd.NvimTreeToggle)
