@@ -1,6 +1,6 @@
 require("nvim-tree").setup({
   view = {
-    adaptive_size = true,
+    width = '20%',
   },
   renderer = {
     group_empty = true,
@@ -13,6 +13,10 @@ require("nvim-tree").setup({
   },
   update_focused_file = {
     update_root = true,
+  },
+  git = {
+    ignore = false,
+    show_on_open_dirs = false,
   },
 })
 
