@@ -70,6 +70,8 @@ nnoremap <Leader>w <C-w>o
 nnoremap <Leader>w ciw
 " Change WORD under cursor.
 nnoremap <Leader>W ciW
+" Search word under cursor.
+nnoremap <Leader>s :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
 " Close quickfix list.
 nnoremap <Leader>c :cclose<CR>
 " Close location list.
@@ -133,8 +135,6 @@ nnoremap X %x``x
 " Navigate between buffers.
 noremap <C-n> :bnext<CR>
 noremap <C-p> :bprevious<CR>
-" Highlight word under cursor.
-noremap <silent> <C-h> :set hlsearch <BAR> let @/='\<'.expand("<cword>").'\>'<CR>
 " Clear highlighted text.
 nnoremap <C-l> :nohlsearch<CR>
 " Insert new line without leaving normal mode.

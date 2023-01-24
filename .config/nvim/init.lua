@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-sort-motion'
 
   -- Search with 2 letters
-  use 'easymotion/vim-easymotion'
+  use { 'phaazon/hop.nvim', branch = 'v2' }
 
   -- Show git status on gutter
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
