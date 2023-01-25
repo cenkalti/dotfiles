@@ -131,7 +131,8 @@ return require('packer').startup(function(use)
   }
 
   -- Load local plugins
-  if file_exists('~/.config/nvim/lua/local.lua') then
+  local local_module = vim.fn.expand('$HOME/.config/nvim/lua/local.lua')
+  if file_exists(local_module) then
     require('local').config(use)
   end
 end)
