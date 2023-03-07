@@ -37,7 +37,7 @@ PROMPT='[%3>>%m%>>:%1~]$(virtualenv_info)$(git_info)%(?.%F{green}.%F{red})%#%f '
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_VERIFY
 
