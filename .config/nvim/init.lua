@@ -3,10 +3,6 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
--- Disable netrw for nvim-tree. Must be at the very start of init.lua.
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Load legacy vim config
 vim.cmd('source ~/.vimrc')
 
