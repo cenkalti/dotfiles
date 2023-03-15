@@ -332,6 +332,8 @@ if [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; 
   source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+export AWS_PAGER=""
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
