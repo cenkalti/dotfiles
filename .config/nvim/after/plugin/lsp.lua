@@ -13,8 +13,6 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-  require('illuminate').on_attach(client)
-
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
