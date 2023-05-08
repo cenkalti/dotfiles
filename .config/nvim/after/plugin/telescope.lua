@@ -1,6 +1,19 @@
-require('telescope').load_extension('fzf')
-
+local telescope = require('telescope')
+local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+
+telescope.load_extension('fzf')
+
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<Esc>"] = actions.close,
+      },
+    },
+  },
+}
+
 
 vim.keymap.set('n', '<leader>ff', function()
   builtin.find_files({ no_ignore = true })
