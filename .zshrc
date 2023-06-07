@@ -334,6 +334,8 @@ fi
 
 export AWS_PAGER=""
 
+export JSII_DEPRECATED="quiet"
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
