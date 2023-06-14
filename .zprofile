@@ -1,9 +1,12 @@
 export CDPATH=$HOME:$HOME/projects:$HOME/workspace
 
 if [[ -d /opt/homebrew ]]; then  # m1 macos
-    export HOMEBREW_PREFIX=/opt/homebrew
-    export PATH=/opt/homebrew/sbin:$PATH
-    export PATH=/opt/homebrew/bin:$PATH
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 elif [[ -f /usr/local/bin/brew ]]; then  # intel macos
     export HOMEBREW_PREFIX=/usr/local
     export PATH=/usr/local/sbin:$PATH
