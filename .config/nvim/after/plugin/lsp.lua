@@ -38,6 +38,14 @@ lsp.setup_nvim_cmp({
   },
 })
 
+require('lspconfig').pylsp.setup{
+    settings = {
+        pylsp = {
+            configurationSources = {'flake8'},
+        }
+    }
+}
+
 lsp.setup()
 
 local opts = { noremap=true, silent=true }
