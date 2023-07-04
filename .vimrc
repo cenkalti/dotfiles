@@ -20,6 +20,7 @@ set lazyredraw
 set mouse=a
 set modelines=1
 set nofixendofline
+set updatetime=250
 
 let mapleader="\<SPACE>"
 let maplocalleader = "\\"
