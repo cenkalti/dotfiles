@@ -2,15 +2,6 @@ return {
   -- Color schemes
   { 'arcticicestudio/nord-vim', name = 'nord' },
 
-  -- Fuzzy finder
-  {
-    'nvim-telescope/telescope.nvim', version = '0.1.1',
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    },
-  },
-
   -- Highlight word under cursor
   'RRethy/vim-illuminate',
 
@@ -30,13 +21,10 @@ return {
   'vim-scripts/BufOnly.vim',
 
   -- Show open buffers on top and switch with <leader>1..9
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {'akinsho/bufferline.nvim', version = "*", dependencies = { 'nvim-tree/nvim-web-devicons' } },
 
   -- Status line
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
+  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
 
   -- Delete buffer without changing window layout
   'qpkorr/vim-bufkill',
@@ -79,14 +67,4 @@ return {
 
   -- Golang support
   'ray-x/go.nvim',
-
-  -- Highlight, edit, and navigate code
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
 }
