@@ -1,6 +1,4 @@
 return {
-  'dstein64/vim-startuptime',
-
   -- Color schemes
   { 'arcticicestudio/nord-vim', name = 'nord' },
 
