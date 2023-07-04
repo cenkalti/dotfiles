@@ -26,15 +26,6 @@ return {
   -- Show git status on gutter
   { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
-  -- File tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  },
-
   -- Delete all buffers except current one
   'vim-scripts/BufOnly.vim',
 
