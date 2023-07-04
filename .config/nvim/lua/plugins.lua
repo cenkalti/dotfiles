@@ -11,9 +11,6 @@ return {
   -- Sort selected text with `gs`
   'christoomey/vim-sort-motion',
 
-  -- Search with 2 letters
-  { 'phaazon/hop.nvim', branch = 'v2' },
-
   -- Show git status on gutter
   { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
@@ -22,9 +19,6 @@ return {
 
   -- Show open buffers on top and switch with <leader>1..9
   {'akinsho/bufferline.nvim', version = "*", dependencies = { 'nvim-tree/nvim-web-devicons' } },
-
-  -- Status line
-  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
 
   -- Delete buffer without changing window layout
   'qpkorr/vim-bufkill',
@@ -64,7 +58,4 @@ return {
 
   -- Tmux support (Tyank, Tput)
   'tpope/vim-tbone',
-
-  -- Golang support
-  'ray-x/go.nvim',
 }
