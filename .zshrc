@@ -362,6 +362,9 @@ if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.
 elif [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
   source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
+if [ -f "/usr/share/doc/pkgfile/command-not-found.zsh" ]; then
+  source "/usr/share/doc/pkgfile/command-not-found.zsh"
+fi
 
 export AWS_PAGER=""
 
