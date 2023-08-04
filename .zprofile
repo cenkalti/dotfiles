@@ -56,10 +56,18 @@ if [[ -d "$HOMEBREW_PREFIX/opt/node@14/bin" ]]; then
     export PATH="$HOMEBREW_PREFIX/opt/node@14/bin:$PATH"
 fi
 
-if [[ ! "$PATH" == *$HOMEBREW_PREFIX/opt/fzf/bin* ]]; then
-    export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
-    [[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
-    if [[ -f $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
-        source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+elif [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
+    source "/usr/share/fzf/key-bindings.zsh"
+fi
+
+if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
+    if [[ ! "$PATH" == *$HOMEBREW_PREFIX/opt/fzf/bin* ]]; then
+        export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
+        [[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
     fi
+elif [[ -f "/usr/share/fzf/completion.zsh" ]]; then
+    source "/usr/share/fzf/completion.zsh"
 fi
