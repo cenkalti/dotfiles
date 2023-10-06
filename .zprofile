@@ -71,3 +71,6 @@ if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then
 elif [[ -f "/usr/share/fzf/completion.zsh" ]]; then
     source "/usr/share/fzf/completion.zsh"
 fi
+
+# Created by `pipx` on 2023-10-03 21:15:02
+export PATH="$PATH:/home/cenk/.local/bin"
