@@ -231,6 +231,12 @@ function docker-build-and-run() {
   name="$(basename $(pwd))"
   docker build -t $name . && docker run -it --rm --name $name $name $@
 }
+function dex {
+  docker exec -it $1 ${2:-bash}
+}
+function dl {
+  docker logs -f $1
+}
 
 # go aliases
 alias gi="go install"
