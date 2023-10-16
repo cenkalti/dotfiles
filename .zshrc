@@ -102,7 +102,7 @@ unsetopt AUTO_CD
 # my ssh & tmux helper
 function ssht() { ssh -t $1 "tmux attach -t $USER || tmux new -s $USER" }
 function mt() { mosh $1 -- sh -c "tmux attach -t $USER || tmux new -s $USER" }
-function a() { mt "arch.home.cenkalti.com" }
+function home() { ssht "arch.home.cenkalti.com" }
 
 function searchandreplace() {
     LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "s/$3/$4/g" {} +
