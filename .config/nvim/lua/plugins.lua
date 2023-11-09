@@ -58,4 +58,7 @@ return {
 
   -- Tmux support (Tyank, Tput)
   'tpope/vim-tbone',
+
+  -- GitHub Copilot
+  'github/copilot.vim',
 }
