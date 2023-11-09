@@ -388,7 +388,7 @@ if [[ -n "$BUFFER" ]]; then
 fi
 }
 zle -N _sgpt_zsh
-bindkey ^l _sgpt_zsh
+bindkey '^[\' _sgpt_zsh  # Alt-\
 # Shell-GPT integration ZSH v0.1
 
 ################################################################################
