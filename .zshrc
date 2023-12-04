@@ -56,6 +56,7 @@ ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G
 alias l="ls -l"
 alias la="ls -la"
 alias lt="ls -lt | head"
+alias lg="lazygit"
 alias d="pwd"
 alias u="sudo -iu"
 alias s="sudo su"
