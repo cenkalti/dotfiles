@@ -17,6 +17,7 @@ return {
         },
         filters = {
           dotfiles = true,
+          custom = { '__pycache__' },
         },
         filesystem_watchers = {
           enable = false,
