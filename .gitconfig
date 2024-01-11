@@ -105,7 +105,6 @@
 
 [core]
         editor = vim
-        excludesfile = ~/.gitignore_global
         autocrlf = false
         pager = "diff-so-fancy | less --tabs=4 -R"
 
