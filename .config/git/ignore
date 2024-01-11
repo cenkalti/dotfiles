@@ -30,3 +30,4 @@ node_modules/
 compile_commands.json
 .gdb_history
 .vim-bookmarks
+.mylogin.cnf
