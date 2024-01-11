@@ -49,7 +49,7 @@
         # Nice history views
         lol  = log --graph --decorate --oneline --abbrev-commit
         lola = log --graph --decorate --oneline --abbrev-commit --all
-        dag  = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+        dag  = "log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order"
 
         # Show commits between two refs. Pass argument like master...feature
         lr   = log --graph --oneline --left-right --cherry-pick
