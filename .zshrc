@@ -26,7 +26,7 @@ function virtualenv_info {
 function git_info {
   head=$(git symbolic-ref HEAD 2>/dev/null)
   if [ -n "$head" ]; then
-    ref=$(echo $head | cut -d '/' -f 3)
+    ref=$(echo $head | cut -d '/' -f 3-)
     echo "{$ref}"
   fi
 }
