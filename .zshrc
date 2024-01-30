@@ -394,6 +394,8 @@ zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
 # Shell-GPT integration ZSH v0.1
 
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
