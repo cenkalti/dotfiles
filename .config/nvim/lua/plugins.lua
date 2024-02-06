@@ -11,21 +11,6 @@ return {
   -- Sort selected text with `gs`
   'christoomey/vim-sort-motion',
 
-  -- Show git status on gutter
-  { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-  -- Delete all buffers except current one
-  'vim-scripts/BufOnly.vim',
-
-  -- Show open buffers on top and switch with <leader>1..9
-  {'akinsho/bufferline.nvim', version = "*", dependencies = { 'nvim-tree/nvim-web-devicons' } },
-
-  -- Delete buffer without changing window layout
-  'qpkorr/vim-bufkill',
-
-  -- Comment out code
-  'tpope/vim-commentary',
-
   -- Custom bookmarks
   'mattesgroeger/vim-bookmarks',
 
@@ -41,9 +26,6 @@ return {
   -- Fixes repeating pluging commands with `.`
   'tpope/vim-repeat',
 
-  -- Git commands
-  'tpope/vim-fugitive',
-
   -- Enables :GBrowse from vim-fugitive to open GitHub URLs
   'tpope/vim-rhubarb',
 
@@ -52,9 +34,6 @@ return {
 
   -- Automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
   'tpope/vim-sleuth',
-
-  -- Change quotes with `cs'"`, delete with `ds"`.
-  'tpope/vim-surround',
 
   -- Tmux support (Tyank, Tput)
   'tpope/vim-tbone',
