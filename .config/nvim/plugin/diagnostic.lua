@@ -1,7 +1,9 @@
-local opts = { noremap=true, silent=true }
+local wk = require("which-key")
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+wk.register({
+  ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
+  ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+})
 
 -- Configure LSP diagnostic messages
 vim.diagnostic.config({

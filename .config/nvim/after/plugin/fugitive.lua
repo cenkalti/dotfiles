@@ -1,6 +1,11 @@
--- View git status
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+local wk = require("which-key")
 
--- View http link for current buffer
-vim.keymap.set("n", "gb", vim.cmd.GBrowse);
-vim.keymap.set("v", "gb", vim.cmd.GBrowse);
+wk.register({
+  ["<leader>gs"] = { "<cmd>Git<CR>", "View Git Status" },
+  ["gb"] = { "<cmd>GBrowse<CR>", "View HTTP Link" },
+}) -- Normal mode mapping
+
+wk.register({
+  ["gb"] = { "<cmd>GBrowse<CR>", "View HTTP Link" },
+}, { mode = "v" })
+

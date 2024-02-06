@@ -6,6 +6,7 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "antosha417/nvim-lsp-file-operations",
+      "folke/which-key.nvim",
     },
     config = function()
       require("nvim-tree").setup({
@@ -30,8 +31,14 @@ return {
           show_on_open_dirs = false,
         },
       })
-      vim.keymap.set('n', '<Leader>n', vim.cmd.NvimTreeToggle)
-      vim.keymap.set('n', '<Leader>r', vim.cmd.NvimTreeFindFile)
+
+      local wk = require("which-key")
+
+      wk.register({
+        ["<Leader>n"] = { "<cmd>NvimTreeToggle<CR>", "Toggle Nvim Tree" },
+        ["<Leader>r"] = { "<cmd>NvimTreeFindFile<CR>", "Find File in Nvim Tree" },
+      })
+
     end,
   },
 }

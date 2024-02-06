@@ -1,40 +1,30 @@
 require('gitsigns').setup{
   on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
+    require('which-key').register({
 
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
+      -- Navigation
+      ["]c"] = { "<cmd>lua require('gitsigns').next_hunk()<CR>", "Next Hunk" },
+      ["[c"] = { "<cmd>lua require('gitsigns').prev_hunk()<CR>", "Previous Hunk" },
 
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+      -- Actions
+      ["<leader>hs"] = { "<cmd>Gitsigns stage_hunk<CR>", "Stage Hunk" },
+      ["<leader>hr"] = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Hunk" },
 
-    map('n', '[c', function()
-      if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+      ["<leader>hS"] = { "<cmd>lua require('gitsigns').stage_buffer()<CR>", "Stage Buffer" },
+      ["<leader>hu"] = { "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", "Undo Stage Hunk" },
+      ["<leader>hR"] = { "<cmd>lua require('gitsigns').reset_buffer()<CR>", "Reset Buffer" },
+      ["<leader>hp"] = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview Hunk" },
+      ["<leader>hb"] = { "<cmd>lua require('gitsigns').blame_line{full=true}<CR>", "Blame Line" },
+      ["<leader>tb"] = { "<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>", "Toggle Line Blame" },
+      ["<leader>hd"] = { "<cmd>lua require('gitsigns').diffthis()<CR>", "Diff This" },
+      ["<leader>hD"] = { "<cmd>lua require('gitsigns').diffthis('~')<CR>", "Diff This ~" },
+      ["<leader>td"] = { "<cmd>lua require('gitsigns').toggle_deleted()<CR>", "Toggle Deleted" },
+    }, { mode = "n", buffer = bufnr })
 
-    -- Actions
-    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-    map('n', '<leader>hS', gs.stage_buffer)
-    map('n', '<leader>hu', gs.undo_stage_hunk)
-    map('n', '<leader>hR', gs.reset_buffer)
-    map('n', '<leader>hp', gs.preview_hunk)
-    map('n', '<leader>hb', function() gs.blame_line{full=true} end)
-    map('n', '<leader>tb', gs.toggle_current_line_blame)
-    map('n', '<leader>hd', gs.diffthis)
-    map('n', '<leader>hD', function() gs.diffthis('~') end)
-    map('n', '<leader>td', gs.toggle_deleted)
+    require('which-key').register({
+      ["<leader>hs"] = { "<cmd>Gitsigns stage_hunk<CR>", "Stage Hunk" },
+      ["<leader>hr"] = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Hunk" },
+    }, { mode = "v", buffer = bufnr })
 
-    -- Text object
-    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }

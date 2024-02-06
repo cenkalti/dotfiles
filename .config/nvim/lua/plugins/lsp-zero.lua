@@ -14,6 +14,8 @@ return {
       {'hrsh7th/cmp-buffer'},
       {'hrsh7th/cmp-nvim-lua'},
       {'L3MON4D3/LuaSnip'},
+
+      {'folke/which-key.nvim'},
     },
     config = function ()
       local lsp = require('lsp-zero').preset({})
@@ -28,18 +30,21 @@ return {
 
       -- Setup LSP key bindings
       lsp.on_attach(function(client, bufnr)
-        local opts = {buffer = bufnr, remap = false}
+        local wk = require("which-key")
 
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'L', vim.lsp.buf.signature_help, opts)
+        wk.register({
+          K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+          L = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
 
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', 'gR', vim.lsp.buf.references, opts)
+          gd = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+          gD = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
+          gt = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Go to Type Definition" },
+          gi = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to Implementation" },
+          gR = { "<cmd>lua vim.lsp.buf.references()<CR>", "List References" },
 
-        vim.keymap.set('n', '<localleader>r', vim.lsp.buf.rename, opts)
+          ["<localleader>r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+        }, { buffer = bufnr })
+
       end)
 
       -- Setup completion key bindings
