@@ -11,9 +11,6 @@ return {
   -- Sort selected text with `gs`
   'christoomey/vim-sort-motion',
 
-  -- Custom bookmarks
-  'mattesgroeger/vim-bookmarks',
-
   -- Delete indentation level with `dii`, 1 above with `dai`.
   'michaeljsmith/vim-indent-object',
 
