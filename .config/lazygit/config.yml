@@ -1,2 +1,7 @@
 gui:
   nerdFontsVersion: "3"
+keybinding:
+  files:
+    viewResetOptions: 'G'
+  commits:
+    viewResetOptions: 'G'
