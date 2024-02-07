@@ -158,3 +158,5 @@
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
