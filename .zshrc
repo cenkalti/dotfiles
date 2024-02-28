@@ -108,11 +108,19 @@ function home() { ssht "arch.home.cenkalti.com" }
 function tunnel() { ssh -N -R "172.17.0.1:8080:127.0.0.1:$1" arch.home.cenkalti.com & }
 
 function searchandreplace() {
-    LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "s/$3/$4/g" {} +
+  if [ -z "$1" ]; then
+    echo "Usage: searchandreplace <dir> <ext> <search> <replace>"
+    return
+  fi
+  LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "s/$3/$4/g" {} +
 }
 
 function searchanddelete() {
-    LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "/$3/d" {} +
+  if [ -z "$1" ]; then
+    echo "Usage: searchandreplace <dir> <ext> <search>"
+    return
+  fi
+  LC_ALL=C find $1 -path './.*' -prune -o -type f -name "*.$2" -exec sed -E -i '' "/$3/d" {} +
 }
 
 function loop() {
