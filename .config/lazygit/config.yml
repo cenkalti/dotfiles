@@ -1,3 +1,4 @@
+notARepository: 'skip'
 promptToReturnFromSubprocess: false
 gui:
   nerdFontsVersion: "3"
@@ -6,3 +7,7 @@ keybinding:
     viewResetOptions: 'G'
   commits:
     viewResetOptions: 'G'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
