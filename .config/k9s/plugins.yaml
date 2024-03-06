@@ -1,0 +1,39 @@
+plugins:
+  # Defines a plugin to provide a `ctrl-l` shortcut to tail the logs while in pod view.
+  logs:
+    # Define a mnemonic to invoke the plugin
+    shortCut: Ctrl-L
+    # What will be shown on the K9s menu
+    description: Pod logs
+    # Collections of views that support this shortcut. (You can use `all`)
+    scopes:
+      - po
+    # The command to run upon invocation. Can use Krew plugins here too!
+    command: kubectl
+    # Whether or not to run the command in background mode
+    background: false
+    # Defines the command arguments
+    args:
+      - logs
+      - -f
+      - $NAME
+      - -n
+      - $NAMESPACE
+      - --context
+      - $CONTEXT
+  json-logs:
+    # Define a mnemonic to invoke the plugin
+    shortCut: Ctrl-J
+    # What will be shown on the K9s menu
+    description: Pod logs (JSON)
+    # Collections of views that support this shortcut. (You can use `all`)
+    scopes:
+      - po
+    # The command to run upon invocation. Can use Krew plugins here too!
+    command: sh
+    # Whether or not to run the command in background mode
+    background: false
+    # Defines the command arguments
+    args:
+      - -c
+      - 'kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT | jq .'

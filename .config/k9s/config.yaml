@@ -1,0 +1,6 @@
+k9s:
+  liveViewAutoRefresh: true
+  ui:
+    enableMouse: true
+    logoless: true
+    crumbsless: true
