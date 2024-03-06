@@ -16,8 +16,8 @@ return {
       local project_actions = require("telescope._extensions.project.actions")
       require('telescope').setup({
         extensions = {
-          cd_scope = { "global" },
           project = {
+            cd_scope = { "global" },
             base_dirs = {
               '~/projects',
             },
