@@ -13,15 +13,21 @@ return {
 
       telescope.load_extension('fzf')
 
-      require('telescope').setup {
-        defaults = {
-          mappings = {
-            i = {
-              ["<Esc>"] = actions.close,
+      local project_actions = require("telescope._extensions.project.actions")
+      require('telescope').setup({
+        extensions = {
+          cd_scope = { "global" },
+          project = {
+            base_dirs = {
+              '~/projects',
             },
+            sync_with_nvim_tree = true,
+            on_project_selected = function(prompt_bufnr)
+              project_actions.change_working_directory(prompt_bufnr, false)
+            end
           },
         },
-      }
+      })
 
       local wk = require("which-key")
 
