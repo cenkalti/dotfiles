@@ -37,4 +37,7 @@ return {
 
   -- GitHub Copilot
   'github/copilot.vim',
+
+  -- Helm syntax with template support
+  'towolf/vim-helm',
 }
