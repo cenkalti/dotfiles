@@ -23,6 +23,10 @@ return {
         filesystem_watchers = {
           enable = false,
         },
+        update_focused_file = {
+          enable = true,
+          update_root = true,
+        },
         git = {
           ignore = false,
           show_on_open_dirs = false,
