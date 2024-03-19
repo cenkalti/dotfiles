@@ -1,6 +1,6 @@
 return {
   -- Color schemes
-  { 'arcticicestudio/nord-vim', name = 'nord' },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 
   -- Highlight word under cursor
   'RRethy/vim-illuminate',

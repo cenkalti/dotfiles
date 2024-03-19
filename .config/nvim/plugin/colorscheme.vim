@@ -6,4 +6,4 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme nord
+colorscheme tokyonight
