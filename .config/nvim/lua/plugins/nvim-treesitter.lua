@@ -10,8 +10,6 @@ return {
         -- A list of parser names, or "all" (the four listed parsers should always be installed)
         ensure_installed = { "lua", "vim", "vimdoc", "comment", "python", "go", "javascript", "typescript" },
 
-        ignore_install = { "markdown", "markdown_inline" },
-
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
 
