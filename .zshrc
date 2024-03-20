@@ -390,21 +390,21 @@ export JSII_DEPRECATED="quiet"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
-# Shell-GPT integration ZSH v0.1
+# Shell-GPT integration ZSH v0.2
 _sgpt_zsh() {
 if [[ -n "$BUFFER" ]]; then
     _sgpt_prev_cmd=$BUFFER
     BUFFER+="⌛"
     zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
+    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd" --no-interaction)
     zle end-of-line
 fi
 }
 zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
-# Shell-GPT integration ZSH v0.1
-
+# Shell-GPT integration ZSH v0.2
 
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
+
