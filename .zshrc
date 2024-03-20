@@ -386,8 +386,9 @@ if [ -f "/usr/share/doc/pkgfile/command-not-found.zsh" ]; then
 fi
 
 export AWS_PAGER=""
-
 export JSII_DEPRECATED="quiet"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
 # Shell-GPT integration ZSH v0.1
 _sgpt_zsh() {
@@ -403,8 +404,6 @@ zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
 # Shell-GPT integration ZSH v0.1
 
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
-export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
