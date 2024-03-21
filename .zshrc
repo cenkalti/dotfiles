@@ -197,21 +197,21 @@ alias gti=git
 alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 
 # pacman
-alias pacu='sudo pacman -Syu'       # Update the system and upgrade all system packages.
 alias paci='sudo pacman -S'         # Install a specific package from repos added to the system
+alias pacr='sudo pacman -R'         # Remove the specified package but retain its configuration and deps
+alias pacu='sudo pacman -Syu'       # Update the system and upgrade all system packages.
 alias pacinf='pacman -Si'           # Display information about a given package located in the repositories
 alias pacl='sudo pacman -U'         # Install specific package that has been downloaded to the local system
 alias pacs='pacman -Ss'             # Search for package or packages in the repositories
-alias pacr='sudo pacman -R'         # Remove the specified package but retain its configuration and deps
 alias pacrall='sudo pacman -Rns'    # Remove package, its configuration and all unwanted dependencies
 alias pacsl='pacman -Qi'            # Display information about a given package in the local database
 alias paclocs='pacman -Qs'          # Search for package/packages in the local database
 
 # yay
-alias yu='yay -Syua'        # Synchronize with repositories and upgrade packages, including AUR packages.
 alias yi='yay -S'           # Install a specific package from repos added to the system
-alias yil='yay -U'          # Install specific package that has been downloaded to the local system
 alias yr='yay -R'           # Remove package but retain configs and required dependencies
+alias yu='yay -Syua'        # Synchronize with repositories and upgrade packages, including AUR packages.
+alias yil='yay -U'          # Install specific package that has been downloaded to the local system
 alias yrall='yay -Rns'      # Remove package or packages , its configuration and all unwanted dependencies
 alias yip='yay -Si'         # Display information about a given package located in the repositories
 alias ys='yay -Ss'          # Search for package or packages in the repositories
