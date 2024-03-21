@@ -333,8 +333,8 @@ function preexec {
 precmd_functions+=(precmd)
 preexec_functions+=(preexec)
 
-if [[ -f ~/.zshrc_private ]]; then
-  source ~/.zshrc_private
+if [[ -f ~/.local.zshrc ]]; then
+  source ~/.local.zshrc
 fi
 
 n ()
