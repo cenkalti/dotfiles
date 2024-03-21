@@ -199,8 +199,8 @@ alias listening="sudo lsof -Pn -iTCP -sTCP:LISTEN"
 # pacman
 alias pacu='sudo pacman -Syu'       # Update the system and upgrade all system packages.
 alias paci='sudo pacman -S'         # Install a specific package from repos added to the system
+alias pacinf='pacman -Si'           # Display information about a given package located in the repositories
 alias pacl='sudo pacman -U'         # Install specific package that has been downloaded to the local system
-alias paci='pacman -Si'             # Display information about a given package located in the repositories
 alias pacs='pacman -Ss'             # Search for package or packages in the repositories
 alias pacr='sudo pacman -R'         # Remove the specified package but retain its configuration and deps
 alias pacrall='sudo pacman -Rns'    # Remove package, its configuration and all unwanted dependencies
