@@ -1,11 +1,11 @@
 -- An extension for telescope.nvim that allows you to switch between projects.
 return {
-  'nvim-telescope/telescope-project.nvim',
+  'ahmedkhalf/project.nvim',
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },
   config = function ()
-    require'telescope'.load_extension('project')
-    -- Settings are inside telescope plugin.
+    require("project_nvim").setup()
+    require('telescope').load_extension('projects')
   end
 }

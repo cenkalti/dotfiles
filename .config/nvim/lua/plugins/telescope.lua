@@ -13,18 +13,7 @@ return {
 
       telescope.load_extension('fzf')
 
-      local project_actions = require("telescope._extensions.project.actions")
-      require('telescope').setup({
-        extensions = {
-          project = {
-            cd_scope = { "global" },
-            base_dirs = {
-              '~/projects',
-            },
-            sync_with_nvim_tree = true,
-          },
-        },
-      })
+      require('telescope').setup()
 
       local wk = require("which-key")
 
