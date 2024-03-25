@@ -28,6 +28,7 @@ return {
         ["<leader>fc"] = { "<cmd>lua require('telescope.builtin').commands()<CR>", "Commands" },
         ["<leader>o"] = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "LSP Document Symbols" },
         ["<leader>O"] = { "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>", "LSP Workspace Symbols" },
+        ["<leader>ca"] = { function() vim.lsp.buf.code_action() end, "Code Action" },
       })
 
     end,
