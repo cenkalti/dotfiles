@@ -9,11 +9,30 @@ return {
   config = function ()
     vim.opt.termguicolors = true
 
-    require("bufferline").setup{
+    bufferline = require("bufferline")
+    bufferline.setup{
       options = {
-        numbers = 'ordinal',
+        style_preset = bufferline.style_preset.no_italic,
+        separator_style = {"", ""},
+        indicator = {
+          style = 'icon',
+          icon = '▶',
+        },
+        numbers = function(opts)
+          return opts.raise(opts.ordinal)
+        end,
         show_close_icon = false,
         show_buffer_close_icons = false,
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = function()
+              return vim.fn.getcwd():match("([^/\\]+)$")
+            end,
+            highlight = "Directory",
+            text_align = "left"
+          }
+        }
       },
     }
 
