@@ -63,5 +63,11 @@ return {
       ["<C-A-n>"] = { "<cmd>BufferLineMoveNext<CR>", "Move Buffer Next" },
       ["<C-A-p>"] = { "<cmd>BufferLineMovePrev<CR>", "Move Buffer Previous" },
     })
+
+    -- Other
+    wk.register({
+      ["<leader>b"] = { "<cmd>BufferLineCloseOthers<CR>", "Close Other Buffers" },
+    }, { silent = true })
+
   end
 }
