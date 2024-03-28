@@ -30,6 +30,7 @@ return {
     -- Local Leader Key Bindings
     wk.register({
       c = {":lclose<CR>", "Close location list"},
+      p = {":echo expand('%:p')<CR>", "Show full path of current file"},
     }, { prefix = "\\" })
 
     -- Function Key Bindings
