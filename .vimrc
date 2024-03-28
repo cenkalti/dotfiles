@@ -58,6 +58,15 @@ augroup vimrc
     autocmd BufWinEnter quickfix    vnoremap <silent><buffer>d  :call QFdelete(bufnr())<CR>
     autocmd BufWinEnter quickfix endif
 augroup END
+
+" Adjust quickfix window
+function! AdjustWindowHeight(minheight, maxheight)
+    exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+augroup quickfix
+    autocmd!
+    autocmd FileType qf call AdjustWindowHeight(3, 10)
+augroup END
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

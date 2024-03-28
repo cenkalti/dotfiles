@@ -1,7 +1,4 @@
 return {
-  -- Color schemes
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-
   -- Highlight word under cursor
   'RRethy/vim-illuminate',
 
