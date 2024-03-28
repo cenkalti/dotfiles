@@ -30,7 +30,6 @@ return {
     -- Local Leader Key Bindings
     wk.register({
       c = {":lclose<CR>", "Close location list"},
-      w = {":lua require'telescope'.extensions.projects.projects{}<CR>", "Switch project"},
     }, { prefix = "\\" })
 
     -- Function Key Bindings
