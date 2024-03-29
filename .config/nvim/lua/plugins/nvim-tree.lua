@@ -28,13 +28,6 @@ return {
         sync_root_with_cwd = true,
         -- Will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
         respect_buf_cwd = true,
-        -- Update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file.
-        update_focused_file = {
-          enable = true,
-          -- Update the root directory of the tree if the file is not under current root directory.
-          -- It prefers vim's cwd and `root_dirs`. Otherwise it falls back to the folder containing the file.
-          update_root = true,
-        },
         git = {
           ignore = false,
           show_on_open_dirs = false,
