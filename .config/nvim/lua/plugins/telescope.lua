@@ -8,7 +8,6 @@ return {
     },
     config = function()
       local telescope = require('telescope')
-      local actions = require('telescope.actions')
       local builtin = require('telescope.builtin')
 
       telescope.load_extension('fzf')
