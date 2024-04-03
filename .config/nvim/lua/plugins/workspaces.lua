@@ -76,6 +76,7 @@ return {
   },
   config = function ()
     require('workspaces').setup({
+      cd_type = 'tab',
       hooks = {
         open = {
           -- do not run hooks if file already in active workspace
