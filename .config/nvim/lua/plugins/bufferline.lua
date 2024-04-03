@@ -32,7 +32,7 @@ return {
           {
             filetype = "NvimTree",
             text = function()
-              return vim.fn.getcwd():match("([^/\\]+)$")
+              return "cwd: " .. vim.fn.getcwd():match("([^/\\]+)$")
             end,
             highlight = "Directory",
             text_align = "left"
