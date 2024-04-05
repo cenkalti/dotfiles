@@ -81,6 +81,9 @@
         # Add only untracked files
         au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
 
+        # Construct a commit message for use with rebase --autosquash
+        fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+
 [color]
         ui = true
         pager = true
@@ -163,6 +166,9 @@
         required = true
 [pull]
         ff = only
+
+[rebase]
+  autosquash = true
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
