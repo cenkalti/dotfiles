@@ -152,18 +152,22 @@
 
 [ghi]
         token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
+
 [color "diff-highlight"]
         oldNormal = red bold
         oldHighlight = red bold 52
         newNormal = green bold
         newHighlight = green bold 22
+
 [fetch]
         prune = true
+
 [filter "lfs"]
         clean = git-lfs clean -- %f
         smudge = git-lfs smudge -- %f
         process = git-lfs filter-process
         required = true
+
 [pull]
         ff = only
 
