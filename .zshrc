@@ -128,7 +128,7 @@ function loop() {
     seconds="$1"; shift
     while true; do
         echo "\$ $@"
-        $@
+        zsh -ic $@
         sleep $seconds
     done
 }
