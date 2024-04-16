@@ -315,12 +315,6 @@ function preexec {
     local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|mt|-*)]:gs/%/%%}
 
     case "$CMD" in
-      # show current dir on tab when vim is open
-      vi*)
-        ;&
-      nvim*)
-        CMD="$CMD (%1~)"
-        ;;
       # show current host when tmux is open
       tmux*)
         CMD="%m"
