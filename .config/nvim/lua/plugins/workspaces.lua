@@ -73,6 +73,7 @@ return {
   'natecraddock/workspaces.nvim',
   dependencies = {
     'nvim-telescope/telescope.nvim',
+    'folke/which-key.nvim',
   },
   config = function ()
     require('workspaces').setup({
