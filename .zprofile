@@ -7,10 +7,6 @@ if [[ -d /opt/homebrew ]]; then  # m1 macos
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-elif [[ -f /usr/local/bin/brew ]]; then  # intel macos
-    export HOMEBREW_PREFIX=/usr/local
-    export PATH=/usr/local/sbin:$PATH
-    export PATH=/usr/local/bin:$PATH
 elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then  # linux
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -38,22 +34,6 @@ fi
 
 if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
-fi
-
-if [[ -d $HOME/.toolbox/bin ]]; then
-    export PATH="$HOME/.toolbox/bin:$PATH"
-fi
-
-if [[ -d "$HOME/.yarn" ]]; then
-    export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-fi
-
-if [[ -s "$HOME/.travis/travis.sh" ]]; then
-    source "$HOME.travis/travis.sh"
-fi
-
-if [[ -d "$HOMEBREW_PREFIX/opt/node@14/bin" ]]; then
-    export PATH="$HOMEBREW_PREFIX/opt/node@14/bin:$PATH"
 fi
 
 if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
