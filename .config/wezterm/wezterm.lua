@@ -15,6 +15,14 @@ config.initial_rows = 36
 
 config.keys = {
   { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
+  {
+    key = 'k',
+    mods = 'SUPER',
+    action = wezterm.action.Multiple {
+      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
+    },
+  },
 }
 
 -- and finally, return the configuration to wezterm
