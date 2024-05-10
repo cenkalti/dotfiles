@@ -12,6 +12,8 @@ config.adjust_window_size_when_changing_font_size = false
 config.hide_tab_bar_if_only_one_tab = true
 config.initial_cols = 120
 config.initial_rows = 36
+config.scrollback_lines = 100000
+config.enable_scroll_bar = true
 
 config.keys = {
   { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
