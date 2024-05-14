@@ -48,6 +48,7 @@ return {
       -- keybindings
       require("which-key").register({
           ["<leader>ha"] = { function() harpoon:list():add() end, "Add file to Harpoon" },
+          ["<leader>hA"] = { function() harpoon:list():remove() end, "Remove file from Harpoon" },
           ["<leader>hh"] = { function() toggle_telescope(harpoon:list()) end, "Open Harpoon Window" },
       })
     end,
