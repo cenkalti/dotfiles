@@ -85,7 +85,7 @@ alias vs='vagrant suspend && exit'
 
 alias cloc='cloc --exclude-dir vendor'
 
-alias todo="ag TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
+alias todo="rg TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
 
 alias nvims="nvim -S Session.vim"
 
