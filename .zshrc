@@ -43,17 +43,19 @@ setopt HIST_VERIFY
 
 setopt interactivecomments  # recognize comments
 
+# Do not change directory without "cd" command
+unsetopt AUTO_CD
+
 # ls colors
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 
-# Aliases for easy navigation
 alias l="ls -l"
 alias la="ls -la"
 alias lt="ls -lt | head"
-alias lg="lazygit"
-alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
+
+# One-key shortcuts
 alias d="pwd"
 alias u="sudo -iu"
 alias s="sudo su"
@@ -62,8 +64,8 @@ alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
 
-# mmap is faster than read
-alias ag="ag --mmap"
+alias lg="lazygit"
+alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
 alias myip="curl http://ipinfo.io/ip"
 alias mycity="curl http://ipinfo.io/city"
@@ -75,11 +77,6 @@ alias disk-usage='sudo du -xcms * 2>/dev/null | sort -rn | head -11'
 alias remove-old-files="find . -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf '{}' +"
 
 alias https='http --default-scheme=https'
-
-alias vu='vagrant up && vagrant ssh'
-alias vs='vagrant suspend && exit'
-
-alias cloc='cloc --exclude-dir vendor'
 
 alias todo="rg TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
 
@@ -93,9 +90,6 @@ alias encoredump='ulimit -c unlimited'
 alias nocoredump='ulimit -c 0'
 # Check core dump
 alias iscoredump='ulimit -c'
-
-# Do not change directory without "cd" command
-unsetopt AUTO_CD
 
 # my ssh & tmux helper
 function ssht() { ssh -t $1 "tmux attach -t cenk || tmux new -s cenk" }
@@ -131,13 +125,10 @@ function loop() {
 
 function run-until-error() { while $@; do :; done; say "command is finished" }
 
-function monitor() { watch -n 1 "pgrep -l ${@:q} | grep -v watch" }
+function monitor()      { watch -n 1 "pgrep -l ${@:q} | grep -v watch" }
 function monitor-full() { watch -n 1 "pgrep -a ${@:q} | grep -v watch" }
 
 function etime() { ps -eo pid,comm,etime,args | grep $1 }
-
-# iTerm2 badge. https://iterm2.com/documentation-badges.html
-function badge { printf "\e]1337;SetBadgeFormat=$(echo "$@" | base64)\a"  }
 
 # Git Push Tag helper
 # https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
