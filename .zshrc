@@ -41,10 +41,6 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_VERIFY
 
-# Fix backspace and delete keys
-bindkey '^?' backward-delete-char  # [Backspace] - delete backward
-bindkey "\e[3~" delete-char  # [Delete] - delete forward
-
 setopt interactivecomments  # recognize comments
 
 # ls colors
