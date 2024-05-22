@@ -35,6 +35,7 @@ return {
             ['<leader>fb'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
             ['<leader>fh'] = { "<cmd>lua require('telescope.builtin').help_tags()<CR>", 'Help Tags' },
             ['<leader>fc'] = { "<cmd>lua require('telescope.builtin').commands()<CR>", 'Commands' },
+            ['<leader>fd'] = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", 'Diagnostics' },
             ['<leader>o'] = {
                 "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
                 'LSP Document Symbols',
