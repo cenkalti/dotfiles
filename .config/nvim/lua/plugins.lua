@@ -17,7 +17,7 @@ return {
   -- More text objects. `ci(` replaces text inside ().
   'wellle/targets.vim',
 
-  -- Fixes repeating pluging commands with `.`
+  -- Fixes repeating plugin commands with `.`
   'tpope/vim-repeat',
 
   -- Enables :GBrowse from vim-fugitive to open GitHub URLs
