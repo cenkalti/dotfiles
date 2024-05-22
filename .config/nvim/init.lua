@@ -17,8 +17,3 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
 require('lazy').setup('plugins')
-
--- Show diagnostics in loclist when they change
-vim.cmd([[
-  autocmd! DiagnosticChanged * lua vim.diagnostic.setloclist({open = true})
-]])

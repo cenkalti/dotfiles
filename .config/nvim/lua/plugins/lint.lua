@@ -3,9 +3,7 @@ return {
     config = function()
         require('lint').linters_by_ft = {
             markdown = { 'vale' },
-            go = { 'golangcilint' },
-            python = { 'flake8', 'mypy' },
-            lua = { 'luacheck' },
+            python = { 'mypy' },
         }
         vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
             callback = function()

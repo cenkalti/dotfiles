@@ -1,28 +1,35 @@
+-- Created with following tutorial:
+-- https://lsp-zero.netlify.app/v3.x/tutorial.html
 return {
     {
-        -- https://lsp-zero.netlify.app/v3.x/tutorial.html
+        -- LSP zero is collection of functions that will help you setup Neovim's LSP client,
+        -- so you can get IDE-like features with minimum effort.
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
+
         dependencies = {
             -- Contains LSP client configurations for various language servers
             { 'neovim/nvim-lspconfig' },
+
             -- Package manager for LSP servers, linters and formatters
             { 'williamboman/mason.nvim', build = ':MasonUpdate' },
-            -- Allows to configure LSP servers using Mason
-            --   register a setup hook with lspconfig that ensures servers installed with mason.nvim are set up with the necessary configuration
-            --   provide extra convenience APIs such as the :LspInstall command
+
+            -- Registers a setup hook with lspconfig that ensures servers installed with mason.nvim
+            -- are set up with the necessary configuration
+            -- Provides extra convenience APIs such as the :LspInstall command
             { 'williamboman/mason-lspconfig.nvim' },
 
-            -- Autocompletion
+            -- For auto-completion
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'L3MON4D3/LuaSnip' },
 
-            -- Setup key bindings
+            -- For key bindings
             { 'folke/which-key.nvim' },
         },
+
         config = function()
             local lsp_zero = require('lsp-zero')
             local lspconfig = require('lspconfig')
@@ -52,19 +59,20 @@ return {
                 }, { buffer = bufnr })
             end)
 
-            --- if you want to know more about lsp-zero and mason.nvim
-            --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+            -- Setup Mason package manager
             require('mason').setup({})
+
+            -- Configure LSP servers installed with Mason
             require('mason-lspconfig').setup({
                 ensure_installed = {},
+
+                -- Custom setup for some LSP servers
                 handlers = {
-                    -- Setup language servers
                     lsp_zero.default_setup,
                     pylsp = function()
-                        local pylsp_opts = lsp_zero.pylsp({
+                        lspconfig.pylsp.setup({
                             configurationSources = { 'flake8' },
                         })
-                        lspconfig.pylsp.setup(pylsp_opts)
                     end,
                 },
             })
@@ -105,6 +113,9 @@ return {
 
             -- Show diagnostic message as floating window when hover on line (delay is controlled with `updatetime` option)
             vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float({focusable=false})]])
+
+            -- Show diagnostics in loclist when they change
+            vim.cmd([[autocmd! DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})]])
         end,
     },
 }
