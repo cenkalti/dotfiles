@@ -1,11 +1,16 @@
 return {
     {
+        -- https://lsp-zero.netlify.app/v3.x/tutorial.html
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
-            -- LSP Support
+            -- Contains LSP client configurations for various language servers
             { 'neovim/nvim-lspconfig' },
+            -- Package manager for LSP servers, linters and formatters
             { 'williamboman/mason.nvim', build = ':MasonUpdate' },
+            -- Allows to configure LSP servers using Mason
+            --   register a setup hook with lspconfig that ensures servers installed with mason.nvim are set up with the necessary configuration
+            --   provide extra convenience APIs such as the :LspInstall command
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
@@ -15,6 +20,7 @@ return {
             { 'hrsh7th/cmp-nvim-lua' },
             { 'L3MON4D3/LuaSnip' },
 
+            -- Setup key bindings
             { 'folke/which-key.nvim' },
         },
         config = function()
@@ -52,10 +58,13 @@ return {
             require('mason-lspconfig').setup({
                 ensure_installed = {},
                 handlers = {
+                    -- Setup language servers
                     lsp_zero.default_setup,
-                    lua_ls = function()
-                        local lua_opts = lsp_zero.nvim_lua_ls()
-                        lspconfig.lua_ls.setup(lua_opts)
+                    pylsp = function()
+                        local pylsp_opts = lsp_zero.pylsp({
+                            configurationSources = { 'flake8' },
+                        })
+                        lspconfig.pylsp.setup(pylsp_opts)
                     end,
                 },
             })
@@ -78,15 +87,6 @@ return {
                     ['<C-n>'] = cmp.mapping.select_next_item(),
                     ['<C-p>'] = cmp.mapping.select_prev_item(),
                 }),
-            })
-
-            -- Configure language servers
-            lspconfig.pylsp.setup({
-                settings = {
-                    pylsp = {
-                        configurationSources = { 'flake8' },
-                    },
-                },
             })
 
             -- Configure diagnostic key bindings
