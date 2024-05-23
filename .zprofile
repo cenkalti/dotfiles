@@ -15,10 +15,6 @@ if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-if type atuin &>/dev/null; then
-    eval "$(atuin init zsh)"
-fi
-
 if [[ -d "$HOMEBREW_PREFIX/opt/mysql-client/bin" ]]; then
     export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 fi
@@ -44,7 +40,11 @@ if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
+if type atuin &>/dev/null; then
+    export ATUIN_NOBIND="true"
+    eval "$(atuin init zsh)"
+    bindkey '^r' atuin-search
+elif [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
     source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 elif [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
     source "/usr/share/fzf/key-bindings.zsh"
