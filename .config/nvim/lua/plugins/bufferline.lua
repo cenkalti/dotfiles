@@ -1,7 +1,6 @@
 -- Show open buffers on top and switch with <leader>1..9
 return {
     'akinsho/bufferline.nvim',
-    version = '*',
     dependencies = {
         'nvim-tree/nvim-web-devicons',
         'folke/which-key.nvim',
