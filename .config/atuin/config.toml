@@ -6,10 +6,6 @@ sync_address = "https://atuin.cenkalti.com"
 ## set it to 0 to sync after every command
 sync_frequency = "5m"
 
-## use ctrl instead of alt as the shortcut modifier key for numerical UI shortcuts
-## alt-0 .. alt-9
-ctrl_n_shortcuts = true
-
 [sync]
 # Enable sync v2 by default
 # This ensures that sync v2 is enabled for new installs only
