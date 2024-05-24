@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require('wezterm')
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -16,17 +16,16 @@ config.scrollback_lines = 100000
 config.enable_scroll_bar = true
 
 config.keys = {
-  { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
-  {
-    key = 'k',
-    mods = 'SUPER',
-    action = wezterm.action.Multiple {
-      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
-      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
+    { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
+    {
+        key = 'k',
+        mods = 'SUPER',
+        action = wezterm.action.Multiple({
+            wezterm.action.ClearScrollback('ScrollbackAndViewport'),
+            wezterm.action.SendKey({ key = 'L', mods = 'CTRL' }),
+        }),
     },
-  },
 }
 
 -- and finally, return the configuration to wezterm
 return config
-
