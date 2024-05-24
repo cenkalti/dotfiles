@@ -5,6 +5,14 @@ return {
         { 'folke/which-key.nvim' },
     },
     config = function()
+        require('zen-mode').setup({
+            plugins = {
+                wezterm = {
+                    enabled = true,
+                    font = '+4',
+                },
+            },
+        })
         require('which-key').register({
             ['<leader>z'] = { '<cmd>ZenMode<CR>', 'Zen Mode' },
         })
