@@ -21,6 +21,7 @@ return {
             ['mm'] = { bookmarks.bookmark_toggle, 'Toggle Bookmark' },
             ['mi'] = { bookmarks.bookmark_ann, 'Add or Edit Bookmark Annotation' },
             ['mc'] = { bookmarks.bookmark_clean, 'Clean Bookmarks in Local Buffer' },
+            ['mC'] = { bookmarks.bookmark_clear_all, 'Clean All Bookmarks' },
             ['mn'] = { bookmarks.bookmark_next, 'Next Bookmark' },
             ['mp'] = { bookmarks.bookmark_prev, 'Previous Bookmark' },
             ['ml'] = { bookmarks.bookmark_list, 'List Bookmarks' },
