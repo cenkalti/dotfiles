@@ -27,7 +27,63 @@ return {
                     -- Instead of true it can also be a list of languages
                     additional_vim_regex_highlighting = true,
                 },
+
+                textobjects = {
+                    select = {
+                        enable = true,
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ['af'] = '@function.outer',
+                            ['if'] = '@function.inner',
+                        },
+                        -- You can choose the select mode (default is charwise 'v')
+                        selection_modes = {
+                            ['@function.inner'] = 'V', -- linewise
+                            ['@function.outer'] = 'V', -- linewise
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ['<localleader>s'] = '@parameter.inner',
+                        },
+                        swap_previous = {
+                            ['<localleader>S'] = '@parameter.inner',
+                        },
+                    },
+                    move = {
+                        enable = true,
+                        set_jumps = true, -- whether to set jumps in the jumplist
+                        goto_next_start = {
+                            [']f'] = '@function.outer',
+                        },
+                        goto_next_end = {
+                            [']F'] = '@function.outer',
+                        },
+                        goto_previous_start = {
+                            ['[f'] = '@function.outer',
+                        },
+                        goto_previous_end = {
+                            ['[F'] = '@function.outer',
+                        },
+                    },
+                },
             })
+
+            local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+
+            -- Repeat movement with ; and ,
+            -- ensure ; goes forward and , goes backward regardless of the last direction
+            vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
+            vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous)
+
+            -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+            vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f)
+            vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F)
+            vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t)
+            vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T)
         end,
     },
 }

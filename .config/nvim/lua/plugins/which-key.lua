@@ -54,7 +54,6 @@ return {
             k = { 'gk', 'Move up by visual line' },
             X = { '%x``x', 'Delete matching braces' },
             Y = { 'y$', 'Yank to end of line' },
-            [','] = { '@@', 'Repeat last macro' },
         })
 
         -- Combination Key Bindings
