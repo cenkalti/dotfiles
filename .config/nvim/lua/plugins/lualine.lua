@@ -23,10 +23,14 @@ return {
         config = function()
             require('lualine').setup({
                 options = {
-                    disabled_filetypes = { 'NvimTree' },
+                    globalstatus = true,
+                    component_separators = { left = '', right = '' },
+                    section_separators = { left = '', right = '' },
                 },
                 sections = {
                     lualine_c = { 'filename', tree_location },
+                    lualine_x = { 'filetype' },
+                    lualine_y = {},
                 },
             })
         end,
