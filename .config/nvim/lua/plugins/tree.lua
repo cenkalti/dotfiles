@@ -40,9 +40,7 @@ return {
                 },
             })
 
-            local wk = require('which-key')
-
-            wk.register({
+            require('which-key').register({
                 ['<Leader>n'] = { '<cmd>NvimTreeToggle<CR>', 'Toggle Nvim Tree' },
                 ['<Leader>r'] = { '<cmd>NvimTreeFindFile<CR>', 'Find File in Nvim Tree' },
             })
