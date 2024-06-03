@@ -71,7 +71,7 @@ return {
                     lsp_zero.default_setup,
                     pylsp = function()
                         lspconfig.pylsp.setup({
-                            configurationSources = { 'flake8' },
+                            configurationSources = { 'pycodestyle' },
                         })
                     end,
                 },
