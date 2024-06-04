@@ -4,6 +4,7 @@ return {
     priority = 1000,
     config = function()
         require('catppuccin').setup({
+            flavour = 'macchiato',
             custom_highlights = function(colors)
                 return {
                     Search = { bg = colors.red, fg = colors.mantle },
@@ -11,6 +12,6 @@ return {
                 }
             end,
         })
-        vim.cmd.colorscheme('catppuccin-frappe')
+        vim.cmd.colorscheme('catppuccin')
     end,
 }
