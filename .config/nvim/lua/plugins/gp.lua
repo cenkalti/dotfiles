@@ -3,13 +3,15 @@ return {
     config = function()
         require('gp').setup({
             agents = {
+                -- Remove default agents
                 { name = 'ChatGPT3-5' },
                 { name = 'CodeGPT3-5' },
+
                 {
                     name = 'ChatGPT4',
                     chat = true,
                     command = false,
-                    model = { model = 'gpt-4', temperature = 1.1, top_p = 1 },
+                    model = { model = 'gpt-4o', temperature = 0.2, top_p = 0.1 },
                     system_prompt = 'You are a general AI assistant.\n\n'
                         .. 'The user provided the additional info about how they would like you to respond:\n\n'
                         .. "- If you're unsure don't guess and say you don't know instead.\n"
@@ -24,7 +26,7 @@ return {
                     name = 'CodeGPT4',
                     chat = false,
                     command = true,
-                    model = { model = 'gpt-4', temperature = 0.8, top_p = 1 },
+                    model = { model = 'gpt-4o', temperature = 0.2, top_p = 0.1 },
                     system_prompt = 'You are an AI working as a code editor.\n\n'
                         .. 'Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n'
                         .. 'START AND END YOUR ANSWER WITH:\n\n```',
