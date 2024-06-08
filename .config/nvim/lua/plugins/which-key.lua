@@ -54,7 +54,7 @@ return {
             k = { 'gk', 'Move up by visual line' },
             X = { '%x``x', 'Delete matching braces' },
             Y = { 'y$', 'Yank to end of line' },
-        })
+        }, { mode = 'n', silent = true })
 
         -- Combination Key Bindings
         wk.register({
@@ -67,7 +67,7 @@ return {
             gj = { '<C-w>j', 'Navigate to bottom window' },
             gk = { '<C-w>k', 'Navigate to top window' },
             gl = { '<C-w>l', 'Navigate to right window' },
-        })
+        }, { mode = 'n', silent = true })
 
         -- Visual Mode Bindings
         wk.register({
@@ -76,7 +76,7 @@ return {
             y = { '"+y', 'Copy to clipboard' },
             p = { '"+p', 'Paste from clipboard' },
             P = { '"+P', 'Paste before cursor from clipboard' },
-        }, { mode = 'v' })
+        }, { mode = 'v', silent = true })
 
         -- Other Key Bindings
         wk.register({
@@ -89,6 +89,6 @@ return {
             ['[L'] = { ':lfirst<CR>', 'First item in location list' },
             [']L'] = { ':llast<CR>', 'Last item in location list' },
             gV = { '`[v`]', 'Highlight last inserted text' },
-        })
+        }, { mode = 'n', silent = true })
     end,
 }
