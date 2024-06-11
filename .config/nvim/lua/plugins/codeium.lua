@@ -1,6 +1,5 @@
 return {
     'Exafunction/codeium.vim',
-    commit = '289eb72', -- https://github.com/Exafunction/codeium.vim/issues/376
     config = function()
         vim.keymap.set('i', '<M-l>', function()
             return vim.fn['codeium#Accept']()
