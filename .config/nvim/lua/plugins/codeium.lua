@@ -1,6 +1,5 @@
 return {
     'Exafunction/codeium.vim',
-    commit = '289eb72', -- https://github.com/Exafunction/codeium.vim/issues/376
     init = function()
         vim.g.codeium_disable_bindings = 1
     end,
