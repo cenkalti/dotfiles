@@ -24,6 +24,7 @@ return {
                 'Find Files',
             },
             ['<leader>fg'] = { "<cmd>lua require('telescope.builtin').git_files()<CR>", 'Git Files' },
+            ['<leader>fs'] = { "<cmd>lua require('telescope.builtin').git_status()<CR>", 'Git Files (Modified)' },
             ['<leader>fl'] = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", 'Live Grep' },
             ['<leader>a'] = {
                 function()
