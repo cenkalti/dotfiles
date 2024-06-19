@@ -48,9 +48,11 @@ return {
                         enable = true,
                         swap_next = {
                             ['<localleader>s'] = '@parameter.inner',
+                            ['<localleader>f'] = '@function.outer',
                         },
                         swap_previous = {
                             ['<localleader>S'] = '@parameter.inner',
+                            ['<localleader>F'] = '@function.outer',
                         },
                     },
                     move = {
