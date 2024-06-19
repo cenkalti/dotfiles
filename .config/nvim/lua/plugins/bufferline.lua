@@ -12,11 +12,6 @@ return {
         bufferline.setup({
             options = {
                 style_preset = bufferline.style_preset.no_italic,
-                separator_style = { '', '' },
-                indicator = {
-                    style = 'icon',
-                    icon = '▶',
-                },
                 numbers = function(opts)
                     return opts.raise(opts.ordinal)
                 end,
