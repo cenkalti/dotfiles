@@ -30,6 +30,22 @@ return {
             { 'folke/which-key.nvim' },
         },
 
+        -- Temporary fix for following error:
+        -- LSP[gopls]: Error SERVER_REQUEST_HANDLER_ERROR:
+        -- "...llar/neovim/0.10.0/share/nvim/runtime/lua/vim/_watch.lua:99: ENOENT: no such file or directory"
+        -- Issue: https://github.com/neovim/neovim/issues/28058
+        -- Fix: https://github.com/SuperAPPKid/astro_nvim_config/commit/3b9d7bb5f68dd468644a8ec4b4f8c716e45d7ae8
+        init = function()
+            local lsp = vim.lsp
+            local make_client_capabilities = lsp.protocol.make_client_capabilities
+            function lsp.protocol.make_client_capabilities()
+                local caps = make_client_capabilities()
+                caps.workspace.didChangeWatchedFiles = nil
+
+                return caps
+            end
+        end,
+
         config = function()
             local lsp_zero = require('lsp-zero')
             local lspconfig = require('lspconfig')
