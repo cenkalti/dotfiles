@@ -46,10 +46,10 @@ return {
 
         -- Single Key Bindings
         wk.register({
-            ['<left>'] = { '<C-w>>', 'Resize window right' },
-            ['<right>'] = { '<C-w><', 'Resize window left' },
-            ['<up>'] = { '<C-w>-', 'Resize window decrease' },
-            ['<down>'] = { '<C-w>+', 'Resize window increase' },
+            ['<left>'] = { '<C-w><', 'Resize window narrower' },
+            ['<right>'] = { '<C-w>>', 'Resize window wider' },
+            ['<up>'] = { '<C-w>+', 'Resize window taller' },
+            ['<down>'] = { '<C-w>-', 'Resize window shorter' },
             j = { 'gj', 'Move down by visual line' },
             k = { 'gk', 'Move up by visual line' },
             X = { '%x``x', 'Delete matching braces' },
