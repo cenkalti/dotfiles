@@ -90,6 +90,11 @@ return {
                             configurationSources = { 'pycodestyle' },
                         })
                     end,
+                    gopls = function()
+                        lspconfig.gopls.setup({
+                            root_dir = lspconfig.util.root_pattern('go.mod', '.git'),
+                        })
+                    end,
                 },
             })
 
