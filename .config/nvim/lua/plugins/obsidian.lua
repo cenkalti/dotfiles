@@ -10,14 +10,14 @@ return {
         'nvim-treesitter',
     },
     opts = {
+        ui = {
+            enable = false,
+        },
         workspaces = {
             {
-                name = 'work',
-                path = '~/Documents/Obsidian Vaults/Atolio',
+                name = 'personal',
+                path = '~/notes',
             },
         },
     },
-    init = function()
-        vim.opt.conceallevel = 0
-    end,
 }
