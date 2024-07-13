@@ -18,6 +18,6 @@ return {
         },
     },
     init = function()
-        vim.opt.conceallevel = 1
+        vim.opt.conceallevel = 0
     end,
 }
