@@ -22,8 +22,9 @@ config.keys = {
         mods = 'SUPER',
         action = wezterm.action.Multiple({
             wezterm.action.SendKey({ key = 'C', mods = 'CTRL' }),
-            wezterm.action.ClearScrollback('ScrollbackAndViewport'),
+            wezterm.action.SendString('return 0\n'),
             wezterm.action.SendKey({ key = 'L', mods = 'CTRL' }),
+            wezterm.action.ClearScrollback('ScrollbackAndViewport'),
         }),
     },
 }
