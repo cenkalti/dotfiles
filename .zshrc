@@ -383,7 +383,6 @@ fi
 }
 zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
-# Shell-GPT integration ZSH v0.2
 
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
