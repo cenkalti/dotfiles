@@ -337,8 +337,10 @@ export GPG_TTY
 
 if [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
   source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  bindkey '^[l' autosuggest-accept
 elif [ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
   source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  bindkey '^[l' autosuggest-accept
 fi
 if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
   source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
