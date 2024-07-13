@@ -4,8 +4,8 @@ return {
         require('gp').setup({
             agents = {
                 -- Remove default agents
-                { name = 'ChatGPT3-5' },
-                { name = 'CodeGPT3-5' },
+                { name = 'ChatGPT3-5', disable = true },
+                { name = 'CodeGPT3-5', disable = true },
 
                 {
                     name = 'ChatGPT4',
