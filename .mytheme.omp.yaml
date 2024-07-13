@@ -6,19 +6,23 @@ blocks:
   alignment: left
   segments:
   - type: path
-    template: " \uea83 {{ path .Path .Location }} "
+    template: "{{ path .Path .Location }}"
     properties:
-      style: folder
-    background: p:orange
-    foreground: p:black
+      style: powerlevel
+    foreground: p:orange
   - type: status
-    background_templates:
-    - "{{ if ne .Code 0 }}p:red{{ end }}"
-    template: " {{ if eq .Code 0 }}\u2713{{ else }}\u26a0 {{ .Code }}{{ end }} "
-    background: p:blue
+    template: " \u26a0 {{ .Code }} "
+    background: p:red
     foreground: p:black
+  - type: text
+    template: ">"
+    foreground: p:white
 - type: rprompt
   segments:
+  - type: node
+    template: "  {{ .Full }} "
+    foreground: p:black
+    background: p:yellow
   - type: python
     template: "  {{ .Full }} "
     foreground: p:black
