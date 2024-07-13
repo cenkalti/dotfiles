@@ -16,23 +16,6 @@ export PAGER=less
 export LESS="-iR"  # ignore case
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-# Customize prompt
-function virtualenv_info {
-  if [ -n "$VIRTUAL_ENV" ]; then
-    venv=$(basename $VIRTUAL_ENV)
-    echo "($venv)"
-  fi
-}
-function git_info {
-  head=$(git symbolic-ref HEAD 2>/dev/null)
-  if [ -n "$head" ]; then
-    ref=$(echo $head | cut -d '/' -f 3-)
-    echo "{$ref}"
-  fi
-}
-setopt promptsubst
-PROMPT='[%3>>%m%>>:%1~]$(virtualenv_info)$(git_info)%(?.%F{green}.%F{red})%#%f '
-
 # History settings
 HISTSIZE=10000
 SAVEHIST=10000
@@ -290,7 +273,7 @@ function set_title {
 # Runs before showing the prompt
 function precmd {
   emulate -L zsh
-  set_title "%m:%1~"
+  set_title "%1~"
 }
 
 # Runs before executing the command
@@ -383,6 +366,10 @@ fi
 }
 zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
+
+if type oh-my-posh &>/dev/null; then
+  eval "$(oh-my-posh init zsh --config $HOME/.mytheme.omp.yaml)"
+fi
 
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.

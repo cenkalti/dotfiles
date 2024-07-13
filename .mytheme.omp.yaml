@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version: 2
+final_space: true
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - type: path
+    template: " \uea83 {{ path .Path .Location }} "
+    properties:
+      style: folder
+    background: p:orange
+    foreground: p:black
+  - type: status
+    background_templates:
+    - "{{ if ne .Code 0 }}p:red{{ end }}"
+    template: " {{ if eq .Code 0 }}\u2713{{ else }}\u26a0 {{ .Code }}{{ end }} "
+    background: p:blue
+    foreground: p:black
+- type: rprompt
+  segments:
+  - type: python
+    template: "  {{ .Full }} "
+    foreground: p:black
+    background: p:green
+  - type: go
+    template: "  {{ .Full }} "
+    foreground: p:black
+    background: p:blue
+  - type: git
+    template: " {{ .HEAD }} "
+    background: p:purple
+    foreground: p:black
+transient_prompt:
+  template: "> "
+  background: transparent
+  foreground: p:white
+# Catpuccin Macchiato https://github.com/catppuccin/catppuccin
+palette:
+  black: "#24273a"
+  blue: "#8aadf4"
+  green: "#a6da95"
+  orange: "#f5a97f"
+  red: "#ed8796"
+  white: "#cad3f5"
+  yellow: "#eed49f"
+  purple: '#c6a0f6'
+  magenta: '#f5bde6'
+  cyan: '#91d7e3'
