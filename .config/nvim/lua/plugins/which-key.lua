@@ -1,5 +1,6 @@
 return {
     'folke/which-key.nvim',
+    version = '2',
     event = 'VeryLazy',
 
     init = function()
