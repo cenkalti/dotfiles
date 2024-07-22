@@ -9,14 +9,12 @@ blocks:
     template: "{{ path .Path .Location }}"
     properties:
       style: powerlevel
-    foreground: p:orange
-  - type: status
-    template: " \u26a0 {{ .Code }} "
-    background: p:red
-    foreground: p:black
+    foreground: p:yellow
   - type: text
-    template: ">"
+    template: '❯'
     foreground: p:white
+    foreground_templates:
+      - "{{if ne .Code 0}}p:red{{end}}"
 - type: rprompt
   segments:
   - type: node
@@ -36,9 +34,11 @@ blocks:
     background: p:purple
     foreground: p:black
 transient_prompt:
-  template: "> "
-  background: transparent
+  type: text
+  template: '❯'
   foreground: p:white
+  foreground_templates:
+    - "{{if ne .Code 0}}p:red{{end}}"
 # Catpuccin Macchiato https://github.com/catppuccin/catppuccin
 palette:
   black: "#24273a"
