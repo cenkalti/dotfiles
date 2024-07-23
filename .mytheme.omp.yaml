@@ -35,7 +35,7 @@ blocks:
     foreground: p:black
 transient_prompt:
   type: text
-  template: '❯'
+  template: '❯ '
   foreground: p:white
   foreground_templates:
     - "{{if ne .Code 0}}p:red{{end}}"
