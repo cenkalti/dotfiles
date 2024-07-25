@@ -32,10 +32,9 @@ unsetopt AUTO_CD
 # ls colors
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 
-alias l="ls -l"
-alias la="ls -la"
+alias l="eza -l --icons --git"
+alias la="l -aa"
 alias lt="ls -lt | head"
 
 # One-key shortcuts
