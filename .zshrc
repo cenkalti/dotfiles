@@ -300,8 +300,7 @@ if [[ -f ~/.local.zshrc ]]; then
   source ~/.local.zshrc
 fi
 
-n ()
-{
+function n {
     # Block nesting of nnn in subshells
     if [[ "${NNNLVL:-0}" -ge 1 ]]; then
         echo "nnn is already running"
