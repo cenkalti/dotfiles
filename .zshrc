@@ -45,7 +45,6 @@ alias e="etcdctl"
 alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
-alias y="yazi"
 
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
@@ -329,6 +328,15 @@ function n {
             . "$NNN_TMPFILE"
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
+}
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
 GPG_TTY=$(tty)
