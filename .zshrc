@@ -45,6 +45,7 @@ alias e="etcdctl"
 alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
+alias y="yazi"
 
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
