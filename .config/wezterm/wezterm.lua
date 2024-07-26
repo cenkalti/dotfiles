@@ -17,6 +17,8 @@ config.enable_scroll_bar = true
 
 config.keys = {
     { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
+    { key = '{', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(-1) },
+    { key = '}', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(1) },
     {
         key = 'k',
         mods = 'SUPER',
