@@ -8,7 +8,7 @@ return {
 
         require('lint').linters_by_ft = {
             markdown = { 'vale' },
-            python = { 'mypy' },
+            python = { 'flake8' },
         }
 
         vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
