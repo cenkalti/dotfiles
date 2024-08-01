@@ -1,5 +1,6 @@
 return {
     'robitx/gp.nvim',
+    version = '3.5.1',
     config = function()
         require('gp').setup({
             agents = {
