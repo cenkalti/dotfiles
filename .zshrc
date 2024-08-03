@@ -380,6 +380,16 @@ if type oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh init zsh --config $HOME/.mytheme.omp.yaml)"
 fi
 
+# Load project specific aliases, etc.
+autoload -U add-zsh-hook
+load-local-conf() {
+  echo "Loading local config..."
+  if [[ -f .project.sh && -r .project.sh ]]; then
+    source .project.sh
+  fi
+}
+add-zsh-hook chpwd load-local-conf
+
 ################################################################################
 # Anything added after this line must go into .zprofile or .zshrc_private file.
 ################################################################################
