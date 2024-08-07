@@ -31,3 +31,35 @@ layout_poetry() {
   PATH_add "$VENV"
 }
 
+
+# Alias support
+# https://github.com/direnv/direnv/issues/73#issuecomment-2252437293
+
+# Clear existing aliases when entering a directory
+rm -rf "$PWD/.envrc-aliases"
+
+export_alias() {
+  # Create a new alias
+  local name=$1
+  shift
+
+  local alias_dir="$PWD/.envrc-aliases"
+  local alias_file="$alias_dir/$name"
+  local oldpath="$PATH"
+
+  # If this is the first time we're calling export_alias, add to PATH once
+  if ! [[ ":$PATH:" == *":$alias_dir:"* ]]; then
+    mkdir -p "$alias_dir"
+    PATH_add "$alias_dir"
+  fi
+
+  # Write the alias file
+  cat <<EOT >"$alias_file"
+#!/usr/bin/env bash
+set -e
+PATH="$oldpath"
+exec $@ "\$@"
+EOT
+  chmod +x "$alias_file"
+}
+
