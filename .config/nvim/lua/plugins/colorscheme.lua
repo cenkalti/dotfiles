@@ -5,6 +5,7 @@ return {
     config = function()
         require('catppuccin').setup({
             flavour = 'macchiato',
+            transparent_background = true,
             dim_inactive = {
                 enabled = true,
                 shade = 'dark',

@@ -15,6 +15,27 @@ config.initial_rows = 36
 config.scrollback_lines = 100000
 config.enable_scroll_bar = true
 
+local default_windows_background_opacity = 0.95
+local default_text_background_opacity = 0.5
+config.window_background_opacity = default_windows_background_opacity
+config.text_background_opacity = default_text_background_opacity
+local transparency_enabled = true
+wezterm.on('toggle-transparency', function(window, _)
+    if transparency_enabled then
+        transparency_enabled = false
+        window:set_config_overrides({
+            window_background_opacity = 1.0,
+            text_background_opacity = 1.0,
+        })
+    else
+        transparency_enabled = true
+        window:set_config_overrides({
+            window_background_opacity = default_windows_background_opacity,
+            text_background_opacity = default_text_background_opacity,
+        })
+    end
+end)
+
 config.keys = {
     { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
     { key = '{', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(-1) },
@@ -29,6 +50,7 @@ config.keys = {
             wezterm.action.ClearScrollback('ScrollbackAndViewport'),
         }),
     },
+    { key = 't', mods = 'SUPER|ALT', action = wezterm.action.EmitEvent('toggle-transparency') },
 }
 
 -- Integration for https://github.com/folke/zen-mode.nvim
