@@ -19,7 +19,7 @@ return {
         wk.register({
             ['<leader>ff'] = {
                 function()
-                    builtin.find_files({ no_ignore = true })
+                    builtin.find_files({})
                 end,
                 'Find Files',
             },
