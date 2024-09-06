@@ -13,6 +13,7 @@ PYSMELLTAGS
 *.swp
 .srclib-cache/
 Session.vim
+.env
 .envrc
 .direnv/
 .vscode/
