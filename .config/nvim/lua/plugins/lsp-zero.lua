@@ -109,7 +109,15 @@ return {
 
                 -- Custom setup for some LSP servers
                 handlers = {
-                    lsp_zero.default_setup,
+                    -- lsp_zero.default_setup,  -- disabled because of following issue
+                    -- https://github.com/neovim/nvim-lspconfig/pull/3232#issuecomment-2333481121
+                    function(server_name)
+                        if server_name == 'tsserver' then
+                            server_name = 'ts_ls'
+                        else
+                            lsp_zero.default_setup(server_name)
+                        end
+                    end,
                     pyright = function()
                         lspconfig.pyright.setup({
                             before_init = function(_, config)
