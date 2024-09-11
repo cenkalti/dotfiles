@@ -339,6 +339,40 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+function ghsetup() {
+    # Check if a repository is provided
+    if [ -z "$1" ]; then
+        echo "Please provide a repository in the format username/project"
+        return 1
+    fi
+
+    # Extract username and project name
+    USERNAME=$(echo $1 | cut -d "/" -f1)
+    PROJECT=$(echo $1 | cut -d "/" -f2)
+
+    # Clone the repository
+    git clone "https://github.com/$1.git" ~/projects/$PROJECT
+    cd ~/projects/$PROJECT
+
+    # Set up Python virtual environment
+    python3 -m venv .venv
+    echo layout python .venv/bin/python > .envrc
+    direnv allow .
+
+    # Determine if it's a pip or poetry project and install requirements
+    if [ -f "pyproject.toml" ]; then
+        echo "Poetry project detected"
+        poetry install
+    elif [ -f "requirements.txt" ]; then
+        echo "Pip project detected"
+        .venv/bin/pip install -r requirements.txt
+    else
+        echo "No requirements file found. Skipping package installation."
+    fi
+
+    echo "Setup complete for $PROJECT"
+}
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
