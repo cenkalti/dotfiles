@@ -46,6 +46,8 @@ alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
 
+alias py="python3"
+
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
