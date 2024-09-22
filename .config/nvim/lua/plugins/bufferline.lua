@@ -11,7 +11,11 @@ return {
         local bufferline = require('bufferline')
         bufferline.setup({
             options = {
-                style_preset = bufferline.style_preset.no_italic,
+                style_preset = bufferline.style_preset.default,
+                separator_style = { '', '' },
+                indicator = {
+                    style = 'underline',
+                },
                 numbers = function(opts)
                     return opts.raise(opts.ordinal)
                 end,
