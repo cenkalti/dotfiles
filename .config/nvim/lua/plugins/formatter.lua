@@ -8,7 +8,10 @@ return {
             filetype = {
                 lua = { require('formatter.filetypes.lua').stylua },
                 go = { require('formatter.filetypes.go').goimports },
-                python = { require('formatter.filetypes.python').black },
+                python = {
+                    require('formatter.filetypes.python').isort,
+                    require('formatter.filetypes.python').black,
+                },
             },
         })
 
