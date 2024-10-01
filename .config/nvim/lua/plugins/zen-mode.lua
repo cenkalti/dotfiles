@@ -13,8 +13,8 @@ return {
                 },
             },
         })
-        require('which-key').register({
-            ['<leader>z'] = { '<cmd>ZenMode<CR>', 'Zen Mode' },
+        require('which-key').add({
+            { '<leader>z', '<cmd>ZenMode<CR>', desc = 'Zen Mode' },
         })
     end,
 }

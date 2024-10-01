@@ -46,24 +46,27 @@ return {
         end
 
         -- keybindings
-        require('which-key').register({
-            ['<leader>ha'] = {
+        require('which-key').add({
+            {
+                '<leader>ha',
                 function()
                     harpoon:list():add()
                 end,
-                'Add file to Harpoon',
+                desc = 'Add file to Harpoon',
             },
-            ['<leader>hA'] = {
+            {
+                '<leader>hA',
                 function()
                     harpoon:list():remove()
                 end,
-                'Remove file from Harpoon',
+                desc = 'Remove file from Harpoon',
             },
-            ['<leader>hh'] = {
+            {
+                '<leader>hh',
                 function()
                     toggle_telescope(harpoon:list())
                 end,
-                'Open Harpoon Window',
+                desc = 'Open Harpoon Window',
             },
         })
     end,

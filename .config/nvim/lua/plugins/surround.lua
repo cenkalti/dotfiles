@@ -5,9 +5,9 @@ return {
         'folke/which-key.nvim',
     },
     config = function()
-        require('which-key').register({
-            ["<leader>'"] = { '<cmd>normal cs"\'<CR>', 'Toggle to Single Quotes' },
-            ['<leader>"'] = { '<cmd>normal cs\'"<CR>', 'Toggle to Double Quotes' },
+        require('which-key').add({
+            { "<leader>'", '<cmd>normal cs"\'<CR>', desc = 'Toggle to Single Quotes' },
+            { '<leader>"', '<cmd>normal cs\'"<CR>', desc = 'Toggle to Double Quotes' },
         })
     end,
 }

@@ -13,82 +13,87 @@ return {
         local wk = require('which-key')
 
         -- Leader Key Bindings
-        wk.register({
-            D = { ':bd!<CR>', 'Close current buffer' },
-            q = { ':%bd<CR>', 'Close all buffers' },
-            Q = { ':qa!<CR>', 'Quit Neovim without saving' },
-            w = { 'ciw', 'Change word under cursor' },
-            W = { 'ciW', 'Change WORD under cursor' },
-            s = { ":set hlsearch<CR>:let @/='\\<'..expand('<cword>')..'\\>'<CR>", 'Highlight word under cursor' },
-            c = { ':cclose<CR>', 'Close quickfix list' },
-            y = { '"+y', 'Copy to clipboard' },
-            Y = { '"+yg_', 'Copy to end of line to clipboard' },
-            p = { '"+p', 'Paste from clipboard' },
-            P = { '"+P', 'Paste before cursor from clipboard' },
-        }, { prefix = '<leader>' })
+        wk.add({
+            { '<leader>D', ':bd!<CR>', desc = 'Close current buffer' },
+            { '<leader>q', ':%bd<CR>', desc = 'Close all buffers' },
+            { '<leader>Q', ':qa!<CR>', desc = 'Quit Neovim without saving' },
+            { '<leader>w', 'ciw', desc = 'Change word under cursor' },
+            { '<leader>W', 'ciW', desc = 'Change WORD under cursor' },
+            {
+                '<leader>s',
+                ":set hlsearch<CR>:let @/='\\<'..expand('<cword>')..'\\>'<CR>",
+                desc = 'Highlight word under cursor',
+            },
+            { '<leader>c', ':cclose<CR>', desc = 'Close quickfix list' },
+            { '<leader>y', '"+y', desc = 'Copy to clipboard' },
+            { '<leader>Y', '"+yg_', desc = 'Copy to end of line to clipboard' },
+            { '<leader>p', '"+p', desc = 'Paste from clipboard' },
+            { '<leader>P', '"+P', desc = 'Paste before cursor from clipboard' },
+        })
 
         -- Local Leader Key Bindings
-        wk.register({
-            c = { ':lclose<CR>', 'Close location list' },
-            p = { ":echo expand('%:p')<CR>", 'Show full path of current file' },
-        }, { prefix = '\\' })
+        wk.add({
+            { '\\c', ':lclose<CR>', desc = 'Close location list' },
+            { '\\p', ":echo expand('%:p')<CR>", desc = 'Show full path of current file' },
+        })
 
         -- Function Key Bindings
-        wk.register({
-            ['<F2>'] = { ':e! $MYVIMRC<CR>', 'Edit vimrc' },
-            ['<F4>'] = { ':source $MYVIMRC<CR>', 'Source vimrc' },
-            ['<F5>'] = { ':e!<CR>', 'Reset file from disk' },
-            ['<F6>'] = { 'mzgg"+yG`z', 'Copy all file' },
-            ['<F7>'] = { 'mzgg=G`z', 'Indent whole file' },
-            ['<F8>'] = { ':wa<CR>:mksession!<CR>:qa!<CR>', 'Save all and close' },
-            ['<F12>'] = { ':cq<CR>', 'Abort with non-zero exit code' },
+        wk.add({
+            { '<F2>', ':e! $MYVIMRC<CR>', desc = 'Edit vimrc' },
+            { '<F4>', ':source $MYVIMRC<CR>', desc = 'Source vimrc' },
+            { '<F5>', ':e!<CR>', desc = 'Reset file from disk' },
+            { '<F6>', 'mzgg"+yG`z', desc = 'Copy all file' },
+            { '<F7>', 'mzgg=G`z', desc = 'Indent whole file' },
+            { '<F8>', ':wa<CR>:mksession!<CR>:qa!<CR>', desc = 'Save all and close' },
+            { '<F12>', ':cq<CR>', desc = 'Abort with non-zero exit code' },
         })
 
         -- Single Key Bindings
-        wk.register({
-            ['<left>'] = { '<C-w><', 'Resize window narrower' },
-            ['<right>'] = { '<C-w>>', 'Resize window wider' },
-            ['<up>'] = { '<C-w>+', 'Resize window taller' },
-            ['<down>'] = { '<C-w>-', 'Resize window shorter' },
-            j = { 'gj', 'Move down by visual line' },
-            k = { 'gk', 'Move up by visual line' },
-            X = { '%x``x', 'Delete matching braces' },
-            Y = { 'y$', 'Yank to end of line' },
-        }, { mode = 'n', silent = true })
+        wk.add({
+            { '<left>', '<C-w><', desc = 'Resize window narrower' },
+            { '<right>', '<C-w>>', desc = 'Resize window wider' },
+            { '<up>', '<C-w>+', desc = 'Resize window taller' },
+            { '<down>', '<C-w>-', desc = 'Resize window shorter' },
+            { 'j', 'gj', desc = 'Move down by visual line' },
+            { 'k', 'gk', desc = 'Move up by visual line' },
+            { 'X', '%x``x', desc = 'Delete matching braces' },
+            { 'Y', 'y$', desc = 'Yank to end of line' },
+        })
 
         -- Combination Key Bindings
-        wk.register({
-            ['<C-n>'] = { ':bnext<CR>', 'Next buffer' },
-            ['<C-p>'] = { ':bprevious<CR>', 'Previous buffer' },
-            ['<C-l>'] = { ':nohlsearch<CR>', 'Clear search highlight' },
-            ['<C-j>'] = { '4<C-e>', 'Scroll window down' },
-            ['<C-k>'] = { '4<C-y>', 'Scroll window up' },
-            gh = { '<C-w>h', 'Navigate to left window' },
-            gj = { '<C-w>j', 'Navigate to bottom window' },
-            gk = { '<C-w>k', 'Navigate to top window' },
-            gl = { '<C-w>l', 'Navigate to right window' },
-        }, { mode = 'n', silent = true })
+        wk.add({
+            { '<C-n>', ':bnext<CR>', desc = 'Next buffer' },
+            { '<C-p>', ':bprevious<CR>', desc = 'Previous buffer' },
+            { '<C-l>', ':nohlsearch<CR>', desc = 'Clear search highlight' },
+            { '<C-j>', '4<C-e>', desc = 'Scroll window down' },
+            { '<C-k>', '4<C-y>', desc = 'Scroll window up' },
+            { 'gh', '<C-w>h', desc = 'Navigate to left window' },
+            { 'gj', '<C-w>j', desc = 'Navigate to bottom window' },
+            { 'gk', '<C-w>k', desc = 'Navigate to top window' },
+            { 'gl', '<C-w>l', desc = 'Navigate to right window' },
+        })
 
         -- Visual Mode Bindings
-        wk.register({
-            ['<'] = { '<gv', 'Indent left and reselect' },
-            ['>'] = { '>gv', 'Indent right and reselect' },
-            y = { '"+y', 'Copy to clipboard' },
-            p = { '"+p', 'Paste from clipboard' },
-            P = { '"+P', 'Paste before cursor from clipboard' },
-        }, { mode = 'v', silent = true })
+        wk.add({
+            mode = 'v',
+            { '<', '<gv', desc = 'Indent left and reselect' },
+            { '>', '>gv', desc = 'Indent right and reselect' },
+            { 'y', '"+y', desc = 'Copy to clipboard' },
+            { 'p', '"+p', desc = 'Paste from clipboard' },
+            { 'P', '"+P', desc = 'Paste before cursor from clipboard' },
+        })
 
         -- Other Key Bindings
-        wk.register({
-            ['[q'] = { ':cprevious<CR>', 'Previous item in quickfix' },
-            [']q'] = { ':cnext<CR>', 'Next item in quickfix' },
-            ['[Q'] = { ':cfirst<CR>', 'First item in quickfix' },
-            [']Q'] = { ':clast<CR>', 'Last item in quickfix' },
-            ['[l'] = { ':lprevious<CR>', 'Previous item in location list' },
-            [']l'] = { ':lnext<CR>', 'Next item in location list' },
-            ['[L'] = { ':lfirst<CR>', 'First item in location list' },
-            [']L'] = { ':llast<CR>', 'Last item in location list' },
-            gV = { '`[v`]', 'Highlight last inserted text' },
-        }, { mode = 'n', silent = true })
+        wk.add({
+            { '[q', ':cprevious<CR>', desc = 'Previous item in quickfix' },
+            { ']q', ':cnext<CR>', desc = 'Next item in quickfix' },
+            { '[Q', ':cfirst<CR>', desc = 'First item in quickfix' },
+            { ']Q', ':clast<CR>', desc = 'Last item in quickfix' },
+            { '[l', ':lprevious<CR>', desc = 'Previous item in location list' },
+            { ']l', ':lnext<CR>', desc = 'Next item in location list' },
+            { '[L', ':lfirst<CR>', desc = 'First item in location list' },
+            { ']L', ':llast<CR>', desc = 'Last item in location list' },
+            { 'gV', '`[v`]', desc = 'Highlight last inserted text' },
+        })
     end,
 }

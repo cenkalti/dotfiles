@@ -40,9 +40,9 @@ return {
                 },
             })
 
-            require('which-key').register({
-                ['<Leader>n'] = { '<cmd>NvimTreeToggle<CR>', 'Toggle Nvim Tree' },
-                ['<Leader>r'] = { '<cmd>NvimTreeFindFile<CR>', 'Find File in Nvim Tree' },
+            require('which-key').add({
+                { '<Leader>n', '<cmd>NvimTreeToggle<CR>', desc = 'Toggle Nvim Tree' },
+                { '<Leader>r', '<cmd>NvimTreeFindFile<CR>', desc = 'Find File in Nvim Tree' },
             })
 
             -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#marvinth01

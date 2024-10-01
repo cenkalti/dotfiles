@@ -13,13 +13,14 @@ return {
             datapath = vim.fn.stdpath('data'),
         })
         require('telescope').load_extension('projects')
-        require('which-key').register({
-            w = {
+        require('which-key').add({
+            {
+                '\\w',
                 function()
                     require('telescope').extensions.projects.projects({})
                 end,
-                'Switch workspace',
+                desc = 'Switch workspace',
             },
-        }, { prefix = '\\' })
+        })
     end,
 }

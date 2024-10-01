@@ -17,15 +17,15 @@ return {
             },
         })
         require('telescope').load_extension('bookmarks')
-        require('which-key').register({
-            ['mm'] = { bookmarks.bookmark_toggle, 'Toggle Bookmark' },
-            ['mi'] = { bookmarks.bookmark_ann, 'Add or Edit Bookmark Annotation' },
-            ['mc'] = { bookmarks.bookmark_clean, 'Clean Bookmarks in Local Buffer' },
-            ['mC'] = { bookmarks.bookmark_clear_all, 'Clean All Bookmarks' },
-            ['mn'] = { bookmarks.bookmark_next, 'Next Bookmark' },
-            ['mp'] = { bookmarks.bookmark_prev, 'Previous Bookmark' },
-            ['ml'] = { bookmarks.bookmark_list, 'List Bookmarks' },
-            ['mL'] = { require('telescope').extensions.bookmarks.list, 'List Bookmarks in Telescope' },
+        require('which-key').add({
+            { 'mm', bookmarks.bookmark_toggle, desc = 'Toggle Bookmark' },
+            { 'mi', bookmarks.bookmark_ann, desc = 'Add or Edit Bookmark Annotation' },
+            { 'mc', bookmarks.bookmark_clean, desc = 'Clean Bookmarks in Local Buffer' },
+            { 'mC', bookmarks.bookmark_clear_all, desc = 'Clean All Bookmarks' },
+            { 'mn', bookmarks.bookmark_next, desc = 'Next Bookmark' },
+            { 'mp', bookmarks.bookmark_prev, desc = 'Previous Bookmark' },
+            { 'ml', bookmarks.bookmark_list, desc = 'List Bookmarks' },
+            { 'mL', require('telescope').extensions.bookmarks.list, desc = 'List Bookmarks in Telescope' },
         })
     end,
 }

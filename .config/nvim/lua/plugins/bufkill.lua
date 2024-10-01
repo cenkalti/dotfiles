@@ -9,8 +9,8 @@ return {
         vim.g.BufKillActionWhenBufferDisplayedInAnotherWindow = 'kill'
     end,
     config = function()
-        require('which-key').register({
-            ['<leader>d'] = { '<cmd>BW<CR>', 'Wipe Buffer' },
+        require('which-key').add({
+            { '<leader>d', '<cmd>BW<CR>', desc = 'Wipe Buffer' },
         })
     end,
 }
