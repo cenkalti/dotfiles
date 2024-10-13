@@ -15,6 +15,7 @@ config.initial_rows = 36
 config.scrollback_lines = 100000
 config.enable_scroll_bar = true
 config.macos_window_background_blur = 10
+config.window_decorations = 'RESIZE'
 
 local default_windows_background_opacity = 0.95
 local default_text_background_opacity = 0.5
