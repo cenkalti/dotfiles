@@ -17,6 +17,30 @@ config.enable_scroll_bar = true
 config.macos_window_background_blur = 10
 config.window_decorations = 'RESIZE'
 
+-- Read ~/projects dir and add each dir to launch menu
+config.launch_menu = {}
+local workspace_dirs = { '~/projects', '~/.config' }
+for _, workspace_dir in ipairs(workspace_dirs) do
+    local handle = io.popen('ls -1 ' .. workspace_dir)
+    if handle then
+        for project_dir in handle:lines() do
+            table.insert(config.launch_menu, {
+                label = project_dir,
+                args = {
+                    '/opt/homebrew/bin/zsh',
+                    '-lic',
+                    'cd '
+                        .. workspace_dir
+                        .. '/'
+                        .. project_dir
+                        .. ' && exec /opt/homebrew/bin/nvim -c "Telescope find_files"',
+                },
+            })
+        end
+        handle:close()
+    end
+end
+
 local default_windows_background_opacity = 0.95
 local default_text_background_opacity = 0.5
 config.window_background_opacity = default_windows_background_opacity
@@ -39,7 +63,11 @@ wezterm.on('toggle-transparency', function(window, _)
 end)
 
 config.keys = {
-    { key = 'l', mods = 'SUPER', action = wezterm.action.ShowLauncher },
+    {
+        key = 'l',
+        mods = 'SUPER',
+        action = wezterm.action.ShowLauncherArgs({ title = 'Projects', flags = 'FUZZY|LAUNCH_MENU_ITEMS' }),
+    },
     { key = '{', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(-1) },
     { key = '}', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(1) },
     {
