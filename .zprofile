@@ -35,11 +35,6 @@ if [[ -f $HOME/.cargo/env ]]; then
     source "$HOME/.cargo/env"
 fi
 
-# Linters, formatters, etc.
-if [[ -d "$HOME/.local/share/nvim/mason/bin" ]]; then
-    export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-fi
-
 if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
