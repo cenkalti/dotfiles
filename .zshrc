@@ -412,8 +412,8 @@ fi
 zle -N _sgpt_zsh
 bindkey '^[\' _sgpt_zsh  # Alt-\
 
-if type oh-my-posh &>/dev/null; then
-  eval "$(oh-my-posh init zsh --config $HOME/.mytheme.omp.yaml)"
+if [ -f "/opt/homebrew/opt/spaceship/spaceship.zsh" ]; then
+  source "/opt/homebrew/opt/spaceship/spaceship.zsh"
 fi
 
 # Load project specific aliases, etc.
