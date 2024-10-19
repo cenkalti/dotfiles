@@ -76,6 +76,8 @@ return {
         -- Visual Mode Bindings
         wk.add({
             mode = 'v',
+            { '<C-j>', '4<C-e>', desc = 'Scroll window down' },
+            { '<C-k>', '4<C-y>', desc = 'Scroll window up' },
             { '<', '<gv', desc = 'Indent left and reselect' },
             { '>', '>gv', desc = 'Indent right and reselect' },
             { 'y', '"+y', desc = 'Copy to clipboard' },
