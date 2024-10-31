@@ -415,6 +415,9 @@ bindkey '^[\' _sgpt_zsh  # Alt-\
 if [ -f "/opt/homebrew/opt/spaceship/spaceship.zsh" ]; then
   source "/opt/homebrew/opt/spaceship/spaceship.zsh"
 fi
+if [ -f "/usr/lib/spaceship-prompt/spaceship.zsh" ]; then
+  source "/usr/lib/spaceship-prompt/spaceship.zsh"
+fi
 
 # Load project specific aliases, etc.
 autoload -U add-zsh-hook
