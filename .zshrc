@@ -279,20 +279,41 @@ function precmd {
 
 # Runs before executing the command
 function preexec {
-  emulate -L zsh
-  setopt extended_glob
+    local cmd="$1"
 
-    # cmd name only, or if this is sudo or ssh, the next cmd
-    local CMD=${1[(wr)^(*=*|sudo|ssh|ssht|mosh|mt|-*)]:gs/%/%%}
+    # List of prefixes to strip
+    prefixes=(
+        "sudo"
+        "ssh"
+        "ssht"
+        "mosh"
+        "mt"
+        "pdm run"
+        "python -m"
+        "python3 -m"
+    )
 
-    case "$CMD" in
-      # show current host when tmux is open
+    for prefix in "${prefixes[@]}"; do
+        # Check if command starts with the prefix
+        if [[ "$1" = "$prefix"* ]]; then
+            # Remove prefix and any leading whitespace
+            cmd="${1#$prefix}"
+            cmd="${cmd#"${cmd%%[![:space:]]*}"}"
+            break
+        fi
+    done
+
+    # Get only the first word
+    cmd="${cmd%% *}"
+
+    case "$cmd" in
       tmux*)
-        CMD="%m"
+        # show current host when in tmux
+        cmd="%m"
         ;;
     esac
 
-  set_title '$CMD'
+  set_title '$cmd'
 }
 
 precmd_functions+=(precmd)
