@@ -16,6 +16,7 @@ config.scrollback_lines = 100000
 config.enable_scroll_bar = true
 config.macos_window_background_blur = 10
 config.window_decorations = 'RESIZE'
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 -- Read ~/projects dir and add each dir to launch menu
 config.launch_menu = {}
