@@ -24,7 +24,6 @@ return {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-nvim-lua' },
-            { 'L3MON4D3/LuaSnip' },
 
             -- For key bindings
             { 'folke/which-key.nvim' },
@@ -35,36 +34,48 @@ return {
             local lspconfig = require('lspconfig')
             local cmp = require('cmp')
 
-            -- lsp_attach is where you enable features that only work
-            -- if there is a language server active in the file
-            local lsp_attach = function(_, bufnr)
-                require('which-key').add({
-                    { 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', desc = 'Hover', buffer = bufnr },
-                    { 'L', '<cmd>lua vim.lsp.buf.signature_help()<CR>', desc = 'Signature Help', buffer = bufnr },
-                    { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', desc = 'Go to Definition', buffer = bufnr },
-                    { 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', desc = 'Go to Declaration', buffer = bufnr },
-                    {
-                        'gt',
-                        '<cmd>lua vim.lsp.buf.type_definition()<CR>',
-                        desc = 'Go to Type Definition',
-                        buffer = bufnr,
-                    },
-                    {
-                        'gi',
-                        '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                        desc = 'Go to Implementation',
-                        buffer = bufnr,
-                    },
-                    { 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', desc = 'List References', buffer = bufnr },
-                    { 'gC', '<cmd>lua vim.lsp.buf.code_action()<CR>', desc = 'Code Action', buffer = bufnr },
-                    { '<localleader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', desc = 'Rename', buffer = bufnr },
-                })
-            end
+            -- Reserve a space in the gutter
+            -- This will avoid an annoying layout shift in the screen
+            vim.opt.signcolumn = 'yes'
 
-            lsp_zero.extend_lspconfig({
-                sign_text = true,
-                lsp_attach = lsp_attach,
-                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            -- Add cmp_nvim_lsp capabilities settings to lspconfig
+            -- This should be executed before you configure any language server
+            local lspconfig_defaults = lspconfig.util.default_config
+            lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+                'force',
+                lspconfig_defaults.capabilities,
+                require('cmp_nvim_lsp').default_capabilities()
+            )
+
+            -- This is where you enable features that only work
+            -- if there is a language server active in the file
+            vim.api.nvim_create_autocmd('LspAttach', {
+                desc = 'LSP actions',
+                callback = function(event)
+                    local bufnr = event.buf
+
+                    require('which-key').add({
+                        { 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', desc = 'Hover', buffer = bufnr },
+                        { 'L', '<cmd>lua vim.lsp.buf.signature_help()<CR>', desc = 'Signature Help', buffer = bufnr },
+                        { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', desc = 'Go to Definition', buffer = bufnr },
+                        { 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', desc = 'Go to Declaration', buffer = bufnr },
+                        {
+                            'gt',
+                            '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+                            desc = 'Go to Type Definition',
+                            buffer = bufnr,
+                        },
+                        {
+                            'gi',
+                            '<cmd>lua vim.lsp.buf.implementation()<CR>',
+                            desc = 'Go to Implementation',
+                            buffer = bufnr,
+                        },
+                        { 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', desc = 'List References', buffer = bufnr },
+                        { 'gC', '<cmd>lua vim.lsp.buf.code_action()<CR>', desc = 'Code Action', buffer = bufnr },
+                        { '<localleader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', desc = 'Rename', buffer = bufnr },
+                    })
+                end,
             })
 
             -- Setup Mason package manager
@@ -105,16 +116,22 @@ return {
             })
 
             -- Setup completion key bindings
-            local cmp_action = lsp_zero.cmp_action()
             cmp.setup({
+                sources = {
+                    { name = 'nvim_lsp' },
+                },
+                snippet = {
+                    expand = function(args)
+                        -- You need Neovim v0.10 to use vim.snippet
+                        vim.snippet.expand(args.body)
+                    end,
+                },
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
                     ['<Tab>'] = cmp.mapping.confirm(),
