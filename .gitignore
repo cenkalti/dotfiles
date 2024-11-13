@@ -1,4 +1,2 @@
 .ssh/
 .zshrc-local
-
-.config/nvim/lazy-lock.json
