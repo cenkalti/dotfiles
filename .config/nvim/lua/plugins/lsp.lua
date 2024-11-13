@@ -2,17 +2,10 @@
 -- https://lsp-zero.netlify.app/v4.x/tutorial.html
 return {
     {
-        -- LSP zero is collection of functions that will help you setup Neovim's LSP client,
-        -- so you can get IDE-like features with minimum effort.
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v4.x',
-
+        'neovim/nvim-lspconfig', -- Contains LSP client configurations for various language servers
         dependencies = {
-            -- Contains LSP client configurations for various language servers
-            { 'neovim/nvim-lspconfig' },
-
             -- Package manager for LSP servers, linters and formatters
-            { 'williamboman/mason.nvim', build = ':MasonUpdate' },
+            { 'williamboman/mason.nvim' },
 
             -- Registers a setup hook with lspconfig that ensures servers installed with mason.nvim
             -- are set up with the necessary configuration
@@ -30,9 +23,7 @@ return {
         },
 
         config = function()
-            local lsp_zero = require('lsp-zero')
             local lspconfig = require('lspconfig')
-            local cmp = require('cmp')
 
             -- Reserve a space in the gutter
             -- This will avoid an annoying layout shift in the screen
@@ -87,18 +78,12 @@ return {
 
                 -- Custom setup for some LSP servers
                 handlers = {
-                    -- lsp_zero.default_setup,
+                    -- default setup for all LSP servers
                     function(server_name)
                         lspconfig[server_name].setup({})
                     end,
+
                     -- Custom setup for other LSP servers
-                    lua_ls = function()
-                        lspconfig.lua_ls.setup({
-                            on_init = function(client)
-                                lsp_zero.nvim_lua_settings(client, {})
-                            end,
-                        })
-                    end,
                     pyright = function()
                         lspconfig.pyright.setup({
                             before_init = function(_, config)
@@ -116,6 +101,7 @@ return {
             })
 
             -- Setup completion key bindings
+            local cmp = require('cmp')
             cmp.setup({
                 sources = {
                     { name = 'nvim_lsp' },
@@ -139,12 +125,6 @@ return {
                     ['<C-n>'] = cmp.mapping.select_next_item(),
                     ['<C-p>'] = cmp.mapping.select_prev_item(),
                 }),
-            })
-
-            -- Configure diagnostic key bindings
-            require('which-key').add({
-                { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Previous Diagnostic' },
-                { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next Diagnostic' },
             })
 
             -- Configure LSP diagnostic messages

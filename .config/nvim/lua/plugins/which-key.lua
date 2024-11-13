@@ -95,6 +95,8 @@ return {
             { ']l', ':lnext<CR>', desc = 'Next item in location list' },
             { '[L', ':lfirst<CR>', desc = 'First item in location list' },
             { ']L', ':llast<CR>', desc = 'Last item in location list' },
+            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Previous Diagnostic' },
+            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next Diagnostic' },
             { 'gV', '`[v`]', desc = 'Highlight last inserted text' },
         })
     end,

@@ -34,4 +34,7 @@ return {
 
     -- Helm syntax with template support
     'towolf/vim-helm',
+
+    -- Help to find free keybinds
+    'meznaric/key-analyzer.nvim',
 }
