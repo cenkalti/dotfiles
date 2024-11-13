@@ -2,18 +2,14 @@
 return {
     'tpope/vim-fugitive',
     dependencies = {
+        -- Enables :GBrowse from vim-fugitive to open GitHub URLs
+        'tpope/vim-rhubarb',
+
         'folke/which-key.nvim',
     },
     config = function()
-        local wk = require('which-key')
-
-        wk.add({
-            { '<leader>gs', '<cmd>Git<CR>', desc = 'View Git Status' },
-            { 'gb', '<cmd>GBrowse<CR>', desc = 'View HTTP Link' },
-        })
-
-        wk.add({
-            { 'gb', '<cmd>GBrowse<CR>', desc = 'View HTTP Link', mode = 'v' },
+        require('which-key').add({
+            { 'gb', '<cmd>GBrowse<CR>', desc = 'View HTTP Link', mode = { 'n', 'v' } },
         })
     end,
 }

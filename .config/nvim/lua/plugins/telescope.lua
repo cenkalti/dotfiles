@@ -49,13 +49,6 @@ return {
                 "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>",
                 desc = 'LSP Workspace Symbols',
             },
-            {
-                '<leader>ca',
-                function()
-                    vim.lsp.buf.code_action()
-                end,
-                desc = 'Code Action',
-            },
         })
     end,
 }

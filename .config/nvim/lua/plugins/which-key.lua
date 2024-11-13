@@ -62,8 +62,6 @@ return {
 
         -- Combination Key Bindings
         wk.add({
-            { '<C-n>', ':bnext<CR>', desc = 'Next buffer' },
-            { '<C-p>', ':bprevious<CR>', desc = 'Previous buffer' },
             { '<C-l>', ':nohlsearch<CR>', desc = 'Clear search highlight' },
             { '<C-j>', '4<C-e>', desc = 'Scroll window down' },
             { '<C-k>', '4<C-y>', desc = 'Scroll window up' },

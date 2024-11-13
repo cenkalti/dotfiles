@@ -8,7 +8,7 @@ return {
         require('yanky').setup()
         require('telescope').load_extension('yank_history')
         require('which-key').add({
-            { '<Leader>p', require('telescope').extensions.yank_history.yank_history, desc = 'Yank History' },
+            { '<Leader>fy', require('telescope').extensions.yank_history.yank_history, desc = 'Yank History' },
         })
     end,
 }

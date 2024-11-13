@@ -20,9 +20,6 @@ return {
     -- Fixes repeating plugin commands with `.`
     'tpope/vim-repeat',
 
-    -- Enables :GBrowse from vim-fugitive to open GitHub URLs
-    'tpope/vim-rhubarb',
-
     -- Readline mappings from command line
     'tpope/vim-rsi',
 
@@ -34,7 +31,4 @@ return {
 
     -- Helm syntax with template support
     'towolf/vim-helm',
-
-    -- Help to find free keybinds
-    'meznaric/key-analyzer.nvim',
 }
