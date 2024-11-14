@@ -2,7 +2,12 @@
 
 local function get_function_name(line, node)
     -- Ensure the node is either a function_declaration or method_declaration
-    if node:type() ~= 'function_declaration' and node:type() ~= 'method_declaration' then
+    local excluded_types = {
+        'function_declaration',
+        'function_definition',
+        'method_declaration',
+    }
+    if not vim.tbl_contains(excluded_types, node:type()) then
         return line
     end
 
