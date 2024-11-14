@@ -31,7 +31,7 @@ local function tree_location()
     return require('nvim-treesitter').statusline({
         type_patterns = { 'function', 'method' },
         transform_fn = get_function_name,
-        indicator_size = 40,
+        indicator_size = vim.api.nvim_win_get_width(0) / 2,
     })
 end
 
