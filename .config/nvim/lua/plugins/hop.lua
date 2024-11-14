@@ -1,11 +1,11 @@
 -- Search with 2 letters
 return {
     {
-        'phaazon/hop.nvim',
+        'smoka7/hop.nvim',
+        version = '*',
         dependencies = {
             { 'folke/which-key.nvim' },
         },
-        branch = 'v2',
         config = function()
             local hop = require('hop')
             local wk = require('which-key')
