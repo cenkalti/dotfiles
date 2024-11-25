@@ -288,6 +288,7 @@ function preexec {
         "ssht"
         "mosh"
         "mt"
+        "poetry run"
         "pdm run"
         "python -m"
         "python3 -m"
