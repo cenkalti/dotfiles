@@ -69,4 +69,12 @@ augroup quickfix
 augroup END
 " }}}
 
+" Format JSON lines {{{
+augroup json
+    autocmd!
+    autocmd BufNewFile,BufRead *.jsonl setf json
+    autocmd FileType json set formatprg=jq
+augroup END
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
