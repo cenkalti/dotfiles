@@ -31,4 +31,7 @@ return {
 
     -- Helm syntax with template support
     'towolf/vim-helm',
+
+    -- Show context on top of the window
+    'nvim-treesitter/nvim-treesitter-context',
 }
