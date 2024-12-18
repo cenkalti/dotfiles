@@ -89,6 +89,7 @@ return {
                     -- Custom setup for other LSP servers
                     pyright = function()
                         lspconfig.pyright.setup({
+                            root_dir = lspconfig.util.root_pattern('pyproject.toml', '.git'),
                             before_init = function(_, config)
                                 config.settings.python.pythonPath =
                                     require('lib/python').get_python_path(config.root_dir)
