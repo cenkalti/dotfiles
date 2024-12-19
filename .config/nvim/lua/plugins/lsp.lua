@@ -12,17 +12,14 @@ return {
             -- Provides extra convenience APIs such as the :LspInstall command
             { 'williamboman/mason-lspconfig.nvim' },
 
-            -- For auto-completion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-nvim-lua' },
-
             -- For key bindings
             { 'folke/which-key.nvim' },
 
             -- For icons in auto-complete menu
             { 'onsails/lspkind.nvim' },
+
+            -- For auto-completion
+            { 'hrsh7th/cmp-nvim-lsp' },
         },
 
         config = function()
@@ -101,53 +98,6 @@ return {
                             root_dir = lspconfig.util.root_pattern('go.mod', '.git'),
                         })
                     end,
-                },
-            })
-
-            -- Setup completion key bindings
-            local cmp = require('cmp')
-            cmp.setup({
-                sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'nvim_lua' },
-                    { name = 'buffer' },
-                },
-                snippet = {
-                    expand = function(args)
-                        -- You need Neovim v0.10 to use vim.snippet
-                        vim.snippet.expand(args.body)
-                    end,
-                },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                    ['<C-c>'] = cmp.mapping.close(),
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                }),
-                formatting = {
-                    -- changing the order of fields so the icon is the first
-                    fields = { 'abbr', 'kind', 'menu' },
-
-                    format = require('lspkind').cmp_format({
-                        mode = 'symbol_text',
-                        maxwidth = {
-                            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                            -- can also be a function to dynamically calculate max width such as
-                            -- menu = function() return math.floor(0.45 * vim.o.columns) end,
-                            menu = 50, -- leading text (labelDetails)
-                            abbr = 50, -- actual suggestion item
-                        },
-                        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                        show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-                    }),
                 },
             })
 
