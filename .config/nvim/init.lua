@@ -1,5 +1,13 @@
--- Load legacy vim config
-vim.cmd('source ~/.vimrc')
+-- Must set these before loading lazy.nvim so that mappings are correct.
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
--- Plugin manager
+-- Load plugin manager
 require('config.lazy')
+
+-- Set global options
+require('config.options')
+
+-- Load custom commands
+require('config.user_commands')
+require('config.auto_commands')
