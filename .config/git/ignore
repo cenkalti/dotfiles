@@ -34,3 +34,4 @@ compile_commands.json
 .mylogin.cnf
 .envrc-aliases/
 .venv/
+.pdm-python
