@@ -86,6 +86,8 @@
         # Delete tag from local and remote
         dt = "!git tag -d $1 && git push --delete origin"
 
+        tag-latest = "!git tag --sort=-v:refname | head -n1"
+
         # Add only untracked files
         au = "!git ls-files -o --exclude-standard -z | xargs -0 git add"
 
