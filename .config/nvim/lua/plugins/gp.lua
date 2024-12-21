@@ -26,6 +26,37 @@ return {
                     local agent = gp.get_command_agent()
                     gp.Prompt(params, gp.Target.rewrite, agent, template)
                 end,
+                Revise = function(gp, params)
+                    local template = [[
+                        ## Role
+                        You are a helpful assistant who improves users' text.
+
+                        ## Assessment
+                        If the text is already simple and easy to understand, do not rewrite it.
+
+                        ## Improvements:
+                        - Correct any spelling or grammar mistakes.
+                        - Use short sentences.
+                        - Focus on one idea per sentence.
+                        - Use the subject-verb-object structure for clarity.
+                        - Choose simple language and avoid unnecessary, complex, or uncommon words and phrases.
+
+                        ## Tone
+                        Maintain a casual tone.
+
+                        ## Input
+                        The input text will be given between <selection> and </selection> tags.
+
+                        ## Response
+                        Only respond with the revised text. Do not add any quotes to your reply.
+
+                        <selection>
+                        {{selection}}
+                        </selection>
+                        ]]
+                    local agent = gp.get_command_agent()
+                    gp.Prompt(params, gp.Target.rewrite, agent, template)
+                end,
             },
         })
         require('which-key').add({
@@ -53,6 +84,7 @@ return {
                 { '<C-g>n', '<cmd>GpNextAgent<cr>', desc = 'Next Agent' },
                 { '<C-g>p', ":<C-u>'<,'>GpChatPaste<cr>", desc = 'Visual Chat Paste' },
                 { '<C-g>r', ":<C-u>'<,'>GpRewrite<cr>", desc = 'Visual Rewrite' },
+                { '<C-g>R', ":<C-u>'<,'>GpRevise<cr>", desc = 'Visual Revise' },
                 { '<C-g>s', '<cmd>GpStop<cr>', desc = 'GpStop' },
                 { '<C-g>t', ":<C-u>'<,'>GpChatToggle<cr>", desc = 'Visual Toggle Chat' },
                 { '<C-g>x', ":<C-u>'<,'>GpContext<cr>", desc = 'Visual GpContext' },
@@ -77,6 +109,7 @@ return {
                 { '<C-g>gv', '<cmd>GpVnew<cr>', desc = 'GpVnew' },
                 { '<C-g>n', '<cmd>GpNextAgent<cr>', desc = 'Next Agent' },
                 { '<C-g>r', '<cmd>GpRewrite<cr>', desc = 'Inline Rewrite' },
+                { '<C-g>R', '<cmd>GpRevise<cr>', desc = 'Visual Revise' },
                 { '<C-g>s', '<cmd>GpStop<cr>', desc = 'GpStop' },
                 { '<C-g>t', '<cmd>GpChatToggle<cr>', desc = 'Toggle Chat' },
                 { '<C-g>x', '<cmd>GpContext<cr>', desc = 'Toggle GpContext' },
