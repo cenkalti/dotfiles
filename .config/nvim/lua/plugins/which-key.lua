@@ -17,18 +17,14 @@ return {
             { '<leader>D', ':bd!<CR>', desc = 'Close current buffer' },
             { '<leader>q', ':%bd<CR>', desc = 'Close all buffers' },
             { '<leader>Q', ':qa!<CR>', desc = 'Quit Neovim without saving' },
+            { '<leader>c', ':cclose<CR>', desc = 'Close quickfix list' },
             { '<leader>w', 'ciw', desc = 'Change word under cursor' },
             { '<leader>W', 'ciW', desc = 'Change WORD under cursor' },
             {
                 '<leader>s',
                 ":set hlsearch<CR>:let @/='\\<'..expand('<cword>')..'\\>'<CR>",
-                desc = 'Highlight word under cursor',
+                desc = 'Search word under cursor',
             },
-            { '<leader>c', ':cclose<CR>', desc = 'Close quickfix list' },
-            { '<leader>y', '"+y', desc = 'Copy to clipboard' },
-            { '<leader>Y', '"+yg_', desc = 'Copy to end of line to clipboard' },
-            { '<leader>p', '"+p', desc = 'Paste from clipboard' },
-            { '<leader>P', '"+P', desc = 'Paste before cursor from clipboard' },
         })
 
         -- Local Leader Key Bindings
@@ -56,8 +52,6 @@ return {
             { '<down>', '<C-w>-', desc = 'Resize window shorter' },
             { 'j', 'gj', desc = 'Move down by visual line' },
             { 'k', 'gk', desc = 'Move up by visual line' },
-            { 'X', '%x``x', desc = 'Delete matching braces' },
-            { 'Y', 'y$', desc = 'Yank to end of line' },
         })
 
         -- Combination Key Bindings
@@ -78,9 +72,8 @@ return {
             { '<C-k>', '4<C-y>', desc = 'Scroll window up' },
             { '<', '<gv', desc = 'Indent left and reselect' },
             { '>', '>gv', desc = 'Indent right and reselect' },
-            { 'y', '"+y', desc = 'Copy to clipboard' },
-            { 'p', '"+p', desc = 'Paste from clipboard' },
-            { 'P', '"+P', desc = 'Paste before cursor from clipboard' },
+            { '<leader>y', '"+y', desc = 'Copy to clipboard' },
+            { '<leader>p', '"+p', desc = 'Paste from clipboard' },
         })
 
         -- Other Key Bindings
