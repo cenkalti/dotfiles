@@ -8,30 +8,29 @@ return {
     config = function()
         require('gitsigns').setup({
             on_attach = function(_)
+                local gs = require('gitsigns')
                 require('which-key').add({
                     -- Navigation
-                    { ']c', "<cmd>lua require('gitsigns').next_hunk()<CR>", desc = 'Next Hunk' },
-                    { '[c', "<cmd>lua require('gitsigns').prev_hunk()<CR>", desc = 'Previous Hunk' },
+                    { ']c', gs.next_hunk, desc = 'Next Hunk' },
+                    { '[c', gs.prev_hunk, desc = 'Previous Hunk' },
 
                     -- Actions
-                    { '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>', desc = 'Stage Hunk' },
-                    { '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>', desc = 'Reset Hunk' },
-                    { '<leader>hS', "<cmd>lua require('gitsigns').stage_buffer()<CR>", desc = 'Stage Buffer' },
-                    { '<leader>hu', "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", desc = 'Undo Stage Hunk' },
-                    { '<leader>hR', "<cmd>lua require('gitsigns').reset_buffer()<CR>", desc = 'Reset Buffer' },
-                    { '<leader>hp', "<cmd>lua require('gitsigns').preview_hunk()<CR>", desc = 'Preview Hunk' },
-                    { '<leader>hb', "<cmd>lua require('gitsigns').blame_line{full=true}<CR>", desc = 'Blame Line' },
-                    {
-                        '<leader>tb',
-                        "<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
-                        desc = 'Toggle Line Blame',
-                    },
-                    { '<leader>hd', "<cmd>lua require('gitsigns').diffthis()<CR>", desc = 'Diff This' },
-                    { '<leader>hD', "<cmd>lua require('gitsigns').diffthis('~')<CR>", desc = 'Diff This ~' },
-                    { '<leader>td', "<cmd>lua require('gitsigns').toggle_deleted()<CR>", desc = 'Toggle Deleted' },
+                    { '<leader>hs', gs.stage_hunk, desc = 'Stage Hunk' },
+                    { '<leader>hu', gs.undo_stage_hunk, desc = 'Undo Stage Hunk' },
+                    { '<leader>hr', gs.reset_hunk, desc = 'Reset Hunk' },
 
-                    { '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>', desc = 'Stage Hunk', mode = 'v' },
-                    { '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>', desc = 'Reset Hunk', mode = 'v' },
+                    { '<leader>hS', gs.stage_buffer, desc = 'Stage Buffer' },
+                    { '<leader>hR', gs.reset_buffer, desc = 'Reset Buffer' },
+
+                    { '<leader>hp', gs.preview_hunk, desc = 'Preview Hunk' },
+                    { '<leader>hb', gs.blame_line, desc = 'Blame Line' },
+                    { '<leader>hd', gs.diffthis, desc = 'Diff This' },
+
+                    { '<leader>htd', gs.toggle_deleted, desc = 'Toggle Deleted' },
+                    { '<leader>htb', gs.toggle_current_line_blame, desc = 'Toggle Line Blame' },
+
+                    { '<leader>hs', gs.stage_hunk, desc = 'Stage Hunk', mode = 'v' },
+                    { '<leader>hr', gs.reset_hunk, desc = 'Reset Hunk', mode = 'v' },
                 })
             end,
         })
