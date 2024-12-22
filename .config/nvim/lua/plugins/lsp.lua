@@ -1,5 +1,30 @@
 -- Created with following tutorial:
 -- https://lsp-zero.netlify.app/v4.x/tutorial.html
+
+local function get_python_path(workspace)
+    local path = require('lspconfig').util.path
+
+    -- Use activated virtualenv.
+    if vim.env.VIRTUAL_ENV then
+        return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
+    end
+
+    -- Find virtualenv via PDM
+    local match = vim.fn.glob(path.join(workspace, 'pdm.lock'))
+    if match ~= '' then
+        return vim.fn.trim(vim.fn.system('pdm --project ' .. workspace .. ' info --quiet --python'))
+    end
+
+    -- Find virtualenv via Poetry
+    match = vim.fn.glob(path.join(workspace, 'poetry.lock'))
+    if match ~= '' then
+        return vim.fn.trim(vim.fn.system('poetry --directory ' .. workspace .. ' env info --executable'))
+    end
+
+    -- Fallback to system Python.
+    return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
+end
+
 return {
     {
         'neovim/nvim-lspconfig', -- Contains LSP client configurations for various language servers
@@ -88,8 +113,7 @@ return {
                         lspconfig.pyright.setup({
                             root_dir = lspconfig.util.root_pattern('pyproject.toml', '.git'),
                             before_init = function(_, config)
-                                config.settings.python.pythonPath =
-                                    require('lib/python').get_python_path(config.root_dir)
+                                config.settings.python.pythonPath = get_python_path(config.root_dir)
                             end,
                         })
                     end,
