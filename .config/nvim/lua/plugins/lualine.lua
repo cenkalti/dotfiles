@@ -1,40 +1,4 @@
 -- Status line
-
-local function get_function_name(line, node)
-    -- Ensure the node is either a function_declaration or method_declaration
-    local excluded_types = {
-        'function_declaration',
-        'function_definition',
-        'method_declaration',
-    }
-    if not vim.tbl_contains(excluded_types, node:type()) then
-        return line
-    end
-
-    -- Find the identifier child node
-    for i = 0, node:child_count() - 1 do
-        local child = node:child(i)
-        -- For Python
-        if child:type() == 'identifier' then
-            return vim.treesitter.get_node_text(child, 0)
-        end
-        -- For Go
-        if child:type() == 'field_identifier' then
-            return vim.treesitter.get_node_text(child, 0)
-        end
-    end
-
-    return line
-end
-
-local function tree_location()
-    return require('nvim-treesitter').statusline({
-        type_patterns = { 'function', 'method' },
-        transform_fn = get_function_name,
-        indicator_size = vim.api.nvim_win_get_width(0) / 2,
-    })
-end
-
 return {
     {
         'nvim-lualine/lualine.nvim',
@@ -47,9 +11,12 @@ return {
                     component_separators = { left = '|', right = '|' },
                 },
                 sections = {
-                    lualine_c = { { 'filename', separator = '>' }, { tree_location } },
-                    lualine_x = { 'filetype' },
+                    lualine_a = { 'mode' },
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {},
                     lualine_y = {},
+                    lualine_z = { 'searchcount' },
                 },
             })
         end,
