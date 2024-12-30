@@ -42,3 +42,12 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 -- }}}
+
+-- {{{ Disable line wrapping in quickfix and location lists
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'qf', 'loclist' },
+    callback = function()
+        vim.opt_local.wrap = false
+    end,
+})
+-- }}}
