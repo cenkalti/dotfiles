@@ -30,15 +30,16 @@ vim.api.nvim_create_autocmd('FileType', {
 -- {{{ Treat .jsonl files as JSON
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = '*.jsonl',
-    command = 'setf json',
+    command = 'setfiletype json',
 })
 -- }}}
 
 -- {{{ Use jq to format JSON
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = '*.json',
+    pattern = { 'json', 'jsonl' },
     callback = function()
         vim.opt_local.formatprg = 'jq'
+        vim.opt_local.filetype = 'json'
     end,
 })
 -- }}}
