@@ -20,6 +20,7 @@ return {
             { '<leader>c', ':cclose<CR>', desc = 'Close quickfix list' },
             { '<leader>w', 'ciw', desc = 'Change word under cursor' },
             { '<leader>W', 'ciW', desc = 'Change WORD under cursor' },
+            { '<leader>l', ':set wrap!<CR>', desc = 'Toggle line wrapping' },
             {
                 '<leader>s',
                 ":set hlsearch<CR>:let @/='\\<'..expand('<cword>')..'\\>'<CR>",
