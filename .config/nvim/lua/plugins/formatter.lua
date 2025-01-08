@@ -15,10 +15,8 @@ return {
             },
         })
 
-        local augroup = vim.api.nvim_create_augroup
-        local autocmd = vim.api.nvim_create_autocmd
-        augroup('__formatter__', { clear = true })
-        autocmd('BufWritePost', {
+        vim.api.nvim_create_augroup('__formatter__', { clear = true })
+        vim.api.nvim_create_autocmd('BufWritePost', {
             group = '__formatter__',
             command = ':FormatWrite',
         })
