@@ -19,6 +19,36 @@ config.window_decorations = 'RESIZE'
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.warn_about_missing_glyphs = false
 
+-- Font configuration
+config.font = wezterm.font_with_fallback({
+    {
+        family = 'Monaspace Neon',
+    },
+})
+config.font_rules = {
+    {
+        italic = true,
+        font = wezterm.font({
+            family = 'Monaspace Radon',
+        }),
+    },
+    {
+        intensity = 'Bold',
+        font = wezterm.font({
+            family = 'Monaspace Xenon',
+            weight = 'Bold',
+        }),
+    },
+    {
+        italic = true,
+        intensity = 'Bold',
+        font = wezterm.font({
+            family = 'Monaspace Krypton',
+            weight = 'Bold',
+        }),
+    },
+}
+
 -- Read ~/projects dir and add each dir to launch menu
 config.launch_menu = {}
 local workspace_dirs = { '~/projects', '~/.config' }
