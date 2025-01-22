@@ -5,7 +5,7 @@ local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Macchiato'
-config.font_size = 13.0
+config.font_size = 16.0
 config.quit_when_all_windows_are_closed = false
 config.default_prog = { '/opt/homebrew/bin/zsh', '-li' }
 config.adjust_window_size_when_changing_font_size = false
