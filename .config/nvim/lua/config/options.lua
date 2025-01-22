@@ -9,7 +9,7 @@ vim.opt.synmaxcol = 240
 vim.opt.fillchars = { vert = ' ' } -- Hide vertical fill characters between windows
 vim.opt.scrolloff = 5
 vim.opt.sessionoptions = 'buffers,curdir,folds'
-vim.opt.foldmethod = 'manual'
+vim.opt.foldmethod = 'marker'
 vim.opt.foldlevelstart = 99
 vim.opt.showmode = false
 vim.opt.mouse = 'a'
