@@ -374,12 +374,15 @@ function ghsetup() {
     USERNAME=$(echo $1 | cut -d "/" -f1)
     PROJECT=$(echo $1 | cut -d "/" -f2)
 
+    # Default to Python 3 if not provided
+    PYTHON_VERSION=${2:-3}
+
     # Clone the repository
     git clone "https://github.com/$1.git" ~/projects/$PROJECT
     cd ~/projects/$PROJECT
 
     # Set up Python virtual environment
-    python3 -m venv .venv
+    python${PYTHON_VERSION} -m venv .venv
     echo layout python .venv/bin/python > .envrc
     direnv allow .
 
