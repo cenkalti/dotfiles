@@ -387,11 +387,18 @@ function ghsetup() {
     direnv allow .
 
     # Determine if it's a pip or poetry project and install requirements
-    if [ -f "pyproject.toml" ]; then
-        echo "Poetry project detected"
+    if [ -f "pdm.lock" ]; then
+        echo "pdm.lock detected"
+        pdm install
+    elif [ -f "poetry.lock" ]; then
+        echo "poetry.lock detected"
         poetry install
+    elif [ -f "pyproject.toml" ]; then
+        echo "pyproject.toml detected"
+        pip install build
+        pip install .
     elif [ -f "requirements.txt" ]; then
-        echo "Pip project detected"
+        echo "requirements.txt detected"
         .venv/bin/pip install -r requirements.txt
     else
         echo "No requirements file found. Skipping package installation."
