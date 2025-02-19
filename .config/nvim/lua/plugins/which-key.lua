@@ -89,6 +89,16 @@ return {
             { ']L', ':llast<CR>', desc = 'Last item in location list' },
             { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Previous Diagnostic' },
             { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next Diagnostic' },
+            {
+                '[e',
+                '<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>',
+                desc = 'Next Error Diagnostic',
+            },
+            {
+                ']e',
+                '<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>',
+                desc = 'Next Error Diagnostic',
+            },
             { 'gV', '`[v`]', desc = 'Highlight last inserted text' },
         })
     end,
