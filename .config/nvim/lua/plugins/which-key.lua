@@ -26,6 +26,10 @@ return {
                 ":set hlsearch<CR>:let @/='\\<'..expand('<cword>')..'\\>'<CR>",
                 desc = 'Search word under cursor',
             },
+            { '<leader>t', group = 'Terminal' },
+            { '<leader>th', ':split term://zsh<CR>', desc = 'Horizontal Terminal' },
+            { '<leader>tt', ':tabnew | terminal<CR>', desc = 'Tab Terminal' },
+            { '<leader>tv', ':vsplit term://zsh<CR>', desc = 'Vertical Terminal' },
         })
 
         -- Local Leader Key Bindings
