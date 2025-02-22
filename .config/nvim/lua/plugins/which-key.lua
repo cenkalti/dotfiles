@@ -77,6 +77,12 @@ return {
             { '<leader>p', '"+p', desc = 'Paste from clipboard' },
         })
 
+        -- Terminal Mode Bindings
+        wk.add({
+            mode = 't',
+            { '<Esc>', '<C-\\><C-n>', desc = 'Exit terminal mode' },
+        })
+
         -- Other Key Bindings
         wk.add({
             { '[q', ':cprevious<CR>', desc = 'Previous item in quickfix' },
