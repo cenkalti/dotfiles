@@ -62,7 +62,7 @@ alias remove-old-files="find . -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf '{
 
 alias https='http --default-scheme=https'
 
-alias todo="rg TODO | tr '\t' ' ' | tr -s ' ' | grep --color TODO"
+function todo() {rg --line-number TODO | tr '\t' ' ' | tr -s ' ' | awk -F':' '{print $3 " " "\033[34m" "(" $1 ":" $2 ")" "\033[0m"}' | sed 's/.*TODO //' | awk '{print "\033[33mTODO\033[0m " $0}'}
 
 alias nvims="nvim -S Session.vim"
 
