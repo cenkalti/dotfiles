@@ -43,7 +43,7 @@ for _, workspace_dir in ipairs(workspace_dirs) do
     end
 end
 
-local default_windows_background_opacity = 0.95
+local default_windows_background_opacity = 0.90
 local default_text_background_opacity = 0.5
 config.window_background_opacity = default_windows_background_opacity
 config.text_background_opacity = default_text_background_opacity
