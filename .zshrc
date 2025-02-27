@@ -116,47 +116,42 @@ function monitor-full() { watch -n 1 "pgrep -a ${@:q} | grep -v watch" }
 function etime() { ps -eo pid,comm,etime,args | grep $1 }
 
 # Git Push Tag helper
-# https://stackoverflow.com/questions/3760086/automatic-tagging-of-releases
 function gpt() {
-  # get bump level
+  # Get bump level and optional remote
   level="$1"; shift
+  remote="${1:-origin}"; shift
 
-  # get highest tag number
-  version=$(git describe --abbrev=0 --tags | tr -d v)
-
-  # split from dots
-  parts=(${(s:.:)version})
-
-  #get number parts and increase last one by 1
-  VNUM1=${parts[1]}
-  VNUM2=${parts[2]}
-  VNUM3=${parts[3]}
-
+  # Validate level argument
   case "$level" in
-    "major")
-      VNUM1=$((VNUM1+1))
-      VNUM2=0
-      VNUM3=0
-      ;;
-    "minor")
-      VNUM2=$((VNUM2+1))
-      VNUM3=0
-      ;;
-    "patch")
-      VNUM3=$((VNUM3+1))
-      ;;
+    "major"|"minor"|"patch") ;;
     *)
-      echo "Missing argument. (major, minor or patch)"
-      return -1
+      echo "Usage: gpt <major|minor|patch> [remote]"
+      return 1
   esac
 
-  #create new tag
+  # Get highest tag and increment version
+  version=$(git describe --abbrev=0 --tags 2>/dev/null | tr -d v || echo "0.0.0")
+  parts=(${(s:.:)version})
+
+  # Ensure we have 3 parts
+  VNUM1=${parts[1]:-0}
+  VNUM2=${parts[2]:-0}
+  VNUM3=${parts[3]:-0}
+
+  # Increment based on level
+  case "$level" in
+    "major") VNUM1=$((VNUM1+1)); VNUM2=0; VNUM3=0 ;;
+    "minor") VNUM2=$((VNUM2+1)); VNUM3=0 ;;
+    "patch") VNUM3=$((VNUM3+1)) ;;
+  esac
+
+  # Create new tag
   new_tag="v$VNUM1.$VNUM2.$VNUM3"
 
-  read \?"Press enter for tagging as $new_tag and push to remote..."
+  read \?"Press enter for tagging as $new_tag and push to $remote..."
 
   git tag $new_tag
-  git push --tags
+  git push "$remote" "$new_tag"
 }
 
 # git aliases
