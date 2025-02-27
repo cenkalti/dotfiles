@@ -5,6 +5,7 @@
 
 [commit]
         gpgsign = true
+	verbose = true
 
 [alias]
         # List defined aliases
@@ -142,17 +143,18 @@
 
 [merge]
         summary = true
-        conflictstyle = diff3
+	conflictstyle = zdiff3
 
 [push]
         default = current
         followTags = true
 
 [diff]
-        algorithm = patience
+	algorithm = histogram
         compactionHeuristic = true
         tool = difftastic
         colorMoved = default
+	renames = true
 
 [difftool]
         prompt = false
@@ -170,7 +172,9 @@
         token = !security find-internet-password -a cenk -s github.com -l 'ghi token' -w
 
 [fetch]
-        prune = true
+	prune = true
+	pruneTags = true
+	all = true
 
 [filter "lfs"]
         clean = git-lfs clean -- %f
@@ -182,7 +186,9 @@
         ff = only
 
 [rebase]
-  autosquash = true
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 
 ; [url "ssh://git@github.com/"]
 ; 	insteadOf = https://github.com/
@@ -191,3 +197,14 @@
 	path = ~/.local.gitconfig
 [init]
 	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[help]
+	autocorrect = prompt
+[rerere]
+	enabled = true
+	autoupdate = true
