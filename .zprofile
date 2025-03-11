@@ -1,4 +1,4 @@
-export CDPATH=$HOME:$HOME/projects:$HOME/workspace
+export CDPATH=$HOME:$HOME/projects:$HOME/workspace:/opt
 
 if [[ -d /opt/homebrew ]]; then  # m1 macos
     export HOMEBREW_PREFIX="/opt/homebrew";
