@@ -383,7 +383,10 @@ function ghsetup() {
     direnv allow .
 
     # Determine if it's a pip or poetry project and install requirements
-    if [ -f "pdm.lock" ]; then
+    if [ -f "uv.lock" ]; then
+        echo "uv.lock detected"
+        uv sync
+    elif [ -f "pdm.lock" ]; then
         echo "pdm.lock detected"
         pdm install
     elif [ -f "poetry.lock" ]; then
