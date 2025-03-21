@@ -286,6 +286,7 @@ function preexec {
         "mt"
         "poetry run"
         "pdm run"
+        "uv run"
         "python -m"
         "python3 -m"
     )
