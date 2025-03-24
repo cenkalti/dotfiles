@@ -21,6 +21,12 @@ local function get_python_path(workspace)
         return vim.fn.trim(vim.fn.system('poetry --directory ' .. workspace .. ' env info --executable'))
     end
 
+    -- Find virtualenv via UV
+    match = vim.fn.glob(path.join(workspace, 'uv.lock'))
+    if match ~= '' then
+        return vim.fn.trim(vim.fn.system('uv run which python'))
+    end
+
     -- Fallback to system Python.
     return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
 end
