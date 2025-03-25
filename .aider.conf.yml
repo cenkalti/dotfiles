@@ -1,4 +1,5 @@
 dark-mode: true
-sonnet: true
+model: sonnet
 gitignore: false
 auto-commits: false
+
