@@ -136,7 +136,7 @@ return {
                 virtual_text = false,
                 signs = false,
                 underline = true,
-                update_in_insert = false,
+                update_in_insert = true,
                 float = { source = true },
             })
 
