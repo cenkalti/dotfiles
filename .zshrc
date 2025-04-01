@@ -194,6 +194,7 @@ function pacman-leaves() {
 }
 
 # docker aliases
+alias dcu='docker compose up --detach --remove-orphans'
 alias docker-remove-all-containers="docker ps -aq | xargs docker rm --force"
 alias docker-remove-stopped-containers="docker ps -aq -f status=exited -f status=created | xargs docker rm --force"
 alias docker-remove-dangling-images="docker images -qf dangling=true | xargs docker rmi"
