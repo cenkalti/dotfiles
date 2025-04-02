@@ -5,9 +5,7 @@ layout_uv() {
     fi
 
     if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
-        log_status "No uv project exists. Executing \`uv init\` to create one."
-        uv init --no-readme
-        rm hello.py
+        log_status "No virtual environment exists. Executing \`uv venv\` to create one."
         uv venv
         VIRTUAL_ENV="$(pwd)/.venv"
     fi
