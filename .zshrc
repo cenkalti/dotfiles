@@ -381,7 +381,7 @@ function ghsetup() {
 
     # Set up Python virtual environment
     python${PYTHON_VERSION} -m venv .venv
-    echo layout python .venv/bin/python > .envrc
+    echo layout venv .venv > .envrc
     direnv allow .
 
     # Determine if it's a pip or poetry project and install requirements
