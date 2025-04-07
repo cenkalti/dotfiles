@@ -1,6 +1,5 @@
-# https://github.com/direnv/direnv/wiki/Python#virtualenvwrapper
 layout_venv() {
-  source "${1:-.venv}/bin/activate"
-  # https://github.com/direnv/direnv/wiki/PS1
-  unset PS1
+    VIRTUAL_ENV="$(pwd)/${1:-.venv}"
+    export VIRTUAL_ENV
+    PATH_add "$VIRTUAL_ENV/bin"
 }
