@@ -6,6 +6,9 @@ return {
         require('formatter').setup({
             -- All formatter configurations are opt-in
             filetype = {
+                html = { require('formatter.filetypes.javascript').prettier },
+                javascript = { require('formatter.filetypes.javascript').prettier },
+                javascriptreact = { require('formatter.filetypes.javascript').prettier },
                 lua = { require('formatter.filetypes.lua').stylua },
                 go = { require('formatter.filetypes.go').goimports },
                 python = {
