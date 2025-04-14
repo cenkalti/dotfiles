@@ -80,19 +80,7 @@ return {
                 handlers = {
                     -- default setup for all LSP servers
                     function(server_name)
-                        lspconfig[server_name].setup({})
-                    end,
-
-                    -- Custom setup for other LSP servers
-                    pyright = function()
-                        lspconfig.pyright.setup({
-                            root_dir = lspconfig.util.root_pattern('pyproject.toml', '.git'),
-                        })
-                    end,
-                    gopls = function()
-                        lspconfig.gopls.setup({
-                            root_dir = lspconfig.util.root_pattern('go.mod', '.git'),
-                        })
+                        vim.lsp.enable(server_name)
                     end,
                 },
             })
