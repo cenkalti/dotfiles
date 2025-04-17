@@ -91,7 +91,10 @@ return {
                 signs = false,
                 underline = true,
                 update_in_insert = true,
-                float = { source = true },
+                float = {
+                    source = true,
+                    border = 'rounded',
+                },
             })
 
             -- Show diagnostic message as floating window when hover on line (delay is controlled with `updatetime` option)
