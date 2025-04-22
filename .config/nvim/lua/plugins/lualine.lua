@@ -17,7 +17,7 @@ return {
                     lualine_a = { 'mode' },
                     lualine_b = {},
                     lualine_c = {},
-                    lualine_x = { 'searchcount' },
+                    lualine_x = {},
                     lualine_y = { 'diff' },
                     lualine_z = { number_of_lines },
                 },
