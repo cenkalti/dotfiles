@@ -10,7 +10,15 @@ return {
                     hex_color = hipatterns.gen_highlighter.hex_color(),
 
                     -- Highlight Python `assert` statements as comments
-                    assert = { pattern = '^%s*assert%s+.*$', group = 'Comment' },
+                    assert = {
+                        group = 'Comment',
+                        pattern = function(buf_id)
+                            if vim.bo[buf_id].filetype ~= 'python' then
+                                return nil
+                            end
+                            return '^%s*assert%s+.*$'
+                        end,
+                    },
                 },
             })
         end,
