@@ -20,7 +20,13 @@ config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.warn_about_missing_glyphs = false
 config.window_content_alignment = {
     horizontal = 'Left',
-    vertical = 'Center',
+    vertical = 'Top',
+}
+config.window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
 }
 
 -- Read ~/projects dir and add each dir to launch menu
