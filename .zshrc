@@ -212,7 +212,7 @@ function docker-build-and-run() {
   docker build -t $name . && docker run -it --rm --name $name $name $@
 }
 function dex {
-  docker exec -it $1 ${2:-bash}
+  docker exec -it "$1" "${@:2}"
 }
 function dl {
   docker logs -f $1
