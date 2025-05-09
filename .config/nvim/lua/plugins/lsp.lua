@@ -73,17 +73,7 @@ return {
             require('mason').setup({})
 
             -- Configure LSP servers installed with Mason
-            require('mason-lspconfig').setup({
-                ensure_installed = {},
-
-                -- Custom setup for some LSP servers
-                handlers = {
-                    -- default setup for all LSP servers
-                    function(server_name)
-                        vim.lsp.enable(server_name)
-                    end,
-                },
-            })
+            require('mason-lspconfig').setup({})
         end,
     },
 }
