@@ -1,3 +1,4 @@
+-- LLM code assistant
 return {
     'robitx/gp.nvim',
     config = function()

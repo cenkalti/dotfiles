@@ -1,4 +1,4 @@
--- Scrollbar
+-- Show various symbols on the scrollbar
 return {
     'lewis6991/satellite.nvim',
     enabled = true,

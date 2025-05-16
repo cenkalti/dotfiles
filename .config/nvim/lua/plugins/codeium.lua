@@ -1,3 +1,4 @@
+-- Codeium AI code completion
 return {
     'Exafunction/codeium.vim',
     init = function()

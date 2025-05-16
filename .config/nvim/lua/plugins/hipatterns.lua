@@ -1,3 +1,4 @@
+-- Highlight text with configurable patterns and highlight groups
 return {
     {
         'echasnovski/mini.hipatterns',

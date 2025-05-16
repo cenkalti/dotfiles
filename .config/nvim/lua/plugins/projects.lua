@@ -1,3 +1,4 @@
+-- Switch projects with telescope
 return {
     'ahmedkhalf/project.nvim',
     dependencies = {

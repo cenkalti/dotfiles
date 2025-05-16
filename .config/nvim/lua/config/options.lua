@@ -17,3 +17,7 @@ vim.opt.modelines = 1
 vim.opt.fixendofline = false
 vim.opt.updatetime = 250
 vim.opt.wildmode = 'longest:full,full' -- Command completion mode
+
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'

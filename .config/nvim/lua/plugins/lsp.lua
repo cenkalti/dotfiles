@@ -1,3 +1,5 @@
+-- Language Server Protocol (LSP) configuration
+--
 -- Created with following tutorial:
 -- https://lsp-zero.netlify.app/v4.x/tutorial.html
 return {
@@ -15,19 +17,12 @@ return {
             -- For key bindings
             { 'folke/which-key.nvim' },
 
-            -- For icons in auto-complete menu
-            { 'onsails/lspkind.nvim' },
-
             -- For auto-completion
             { 'hrsh7th/cmp-nvim-lsp' },
         },
 
         config = function()
             local lspconfig = require('lspconfig')
-
-            -- Reserve a space in the gutter
-            -- This will avoid an annoying layout shift in the screen
-            vim.opt.signcolumn = 'yes'
 
             -- Add cmp_nvim_lsp capabilities settings to lspconfig
             -- This should be executed before you configure any language server

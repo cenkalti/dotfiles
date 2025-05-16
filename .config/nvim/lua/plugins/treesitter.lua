@@ -1,3 +1,4 @@
+-- Language specific parsers
 return {
     {
         'nvim-treesitter/nvim-treesitter',

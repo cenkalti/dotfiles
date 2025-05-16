@@ -1,3 +1,4 @@
+-- Clipboard history
 return {
     'gbprod/yanky.nvim',
     dependencies = {

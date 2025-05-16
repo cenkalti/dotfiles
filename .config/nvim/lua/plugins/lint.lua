@@ -1,3 +1,4 @@
+-- Run linters on save
 return {
     'mfussenegger/nvim-lint',
     config = function()

@@ -1,3 +1,4 @@
+-- Open LazyGit in a floating window
 return {
     'kdheepak/lazygit.nvim',
     lazy = true,

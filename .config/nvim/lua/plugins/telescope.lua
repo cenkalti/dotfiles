@@ -1,3 +1,4 @@
+-- Fuzzy finder and picker
 return {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',

@@ -1,4 +1,4 @@
--- Status line
+-- Configurable status line
 local function number_of_lines()
     return vim.fn.line('$')
 end
