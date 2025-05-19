@@ -408,6 +408,11 @@ function ghsetup() {
     echo "Setup complete for $PROJECT"
 }
 
+function ghnvim() {
+    ghsetup $@
+    exec nvim -c NvimTreeOpen -c "Telescope git_files"
+}
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
