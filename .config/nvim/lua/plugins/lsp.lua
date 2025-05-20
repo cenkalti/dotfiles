@@ -1,38 +1,11 @@
--- Language Server Protocol (LSP) configuration
---
--- Created with following tutorial:
--- https://lsp-zero.netlify.app/v4.x/tutorial.html
+-- Contains LSP client configurations for various language servers
 return {
     {
-        'neovim/nvim-lspconfig', -- Contains LSP client configurations for various language servers
+        'neovim/nvim-lspconfig',
         dependencies = {
-            -- Package manager for LSP servers, linters and formatters
-            { 'williamboman/mason.nvim' },
-
-            -- Registers a setup hook with lspconfig that ensures servers installed with mason.nvim
-            -- are set up with the necessary configuration
-            -- Provides extra convenience APIs such as the :LspInstall command
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- For key bindings
             { 'folke/which-key.nvim' },
-
-            -- For auto-completion
-            { 'hrsh7th/cmp-nvim-lsp' },
         },
-
         config = function()
-            local lspconfig = require('lspconfig')
-
-            -- Add cmp_nvim_lsp capabilities settings to lspconfig
-            -- This should be executed before you configure any language server
-            local lspconfig_defaults = lspconfig.util.default_config
-            lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-                'force',
-                lspconfig_defaults.capabilities,
-                require('cmp_nvim_lsp').default_capabilities()
-            )
-
             -- This is where you enable features that only work
             -- if there is a language server active in the file
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -63,12 +36,6 @@ return {
                     })
                 end,
             })
-
-            -- Setup Mason package manager
-            require('mason').setup()
-
-            -- Configure LSP servers installed with Mason
-            require('mason-lspconfig').setup()
         end,
     },
 }

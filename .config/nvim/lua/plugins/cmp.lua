@@ -5,8 +5,8 @@ return {
         'hrsh7th/nvim-cmp',
         dependencies = {
             -- Completion sources
-            { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
 
             -- For icons in auto-complete menu
@@ -16,9 +16,9 @@ return {
             local cmp = require('cmp')
             cmp.setup({
                 sources = {
+                    { name = 'buffer' },
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lua' },
-                    { name = 'buffer' },
                 },
                 snippet = {
                     expand = function(args)
