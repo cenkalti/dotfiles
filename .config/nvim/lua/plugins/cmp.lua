@@ -8,6 +8,8 @@ return {
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-emoji' },
+            { 'hrsh7th/cmp-path' },
 
             -- For icons in auto-complete menu
             { 'onsails/lspkind.nvim' },
@@ -19,6 +21,13 @@ return {
                     { name = 'buffer' },
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lua' },
+                    {
+                        name = 'emoji',
+                        option = {
+                            insert = true,
+                        },
+                    },
+                    { name = 'path' },
                 },
                 snippet = {
                     expand = function(args)
