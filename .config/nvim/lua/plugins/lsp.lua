@@ -65,10 +65,10 @@ return {
             })
 
             -- Setup Mason package manager
-            require('mason').setup({})
+            require('mason').setup()
 
             -- Configure LSP servers installed with Mason
-            require('mason-lspconfig').setup({})
+            require('mason-lspconfig').setup()
         end,
     },
 }
