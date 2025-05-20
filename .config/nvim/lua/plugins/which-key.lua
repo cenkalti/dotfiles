@@ -88,7 +88,7 @@ return {
             { '<Esc>', '<C-\\><C-n>', desc = 'Exit terminal mode' },
         })
 
-        -- Other Key Bindings
+        -- Navigation Key Bindings
         wk.add({
             { '[q', ':cprevious<CR>', desc = 'Previous item in quickfix' },
             { ']q', ':cnext<CR>', desc = 'Next item in quickfix' },
