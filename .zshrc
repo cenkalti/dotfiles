@@ -263,6 +263,10 @@ function set_title {
   local tab_name=$1
   case "$TERM" in
     cygwin|xterm*|putty*|rxvt*|ansi)
+      # These are OSC control sequences.
+      # Terminals that support these sequences will change the title.
+      # If you are using tmux, it will change the title of the pane.
+      # For setting the window title in tmux, configure in your tmux.conf.
       print -Pn "\e]0;$tab_name:q\a"
       ;;
   esac
