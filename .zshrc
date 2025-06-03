@@ -268,6 +268,8 @@ function set_title {
       # If you are using tmux, it will change the title of the pane.
       # For setting the window title in tmux, configure in your tmux.conf.
       print -Pn "\e]0;$tab_name:q\a"
+      print -Pn "\e]1;$tab_name:q\a"
+      print -Pn "\e]2;$tab_name:q\a"
       ;;
   esac
 }
@@ -316,7 +318,7 @@ function preexec {
         ;;
     esac
 
-  set_title '$cmd'
+    set_title '$cmd'
 }
 
 precmd_functions+=(precmd)
