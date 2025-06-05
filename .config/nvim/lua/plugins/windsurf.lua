@@ -1,6 +1,6 @@
--- Codeium AI code completion
+-- Windsurf AI code completion
 return {
-    'Exafunction/codeium.vim',
+    'Exafunction/windsurf.vim',
     init = function()
         vim.g.codeium_disable_bindings = 1
     end,
