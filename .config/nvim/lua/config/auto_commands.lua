@@ -1,12 +1,5 @@
 -- vim:foldmethod=marker:foldlevel=0
 
--- {{{ Write all buffers on focus lost
-vim.api.nvim_create_autocmd('FocusLost', {
-    pattern = '*',
-    command = 'wa',
-})
--- }}}
-
 -- {{{ Hide quickfix buffer from buffer list
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'qf',
