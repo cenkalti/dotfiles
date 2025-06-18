@@ -38,3 +38,4 @@ compile_commands.json
 .aider*
 !.aider.conf.yml
 **/.claude/settings.local.json
+**/REFINE.md
