@@ -219,7 +219,6 @@ function dl {
 }
 
 # go aliases
-alias gi="go install"
 alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
