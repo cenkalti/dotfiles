@@ -7,13 +7,20 @@ obj.author = 'Cenk Alti'
 obj.homepage = 'https://github.com/cenkalti/dotfiles'
 obj.license = 'MIT'
 
+-- Configuration constants
+obj.FFMPEG_PATH = '/opt/homebrew/bin/ffmpeg'
+obj.WHISPER_PATH = '/Users/cenk/.local/bin/whisper'
+obj.WHISPER_MODEL = 'base'
+obj.PATH_ENV = '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin'
+
 obj.hotkey = nil
-obj.isRecording = false
 obj.recordingTask = nil
+obj.transcriptionTask = nil
 obj.tempDir = nil
 obj.tempAudioFile = nil
 obj.tempJsonFile = nil
 obj.recordingAlert = nil
+obj.transcriptionAlert = nil
 
 function obj:init()
     self.tempDir = os.tmpname()
@@ -31,134 +38,88 @@ function obj:start()
     return self
 end
 
+function obj:closeAlert(alert)
+    if alert then
+        hs.alert.closeSpecific(alert)
+    end
+    return nil
+end
+
+function obj:terminateTask(task, wait)
+    if task then
+        task:terminate()
+        if wait then
+            task:waitUntilExit()
+        end
+    end
+    return nil
+end
+
+function obj:logError(prefix, exitCode, stdOut, stdErr)
+    local errorMsg = stdErr or 'Unknown error'
+    print(prefix .. ' Error (exit code: ' .. exitCode .. '): ' .. errorMsg)
+    if stdOut and stdOut:len() > 0 then
+        print(prefix .. ' Output: ' .. stdOut)
+    end
+end
+
 function obj:stop()
     if self.hotkey then
         self.hotkey:delete()
         self.hotkey = nil
     end
-    if self.recordingTask then
-        self.recordingTask:terminate()
-        self.recordingTask = nil
-    end
+    self.recordingTask = self:terminateTask(self.recordingTask)
+    self.transcriptionTask = self:terminateTask(self.transcriptionTask)
+    self.recordingAlert = self:closeAlert(self.recordingAlert)
+    self.transcriptionAlert = self:closeAlert(self.transcriptionAlert)
     if self.tempDir and hs.fs.attributes(self.tempDir) then
-        -- Clean up temp files
-        if self.tempAudioFile and hs.fs.attributes(self.tempAudioFile) then
-            os.remove(self.tempAudioFile)
-        end
-        if self.tempJsonFile and hs.fs.attributes(self.tempJsonFile) then
-            os.remove(self.tempJsonFile)
-        end
-        -- Remove empty directory
-        os.remove(self.tempDir)
+        os.execute('rm -r ' .. self.tempDir)
     end
     return self
 end
 
 function obj:toggleRecording()
-    if self.isRecording then
+    if self.recordingTask then
         self:stopRecording()
+        self:startTranscribe()
+    elseif self.transcriptionTask then
+        self:stopTranscribe()
+        self:startRecording()
     else
         self:startRecording()
     end
 end
 
 function obj:startRecording()
-    if self.isRecording then
-        return
-    end
-
-    self.isRecording = true
-    self.recordingAlert = hs.alert.show('🎤 Recording...', 'indefinite')
-
     self.recordingTask = hs.task.new(
-        '/opt/homebrew/bin/ffmpeg',
+        self.FFMPEG_PATH,
         function(exitCode, stdOut, stdErr)
-            -- Exit code 255 is expected when ffmpeg is terminated normally
-            if exitCode ~= 0 and exitCode ~= 255 then
-                local errorMsg = stdErr or 'Unknown error'
-                print('VoiceToText Recording Error (exit code: ' .. exitCode .. '): ' .. errorMsg)
-                if stdOut and stdOut:len() > 0 then
-                    print('VoiceToText Recording Output: ' .. stdOut)
-                end
-                hs.alert.show('Recording failed', 3)
-                self.isRecording = false
-            end
+            self:recordingTaskHandler(exitCode, stdOut, stdErr)
         end,
         { '-f', 'avfoundation', '-i', ':default', '-ar', '16000', '-ac', '1', '-b:a', '192k', '-y', self.tempAudioFile }
     )
 
-    if self.recordingTask then
-        self.recordingTask:start()
-    else
-        hs.alert.show('Failed to start recording', 3)
-        self.isRecording = false
-    end
+    self.recordingTask:start()
+    self.recordingAlert = hs.alert.show('🎤 Recording...', 'indefinite')
 end
 
 function obj:stopRecording()
-    if not self.isRecording then
-        return
-    end
-
-    self.isRecording = false
-
-    if self.recordingAlert then
-        hs.alert.closeAll()
-        self.recordingAlert = nil
-    end
-
-    if self.recordingTask then
-        self.recordingTask:terminate()
-        self.recordingTask:waitUntilExit()
-        self.recordingTask = nil
-    end
-
-    self:transcribeAudio()
+    self.recordingAlert = self:closeAlert(self.recordingAlert)
+    self.recordingTask = self:terminateTask(self.recordingTask, true)
 end
 
-function obj:transcribeAudio()
+function obj:startTranscribe()
     if not self.tempAudioFile or not hs.fs.attributes(self.tempAudioFile) then
-        hs.alert.show('No audio file found', 3)
+        hs.alert.show('No audio file found')
         return
     end
 
-    local whisperTask = hs.task.new('/Users/cenk/.local/bin/whisper', function(exitCode, stdOut, stdErr)
-        if exitCode == 0 then
-            -- Read the JSON file that Whisper created
-            if hs.fs.attributes(self.tempJsonFile) then
-                local file = io.open(self.tempJsonFile, 'r')
-                if file then
-                    local content = file:read('*all')
-                    file:close()
-
-                    local response = hs.json.decode(content)
-                    if response and response.text then
-                        if response.text:len() > 0 then
-                            self:pasteText(response.text)
-                        else
-                            hs.alert.show('No speech detected', 3)
-                        end
-                    else
-                        hs.alert.show('Failed to parse transcription', 3)
-                    end
-                else
-                    hs.alert.show('Failed to read transcription file', 3)
-                end
-            else
-                hs.alert.show('No transcription file found', 3)
-            end
-        else
-            local errorMsg = stdErr or 'Unknown error'
-            print('VoiceToText Transcription Error (exit code: ' .. exitCode .. '): ' .. errorMsg)
-            if stdOut and stdOut:len() > 0 then
-                print('VoiceToText Transcription Output: ' .. stdOut)
-            end
-            hs.alert.show('Transcription failed', 3)
-        end
+    self.transcriptionTask = hs.task.new(self.WHISPER_PATH, function(exitCode, stdOut, stdErr)
+        self:transcriptionTaskHandler(exitCode, stdOut, stdErr)
     end, {
         self.tempAudioFile,
         '--model',
-        'base',
+        self.WHISPER_MODEL,
         '--output_format',
         'json',
         '--output_dir',
@@ -166,25 +127,72 @@ function obj:transcribeAudio()
     })
 
     -- Set environment variables to help Whisper find ffmpeg
-    whisperTask:setEnvironment({
-        PATH = '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin',
+    self.transcriptionTask:setEnvironment({
+        PATH = self.PATH_ENV,
     })
 
-    if whisperTask then
-        whisperTask:start()
-    else
-        hs.alert.show('Failed to start transcription', 3)
-    end
+    self.transcriptionTask:start()
+    self.transcriptionAlert = hs.alert.show('🤖 Transcribing...', 'indefinite')
 end
 
-function obj:pasteText(text)
-    local currentApp = hs.application.frontmostApplication()
-    if currentApp then
-        hs.pasteboard.setContents(text)
-        hs.eventtap.keyStroke({ 'cmd' }, 'v')
-    else
-        hs.alert.show('No active window found', 3)
+function obj:stopTranscribe()
+    self.transcriptionAlert = self:closeAlert(self.transcriptionAlert)
+    self.transcriptionTask = self:terminateTask(self.transcriptionTask)
+end
+
+function obj:recordingTaskHandler(exitCode, stdOut, stdErr)
+    -- Exit code 255 is expected when ffmpeg is terminated normally
+    if exitCode == 0 or exitCode == 255 then
+        return
     end
+
+    self:logError('VoiceToText Recording', exitCode, stdOut, stdErr)
+    hs.alert.show('Recording failed')
+end
+
+function obj:transcriptionTaskHandler(exitCode, stdOut, stdErr)
+    self.transcriptionAlert = self:closeAlert(self.transcriptionAlert)
+    self.transcriptionTask = nil
+
+    if exitCode == 15 then -- Exit code 15 is expected when whisper is terminated normally
+        print('VoiceToText Transcription Stopped')
+        return
+    end
+
+    if exitCode ~= 0 then
+        self:logError('VoiceToText Transcription', exitCode, stdOut, stdErr)
+        hs.alert.show('Transcription failed')
+        return
+    end
+
+    -- Read the JSON file that Whisper created
+    if not hs.fs.attributes(self.tempJsonFile) then
+        hs.alert.show('No transcription file found')
+        return
+    end
+
+    local file = io.open(self.tempJsonFile, 'r')
+    if not file then
+        hs.alert.show('Failed to read transcription file')
+        return
+    end
+
+    local content = file:read('*all')
+    file:close()
+
+    local response = hs.json.decode(content)
+    if not response or not response.text then
+        hs.alert.show('Failed to parse transcription')
+        return
+    end
+
+    if response.text:len() == 0 then
+        hs.alert.show('No speech detected')
+        return
+    end
+
+    hs.pasteboard.setContents(response.text)
+    hs.eventtap.keyStroke({ 'cmd' }, 'v')
 end
 
 return obj
