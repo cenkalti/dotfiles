@@ -26,7 +26,7 @@ function obj:start()
         return self
     end
 
-    self.hotkey = hs.hotkey.bind({ 'cmd', 'alt' }, 'r', function()
+    self.hotkey = hs.hotkey.bind({}, 'f5', function()
         self:toggleRecording()
     end)
     return self
