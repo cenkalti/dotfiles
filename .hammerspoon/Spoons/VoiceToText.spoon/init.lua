@@ -15,7 +15,7 @@ obj.openaiApiKey = nil
 obj.recordingAlert = nil
 
 function obj:init()
-    self.tempAudioFile = os.tmpname() .. '.wav'
+    self.tempAudioFile = os.tmpname() .. '.mp3'
     self.openaiApiKey = hs.settings.get('openai_api_key')
     return self
 end
@@ -63,12 +63,22 @@ function obj:startRecording()
     self.isRecording = true
     self.recordingAlert = hs.alert.show('🎤 Recording...', 'indefinite')
 
-    self.recordingTask = hs.task.new('/opt/homebrew/bin/sox', function(exitCode, _, stdErr)
-        if exitCode ~= 0 then
-            hs.alert.show('Recording failed: ' .. (stdErr or 'Unknown error'), 3)
-            self.isRecording = false
-        end
-    end, { '-t', 'coreaudio', '-d', '-r', '16000', '-c', '1', '-b', '16', self.tempAudioFile })
+    self.recordingTask = hs.task.new(
+        '/opt/homebrew/bin/ffmpeg',
+        function(exitCode, stdOut, stdErr)
+            -- Exit code 255 is expected when ffmpeg is terminated normally
+            if exitCode ~= 0 and exitCode ~= 255 then
+                local errorMsg = stdErr or 'Unknown error'
+                print('VoiceToText Recording Error (exit code: ' .. exitCode .. '): ' .. errorMsg)
+                if stdOut and stdOut:len() > 0 then
+                    print('VoiceToText Recording Output: ' .. stdOut)
+                end
+                hs.alert.show('Recording failed', 3)
+                self.isRecording = false
+            end
+        end,
+        { '-f', 'avfoundation', '-i', ':default', '-ar', '16000', '-ac', '1', '-b:a', '192k', '-y', self.tempAudioFile }
+    )
 
     if self.recordingTask then
         self.recordingTask:start()
@@ -116,10 +126,16 @@ function obj:transcribeAudio()
                     hs.alert.show('No speech detected', 3)
                 end
             else
-                hs.alert.show('Failed to parse transcription response', 3)
+                print('VoiceToText JSON Parse Error: ' .. (stdOut or 'No output'))
+                hs.alert.show('Failed to parse response', 3)
             end
         else
-            hs.alert.show('Transcription failed: ' .. (stdErr or 'Unknown error'), 3)
+            local errorMsg = stdErr or 'Unknown error'
+            print('VoiceToText Transcription Error (exit code: ' .. exitCode .. '): ' .. errorMsg)
+            if stdOut and stdOut:len() > 0 then
+                print('VoiceToText Transcription Output: ' .. stdOut)
+            end
+            hs.alert.show('Transcription failed', 3)
         end
 
         if hs.fs.attributes(self.tempAudioFile) then
