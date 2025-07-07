@@ -10,22 +10,21 @@ obj.license = 'MIT'
 obj.hotkey = nil
 obj.isRecording = false
 obj.recordingTask = nil
+obj.tempDir = nil
 obj.tempAudioFile = nil
-obj.openaiApiKey = nil
+obj.tempJsonFile = nil
 obj.recordingAlert = nil
 
 function obj:init()
-    self.tempAudioFile = os.tmpname() .. '.mp3'
-    self.openaiApiKey = hs.settings.get('openai_api_key')
+    self.tempDir = os.tmpname()
+    os.remove(self.tempDir)
+    hs.fs.mkdir(self.tempDir)
+    self.tempAudioFile = self.tempDir .. '/audio.mp3'
+    self.tempJsonFile = self.tempDir .. '/audio.json'
     return self
 end
 
 function obj:start()
-    if not self.openaiApiKey then
-        hs.alert.show("OpenAI API key not found. Set with: hs.settings.set('openai_api_key', 'your-key')", 5)
-        return self
-    end
-
     self.hotkey = hs.hotkey.bind({}, 'f5', function()
         self:toggleRecording()
     end)
@@ -41,8 +40,16 @@ function obj:stop()
         self.recordingTask:terminate()
         self.recordingTask = nil
     end
-    if self.tempAudioFile and hs.fs.attributes(self.tempAudioFile) then
-        os.remove(self.tempAudioFile)
+    if self.tempDir and hs.fs.attributes(self.tempDir) then
+        -- Clean up temp files
+        if self.tempAudioFile and hs.fs.attributes(self.tempAudioFile) then
+            os.remove(self.tempAudioFile)
+        end
+        if self.tempJsonFile and hs.fs.attributes(self.tempJsonFile) then
+            os.remove(self.tempJsonFile)
+        end
+        -- Remove empty directory
+        os.remove(self.tempDir)
     end
     return self
 end
@@ -115,19 +122,30 @@ function obj:transcribeAudio()
         return
     end
 
-    local curlTask = hs.task.new('/usr/bin/curl', function(exitCode, stdOut, stdErr)
-        if exitCode == 0 and stdOut and stdOut:len() > 0 then
-            local success, response = pcall(hs.json.decode, stdOut)
-            if success and response and response.text then
-                local transcription = response.text:gsub('^%s*(.-)%s*$', '%1')
-                if transcription and transcription:len() > 0 then
-                    self:pasteText(transcription)
+    local whisperTask = hs.task.new('/Users/cenk/.local/bin/whisper', function(exitCode, stdOut, stdErr)
+        if exitCode == 0 then
+            -- Read the JSON file that Whisper created
+            if hs.fs.attributes(self.tempJsonFile) then
+                local file = io.open(self.tempJsonFile, 'r')
+                if file then
+                    local content = file:read('*all')
+                    file:close()
+
+                    local response = hs.json.decode(content)
+                    if response and response.text then
+                        if response.text:len() > 0 then
+                            self:pasteText(response.text)
+                        else
+                            hs.alert.show('No speech detected', 3)
+                        end
+                    else
+                        hs.alert.show('Failed to parse transcription', 3)
+                    end
                 else
-                    hs.alert.show('No speech detected', 3)
+                    hs.alert.show('Failed to read transcription file', 3)
                 end
             else
-                print('VoiceToText JSON Parse Error: ' .. (stdOut or 'No output'))
-                hs.alert.show('Failed to parse response', 3)
+                hs.alert.show('No transcription file found', 3)
             end
         else
             local errorMsg = stdErr or 'Unknown error'
@@ -137,26 +155,23 @@ function obj:transcribeAudio()
             end
             hs.alert.show('Transcription failed', 3)
         end
-
-        if hs.fs.attributes(self.tempAudioFile) then
-            os.remove(self.tempAudioFile)
-        end
     end, {
-        '-X',
-        'POST',
-        '-H',
-        'Authorization: Bearer ' .. self.openaiApiKey,
-        '-H',
-        'Content-Type: multipart/form-data',
-        '-F',
-        'file=@' .. self.tempAudioFile,
-        '-F',
-        'model=whisper-1',
-        'https://api.openai.com/v1/audio/transcriptions',
+        self.tempAudioFile,
+        '--model',
+        'base',
+        '--output_format',
+        'json',
+        '--output_dir',
+        self.tempDir,
     })
 
-    if curlTask then
-        curlTask:start()
+    -- Set environment variables to help Whisper find ffmpeg
+    whisperTask:setEnvironment({
+        PATH = '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin',
+    })
+
+    if whisperTask then
+        whisperTask:start()
     else
         hs.alert.show('Failed to start transcription', 3)
     end
