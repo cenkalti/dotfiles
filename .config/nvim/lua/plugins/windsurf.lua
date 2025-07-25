@@ -1,18 +1,28 @@
 -- Windsurf AI code completion
 return {
-    'Exafunction/windsurf.vim',
-    init = function()
-        vim.g.codeium_disable_bindings = 1
-    end,
+    'monkoose/neocodeium',
+    event = 'VeryLazy',
     config = function()
+        local neocodeium = require('neocodeium')
+        neocodeium.setup()
+
         vim.keymap.set('i', '<Tab>', function()
-            return vim.fn['codeium#Accept']()
-        end, { expr = true, silent = true })
-        vim.keymap.set('i', '<C-j>', function()
-            return vim.fn['codeium#CycleCompletions'](1)
-        end, { expr = true, silent = true })
-        vim.keymap.set('i', '<C-k>', function()
-            return vim.fn['codeium#CycleCompletions'](-1)
-        end, { expr = true, silent = true })
+            neocodeium.accept()
+        end)
+        vim.keymap.set('i', '<A-w>', function()
+            neocodeium.accept_word()
+        end)
+        vim.keymap.set('i', '<A-l>', function()
+            neocodeium.accept_line()
+        end)
+        vim.keymap.set('i', '<A-j>', function()
+            neocodeium.cycle_or_complete(1)
+        end)
+        vim.keymap.set('i', '<A-k>', function()
+            neocodeium.cycle_or_complete(-1)
+        end)
+        vim.keymap.set('i', '<A-c>', function()
+            neocodeium.clear()
+        end)
     end,
 }
