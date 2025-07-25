@@ -7,6 +7,7 @@ vim.diagnostic.config({
     float = {
         source = true,
         border = 'rounded',
+        close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' },
     },
 })
 
@@ -14,4 +15,4 @@ vim.diagnostic.config({
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float({focusable=false})]])
 
 -- Show diagnostics in loclist when they change
-vim.cmd([[autocmd! DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})]]) 
+vim.cmd([[autocmd! DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})]])
