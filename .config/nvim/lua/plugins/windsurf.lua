@@ -14,6 +14,7 @@ return {
             end,
         })
 
+        -- Make sure these are in line with blink.cmp keybindings
         vim.keymap.set('i', '<A-y>', function()
             neocodeium.accept()
         end)
@@ -26,10 +27,10 @@ return {
         vim.keymap.set('i', '<A-Space>', function()
             neocodeium.cycle_or_complete(1)
         end)
-        vim.keymap.set('i', '<A-n>', function()
+        vim.keymap.set('i', '<A-j>', function()
             neocodeium.cycle(1)
         end)
-        vim.keymap.set('i', '<A-p>', function()
+        vim.keymap.set('i', '<A-k>', function()
             neocodeium.cycle(-1)
         end)
         vim.keymap.set('i', '<A-e>', function()

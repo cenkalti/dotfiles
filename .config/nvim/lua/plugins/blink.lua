@@ -6,6 +6,7 @@ return {
     },
     version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
+        -- Make sure these are in line with Windsurf keybindings
         keymap = {
             preset = 'none',
 
@@ -13,13 +14,13 @@ return {
             ['<C-e>'] = { 'hide' },
             ['<C-y>'] = { 'select_and_accept' },
 
-            ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-            ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+            ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
+            ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
 
-            ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-            ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+            ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+            ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
-            ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+            ['<C-h>'] = { 'show_signature', 'hide_signature', 'fallback' },
         },
 
         -- Rust fuzzy matcher for typo resistance and significantly better performance
