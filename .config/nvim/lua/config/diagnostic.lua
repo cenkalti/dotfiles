@@ -12,7 +12,4 @@ vim.diagnostic.config({
 })
 
 -- Show diagnostic message as floating window when hover on line (delay is controlled with `updatetime` option)
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float({focusable=false})]])
-
--- Show diagnostics in loclist when they change
-vim.cmd([[autocmd! DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})]])
+vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float({focusable=false})]])
