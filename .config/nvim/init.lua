@@ -15,6 +15,3 @@ require('config.diagnostic')
 require('config.user_commands')
 require('config.auto_commands')
 
--- Load and setup the command line formatter
-local format_command_line = require('format-command-line')
-format_command_line.setup()
