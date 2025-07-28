@@ -3,9 +3,22 @@ return {
     'saghen/blink.cmp',
     dependencies = {
         'rafamadriz/friendly-snippets', -- optional: provides snippets for the snippet source
+        'folke/lazydev.nvim',
     },
     version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
+        sources = {
+            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+            providers = {
+                lazydev = {
+                    name = 'LazyDev',
+                    module = 'lazydev.integrations.blink',
+                    -- make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
+                },
+            },
+        },
+
         -- Make sure these are in line with Windsurf keybindings
         keymap = {
             preset = 'none',
