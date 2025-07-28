@@ -14,7 +14,6 @@ select-word-style bash
 export EDITOR=nvim
 export PAGER=less
 export LESS="-iR"  # ignore case
-export FZF_DEFAULT_COMMAND='fd --type f'
 
 # History settings
 HISTSIZE=10000
