@@ -33,9 +33,11 @@ unsetopt AUTO_CD
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-alias l="eza -l --icons --git"
+alias l="eza -l --icons --git --hyperlink"
 alias la="l -aa"
 alias lt="ls -lt | head"
+
+alias rg='rg --hyperlink-format=kitty'
 
 # One-key shortcuts
 alias d="pwd"
