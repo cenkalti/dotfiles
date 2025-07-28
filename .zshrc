@@ -47,8 +47,6 @@ alias k="kubectl"
 alias p="ptpython"
 alias h="hostname"
 
-alias py="python3"
-
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
@@ -224,8 +222,6 @@ alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
-alias github-remove-draft-releases="hub release -f '%T (%S) %n' --include-drafts | grep ' (draft)' | awk '{print $1}' | xargs -t -n1 hub release delete"
-
 # press ctrl-x then e to edit current command in editor
 autoload edit-command-line
 zle -N edit-command-line
@@ -318,36 +314,6 @@ preexec_functions+=(preexec)
 if [[ -f ~/.local.zshrc ]]; then
   source ~/.local.zshrc
 fi
-
-function n {
-    # Block nesting of nnn in subshells
-    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
-        echo "nnn is already running"
-        return
-    fi
-
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The backslash allows one to alias n to nnn if desired without making an
-    # infinitely recursive alias
-    \nnn -A "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -464,6 +430,6 @@ load-local-aliases() {
 add-zsh-hook precmd load-local-aliases
 
 ################################################################################
-# Anything added after this line must go into .zprofile or .zshrc_private file.
+# Anything added after this line must go into .zprofile or .local.zshrc file.
 ################################################################################
 
