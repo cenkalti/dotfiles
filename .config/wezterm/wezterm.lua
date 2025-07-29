@@ -18,6 +18,7 @@ resurrect.state_manager.periodic_save({
 ---@class Config
 local config = wezterm.config_builder()
 
+config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.color_scheme = 'Catppuccin Macchiato'
 config.font_size = 15.0
 config.quit_when_all_windows_are_closed = false
