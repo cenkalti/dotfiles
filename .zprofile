@@ -59,5 +59,9 @@ elif [[ -f "/usr/share/fzf/completion.zsh" ]]; then
     source "/usr/share/fzf/completion.zsh"
 fi
 
+if type zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 # Created by `pipx`
 export PATH="$PATH:$HOME/.local/bin"
