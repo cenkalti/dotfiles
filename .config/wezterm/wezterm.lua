@@ -59,7 +59,7 @@ local default_windows_background_opacity = 0.90
 local default_text_background_opacity = 0.5
 config.window_background_opacity = default_windows_background_opacity
 config.text_background_opacity = default_text_background_opacity
-local transparency_enabled = false
+local transparency_enabled = true
 wezterm.on('toggle-transparency', function(window, _)
     if transparency_enabled then
         transparency_enabled = false
