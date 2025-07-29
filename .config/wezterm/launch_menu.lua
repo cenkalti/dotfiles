@@ -1,5 +1,3 @@
-local wezterm = require('wezterm')
-
 local M = {}
 
 function M.setup(config)
