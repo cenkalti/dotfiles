@@ -2,6 +2,18 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
+local workspace_switcher = wezterm.plugin.require('https://github.com/MLFlexer/smart_workspace_switcher.wezterm')
+workspace_switcher.zoxide_path = '/opt/homebrew/bin/zoxide'
+
+local resurrect = wezterm.plugin.require('https://github.com/MLFlexer/resurrect.wezterm')
+resurrect.state_manager.set_max_nlines(5000)
+resurrect.state_manager.periodic_save({
+    interval_seconds = 300,
+    save_tabs = true,
+    save_windows = true,
+    save_workspaces = true,
+})
+
 -- This will hold the configuration.
 ---@class Config
 local config = wezterm.config_builder()
@@ -95,7 +107,49 @@ config.keys = {
         }),
     },
     { key = 't', mods = 'SUPER|ALT', action = wezterm.action.EmitEvent('toggle-transparency') },
+
+    -- Workspace Switcher
+    {
+        key = 's',
+        mods = 'SUPER',
+        action = workspace_switcher.switch_workspace(),
+    },
+    {
+        key = 'S',
+        mods = 'SUPER',
+        action = workspace_switcher.switch_to_prev_workspace(),
+    },
+    {
+        key = ']',
+        mods = 'SUPER',
+        action = wezterm.action.SwitchWorkspaceRelative(1),
+    },
+    {
+        key = '[',
+        mods = 'SUPER',
+        action = wezterm.action.SwitchWorkspaceRelative(-1),
+    },
 }
+
+-- loads the state whenever I create a new workspace
+---@diagnostic disable-next-line: unused-local
+wezterm.on('smart_workspace_switcher.workspace_switcher.created', function(window, path, label)
+    local workspace_state = resurrect.workspace_state
+
+    workspace_state.restore_workspace(resurrect.state_manager.load_state(label, 'workspace'), {
+        window = window,
+        relative = true,
+        restore_text = true,
+        on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+    })
+end)
+
+-- Saves the state whenever I select a workspace
+---@diagnostic disable-next-line: unused-local
+wezterm.on('smart_workspace_switcher.workspace_switcher.selected', function(window, path, label)
+    local workspace_state = resurrect.workspace_state
+    resurrect.state_manager.save_state(workspace_state.get_workspace_state())
+end)
 
 -- Use hyperlinks directly in the terminal
 wezterm.on('open-uri', function(_, pane, uri)
