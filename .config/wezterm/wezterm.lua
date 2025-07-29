@@ -4,7 +4,9 @@ local wezterm = require('wezterm')
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('update-right-status', function(window, pane)
-    window:set_right_status(window:active_workspace())
+    local workspace = window:active_workspace()
+    local base_name = workspace:match('([^/]+)$')
+    window:set_right_status(base_name or workspace)
 end)
 
 -- This will hold the configuration.
