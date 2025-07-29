@@ -2,17 +2,8 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
-local workspace_switcher = wezterm.plugin.require('https://github.com/MLFlexer/smart_workspace_switcher.wezterm')
-workspace_switcher.zoxide_path = '/opt/homebrew/bin/zoxide'
-
 local resurrect = wezterm.plugin.require('https://github.com/MLFlexer/resurrect.wezterm')
 resurrect.state_manager.set_max_nlines(5000)
-resurrect.state_manager.periodic_save({
-    interval_seconds = 300,
-    save_tabs = true,
-    save_windows = true,
-    save_workspaces = true,
-})
 
 -- This will hold the configuration.
 ---@class Config
@@ -112,12 +103,7 @@ config.keys = {
     {
         key = 's',
         mods = 'SUPER',
-        action = workspace_switcher.switch_workspace(),
-    },
-    {
-        key = 'S',
-        mods = 'SUPER',
-        action = workspace_switcher.switch_to_prev_workspace(),
+        action = wezterm.action.ShowLauncherArgs({ title = 'Workspaces', flags = 'WORKSPACES' }),
     },
     {
         key = ']',
@@ -129,27 +115,81 @@ config.keys = {
         mods = 'SUPER',
         action = wezterm.action.SwitchWorkspaceRelative(-1),
     },
+
+    -- New Workspace
+    {
+        key = 'S',
+        mods = 'SUPER',
+        action = wezterm.action.PromptInputLine({
+            description = wezterm.format({
+                { Attribute = { Intensity = 'Bold' } },
+                { Foreground = { AnsiColor = 'Fuchsia' } },
+                { Text = 'Enter name for new workspace' },
+            }),
+            action = wezterm.action_callback(function(window, pane, line)
+                if line then
+                    ---@diagnostic disable-next-line: param-type-mismatch
+                    window:perform_action(wezterm.action.SwitchToWorkspace({ name = line }), pane)
+                end
+            end),
+        }),
+    },
+
+    -- Save Workspace State
+    {
+        key = 's',
+        mods = 'LEADER',
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        action = wezterm.action_callback(function(win, pane)
+            resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+        end),
+    },
+    -- Restore Workspace State
+    {
+        key = 'r',
+        mods = 'LEADER',
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        action = wezterm.action_callback(function(win, pane)
+            --- @diagnostic disable-next-line: unused-local
+            resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
+                local type = string.match(id, '^([^/]+)') -- match before '/'
+                id = string.match(id, '([^/]+)$') -- match after '/'
+                id = string.match(id, '(.+)%..+$') -- remove file extention
+                local opts = {
+                    relative = true,
+                    restore_text = true,
+                    on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+                }
+                if type == 'workspace' then
+                    local state = resurrect.state_manager.load_state(id, 'workspace')
+                    resurrect.workspace_state.restore_workspace(state, opts)
+                elseif type == 'window' then
+                    local state = resurrect.state_manager.load_state(id, 'window')
+                    resurrect.window_state.restore_window(pane:window(), state, opts)
+                elseif type == 'tab' then
+                    local state = resurrect.state_manager.load_state(id, 'tab')
+                    resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+                end
+            end)
+        end),
+    },
+    -- Delete Workspace State
+    {
+        key = 'd',
+        mods = 'LEADER',
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        action = wezterm.action_callback(function(win, pane)
+            resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id)
+                resurrect.state_manager.delete_state(id)
+            end, {
+                title = 'Delete State',
+                description = 'Select State to Delete and press Enter = accept, Esc = cancel, / = filter',
+                fuzzy_description = 'Search State to Delete: ',
+                is_fuzzy = true,
+            })
+        end),
+    },
 }
-
--- loads the state whenever I create a new workspace
----@diagnostic disable-next-line: unused-local
-wezterm.on('smart_workspace_switcher.workspace_switcher.created', function(window, path, label)
-    local workspace_state = resurrect.workspace_state
-
-    workspace_state.restore_workspace(resurrect.state_manager.load_state(label, 'workspace'), {
-        window = window,
-        relative = true,
-        restore_text = true,
-        on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-    })
-end)
-
--- Saves the state whenever I select a workspace
----@diagnostic disable-next-line: unused-local
-wezterm.on('smart_workspace_switcher.workspace_switcher.selected', function(window, path, label)
-    local workspace_state = resurrect.workspace_state
-    resurrect.state_manager.save_state(workspace_state.get_workspace_state())
-end)
 
 -- Use hyperlinks directly in the terminal
 wezterm.on('open-uri', function(_, pane, uri)
