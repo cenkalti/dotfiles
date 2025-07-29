@@ -5,7 +5,8 @@ local M = {}
 function M.setup(config)
     config.leader = { mods = 'CTRL', key = 'a', timeout_milliseconds = 1000 }
 
-    config.keys = {
+    local keys = config.keys or {}
+    local new_keys = {
         {
             mods = 'SUPER',
             key = 'l',
@@ -73,12 +74,22 @@ function M.setup(config)
                 action = wezterm.action_callback(function(window, pane, line)
                     if line then
                         ---@diagnostic disable-next-line: param-type-mismatch
-                        window:perform_action(wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line), pane)
+                        window:perform_action(
+                            wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line),
+                            pane
+                        )
                     end
                 end),
             }),
         },
     }
+
+    -- Merge existing keys with new keys
+    for _, key in ipairs(new_keys) do
+        table.insert(keys, key)
+    end
+
+    config.keys = keys
 end
 
 return M
