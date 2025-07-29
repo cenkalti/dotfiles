@@ -2,6 +2,11 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
+---@diagnostic disable-next-line: unused-local
+wezterm.on('update-right-status', function(window, pane)
+    window:set_right_status(window:active_workspace())
+end)
+
 local resurrect = wezterm.plugin.require('https://github.com/MLFlexer/resurrect.wezterm')
 resurrect.state_manager.set_max_nlines(5000)
 
@@ -139,7 +144,7 @@ config.keys = {
     {
         key = 's',
         mods = 'LEADER',
-        ---@diagnostic disable-next-line: assign-type-mismatch
+        ---@diagnostic disable-next-line: unused-local, assign-type-mismatch
         action = wezterm.action_callback(function(win, pane)
             resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
         end),
