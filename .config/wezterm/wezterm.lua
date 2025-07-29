@@ -11,7 +11,7 @@ end)
 ---@class Config
 local config = wezterm.config_builder()
 
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.leader = { mods = 'CTRL', key = 'a', timeout_milliseconds = 1000 }
 config.color_scheme = 'Catppuccin Macchiato'
 config.font_size = 15.0
 config.quit_when_all_windows_are_closed = false
@@ -84,44 +84,44 @@ end)
 
 config.keys = {
     {
-        key = 'l',
         mods = 'SUPER',
+        key = 'l',
         action = wezterm.action.ShowLauncherArgs({ title = 'Projects', flags = 'FUZZY|LAUNCH_MENU_ITEMS' }),
     },
-    { key = '{', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(-1) },
-    { key = '}', mods = 'SHIFT|ALT', action = wezterm.action.MoveTabRelative(1) },
+    { mods = 'SHIFT|ALT', key = '{', action = wezterm.action.MoveTabRelative(-1) },
+    { mods = 'SHIFT|ALT', key = '}', action = wezterm.action.MoveTabRelative(1) },
     {
-        key = 'k',
         mods = 'SUPER',
+        key = 'k',
         action = wezterm.action.Multiple({
-            wezterm.action.SendKey({ key = 'C', mods = 'CTRL' }),
-            wezterm.action.SendKey({ key = 'L', mods = 'CTRL' }),
+            wezterm.action.SendKey({ mods = 'CTRL', key = 'C' }),
+            wezterm.action.SendKey({ mods = 'CTRL', key = 'L' }),
             wezterm.action.ClearScrollback('ScrollbackAndViewport'),
         }),
     },
-    { key = 't', mods = 'SUPER|ALT', action = wezterm.action.EmitEvent('toggle-transparency') },
+    { mods = 'SUPER|ALT', key = 't', action = wezterm.action.EmitEvent('toggle-transparency') },
 
     -- Workspace Switcher
     {
-        key = 's',
         mods = 'SUPER',
+        key = 's',
         action = wezterm.action.ShowLauncherArgs({ title = 'Workspaces', flags = 'WORKSPACES' }),
     },
     {
-        key = ']',
         mods = 'SUPER',
+        key = ']',
         action = wezterm.action.SwitchWorkspaceRelative(1),
     },
     {
-        key = '[',
         mods = 'SUPER',
+        key = '[',
         action = wezterm.action.SwitchWorkspaceRelative(-1),
     },
 
     -- New Workspace
     {
-        key = 'S',
         mods = 'SUPER',
+        key = 'S',
         action = wezterm.action.PromptInputLine({
             description = wezterm.format({
                 { Attribute = { Intensity = 'Bold' } },
@@ -139,8 +139,8 @@ config.keys = {
 
     -- Rename Workspace
     {
-        key = 'R',
         mods = 'SUPER',
+        key = 'R',
         action = wezterm.action.PromptInputLine({
             description = wezterm.format({
                 { Attribute = { Intensity = 'Bold' } },
