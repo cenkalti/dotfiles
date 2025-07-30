@@ -3,8 +3,6 @@ local wezterm = require('wezterm')
 local M = {}
 
 function M.setup(config)
-    config.leader = { mods = 'CTRL', key = 'a', timeout_milliseconds = 1000 }
-
     local keys = config.keys or {}
     local new_keys = {
         {
