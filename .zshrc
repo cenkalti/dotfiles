@@ -117,8 +117,8 @@ function etime() { ps -eo pid,comm,etime,args | grep $1 }
 # Git Push Tag helper
 function gpt() {
   # Get bump level and optional remote
-  level="$1"; shift
-  remote="${1:-origin}"; shift
+  level="$1"
+  remote="${2:-origin}"
 
   # Validate level argument
   case "$level" in
