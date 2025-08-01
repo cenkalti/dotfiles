@@ -4,7 +4,11 @@ local wezterm = require('wezterm')
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('update-right-status', function(window, pane)
-    window:set_right_status(window:active_workspace())
+    if window:active_workspace() == 'default' then
+        window:set_right_status('')
+    else
+        window:set_right_status(window:active_workspace())
+    end
 end)
 
 -- This will hold the configuration.
