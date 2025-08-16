@@ -10,6 +10,9 @@ return {
                 if vim.endswith(vim.api.nvim_buf_get_name(bufnr), '.env') then
                     return false
                 end
+                if vim.endswith(vim.api.nvim_buf_get_name(bufnr), '.local.zshrc') then
+                    return false
+                end
                 return true
             end,
         })
