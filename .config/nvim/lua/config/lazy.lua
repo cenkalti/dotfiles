@@ -28,6 +28,6 @@ require('lazy').setup({
     },
     checker = {
         enabled = true,
-        frequency = 7 * 24 * 3600,
+        frequency = 14 * 24 * 3600,
     },
 })
