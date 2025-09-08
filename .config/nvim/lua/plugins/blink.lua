@@ -8,13 +8,22 @@ return {
     version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
         sources = {
-            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'parrot' },
             providers = {
                 lazydev = {
                     name = 'LazyDev',
                     module = 'lazydev.integrations.blink',
                     -- make lazydev completions top priority (see `:h blink.cmp`)
                     score_offset = 100,
+                },
+                parrot = {
+                    module = 'parrot.completion.blink',
+                    name = 'parrot',
+                    score_offset = 20,
+                    opts = {
+                        show_hidden_files = false,
+                        max_items = 50,
+                    },
                 },
             },
         },
