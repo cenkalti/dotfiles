@@ -98,16 +98,20 @@ return {
             { ']l', ':lnext<CR>', desc = 'Next item in location list' },
             { '[L', ':lfirst<CR>', desc = 'First item in location list' },
             { ']L', ':llast<CR>', desc = 'Last item in location list' },
-            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Previous Diagnostic' },
-            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next Diagnostic' },
+            { '[d', vim.diagnostic.goto_prev, desc = 'Previous Diagnostic' },
+            { ']d', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
             {
                 '[e',
-                '<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>',
+                function()
+                    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+                end,
                 desc = 'Next Error Diagnostic',
             },
             {
                 ']e',
-                '<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>',
+                function()
+                    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+                end,
                 desc = 'Next Error Diagnostic',
             },
             { 'gV', '`[v`]', desc = 'Highlight last inserted text' },
