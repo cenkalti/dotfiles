@@ -1,0 +1,15 @@
+{
+  "runtime.version": "LuaJIT",
+  "runtime.path": [
+    "lua/?.lua",
+    "lua/?/init.lua"
+  ],
+  "diagnostics.globals": ["hs"],
+  "workspace.checkThirdParty": false,
+  "workspace.library": [
+    "$VIMRUNTIME",
+    "${3rd}/luv/library",
+    "./lua",
+    "/Users/cenk/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+  ]
+}
