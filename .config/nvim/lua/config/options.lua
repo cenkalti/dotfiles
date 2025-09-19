@@ -17,6 +17,7 @@ vim.opt.fixendofline = false
 vim.opt.updatetime = 250
 vim.opt.wildmode = 'longest:full,full' -- Command completion mode
 vim.opt.showcmd = false
+vim.opt.wrap = false
 
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
