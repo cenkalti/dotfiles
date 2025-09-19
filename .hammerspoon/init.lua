@@ -24,10 +24,32 @@ local function adjustVolume(delta)
     hs.alert.show(string.format('🔊 %d%%', math.floor(newVolume)), 0.5)
 end
 
+-- Map F7 to previous track
+hs.hotkey.bind({}, 'F7', function()
+    hs.eventtap.event.newSystemKeyEvent('PREVIOUS', true):post()
+    hs.eventtap.event.newSystemKeyEvent('PREVIOUS', false):post()
+end)
+
+-- Map F8 to play/pause media
+hs.hotkey.bind({}, 'F8', function()
+    hs.eventtap.event.newSystemKeyEvent('PLAY', true):post()
+    hs.eventtap.event.newSystemKeyEvent('PLAY', false):post()
+end)
+
+-- Map F9 to next track
+hs.hotkey.bind({}, 'F9', function()
+    hs.eventtap.event.newSystemKeyEvent('NEXT', true):post()
+    hs.eventtap.event.newSystemKeyEvent('NEXT', false):post()
+end)
+
 -- Map F10, F11, F12 to volume controls
 hs.hotkey.bind({}, 'F10', function()
     local device = hs.audiodevice.defaultOutputDevice()
-    device:setMuted(not device:muted())
+    local wasMuted = device:muted()
+    device:setMuted(not wasMuted)
+
+    hs.alert.closeAll()
+    hs.alert.show(wasMuted and 'Unmuted' or 'Muted', 0.5)
 end)
 hs.hotkey.bind({}, 'F11', function()
     adjustVolume(-5)
