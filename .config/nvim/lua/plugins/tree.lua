@@ -36,7 +36,7 @@ return {
                     update_root = true,
                 },
                 git = {
-                    ignore = false,
+                    ignore = true,
                     show_on_open_dirs = false,
                 },
             })
