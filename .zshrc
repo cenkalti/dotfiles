@@ -75,8 +75,6 @@ alias nocoredump='ulimit -c 0'
 # Check core dump
 alias iscoredump='ulimit -c'
 
-alias claude="~/.claude/local/claude"
-
 # my ssh & tmux helper
 function ssht() { ssh -t $1 "tmux attach -t cenk || tmux new -s cenk" }
 function mt() { mosh $1 -- sh -c "tmux attach -t cenk || tmux new -s cenk" }
