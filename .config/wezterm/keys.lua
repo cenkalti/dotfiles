@@ -5,6 +5,7 @@ local M = {}
 function M.setup(config)
     local keys = config.keys or {}
     local new_keys = {
+        { mods = 'SHIFT', key = 'Enter', action = wezterm.action({ SendString = '\x1b\r' }) }, --- Added by Claude Code
         {
             mods = 'SUPER',
             key = 'l',
