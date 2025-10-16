@@ -37,7 +37,7 @@ return {
                         command = { max_tokens = 4096 },
                     },
                     topic = {
-                        model = 'claude-3-5-haiku-latest',
+                        model = 'claude-haiku-4-5-20251001',
                         params = { max_tokens = 32 },
                     },
                     headers = function(self)
@@ -48,7 +48,7 @@ return {
                         }
                     end,
                     models = {
-                        'claude-sonnet-4-20250514',
+                        'claude-sonnet-4-5-20250929',
                         'claude-opus-4-1-20250805',
                     },
                     preprocess_payload = function(payload)
