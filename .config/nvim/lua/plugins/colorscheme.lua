@@ -225,6 +225,7 @@ function GO_OVERRIDES(colors)
         ['@comment.documentation.go'] = { fg = colors.overlay2 }, -- comments documenting code
         GoPanic = { fg = colors.red }, -- panic keyword in Go
         GoSelect = { fg = colors.red }, -- select keyword in Go
+        GoPackage = { fg = colors.green }, -- last part of package path in import strings
     }
 end
 
@@ -265,6 +266,7 @@ CUSTOM_MATCHES = {
     go = {
         GoPanic = '\\<panic\\>',
         GoSelect = '\\<select\\>',
+        GoPackage = [["[^"]\+\.[^"]\+/.\+"]],
     },
 }
 
