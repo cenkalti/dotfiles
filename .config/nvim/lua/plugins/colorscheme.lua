@@ -230,7 +230,33 @@ end
 
 function PYTHON_OVERRIDES(colors)
     return {
-        ['@lsp.typemod.class.declaration.python'] = { fg = colors.yellow }, -- Python type modifiers
+        ['@lsp.typemod.class.declaration.python'] = { fg = colors.yellow },
+        ['@lsp.typemod.function.declaration.python'] = { fg = colors.blue },
+        ['@constructor.python'] = { fg = colors.blue },
+        ['@keyword.import.python'] = { fg = colors.overlay2 },
+
+        -- rest is copied from go
+        ['@string.python'] = { fg = colors.overlay2 },
+        ['@module.python'] = { fg = colors.green },
+        ['@type.builtin.python'] = { fg = colors.overlay2 },
+        ['@type.definition.python'] = { fg = colors.mauve },
+        ['@function.python'] = { fg = colors.blue },
+        ['@function.builtin.python'] = { fg = colors.blue },
+        ['@function.call.python'] = { fg = colors.blue },
+        ['@function.method.python'] = { fg = colors.blue },
+        ['@function.method.call.python'] = { fg = colors.blue },
+        ['@operator.python'] = { fg = colors.overlay2 },
+        ['@keyword.python'] = { fg = colors.overlay2 },
+        ['@keyword.coroutine.python'] = { fg = colors.red },
+        ['@keyword.function.python'] = { fg = colors.overlay2 },
+        ['@keyword.type.python'] = { fg = colors.overlay2 },
+        ['@keyword.repeat.python'] = { fg = colors.red },
+        ['@keyword.return.python'] = { fg = colors.red },
+        ['@keyword.conditional.python'] = { fg = colors.overlay2 },
+        ['@punctuation.delimiter.python'] = { fg = colors.overlay2 },
+        ['@punctuation.bracket.python'] = { fg = colors.overlay2 },
+        ['@comment.python'] = { fg = colors.yellow },
+        ['@comment.documentation.python'] = { fg = colors.overlay2 },
     }
 end
 
