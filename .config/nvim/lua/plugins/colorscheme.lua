@@ -12,6 +12,8 @@ local M = {
                 GoPackage = [["[^"]\+\.[^"]\+/.\+"]],
                 GoContinue = '\\<continue\\>',
                 GoFallthrough = '\\<fallthrough\\>',
+                GoChannelReceive = '<-',
+                GoChannelSend = '->',
             },
             python = {
                 PythonAssert = '\\<assert\\>',
@@ -43,6 +45,8 @@ local M = {
                     GoContinue = { fg = colors.red },
                     GoFallthrough = { fg = colors.red },
                     GoPackage = { fg = colors.green },
+                    GoChannelReceive = { fg = colors.text, bg = colors.red },
+                    GoChannelSend = { fg = colors.text, bg = colors.red },
                     ['@string.go'] = { fg = colors.overlay2 },
                     ['@module.go'] = { fg = colors.green },
                     ['@type.go'] = { fg = colors.text },
