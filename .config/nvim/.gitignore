@@ -1,0 +1,2 @@
+# Secrets - never commit API keys or tokens
+lua/secrets.lua

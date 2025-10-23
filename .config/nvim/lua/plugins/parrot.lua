@@ -7,11 +7,13 @@ return {
         'folke/noice.nvim',
     },
     config = function()
+        local secrets = require('secrets')
+
         require('parrot').setup({
             providers = {
                 openai = {
                     name = 'openai',
-                    api_key = os.getenv('OPENAI_API_KEY'),
+                    api_key = secrets.openai_api_key,
                     endpoint = 'https://api.openai.com/v1/chat/completions',
                     model_endpoint = 'https://api.openai.com/v1/models',
                     params = {
@@ -31,7 +33,7 @@ return {
                     name = 'anthropic',
                     endpoint = 'https://api.anthropic.com/v1/messages',
                     model_endpoint = 'https://api.anthropic.com/v1/models',
-                    api_key = os.getenv('ANTHROPIC_API_KEY'),
+                    api_key = secrets.anthropic_api_key,
                     params = {
                         chat = { max_tokens = 4096 },
                         command = { max_tokens = 4096 },
