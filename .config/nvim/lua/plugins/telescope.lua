@@ -10,10 +10,31 @@ return {
     config = function()
         local telescope = require('telescope')
         local builtin = require('telescope.builtin')
+        local actions = require('telescope.actions')
+        local action_state = require('telescope.actions.state')
 
         telescope.load_extension('fzf')
 
-        require('telescope').setup()
+        require('telescope').setup({
+            defaults = {
+                mappings = {
+                    -- Open visible files in separate buffers
+                    i = {
+                        ['<C-a>'] = function(prompt_bufnr)
+                            local picker = action_state.get_current_picker(prompt_bufnr)
+                            local manager = picker.manager
+
+                            -- Get all entries
+                            for entry in manager:iter() do
+                                vim.cmd('badd ' .. vim.fn.fnameescape(entry.value))
+                            end
+
+                            actions.close(prompt_bufnr)
+                        end,
+                    },
+                },
+            },
+        })
 
         local wk = require('which-key')
 
