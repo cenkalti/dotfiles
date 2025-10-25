@@ -29,10 +29,6 @@ config.macos_window_background_blur = 10
 config.window_decorations = 'RESIZE'
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.warn_about_missing_glyphs = false
-config.window_content_alignment = {
-    horizontal = 'Left',
-    vertical = 'Top',
-}
 config.window_padding = {
     left = 0,
     right = 0,
