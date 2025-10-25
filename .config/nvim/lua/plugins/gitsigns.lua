@@ -34,5 +34,13 @@ return {
                 })
             end,
         })
+
+        -- Refresh gitsigns when gaining focus (e.g., after git commit in terminal)
+        vim.api.nvim_create_autocmd('FocusGained', {
+            group = vim.api.nvim_create_augroup('gitsigns_refresh', { clear = true }),
+            callback = function()
+                require('gitsigns').refresh()
+            end,
+        })
     end,
 }
