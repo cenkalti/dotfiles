@@ -43,6 +43,7 @@ return {
         wk.add({
             { '<F2>', ':e! $MYVIMRC<CR>', desc = 'Edit vimrc' },
             { '<F3>', ':Inspect<CR>', desc = 'Inspect word under cursor' },
+            { '<F9>', ':InspectTree<CR>', desc = 'Inspect tree of word under cursor' },
             { '<F4>', ':source $MYVIMRC<CR>', desc = 'Source vimrc' },
             { '<F5>', ':e!<CR>', desc = 'Reset file from disk' },
             { '<F6>', 'mzgg"+yG`z', desc = 'Copy all file' },
