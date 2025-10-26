@@ -51,7 +51,7 @@ local M = {
                     ['@module.go'] = { fg = colors.green },
                     ['@type.go'] = { fg = colors.text },
                     ['@type.builtin.go'] = { fg = colors.overlay2 },
-                    ['@type.definition.go'] = { fg = colors.yellow },
+                    ['@type.definition.go'] = { fg = colors.mauve },
                     ['@function.go'] = { fg = colors.blue },
                     ['@function.builtin.go'] = { fg = colors.blue },
                     ['@function.call.go'] = { fg = colors.blue },
