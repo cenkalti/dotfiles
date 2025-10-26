@@ -77,7 +77,7 @@ local M = {
                     ['@boolean.go'] = { fg = colors.text },
                     ['@number.go'] = { fg = colors.text },
                     ['@property.go'] = { fg = colors.text },
-                    ['@receiver.go'] = { fg = colors.yellow },
+                    GoReceiverField = { fg = colors.yellow },
 
                     -- Python
                     PythonAssert = { fg = colors.overlay2 },

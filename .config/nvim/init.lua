@@ -15,3 +15,5 @@ require('config.diagnostic')
 require('config.user_commands')
 require('config.auto_commands')
 
+-- Load custom highlights
+require('receiver_highlights')
