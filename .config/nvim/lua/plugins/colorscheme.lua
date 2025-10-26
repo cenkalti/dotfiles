@@ -71,7 +71,7 @@ local M = {
                     ['@keyword.conditional.go'] = { fg = colors.overlay2 },
                     ['@punctuation.delimiter.go'] = { fg = colors.overlay2 },
                     ['@punctuation.bracket.go'] = { fg = colors.overlay2 },
-                    ['@comment.go'] = { fg = colors.peach },
+                    ['@comment.go'] = { fg = colors.overlay2 },
                     ['@comment.documentation.go'] = { fg = colors.overlay2 },
                     ['@constructor.go'] = { fg = colors.blue },
                     ['@boolean.go'] = { fg = colors.text },
