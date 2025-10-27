@@ -237,6 +237,8 @@ alias gr="go run *.go"
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
+alias noled="sudo smc -k ACLC -w 01"  # turn off magsafe charger led
+
 # press ctrl-x then e to edit current command in editor
 autoload edit-command-line
 zle -N edit-command-line
