@@ -47,7 +47,7 @@ return {
                 desc = 'Find Files',
             },
             { '<leader>fg', "<cmd>lua require('telescope.builtin').git_files()<CR>", desc = 'Git Files' },
-            { '<leader>fs', "<cmd>lua require('telescope.builtin').git_status()<CR>", desc = 'Git Files (Modified)' },
+            { '<leader>fm', "<cmd>lua require('telescope.builtin').git_status()<CR>", desc = 'Git Files (Modified)' },
             { '<leader>fl', "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = 'Live Grep' },
             {
                 '<leader>a',
@@ -62,12 +62,12 @@ return {
             { '<leader>fc', "<cmd>lua require('telescope.builtin').commands()<CR>", desc = 'Commands' },
             { '<leader>fd', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = 'Diagnostics' },
             {
-                '<leader>o',
+                '<leader>fs',
                 "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
                 desc = 'LSP Document Symbols',
             },
             {
-                '<leader>O',
+                '<leader>fS',
                 "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>",
                 desc = 'LSP Workspace Symbols',
             },
