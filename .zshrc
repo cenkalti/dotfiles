@@ -50,6 +50,8 @@ alias h="hostname"
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
+alias cl="claude"
+
 alias myip="curl http://ipinfo.io/ip"
 alias mycity="curl http://ipinfo.io/city"
 
