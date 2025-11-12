@@ -419,6 +419,8 @@ export JSII_DEPRECATED="quiet"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
+export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+
 # Shell-GPT integration ZSH v0.2
 _sgpt_zsh() {
 if [[ -n "$BUFFER" ]]; then
