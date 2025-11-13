@@ -80,7 +80,7 @@ alias iscoredump='ulimit -c'
 # my ssh & tmux helper
 function ssht() { ssh -t $1 "tmux attach -t cenk || tmux new -s cenk" }
 function mt() { mosh $1 -- sh -c "tmux attach -t cenk || tmux new -s cenk" }
-function home() { ssht "arch.home.cenkalti.com" }
+function home() { mt "arch.home.cenkalti.com" }
 
 function tunnel() { ssh -N -R "172.17.0.1:8080:127.0.0.1:$1" "cenk@arch.home.cenkalti.com" & }
 
