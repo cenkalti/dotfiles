@@ -2,6 +2,7 @@ notARepository: 'skip'
 promptToReturnFromSubprocess: false
 gui:
   nerdFontsVersion: "3"
+  switchTabsWithPanelJumpKeys: true
 keybinding:
   files:
     viewResetOptions: 'G'
