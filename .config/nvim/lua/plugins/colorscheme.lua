@@ -7,12 +7,12 @@ local M = {
         -- Highlight custom keywords
         local custom_matches = {
             go = {
-                GoPanic = '\\<panic\\>',
-                GoSelect = '\\<select\\>',
                 GoPackage = [["[^"]\+\.[^"]\+/.\+"]],
-                GoContinue = '\\<continue\\>',
-                GoBreak = '\\<break\\>',
-                GoFallthrough = '\\<fallthrough\\>',
+                GoPanic = '\\s*\\<panic\\>',
+                GoSelect = '\\s*\\<select\\>$',
+                GoContinue = '\\s*\\<continue\\>$',
+                GoBreak = '\\s*\\<break\\>$',
+                GoFallthrough = '\\s*\\<fallthrough\\>$',
                 GoChannelReceive = '<-',
                 GoChannelSend = '->',
             },
