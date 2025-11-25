@@ -11,6 +11,8 @@ hs.loadSpoon('EmmyLua')
 hs.loadSpoon('VoiceToText')
 spoon.VoiceToText:start()
 
+hs.loadSpoon('NoLED')
+
 -- Volume control with visual feedback
 local function adjustVolume(delta)
     local device = hs.audiodevice.defaultOutputDevice()
@@ -23,6 +25,11 @@ local function adjustVolume(delta)
     hs.alert.closeAll()
     hs.alert.show(string.format('🔊 %d%%', math.floor(newVolume)), 0.5)
 end
+
+-- Map F6 to toggle Magsafe LED
+hs.hotkey.bind({}, 'F6', function()
+    spoon.NoLED:toggleSmcLoop()
+end)
 
 -- Map F7 to previous track
 hs.hotkey.bind({}, 'F7', function()
