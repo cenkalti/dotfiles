@@ -39,5 +39,5 @@ compile_commands.json
 !.aider.conf.yml
 **/.claude/settings.local.json
 **/REFINE.md
-
 **/CLAUDE.local.md
+covprofile
