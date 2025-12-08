@@ -8,11 +8,11 @@ local M = {
         local custom_matches = {
             go = {
                 GoPackage = [["[^"]\+\.[^"]\+/.\+"]],
-                GoPanic = '\\s*\\<panic\\>',
-                GoSelect = '\\s*\\<select\\>$',
-                GoContinue = '\\s*\\<continue\\>$',
-                GoBreak = '\\s*\\<break\\>$',
-                GoFallthrough = '\\s*\\<fallthrough\\>$',
+                GoPanic = '^\\s*\\<panic\\>',
+                GoSelect = '^\\s*\\<select\\>',
+                GoContinue = '^\\s*\\<continue\\>',
+                GoBreak = '^\\s*\\<break\\>',
+                GoFallthrough = '^\\s*\\<fallthrough\\>',
                 GoChannelReceive = '<-',
                 GoChannelSend = '->',
             },
