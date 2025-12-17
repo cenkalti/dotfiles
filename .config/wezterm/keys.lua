@@ -81,6 +81,15 @@ function M.setup(config)
                 end),
             }),
         },
+
+        -- My AI shell
+        {
+            mods = 'SUPER|SHIFT',
+            key = 't',
+            action = wezterm.action.SpawnCommandInNewTab({
+                args = { '/Users/cenk/projects/gi/gi-shell' },
+            }),
+        },
     }
 
     -- Merge existing keys with new keys
