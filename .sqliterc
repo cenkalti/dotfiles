@@ -1,2 +1,3 @@
-.header on
-.mode column
+.headers on
+.mode line
+.nullvalue NULL
