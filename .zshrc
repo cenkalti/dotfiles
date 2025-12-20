@@ -241,7 +241,11 @@ function dl {
 }
 
 # go aliases
-alias gr="go run *.go"
+function gr() {
+  local cmd=$1
+  shift
+  go run ./cmd/$cmd "$@"
+}
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
