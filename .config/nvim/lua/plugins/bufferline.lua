@@ -68,8 +68,8 @@ return {
         })
 
         -- Other
-        wk.add({
-            { '<leader>b', '<cmd>BufferLineCloseOthers<CR>', desc = 'Close Other Buffers' },
-        }, { silent = true })
+        wk.add({ { '<leader>bb', '<cmd>BufferLineCloseOthers<CR>', desc = 'Close Other Buffers' } }, { silent = true })
+        wk.add({ { '<leader>bh', '<cmd>BufferLineCloseLeft<CR>', desc = 'Close Buffers Left' } }, { silent = true })
+        wk.add({ { '<leader>bl', '<cmd>BufferLineCloseRight<CR>', desc = 'Close Buffers Right' } }, { silent = true })
     end,
 }
