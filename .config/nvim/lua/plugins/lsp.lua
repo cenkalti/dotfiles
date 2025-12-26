@@ -1,4 +1,26 @@
 -- Contains LSP client configurations for various language servers
+
+local function toggle_go_export()
+    local word = vim.fn.expand('<cword>')
+    if word == '' then
+        return
+    end
+
+    local first_char = word:sub(1, 1)
+    local rest = word:sub(2)
+    local new_word
+
+    if first_char:match('[A-Z]') then
+        new_word = first_char:lower() .. rest
+    elseif first_char:match('[a-z]') then
+        new_word = first_char:upper() .. rest
+    else
+        return
+    end
+
+    vim.lsp.buf.rename(new_word)
+end
+
 return {
     {
         'neovim/nvim-lspconfig',
@@ -33,6 +55,7 @@ return {
                         { 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', desc = 'List References', buffer = bufnr },
                         { 'gC', '<cmd>lua vim.lsp.buf.code_action()<CR>', desc = 'Code Action', buffer = bufnr },
                         { '<localleader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', desc = 'Rename', buffer = bufnr },
+                        { '<localleader>e', toggle_go_export, desc = 'Toggle Export', buffer = bufnr },
                     })
                 end,
             })
