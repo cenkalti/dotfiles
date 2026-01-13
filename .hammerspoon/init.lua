@@ -26,6 +26,13 @@ local function adjustVolume(delta)
     hs.alert.show(string.format('🔊 %d%%', math.floor(newVolume)), 0.5)
 end
 
+-- Map F4 to run ask command
+hs.hotkey.bind({}, 'F4', function()
+    local output, status, exitType, exitCode = hs.execute('cd ~/projects/gi && /opt/homebrew/bin/go run ./cmd/ask 2>&1')
+    local trimmedOutput = output and output:gsub('%s+$', '') or 'No output'
+    hs.alert.show(trimmedOutput, 3)
+end)
+
 -- Map F6 to toggle Magsafe LED
 hs.hotkey.bind({}, 'F6', function()
     spoon.NoLED:toggleSmcLoop()
