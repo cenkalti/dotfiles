@@ -82,6 +82,18 @@ function M.setup(config)
             }),
         },
 
+        -- Jump to previous/next shell prompt
+        {
+            mods = 'SHIFT',
+            key = 'UpArrow',
+            action = wezterm.action.ScrollToPrompt(-1),
+        },
+        {
+            mods = 'SHIFT',
+            key = 'DownArrow',
+            action = wezterm.action.ScrollToPrompt(1),
+        },
+
         -- My AI shell
         {
             mods = 'SUPER|SHIFT',

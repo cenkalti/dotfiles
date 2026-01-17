@@ -452,6 +452,29 @@ if [ -f "/usr/lib/spaceship-prompt/spaceship.zsh" ]; then
   source "/usr/lib/spaceship-prompt/spaceship.zsh"
 fi
 
+# OSC 133 shell integration for WezTerm
+# Use zle hooks which run at the right time
+function _osc133_preexec {
+  print -n "\e]133;C\a"
+}
+
+function _osc133_precmd {
+  print -n "\e]133;D;$?\a"
+}
+
+function _osc133_line_init {
+  print -n "\e]133;A\a"
+}
+
+function _osc133_line_finish {
+  print -n "\e]133;B\a"
+}
+
+preexec_functions+=(_osc133_preexec)
+precmd_functions+=(_osc133_precmd)
+zle -N zle-line-init _osc133_line_init
+zle -N zle-line-finish _osc133_line_finish
+
 # Load project specific aliases, etc.
 autoload -U add-zsh-hook
 load-local-aliases() {
