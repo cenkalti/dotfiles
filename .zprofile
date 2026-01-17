@@ -35,6 +35,10 @@ if [[ -f $HOME/.cargo/env ]]; then
     source "$HOME/.cargo/env"
 fi
 
+if [[ -f $HOME/.cargo/bin ]]; then
+    source "$HOME/.cargo/bin"
+fi
+
 if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
