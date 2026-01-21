@@ -8,7 +8,7 @@ return {
     version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
         sources = {
-            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'parrot' },
+            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
             providers = {
                 lazydev = {
                     name = 'LazyDev',
