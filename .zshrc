@@ -246,6 +246,20 @@ function gr() {
   shift
   go run ./cmd/$cmd "$@"
 }
+
+function gi() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: gi <subcommand> [args...]"
+    echo "Example: gi run --session foo --assistant bar \"bla bla\""
+    return 1
+  fi
+
+  local subcommand="$1"
+  shift
+
+  go run -C ~/projects/gi "./cmd/gi-$subcommand" "$@"
+}
+
 # show imported packages in go
 alias go-list-imports="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'"
 
