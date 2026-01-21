@@ -1,5 +1,5 @@
 return {
     'cenkalti/format-command-line.nvim',
-    dev = true,
+    dev = false,
     opts = {},
 }
