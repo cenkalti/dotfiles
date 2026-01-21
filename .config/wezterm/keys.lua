@@ -11,6 +11,7 @@ function M.setup(config)
             key = 'l',
             action = wezterm.action.ShowLauncherArgs({ title = 'Projects', flags = 'FUZZY|LAUNCH_MENU_ITEMS' }),
         },
+        { mods = 'SUPER', key = 'o', action = wezterm.action.ShowTabNavigator },
         { mods = 'SHIFT|ALT', key = '{', action = wezterm.action.MoveTabRelative(-1) },
         { mods = 'SHIFT|ALT', key = '}', action = wezterm.action.MoveTabRelative(1) },
         {
