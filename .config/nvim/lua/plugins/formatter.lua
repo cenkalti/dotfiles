@@ -10,7 +10,25 @@ return {
                 javascript = { require('formatter.filetypes.javascript').prettier },
                 javascriptreact = { require('formatter.filetypes.javascript').prettier },
                 lua = { require('formatter.filetypes.lua').stylua },
-                go = { require('formatter.filetypes.go').goimports },
+                go = {
+                    function()
+                        local util = require('formatter.util')
+                        return {
+                            exe = 'gci',
+                            stdin = true,
+                            args = {
+                                'print',
+                                '--section',
+                                'standard',
+                                '--section',
+                                'default',
+                                '--section',
+                                '"prefix(github.com/gravitational/teleport)"',
+                            },
+                        }
+                    end,
+                    require('formatter.filetypes.go').goimports,
+                },
                 python = {
                     require('formatter.filetypes.python').isort,
                     require('formatter.filetypes.python').black,
