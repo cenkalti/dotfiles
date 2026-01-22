@@ -257,7 +257,7 @@ function gi() {
   local subcommand="$1"
   shift
 
-  go run -C ~/projects/gi "./cmd/gi-$subcommand" "$@"
+  go run -C ~/projects/gi "./cmd/gi-$subcommand" -C "$PWD" "$@"
 }
 
 # show imported packages in go
