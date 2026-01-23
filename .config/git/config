@@ -194,7 +194,7 @@
 	insteadOf = https://github.com/
 
 [include]
-	path = ~/.local.gitconfig
+	path = ~/.config/git/config.local
 [init]
 	defaultBranch = main
 [column]
