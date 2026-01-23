@@ -1,71 +1,15 @@
-export CDPATH=$HOME:$HOME/projects:$HOME/workspace:/opt
+# .zprofile - Login shells only, runs before .zshrc:
+#
+# Session-wide setup (starting SSH agent, tmux)
+# One-time login tasks
+# Alternative to .zlogin (use one or the other, not both)
 
-if [[ -d /opt/homebrew ]]; then  # m1 macos
-    export HOMEBREW_PREFIX="/opt/homebrew";
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-    export HOMEBREW_REPOSITORY="/opt/homebrew";
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then  # linux
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Do not put inside ~/.ssh to avoid iCloud sync issue.
+SOCKET_PATH=${HOME}/.ssh_auth_sock
+
+if [ ! -S $SOCKET_PATH ]; then
+  eval $(ssh-agent) > /dev/null
+  ln -sf "$SSH_AUTH_SOCK" $SOCKET_PATH
 fi
-
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
-if [[ -d "$HOMEBREW_PREFIX/opt/mysql-client/bin" ]]; then
-    export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
-fi
-
-if [[ -d $HOME/.local/bin ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [[ -d $HOME/.yarn/bin ]]; then
-    export PATH="$HOME/.yarn/bin:$PATH"
-fi
-
-if [[ -d $HOME/go/bin ]]; then
-    export PATH=$HOME/go/bin:$PATH
-fi
-
-if [[ -f $HOME/.cargo/env ]]; then
-    source "$HOME/.cargo/env"
-fi
-
-if [[ -f $HOME/.cargo/bin ]]; then
-    source "$HOME/.cargo/bin"
-fi
-
-if type direnv &> /dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
-if type atuin &>/dev/null; then
-    export ATUIN_NOBIND="true"
-    eval "$(atuin init zsh)"
-    bindkey '^r' atuin-search
-elif [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
-    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
-elif [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
-    source "/usr/share/fzf/key-bindings.zsh"
-fi
-
-if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then
-    source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
-    if [[ ! "$PATH" == *$HOMEBREW_PREFIX/opt/fzf/bin* ]]; then
-        export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
-        [[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
-    fi
-elif [[ -f "/usr/share/fzf/completion.zsh" ]]; then
-    source "/usr/share/fzf/completion.zsh"
-fi
-
-if type zoxide &>/dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-
-# Created by `pipx`
-export PATH="$PATH:$HOME/.local/bin"
+export SSH_AUTH_SOCK=$SOCKET_PATH
+ssh-add -l > /dev/null || ssh-add

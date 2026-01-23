@@ -1,3 +1,11 @@
+# .zshrc - Interactive shells (your main config):
+#
+# Aliases, functions, keybindings
+# Prompt configuration
+# Shell options (setopt)
+# Completions
+# Plugin managers (oh-my-zsh, etc.)
+#
 # zsh will read commands in order from:
 #
 # $ZDOTDIR/.zshenv    # sourced in all invocations
@@ -279,6 +287,28 @@ zstyle ':completion:*' menu select=2
 
 type kubectl &>/dev/null && source <(kubectl completion zsh)
 type aws &>/dev/null && type aws_completer &>/dev/null && complete -C aws_completer aws
+type direnv &> /dev/null && eval "$(direnv hook zsh)"
+type tsh &> /dev/null && eval "$(tsh --completion-script-zsh)"
+
+if type atuin &>/dev/null; then
+    export ATUIN_NOBIND="true"
+    eval "$(atuin init zsh)"
+    bindkey '^r' atuin-search
+elif [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+elif [[ -f "/usr/share/fzf/key-bindings.zsh" ]]; then
+    source "/usr/share/fzf/key-bindings.zsh"
+fi
+
+if [[ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
+    if [[ ! "$PATH" == *$HOMEBREW_PREFIX/opt/fzf/bin* ]]; then
+        export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
+        [[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
+    fi
+elif [[ -f "/usr/share/fzf/completion.zsh" ]]; then
+    source "/usr/share/fzf/completion.zsh"
+fi
 
 # colorize man pages
 function man() {
