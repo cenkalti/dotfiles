@@ -49,7 +49,12 @@ if [[ -d $HOME/.local/bin ]]; then
     export PATH="$PATH:$HOME/.local/bin"
 fi
 
-if [[ -d $HOME/projects/teleport/build ]]; then
-    export PATH="$HOME/projects/teleport/build:$PATH"
+###############################################################################
+# If you are setting a local environment variable, do it in ~/.local.zshenv
+###############################################################################
+if [[ -f $HOME/.local.zshenv ]]; then
+    source $HOME/.local.zshenv
 fi
-
+###############################################################################
+# Do not add anything below this line
+###############################################################################

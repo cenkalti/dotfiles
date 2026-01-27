@@ -528,7 +528,12 @@ load-local-aliases() {
 }
 add-zsh-hook precmd load-local-aliases
 
-################################################################################
-# Anything added after this line must go into .zprofile or .local.zshrc file.
-################################################################################
-
+###############################################################################
+# If you are setting a local environment variable, do it in ~/.local.zshenv
+###############################################################################
+if [[ -f $HOME/.local.zshrc ]]; then
+    source $HOME/.local.zshrc
+fi
+###############################################################################
+# Do not add anything below this line
+###############################################################################
