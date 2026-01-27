@@ -9,7 +9,7 @@ return {
     },
     config = function()
         require('which-key').add({
-            { '<localleader>g', ':GBrowse<CR>', desc = 'View HTTP Link', mode = { 'n', 'v' } },
+            { '<leader>h', ':GBrowse<CR>', desc = 'View HTTP Link', mode = { 'n', 'v' } },
         })
     end,
 }

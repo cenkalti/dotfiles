@@ -15,22 +15,22 @@ return {
                     { '[c', gs.prev_hunk, desc = 'Previous Hunk' },
 
                     -- Actions
-                    { '<leader>hs', gs.stage_hunk, desc = 'Stage Hunk' },
-                    { '<leader>hu', gs.undo_stage_hunk, desc = 'Undo Stage Hunk' },
-                    { '<leader>hr', gs.reset_hunk, desc = 'Reset Hunk' },
+                    { '<leader>gs', gs.stage_hunk, desc = 'Stage Hunk' },
+                    { '<leader>gu', gs.undo_stage_hunk, desc = 'Undo Stage Hunk' },
+                    { '<leader>gr', gs.reset_hunk, desc = 'Reset Hunk' },
 
-                    { '<leader>hS', gs.stage_buffer, desc = 'Stage Buffer' },
-                    { '<leader>hR', gs.reset_buffer, desc = 'Reset Buffer' },
+                    { '<leader>gS', gs.stage_buffer, desc = 'Stage Buffer' },
+                    { '<leader>gR', gs.reset_buffer, desc = 'Reset Buffer' },
 
-                    { '<leader>hp', gs.preview_hunk, desc = 'Preview Hunk' },
-                    { '<leader>hb', gs.blame_line, desc = 'Blame Line' },
-                    { '<leader>hd', gs.diffthis, desc = 'Diff This' },
+                    { '<leader>gp', gs.preview_hunk, desc = 'Preview Hunk' },
+                    { '<leader>gb', gs.blame_line, desc = 'Blame Line' },
+                    { '<leader>gd', gs.diffthis, desc = 'Diff This' },
 
-                    { '<leader>htd', gs.toggle_deleted, desc = 'Toggle Deleted' },
-                    { '<leader>htb', gs.toggle_current_line_blame, desc = 'Toggle Line Blame' },
+                    { '<leader>gtd', gs.toggle_deleted, desc = 'Toggle Deleted' },
+                    { '<leader>gtb', gs.toggle_current_line_blame, desc = 'Toggle Line Blame' },
 
-                    { '<leader>hs', gs.stage_hunk, desc = 'Stage Hunk', mode = 'v' },
-                    { '<leader>hr', gs.reset_hunk, desc = 'Reset Hunk', mode = 'v' },
+                    { '<leader>gs', gs.stage_hunk, desc = 'Stage Hunk', mode = 'v' },
+                    { '<leader>gr', gs.reset_hunk, desc = 'Reset Hunk', mode = 'v' },
                 })
             end,
         })
