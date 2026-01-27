@@ -71,6 +71,28 @@ return {
                 "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>",
                 desc = 'LSP Workspace Symbols',
             },
+            {
+                '<leader>fp',
+                function()
+                    local pickers = require('telescope.pickers')
+                    local finders = require('telescope.finders')
+                    local conf = require('telescope.config').values
+                    local make_entry = require('telescope.make_entry')
+
+                    local files = vim.fn.systemlist('git diff-tree --no-commit-id --name-only -r HEAD')
+
+                    pickers.new({}, {
+                        prompt_title = 'Files Changed in Last Commit',
+                        finder = finders.new_table({
+                            results = files,
+                            entry_maker = make_entry.gen_from_file({}),
+                        }),
+                        sorter = conf.file_sorter({}),
+                        previewer = conf.file_previewer({}),
+                    }):find()
+                end,
+                desc = 'Files Changed in Last Commit',
+            },
         })
     end,
 }
