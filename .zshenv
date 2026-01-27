@@ -41,7 +41,7 @@ if [[ -d $HOME/go/bin ]]; then
     export PATH="$HOME/go/bin:$PATH"
 fi
 
-if [[ -f $HOME/.cargo/bin ]]; then
+if [[ -d $HOME/.cargo/bin ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
