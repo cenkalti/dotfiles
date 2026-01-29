@@ -17,8 +17,42 @@ obj.CMD_ENABLE_LED = 'sudo -n /usr/local/bin/smc -k ACLC -w 00 2>&1'
 
 obj.timer = nil
 obj.isActive = false
+obj.scheduleTimer = nil
 
 function obj:init()
+    return self
+end
+
+function obj:isNightTime()
+    local hour = tonumber(os.date('%H'))
+    return hour >= 22 or hour < 8
+end
+
+function obj:applyScheduledState()
+    if self:isNightTime() then
+        if not self.isActive then
+            self:startSmcLoop()
+        end
+    else
+        if self.isActive then
+            self:stopSmcLoop()
+        end
+    end
+end
+
+function obj:startSchedule()
+    self:applyScheduledState()
+    self.scheduleTimer = hs.timer.doEvery(60, function()
+        self:applyScheduledState()
+    end)
+    return self
+end
+
+function obj:stopSchedule()
+    if self.scheduleTimer then
+        self.scheduleTimer:stop()
+        self.scheduleTimer = nil
+    end
     return self
 end
 

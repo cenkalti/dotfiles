@@ -12,6 +12,7 @@ hs.loadSpoon('VoiceToText')
 spoon.VoiceToText:start()
 
 hs.loadSpoon('NoLED')
+spoon.NoLED:startSchedule()
 
 -- Volume control with visual feedback
 local function adjustVolume(delta)
@@ -31,11 +32,6 @@ hs.hotkey.bind({}, 'F4', function()
     local output, status, exitType, exitCode = hs.execute('cd ~/projects/gi && /opt/homebrew/bin/go run ./cmd/ask 2>&1')
     local trimmedOutput = output and output:gsub('%s+$', '') or 'No output'
     hs.alert.show(trimmedOutput, 3)
-end)
-
--- Map F6 to toggle Magsafe LED
-hs.hotkey.bind({}, 'F6', function()
-    spoon.NoLED:toggleSmcLoop()
 end)
 
 -- Map F7 to previous track
