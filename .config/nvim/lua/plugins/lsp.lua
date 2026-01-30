@@ -39,6 +39,18 @@ return {
                         { 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', desc = 'Hover', buffer = bufnr },
                         { 'L', '<cmd>lua vim.lsp.buf.signature_help()<CR>', desc = 'Signature Help', buffer = bufnr },
                         { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', desc = 'Go to Definition', buffer = bufnr },
+                        {
+                            'gS',
+                            '<cmd>split | lua vim.lsp.buf.definition()<CR>',
+                            desc = 'Go to Definition (horizontal)',
+                            buffer = bufnr,
+                        },
+                        {
+                            'gV',
+                            '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>',
+                            desc = 'Go to Definition (vertical)',
+                            buffer = bufnr,
+                        },
                         { 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', desc = 'Go to Declaration', buffer = bufnr },
                         {
                             'gt',
