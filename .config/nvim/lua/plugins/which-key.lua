@@ -37,6 +37,8 @@ return {
         wk.add({
             { '\\c', ':lclose<CR>', desc = 'Close location list' },
             { '\\p', ":echo expand('%:p')<CR>", desc = 'Show full path of current file' },
+            { '\\t', ':tabnew<CR>', desc = 'Create new tab' },
+            { '\\T', ':tabclose<CR>', desc = 'Close current tab' },
         })
 
         -- Function Key Bindings
@@ -67,6 +69,8 @@ return {
             { '<C-l>', ':nohlsearch<CR>', desc = 'Clear search highlight' },
             { '<C-j>', '4<C-e>', desc = 'Scroll window down' },
             { '<C-k>', '4<C-y>', desc = 'Scroll window up' },
+            { '<C-S-n>', ':tabnext<CR>', desc = 'Go to next tab' },
+            { '<C-S-p>', ':tabprevious<CR>', desc = 'Go to previous tab' },
             { 'gh', '<C-w>h', desc = 'Navigate to left window' },
             { 'gj', '<C-w>j', desc = 'Navigate to bottom window' },
             { 'gk', '<C-w>k', desc = 'Navigate to top window' },
