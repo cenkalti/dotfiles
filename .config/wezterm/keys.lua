@@ -103,6 +103,10 @@ function M.setup(config)
                 args = { '/Users/cenk/projects/gi/gi-shell' },
             }),
         },
+
+        -- Disable Ctrl+Shift+N and Ctrl+Shift+P for Neovim tab navigation
+        { mods = 'CTRL|SHIFT', key = 'N', action = wezterm.action.DisableDefaultAssignment },
+        { mods = 'CTRL|SHIFT', key = 'P', action = wezterm.action.DisableDefaultAssignment },
     }
 
     -- Merge existing keys with new keys
