@@ -78,6 +78,7 @@ local M = {
                     ['@constructor.go'] = { fg = colors.blue },
                     ['@boolean.go'] = { fg = colors.text },
                     ['@number.go'] = { fg = colors.text },
+                    ['@number.float.go'] = { fg = colors.text },
                     ['@property.go'] = { fg = colors.text },
                     ['@field_receiver.go'] = { fg = colors.yellow },
 
