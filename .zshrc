@@ -528,6 +528,10 @@ load-local-aliases() {
 }
 add-zsh-hook precmd load-local-aliases
 
+# bun
+alias claude-mem='/Users/cenk/.bun/bin/bun "/Users/cenk/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+[ -s "/Users/cenk/.bun/_bun" ] && source "/Users/cenk/.bun/_bun"
+
 ###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
 ###############################################################################
@@ -537,3 +541,4 @@ fi
 ###############################################################################
 # Do not add anything below this line
 ###############################################################################
+

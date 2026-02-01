@@ -49,6 +49,11 @@ if [[ -d $HOME/.local/bin ]]; then
     export PATH="$PATH:$HOME/.local/bin"
 fi
 
+if [[ -d $HOME/.bun ]]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 ###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
 ###############################################################################
