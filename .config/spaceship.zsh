@@ -24,3 +24,6 @@ SPACESHIP_PROMPT_ORDER=(
   sudo           # Sudo indicator
   char           # Prompt character
 )
+
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_CONTEXT_SHOW=true
