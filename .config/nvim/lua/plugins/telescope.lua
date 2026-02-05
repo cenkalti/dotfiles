@@ -56,7 +56,21 @@ return {
                 end,
                 desc = 'Grep String Input',
             },
+            {
+                '<leader>A',
+                function()
+                    builtin.grep_string({ search = vim.fn.input('Grep > '), additional_args = { '--hidden' } })
+                end,
+                desc = 'Grep String Input (+ hidden)',
+            },
             { '<leader>e', "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = 'Grep String' },
+            {
+                '<leader>E',
+                function()
+                    builtin.grep_string({ additional_args = { '--hidden' } })
+                end,
+                desc = 'Grep String (+ hidden)',
+            },
             { '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = 'Buffers' },
             { '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = 'Help Tags' },
             { '<leader>fc', "<cmd>lua require('telescope.builtin').commands()<CR>", desc = 'Commands' },
@@ -81,15 +95,17 @@ return {
 
                     local files = vim.fn.systemlist('git diff-tree --no-commit-id --name-only -r HEAD')
 
-                    pickers.new({}, {
-                        prompt_title = 'Files Changed in Last Commit',
-                        finder = finders.new_table({
-                            results = files,
-                            entry_maker = make_entry.gen_from_file({}),
-                        }),
-                        sorter = conf.file_sorter({}),
-                        previewer = conf.file_previewer({}),
-                    }):find()
+                    pickers
+                        .new({}, {
+                            prompt_title = 'Files Changed in Last Commit',
+                            finder = finders.new_table({
+                                results = files,
+                                entry_maker = make_entry.gen_from_file({}),
+                            }),
+                            sorter = conf.file_sorter({}),
+                            previewer = conf.file_previewer({}),
+                        })
+                        :find()
                 end,
                 desc = 'Files Changed in Last Commit',
             },
