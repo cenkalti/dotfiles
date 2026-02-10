@@ -1,0 +1,25 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "go run -C ~/projects/gi './cmd/gi-context' -C '/Users/cenk/notes' -context JAKE.md"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/cenk/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {},
+  "model": "opus"
+}
