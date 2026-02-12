@@ -46,7 +46,7 @@ fi
 
 # Context used if available
 if [ -n "$used" ]; then
-    status+=" $(printf '\033[90m')ctx:${used}%%$(printf '\033[0m')"
+    status+=" $(printf '\033[90m')ctx:${used}%$(printf '\033[0m')"
 fi
 
 # Vim mode if enabled
