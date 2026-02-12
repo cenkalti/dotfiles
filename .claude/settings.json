@@ -3,6 +3,7 @@
     "commit": "",
     "pr": ""
   },
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -20,6 +21,5 @@
     "type": "command",
     "command": "/Users/cenk/.claude/statusline-command.sh"
   },
-  "enabledPlugins": {},
-  "model": "opus"
+  "enabledPlugins": {}
 }
