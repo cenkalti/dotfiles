@@ -54,6 +54,11 @@ if [[ -d $HOME/.bun ]]; then
     export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
+if [[ -d $HOME/.krew ]]; then
+    export KREW_ROOT="$HOME/.krew"
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
 ###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
 ###############################################################################
