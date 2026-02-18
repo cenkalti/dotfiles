@@ -13,6 +13,12 @@ return {
         -- If it requires a plugin, put inside respective plugin lua file.
         local wk = require('which-key')
 
+        wk.setup({
+            win = {
+                no_overlap = false,
+            },
+        })
+
         -- Leader Key Bindings
         wk.add({
             { '<leader>D', ':bd!<CR>', desc = 'Close current buffer' },
