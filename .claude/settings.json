@@ -33,5 +33,7 @@
     "type": "command",
     "command": "/Users/cenk/.claude/statusline-command.sh"
   },
-  "enabledPlugins": {}
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
 }
