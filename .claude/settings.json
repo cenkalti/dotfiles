@@ -36,4 +36,5 @@
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
   },
+  "autoMemoryEnabled": false
 }
