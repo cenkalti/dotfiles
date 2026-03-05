@@ -58,6 +58,7 @@ alias h="hostname"
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
+alias c="claude"
 function cl() {
   local temp_dir=$(mktemp -d)
   (cd "$temp_dir" && claude "$@")
