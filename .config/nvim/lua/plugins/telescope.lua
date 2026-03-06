@@ -42,7 +42,7 @@ return {
             {
                 '<leader>ff',
                 function()
-                    builtin.find_files({ no_ignore = true })
+                    builtin.find_files({ no_ignore = true, hidden = true, follow = true })
                 end,
                 desc = 'Find Files',
             },
