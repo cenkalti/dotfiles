@@ -478,19 +478,39 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
 export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 
-# Shell-GPT integration ZSH v0.2
-_sgpt_zsh() {
+# Claude Code shell helper
+_claude_zsh() {
 if [[ -n "$BUFFER" ]]; then
-    _sgpt_prev_cmd=$BUFFER
-    print -s "$_sgpt_prev_cmd"
-    BUFFER+="⌛"
-    zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd" --no-interaction)
+    local prompt="$BUFFER"
+    print -s "$prompt"
+    zle -R "Thinking..."
+
+    # Capture terminal context
+    local context=""
+    if [[ -n "$TMUX" ]]; then
+      context=$(tmux capture-pane -p -S -100 2>/dev/null)
+    elif [[ -n "$WEZTERM_PANE" ]]; then
+      context=$(wezterm cli get-text --pane-id "$WEZTERM_PANE" 2>/dev/null | tail -100)
+    fi
+
+    local full_prompt="You are a shell command generator. The user is asking for help in their terminal.
+
+Terminal context (last lines of output):
+$context
+
+User request: $prompt
+
+Respond with ONLY the shell command. No explanation, no markdown, no code fences. Just the raw command."
+
+    local tmpfile=$(mktemp)
+    claude -p "$full_prompt" --output-format text > "$tmpfile" 2>/dev/null </dev/null
+    BUFFER=$(<"$tmpfile")
+    rm -f "$tmpfile"
     zle end-of-line
 fi
 }
-zle -N _sgpt_zsh
-bindkey '^[\' _sgpt_zsh  # Alt-\
+zle -N _claude_zsh
+bindkey '^[\' _claude_zsh  # Alt-\
 
 if [ -f "/opt/homebrew/opt/spaceship/spaceship.zsh" ]; then
   source "/opt/homebrew/opt/spaceship/spaceship.zsh"
