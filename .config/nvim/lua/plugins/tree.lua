@@ -32,7 +32,7 @@ return {
                     enable = true,
                     -- Update the root directory of the tree if the file is not under current root directory.
                     -- It prefers vim's cwd and `root_dirs`. Otherwise it falls back to the folder containing the file.
-                    update_root = true,
+                    update_root = false,
                 },
                 git = {
                     ignore = true,

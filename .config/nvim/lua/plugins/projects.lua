@@ -9,6 +9,7 @@ return {
         require('project_nvim').setup({
             detection_methods = { 'pattern' },
             patterns = { '.git', '.luarc.json' },
+            exclude_dirs = { '*/.work/space/*' },
             show_hidden = true,
             scope_chdir = 'tab',
             datapath = vim.fn.stdpath('data'),
