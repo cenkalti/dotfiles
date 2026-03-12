@@ -20,6 +20,7 @@ return {
                 filters = {
                     dotfiles = true,
                     custom = { '__pycache__' },
+                    exclude = { 'workspace' },
                 },
                 filesystem_watchers = {
                     enable = false,
