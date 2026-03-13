@@ -519,6 +519,10 @@ if [ -f "/usr/lib/spaceship-prompt/spaceship.zsh" ]; then
   source "/usr/lib/spaceship-prompt/spaceship.zsh"
 fi
 
+if [ -f "/Users/cenk/projects/work/shell/work.zsh" ]; then
+  source "/Users/cenk/projects/work/shell/work.zsh"
+fi
+
 # OSC 133 shell integration for WezTerm
 # Use zle hooks which run at the right time
 function _osc133_preexec {
