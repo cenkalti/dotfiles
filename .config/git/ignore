@@ -41,5 +41,5 @@ compile_commands.json
 **/REFINE.md
 **/CLAUDE.local.md
 covprofile
-/workspace/
+/workspace
 /.work/
