@@ -3,6 +3,7 @@ promptToReturnFromSubprocess: false
 gui:
   nerdFontsVersion: "3"
   switchTabsWithPanelJumpKeys: true
+  showNumstatInFilesView: true
 keybinding:
   files:
     viewResetOptions: 'G'
