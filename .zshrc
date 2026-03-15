@@ -560,16 +560,6 @@ alias claude-mem='/Users/cenk/.bun/bin/bun "/Users/cenk/.claude/plugins/marketpl
 [ -s "/Users/cenk/.bun/_bun" ] && source "/Users/cenk/.bun/_bun"
 
 ###############################################################################
-# WezTerm: notify terminal of CWD changes immediately via OSC 7
-###############################################################################
-if [[ -n "$WEZTERM_PANE" ]]; then
-    function chpwd() {
-        printf '\e]7;file://%s%s\e\\' "$HOST" "$PWD"
-    }
-    chpwd
-fi
-
-###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
 ###############################################################################
 if [[ -f $HOME/.local.zshrc ]]; then
