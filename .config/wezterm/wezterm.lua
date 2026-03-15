@@ -4,11 +4,20 @@ local wezterm = require('wezterm')
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('update-right-status', function(window, pane)
-    if window:active_workspace() == 'default' then
-        window:set_right_status('')
-    else
-        window:set_right_status(window:active_workspace())
+    local cwd_uri = pane:get_current_working_dir()
+    local cwd = cwd_uri and cwd_uri.file_path or ''
+    local basename = cwd:match('([^/]+)/*$') or ''
+
+    local workspace = window:active_workspace()
+    local parts = {}
+    if workspace ~= 'default' then
+        table.insert(parts, workspace)
     end
+    if basename ~= '' then
+        table.insert(parts, basename)
+    end
+
+    window:set_right_status(#parts > 0 and ' ' .. table.concat(parts, '  ·  ') .. ' ' or '')
 end)
 
 -- This will hold the configuration.
