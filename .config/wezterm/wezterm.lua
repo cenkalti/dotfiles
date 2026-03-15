@@ -41,6 +41,7 @@ require('keys').setup(config)
 require('launch_menu').setup(config)
 require('transparency').setup(config)
 require('hyperlinks').setup()
+require('tab_colors').setup()
 
 -- and finally, return the configuration to wezterm
 return config
