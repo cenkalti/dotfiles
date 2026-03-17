@@ -58,14 +58,7 @@ alias h="hostname"
 alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
-alias c="claude --continue"
-function cl() {
-  local temp_dir=$(mktemp -d)
-  (cd "$temp_dir" && claude "$@")
-  local exit_code=$?
-  rm -rf "$temp_dir"
-  return $exit_code
-}
+alias c="claude"
 
 alias myip="curl http://ipinfo.io/ip"
 alias mycity="curl http://ipinfo.io/city"
