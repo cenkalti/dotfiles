@@ -470,6 +470,7 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
 export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
 export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 
 # Claude Code shell helper
 _claude_zsh() {
