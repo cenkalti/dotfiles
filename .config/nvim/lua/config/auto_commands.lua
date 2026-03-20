@@ -37,6 +37,23 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 -- }}}
 
+-- {{{ Highlight trailing whitespace in red
+vim.api.nvim_set_hl(0, 'TrailingWhitespace', { bg = '#ff0000' })
+local function set_trailing_ws(pattern)
+    if vim.bo.buftype ~= '' then return end
+    if vim.w.trailing_ws_id then
+        pcall(vim.fn.matchdelete, vim.w.trailing_ws_id)
+    end
+    vim.w.trailing_ws_id = vim.fn.matchadd('TrailingWhitespace', pattern)
+end
+vim.api.nvim_create_autocmd('InsertEnter', {
+    callback = function() set_trailing_ws([[\s\+\%#\@<!$]]) end,
+})
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWinEnter' }, {
+    callback = function() set_trailing_ws([[\s\+$]]) end,
+})
+-- }}}
+
 -- {{{ Disable line wrapping in quickfix and location lists
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'qf', 'loclist' },
