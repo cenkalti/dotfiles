@@ -23,7 +23,9 @@ return {
         -- Load bookmarks on startup and when changing directories
         bookmarks.load_bookmarks()
         vim.api.nvim_create_autocmd({ 'DirChanged' }, {
-            callback = bookmarks.load_bookmarks,
+            callback = function()
+                bookmarks.load_bookmarks(vim.fn.getcwd())
+            end,
             pattern = { '*' },
         })
     end,
