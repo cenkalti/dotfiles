@@ -1,31 +1,30 @@
--- Custom bookmarks
+-- LSP-based bookmarks (symbols survive refactoring)
 return {
-    'tomasky/bookmarks.nvim',
+    'tristone13th/lspmark.nvim',
     dependencies = {
         'nvim-telescope/telescope.nvim',
-        'folke/which-key.nvim',
     },
     config = function()
-        local bookmarks = require('bookmarks')
-        bookmarks.setup({
-            sign_priority = 8, --set bookmark sign priority to cover git signs
-            keywords = {
-                ['@t'] = '☑️ ', -- mark annotation startswith @t ,signs this icon as `Todo`
-                ['@w'] = '⚠️ ', -- mark annotation startswith @w ,signs this icon as `Warn`
-                ['@f'] = '⛏ ', -- mark annotation startswith @f ,signs this icon as `Fix`
-                ['@n'] = ' ', -- mark annotation startswith @n ,signs this icon as `Note`
-            },
-        })
-        require('telescope').load_extension('bookmarks')
-        require('which-key').add({
-            { 'mm', bookmarks.bookmark_toggle, desc = 'Toggle Bookmark' },
-            { 'mi', bookmarks.bookmark_ann, desc = 'Add or Edit Bookmark Annotation' },
-            { 'mc', bookmarks.bookmark_clean, desc = 'Clean Bookmarks in Local Buffer' },
-            { 'mC', bookmarks.bookmark_clear_all, desc = 'Clean All Bookmarks' },
-            { 'mn', bookmarks.bookmark_next, desc = 'Next Bookmark' },
-            { 'mp', bookmarks.bookmark_prev, desc = 'Previous Bookmark' },
-            { 'ml', bookmarks.bookmark_list, desc = 'List Bookmarks' },
-            { 'mL', require('telescope').extensions.bookmarks.list, desc = 'List Bookmarks in Telescope' },
+        require('lspmark').setup()
+        require('telescope').load_extension('lspmark')
+
+        local bookmarks = require('lspmark.bookmarks')
+
+        vim.keymap.set('n', 'mm', function()
+            bookmarks.toggle_bookmark({ with_comment = false })
+        end, { desc = 'Toggle bookmark' })
+        vim.keymap.set('n', 'mc', bookmarks.modify_comment, { desc = 'Modify bookmark comment' })
+        vim.keymap.set('n', 'ms', bookmarks.show_comment, { desc = 'Show bookmark comment' })
+        vim.keymap.set('n', 'ml', '<cmd>Telescope lspmark<cr>', { desc = 'List bookmarks' })
+        vim.keymap.set('n', 'dd', bookmarks.delete_line, { desc = 'Delete line (bookmark-aware)' })
+        vim.keymap.set('x', 'd', bookmarks.delete_visual_selection, { desc = 'Delete selection (bookmark-aware)' })
+        vim.keymap.set('n', 'p', bookmarks.paste_text, { desc = 'Paste (bookmark-aware)' })
+
+        -- Load bookmarks on startup and when changing directories
+        bookmarks.load_bookmarks()
+        vim.api.nvim_create_autocmd({ 'DirChanged' }, {
+            callback = bookmarks.load_bookmarks,
+            pattern = { '*' },
         })
     end,
 }
