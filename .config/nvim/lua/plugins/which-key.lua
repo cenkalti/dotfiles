@@ -21,6 +21,24 @@ return {
 
         -- Leader Key Bindings
         wk.add({
+            { -- Wipe buffer without closing the window (replaces vim-bufkill)
+                '<leader>d',
+                function()
+                    local buf = vim.api.nvim_get_current_buf()
+                    for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+                        vim.api.nvim_win_call(win, function()
+                            local alt = vim.fn.bufnr('#')
+                            if alt > 0 and alt ~= buf and vim.fn.buflisted(alt) == 1 then
+                                vim.api.nvim_win_set_buf(win, alt)
+                            else
+                                vim.cmd('bprevious')
+                            end
+                        end)
+                    end
+                    vim.cmd('bwipeout! ' .. buf)
+                end,
+                desc = 'Wipe Buffer',
+            },
             { '<leader>D', ':bd!<CR>', desc = 'Close current buffer' },
             { '<leader>q', ':%bd<CR>', desc = 'Close all buffers' },
             { '<leader>Q', ':qa!<CR>', desc = 'Quit Neovim without saving' },
