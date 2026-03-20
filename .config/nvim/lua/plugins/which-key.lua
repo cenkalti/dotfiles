@@ -41,6 +41,16 @@ return {
 
         -- Local Leader Key Bindings
         wk.add({
+            {
+                '<LocalLeader><CR>',
+                function()
+                    vim.cmd('normal! yy')
+                    vim.cmd('normal! P')
+                    vim.cmd('normal gcc')
+                    vim.cmd('normal! j')
+                end,
+                desc = 'Duplicate & Comment',
+            },
             { '\\c', ':lclose<CR>', desc = 'Close location list' },
             { '\\p', ":echo expand('%:p')<CR>", desc = 'Show full path of current file' },
             { '\\t', ':tabnew<CR>', desc = 'Create new tab' },
