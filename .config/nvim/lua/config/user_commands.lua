@@ -21,3 +21,18 @@ vim.api.nvim_create_user_command('TrimWhitespace', function()
     vim.cmd([[:%s/\s\+$//e]])
 end, { range = '%' })
 -- }}}
+
+-- {{{ Replace Unicode dashes and arrows with ASCII equivalents
+vim.api.nvim_create_user_command('ASCIIfy', function()
+    local replacements = {
+        { '[—–−]', '-' },
+        { '→', '->' },
+        { '←', '<-' },
+        { '⇒', '=>' },
+        { '⇐', '<=' },
+    }
+    for _, r in ipairs(replacements) do
+        vim.cmd(string.format('%%s/%s/%s/ge', r[1], r[2]))
+    end
+end, {})
+-- }}}
