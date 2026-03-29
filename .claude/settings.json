@@ -5,6 +5,17 @@
   },
   "model": "sonnet",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "work bash-check"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
