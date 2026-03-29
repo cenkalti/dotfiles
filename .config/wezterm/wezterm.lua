@@ -2,14 +2,21 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
----@diagnostic disable-next-line: unused-local
+local function cwd_basename(cwd_uri)
+    local cwd = cwd_uri and cwd_uri.file_path or ''
+    return cwd:match('([^/]+)/*$') or ''
+end
+
+wezterm.on('format-window-title', function(tab, pane)
+    local basename = cwd_basename(pane.current_working_dir)
+    return basename ~= '' and basename or tab.active_pane.title
+end)
+
 wezterm.on('update-right-status', function(window, pane)
     local workspace = window:active_workspace()
     window:set_left_status(workspace ~= 'default' and ' ' .. workspace .. ' ' or '')
 
-    local cwd_uri = pane:get_current_working_dir()
-    local cwd = cwd_uri and cwd_uri.file_path or ''
-    local basename = cwd:match('([^/]+)/*$') or ''
+    local basename = cwd_basename(pane:get_current_working_dir())
     window:set_right_status(basename ~= '' and ' ' .. basename .. ' ' or '')
 end)
 
