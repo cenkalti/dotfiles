@@ -30,11 +30,11 @@
     ],
     "SessionStart": [
       {
-        "matcher": "startup",
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "go run -C ~/projects/gi './cmd/gi-context' -C '/Users/cenk/notes' -context JAKE.md"
+            "command": "work context"
           }
         ]
       }
