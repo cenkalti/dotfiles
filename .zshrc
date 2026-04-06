@@ -379,10 +379,6 @@ function preexec {
 precmd_functions+=(precmd)
 preexec_functions+=(preexec)
 
-if [[ -f ~/.local.zshrc ]]; then
-  source ~/.local.zshrc
-fi
-
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
