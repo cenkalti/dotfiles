@@ -7,9 +7,9 @@
 # Do not put inside ~/.ssh to avoid iCloud sync issue.
 SOCKET_PATH=${HOME}/.ssh_auth_sock
 
-if [ ! -S $SOCKET_PATH ]; then
+if [ ! -S $SOCKET_PATH ] || ! SSH_AUTH_SOCK=$SOCKET_PATH ssh-add -l > /dev/null 2>&1; then
   eval $(ssh-agent) > /dev/null
   ln -sf "$SSH_AUTH_SOCK" $SOCKET_PATH
 fi
 export SSH_AUTH_SOCK=$SOCKET_PATH
-ssh-add -l > /dev/null || ssh-add
+ssh-add -l > /dev/null 2>&1 || ssh-add
