@@ -12,4 +12,8 @@ vim.diagnostic.config({
 })
 
 -- Show diagnostic message as floating window when hover on line (delay is controlled with `updatetime` option)
-vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float({focusable=false})]])
+vim.api.nvim_create_autocmd('CursorHold', {
+    callback = function()
+        vim.diagnostic.open_float({ focusable = false })
+    end,
+})
