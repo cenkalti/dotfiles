@@ -8,7 +8,7 @@ return {
     end,
     config = function()
         -- Make sure these are in line with blink.cmp keybindings
-        local wk = require('which-key').add({
+        require('which-key').add({
             mode = 'i',
             { '<A-y>', 'copilot#Accept("\\<CR>")', desc = 'Accept suggestion', expr = true, replace_keycodes = false },
             { '<A-w>', '<Plug>(copilot-accept-word)', desc = 'Accept word' },
