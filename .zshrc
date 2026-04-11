@@ -52,7 +52,7 @@ alias u="sudo -iu"
 alias s="sudo su"
 alias e="etcdctl"
 alias k="kubectl"
-alias p="ptpython"
+alias p="cd ~/projects/private && claude --continue"
 alias h="hostname"
 
 alias lg="lazygit"
