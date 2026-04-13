@@ -138,19 +138,31 @@ return {
             { ']l', ':lnext<CR>', desc = 'Next item in location list' },
             { '[L', ':lfirst<CR>', desc = 'First item in location list' },
             { ']L', ':llast<CR>', desc = 'Last item in location list' },
-            { '[d', vim.diagnostic.goto_prev, desc = 'Previous Diagnostic' },
-            { ']d', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
+            {
+                '[d',
+                function()
+                    vim.diagnostic.jump({ count = -1 })
+                end,
+                desc = 'Previous Diagnostic',
+            },
+            {
+                ']d',
+                function()
+                    vim.diagnostic.jump({ count = 1 })
+                end,
+                desc = 'Next Diagnostic',
+            },
             {
                 '[e',
                 function()
-                    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+                    vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
                 end,
-                desc = 'Next Error Diagnostic',
+                desc = 'Previous Error Diagnostic',
             },
             {
                 ']e',
                 function()
-                    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+                    vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
                 end,
                 desc = 'Next Error Diagnostic',
             },

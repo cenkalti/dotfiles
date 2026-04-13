@@ -4,6 +4,13 @@ vim.diagnostic.config({
     signs = false,
     underline = true,
     update_in_insert = false,
+    jump = {
+        float = {
+            source = true,
+            border = 'rounded',
+            close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' },
+        },
+    },
     float = {
         source = true,
         border = 'rounded',
