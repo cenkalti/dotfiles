@@ -6,7 +6,7 @@ vim.api.nvim_create_user_command('Claude', function(opts)
     local end_line = opts.line2
     local is_visual = start_line ~= end_line or opts.range == 2
 
-    local mcp_binary = vim.fn.expand('~/projects/nvim-mcp-bridge/nvim-mcp-bridge')
+    local mcp_binary = vim.fn.expand('~/go/bin/nvim-bridge')
     if vim.fn.executable(mcp_binary) == 0 then
         vim.notify('nvim-mcp-bridge not found: ' .. mcp_binary, vim.log.levels.ERROR)
         return
