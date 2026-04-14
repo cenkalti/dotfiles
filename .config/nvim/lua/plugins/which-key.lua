@@ -20,19 +20,12 @@ return {
         })
 
         -- Claude Code launcher (normal + visual)
-        local function open_claude(range)
-            local request = vim.fn.input('Claude: ')
-            vim.api.nvim_cmd({
-                cmd   = 'Claude',
-                range = range or {},
-                args  = request ~= '' and { request } or {},
-            }, {})
-        end
-
         wk.add({
             {
                 '<leader>i',
-                function() open_claude() end,
+                function()
+                    vim.api.nvim_cmd({ cmd = 'Claude', range = {} }, {})
+                end,
                 desc = 'Ask Claude',
             },
         })
@@ -42,7 +35,10 @@ return {
             {
                 '<leader>i',
                 function()
-                    open_claude({ vim.fn.line("'<"), vim.fn.line("'>") })
+                    vim.api.nvim_cmd({
+                        cmd   = 'Claude',
+                        range = { vim.fn.line("'<"), vim.fn.line("'>") },
+                    }, {})
                 end,
                 desc = 'Ask Claude',
             },

@@ -134,44 +134,27 @@ vim.api.nvim_create_user_command('Claude', function(opts)
     table.insert(parts, '```')
     table.insert(parts, '')
 
-    if opts.args and opts.args ~= '' then
-        table.insert(parts, '### Request')
-        table.insert(parts, opts.args)
-        table.insert(parts, '')
-    end
-
     local context = table.concat(parts, '\n')
 
-    -- Write context and a launcher script to /tmp
-    local context_file  = '/tmp/nvim_claude_context.md'
-    local launcher_file = '/tmp/nvim_claude_launcher.sh'
+    local nvim_server = vim.v.servername
+    local mcp_binary  = vim.fn.expand('~/projects/nvim-mcp-bridge/nvim-mcp-bridge')
 
-    local cf = io.open(context_file, 'w')
-    cf:write(context)
-    cf:close()
-
-    -- The launcher reads the file into a variable so quoting is safe regardless
-    -- of special characters in the content.
-    local lf = io.open(launcher_file, 'w')
-    lf:write('#!/bin/zsh\n')
-    lf:write('cd ' .. vim.fn.shellescape(cwd) .. '\n')
-    lf:write('CLAUDE_PROMPT=$(cat ' .. context_file .. ')\n')
-    lf:write('exec claude "$CLAUDE_PROMPT"\n')
-    lf:close()
-
-    vim.fn.system('chmod +x ' .. launcher_file)
+    local mcp_json = string.format(
+        '{"mcpServers":{"nvim-bridge":{"command":"%s","args":["-socket","%s"]}}}',
+        mcp_binary, nvim_server
+    )
 
     local spawn_cmd = string.format(
-        'wezterm cli spawn --cwd %s -- %s',
+        'wezterm cli spawn --cwd %s -- claude --mcp-config %s --append-system-prompt %s',
         vim.fn.shellescape(cwd),
-        launcher_file
+        vim.fn.shellescape(mcp_json),
+        vim.fn.shellescape(context)
     )
 
     vim.fn.jobstart(spawn_cmd, { detach = true })
     vim.notify('Claude Code opened in new WezTerm tab', vim.log.levels.INFO)
 end, {
     range = true,
-    nargs = '*',
     desc = 'Open Claude Code in a new WezTerm tab with selection and editor context',
 })
 -- }}}
