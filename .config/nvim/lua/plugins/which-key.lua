@@ -19,6 +19,35 @@ return {
             },
         })
 
+        -- Claude Code launcher (normal + visual)
+        local function open_claude(range)
+            local request = vim.fn.input('Claude: ')
+            vim.api.nvim_cmd({
+                cmd   = 'Claude',
+                range = range or {},
+                args  = request ~= '' and { request } or {},
+            }, {})
+        end
+
+        wk.add({
+            {
+                '<leader>i',
+                function() open_claude() end,
+                desc = 'Ask Claude',
+            },
+        })
+
+        wk.add({
+            mode = 'v',
+            {
+                '<leader>i',
+                function()
+                    open_claude({ vim.fn.line("'<"), vim.fn.line("'>") })
+                end,
+                desc = 'Ask Claude',
+            },
+        })
+
         -- Leader Key Bindings
         wk.add({
             { -- Wipe buffer without closing the window (replaces vim-bufkill)
