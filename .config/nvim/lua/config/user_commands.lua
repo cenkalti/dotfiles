@@ -6,6 +6,12 @@ vim.api.nvim_create_user_command('Claude', function(opts)
     local end_line = opts.line2
     local is_visual = start_line ~= end_line or opts.range == 2
 
+    local mcp_binary = vim.fn.expand('~/projects/nvim-mcp-bridge/nvim-mcp-bridge')
+    if vim.fn.executable(mcp_binary) == 0 then
+        vim.notify('nvim-mcp-bridge not found: ' .. mcp_binary, vim.log.levels.ERROR)
+        return
+    end
+
     local current_buf = vim.api.nvim_get_current_buf()
     local current_file = vim.api.nvim_buf_get_name(current_buf)
     local cwd = vim.fn.getcwd()
@@ -41,8 +47,34 @@ vim.api.nvim_create_user_command('Claude', function(opts)
         end
     end
 
-    -- Git branch (best-effort, silent on failure)
-    local git_branch = vim.fn.system('git -C ' .. vim.fn.shellescape(cwd) .. ' rev-parse --abbrev-ref HEAD 2>/dev/null'):gsub('\n', '')
+    -- Shell calls: use vim.system (nvim 0.10+) to avoid spawning a shell for simple commands
+    local branch_res = vim.system({'git', '-C', cwd, 'rev-parse', '--abbrev-ref', 'HEAD'}, {text = true}):wait()
+    local git_branch = branch_res.code == 0 and branch_res.stdout:gsub('\n', '') or ''
+
+    local structure_res = vim.system(
+        {'git', '-C', cwd, 'ls-files', '--others', '--exclude-standard', '--cached'},
+        {text = true}
+    ):wait()
+    local structure = ''
+    if structure_res.code == 0 and structure_res.stdout ~= '' then
+        -- Deduplicate to top-level entries
+        local seen, entries = {}, {}
+        for line in structure_res.stdout:gmatch('[^\n]+') do
+            local top = line:match('^([^/]+)')
+            if top and not seen[top] then
+                seen[top] = true
+                table.insert(entries, top)
+                if #entries >= 40 then break end
+            end
+        end
+        structure = table.concat(entries, '\n')
+    end
+    if structure == '' then
+        local ls_res = vim.system({'ls', '-1p', cwd}, {text = true}):wait()
+        structure = ls_res.code == 0 and ls_res.stdout:gsub('\n$', '') or ''
+    end
+
+    local file_label = current_file ~= '' and vim.fn.fnamemodify(current_file, ':~:.') or '(unnamed buffer)'
 
     -- Build context document
     local parts = {
@@ -57,7 +89,7 @@ vim.api.nvim_create_user_command('Claude', function(opts)
 
     table.insert(parts, '')
     table.insert(parts, '### Current File')
-    table.insert(parts, (current_file ~= '' and vim.fn.fnamemodify(current_file, ':~:.') or '(unnamed buffer)'))
+    table.insert(parts, file_label)
     table.insert(parts, 'Filetype: ' .. (filetype ~= '' and filetype or 'unknown'))
     table.insert(parts, 'Cursor position: line ' .. cursor[1] .. ', col ' .. cursor[2] + 1)
 
@@ -77,15 +109,6 @@ vim.api.nvim_create_user_command('Claude', function(opts)
         end
     end
 
-    -- Project structure: top-level entries, git-aware when possible
-    local structure = vim.fn.system(
-        'git -C ' .. vim.fn.shellescape(cwd) .. ' ls-files --others --exclude-standard --cached 2>/dev/null'
-        .. ' | awk -F/ \'{print $1}\' | sort -u | head -40'
-    ):gsub('\n$', '')
-    if structure == '' then
-        -- Fallback: plain directory listing
-        structure = vim.fn.system('ls -1p ' .. vim.fn.shellescape(cwd) .. ' 2>/dev/null | head -40'):gsub('\n$', '')
-    end
     if structure ~= '' then
         table.insert(parts, '')
         table.insert(parts, '### Project Structure')
@@ -94,42 +117,29 @@ vim.api.nvim_create_user_command('Claude', function(opts)
         end
     end
 
-    -- Code snippet: CONTEXT_LINES before and after the selection, selection marked
     local CONTEXT_LINES = 10
     local total_lines   = vim.api.nvim_buf_line_count(current_buf)
     local ctx_start     = math.max(1, start_line - CONTEXT_LINES)
     local ctx_end       = math.min(total_lines, end_line + CONTEXT_LINES)
     local all_lines     = vim.api.nvim_buf_get_lines(current_buf, ctx_start - 1, ctx_end, false)
 
-    -- Label: "line N" for a single line, "lines N–M" for a range
-    local selection_label
+    local range_label
     if start_line == end_line then
-        selection_label = string.format('line %d', start_line)
+        range_label = is_visual and 'selection: line ' .. start_line or 'cursor: line ' .. start_line
     else
-        selection_label = string.format('lines %d–%d', start_line, end_line)
+        range_label = string.format('selection: lines %d–%d', start_line, end_line)
     end
 
-    local file_label = current_file ~= '' and vim.fn.fnamemodify(current_file, ':~:.') or 'unnamed'
     table.insert(parts, '')
-    table.insert(parts, string.format('### %s (%s, selection: %s)',
+    table.insert(parts, string.format('### %s (%s, %s)',
         is_visual and 'Selected Code' or 'Code at Cursor',
         file_label,
-        selection_label))
+        range_label))
 
     local fence = '```' .. (filetype ~= '' and filetype or '')
     table.insert(parts, fence)
     for i, line in ipairs(all_lines) do
-        local abs = ctx_start + i - 1
-        local prefix = string.format('%4d  ', abs)
-        if abs == start_line and abs == end_line then
-            table.insert(parts, prefix .. line .. '  ← selected')
-        elseif abs == start_line then
-            table.insert(parts, prefix .. line .. '  ← selection start')
-        elseif abs == end_line then
-            table.insert(parts, prefix .. line .. '  ← selection end')
-        else
-            table.insert(parts, prefix .. line)
-        end
+        table.insert(parts, string.format('%4d  %s', ctx_start + i - 1, line))
     end
     table.insert(parts, '```')
     table.insert(parts, '')
@@ -137,7 +147,6 @@ vim.api.nvim_create_user_command('Claude', function(opts)
     local context = table.concat(parts, '\n')
 
     local nvim_server = vim.v.servername
-    local mcp_binary  = vim.fn.expand('~/projects/nvim-mcp-bridge/nvim-mcp-bridge')
 
     local mcp_json = string.format(
         '{"mcpServers":{"nvim-bridge":{"command":"%s","args":["-socket","%s"]}}}',
