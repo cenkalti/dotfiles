@@ -59,6 +59,7 @@ alias lg="lazygit"
 alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
 
 alias c="claude"
+alias a='agent run'
 
 alias myip="curl http://ipinfo.io/ip"
 alias mycity="curl http://ipinfo.io/city"

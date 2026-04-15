@@ -43,3 +43,4 @@ compile_commands.json
 covprofile
 /workspace
 /.work/
+.agent
