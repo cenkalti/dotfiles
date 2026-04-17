@@ -5,7 +5,19 @@ local M = {}
 function M.setup()
     -- Use hyperlinks directly in the terminal
     wezterm.on('open-uri', function(_, pane, uri)
+        wezterm.log_info('open-uri fired: ' .. tostring(uri))
         local editor = 'nvim'
+
+        -- `agent inbox` emits agent-jump://<project>[/<branch>] hyperlinks; delegate to `agent jump` to focus the pane.
+        local jump_id = uri:match('^agent%-jump://(.+)$')
+        if jump_id then
+            local agent_bin = wezterm.home_dir .. '/go/bin/agent'
+            local ok, _, stderr = wezterm.run_child_process({ agent_bin, 'jump', jump_id })
+            if not ok then
+                wezterm.log_error('agent jump ' .. jump_id .. ' failed: ' .. (stderr or ''))
+            end
+            return false
+        end
 
         local function is_shell(foreground_process_name)
             local shell_names = { 'bash', 'zsh', 'sh' }

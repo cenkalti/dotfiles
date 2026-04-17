@@ -12,6 +12,13 @@ wezterm.on('format-window-title', function(tab, pane)
     return basename ~= '' and basename or tab.active_pane.title
 end)
 
+-- `agent jump` sets agent_jump to a unique timestamp on the target pane's tty after activating it, so raise the window to the foreground.
+wezterm.on('user-var-changed', function(window, pane, name, value)
+    if name == 'agent_jump' and value ~= '' then
+        window:focus()
+    end
+end)
+
 wezterm.on('update-right-status', function(window, pane)
     local workspace = window:active_workspace()
     window:set_left_status(workspace ~= 'default' and ' ' .. workspace .. ' ' or '')
