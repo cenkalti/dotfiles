@@ -27,6 +27,13 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
 })
 -- }}}
 
+-- {{{ Treat .mdx files as Markdown
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+    pattern = '*.mdx',
+    command = 'setfiletype markdown',
+})
+-- }}}
+
 -- {{{ Use jq to format JSON
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'json', 'jsonl' },
