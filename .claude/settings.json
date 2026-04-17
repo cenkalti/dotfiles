@@ -5,13 +5,13 @@
   },
   "model": "sonnet",
   "hooks": {
-    "PreToolUse": [
+    "Elicitation": [
       {
-        "matcher": "Bash",
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "work bash-check"
+            "command": "agent hook"
           }
         ]
       }
@@ -24,6 +24,43 @@
             "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff",
             "async": true
+          },
+          {
+            "type": "command",
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
           }
         ]
       }
@@ -34,7 +71,40 @@
         "hooks": [
           {
             "type": "command",
-            "command": "work context"
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "agent hook"
           }
         ]
       }
@@ -47,5 +117,6 @@
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
   },
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "skipAutoPermissionPrompt": true
 }
