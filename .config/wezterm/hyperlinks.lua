@@ -4,9 +4,9 @@ local M = {}
 
 function M.setup()
     -- Use hyperlinks directly in the terminal
-    wezterm.on('open-uri', function(_, pane, uri)
+    wezterm.on('open-uri', function(window, pane, uri)
         wezterm.log_info('open-uri fired: ' .. tostring(uri))
-        local editor = 'nvim'
+        local editor = '/opt/homebrew/bin/nvim'
 
         -- `agent inbox` emits agent-jump://<project>[/<branch>] hyperlinks; delegate to `agent jump` to focus the pane.
         local jump_id = uri:match('^agent%-jump://(.+)$')
@@ -30,11 +30,23 @@ function M.setup()
             return false
         end
 
-        if uri:find('^file:') == 1 and not pane:is_alt_screen_active() then
-            -- We're processing an hyperlink and the uri format should be: file://[HOSTNAME]/PATH[#linenr]
-            -- Also the pane is not in an alternate screen (an editor, less, etc)
+        if uri:find('^file:') == 1 then
             local url = wezterm.url.parse(uri)
-            if is_shell(pane:get_foreground_process_name()) then
+            local foreground = pane:get_foreground_process_name()
+            local in_shell = not pane:is_alt_screen_active() and is_shell(foreground)
+
+            -- Foreground is a TUI or non-shell process (claude, nvim, less, etc): open nvim in a new tab.
+            if not in_shell then
+                local args = { editor }
+                if url.fragment then
+                    table.insert(args, '+' .. url.fragment)
+                end
+                table.insert(args, url.file_path)
+                window:mux_window():spawn_tab({ args = args })
+                return false
+            end
+
+            do
                 -- A shell has been detected. Wezterm can check the file type directly
                 -- figure out what kind of file we're dealing with
                 local success, stdout, _ = wezterm.run_child_process({
