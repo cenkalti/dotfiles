@@ -64,7 +64,9 @@ function M.setup()
 
                     if stdout:find('text') then
                         if url.fragment then
-                            pane:send_text(wezterm.shell_join_args({ editor, '+' .. url.fragment, url.file_path }) .. '\r')
+                            pane:send_text(
+                                wezterm.shell_join_args({ editor, '+' .. url.fragment, url.file_path }) .. '\r'
+                            )
                         else
                             pane:send_text(wezterm.shell_join_args({ editor, url.file_path }) .. '\r')
                         end
