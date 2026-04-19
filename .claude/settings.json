@@ -3,120 +3,40 @@
     "commit": "",
     "pr": ""
   },
-  "model": "sonnet",
-  "hooks": {
-    "Elicitation": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
+  "autoMemoryEnabled": false,
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "work@work-dev": true
+  },
+  "extraKnownMarketplaces": {
+    "work-dev": {
+      "source": {
+        "path": "/Users/cenk/projects/work",
+        "source": "directory"
       }
-    ],
+    }
+  },
+  "hooks": {
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
-            "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff",
-            "async": true
-          },
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "agent hook"
+            "type": "command"
           }
         ]
       }
     ]
   },
+  "model": "opus[1m]",
+  "permissions": {
+    "allow": [
+      "Bash(task set-status *)"
+    ]
+  },
+  "skipAutoPermissionPrompt": true,
   "statusLine": {
-    "type": "command",
-    "command": "/Users/cenk/.claude/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
-  },
-  "autoMemoryEnabled": false,
-  "skipAutoPermissionPrompt": true
+    "command": "/Users/cenk/.claude/statusline-command.sh",
+    "type": "command"
+  }
 }
