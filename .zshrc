@@ -284,6 +284,7 @@ type aws &>/dev/null && type aws_completer &>/dev/null && complete -C aws_comple
 type direnv &> /dev/null && eval "$(direnv hook zsh)"
 type tsh &> /dev/null && eval "$(tsh --completion-script-zsh)"
 type tctl &> /dev/null && eval "$(tctl --completion-script-zsh)"
+type fnm &> /dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
 
 if type atuin &>/dev/null; then
     export ATUIN_NOBIND="true"
