@@ -108,6 +108,7 @@ return {
             { '<F4>', ':source $MYVIMRC<CR>', desc = 'Source vimrc' },
             { '<F5>', ':e!<CR>', desc = 'Reset file from disk' },
             { '<F6>', 'mzgg"+yG`z', desc = 'Copy all file' },
+            { '<F18>', ':Md2Rich<CR>', desc = 'Copy all file as rich text (Shift+F6)' },
             { '<F7>', 'mzgg=G`z', desc = 'Indent whole file' },
             { '<F8>', ':wa<CR>:mksession!<CR>:qa!<CR>', desc = 'Save all and close' },
             { '<F12>', ':cq<CR>', desc = 'Abort with non-zero exit code' },

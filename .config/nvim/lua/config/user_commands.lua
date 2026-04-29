@@ -190,6 +190,39 @@ vim.api.nvim_create_user_command('TrimWhitespace', function()
 end, { range = '%' })
 -- }}}
 
+-- {{{ Convert markdown to HTML and put it on the clipboard as rich text
+vim.api.nvim_create_user_command('Md2Rich', function(opts)
+    if vim.fn.executable('pandoc') == 0 then
+        vim.notify('pandoc not found in PATH', vim.log.levels.ERROR)
+        return
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)
+    local markdown = table.concat(lines, '\n')
+
+    local pandoc = vim.system({'pandoc', '-f', 'gfm', '-t', 'html'}, {stdin = markdown, text = true}):wait()
+    if pandoc.code ~= 0 then
+        vim.notify('pandoc failed: ' .. (pandoc.stderr or ''), vim.log.levels.ERROR)
+        return
+    end
+
+    local hex = pandoc.stdout:gsub('.', function(c) return string.format('%02x', string.byte(c)) end)
+    local osa = vim.system(
+        {'osascript', '-e', 'set the clipboard to «data HTML' .. hex .. '»'},
+        {text = true}
+    ):wait()
+    if osa.code ~= 0 then
+        vim.notify('osascript failed: ' .. (osa.stderr or ''), vim.log.levels.ERROR)
+        return
+    end
+
+    vim.notify('Rich text copied to clipboard.', vim.log.levels.INFO)
+end, {
+    range = '%',
+    desc = 'Convert markdown range to HTML and copy as rich text',
+})
+-- }}}
+
 -- {{{ Replace Unicode dashes and arrows with ASCII equivalents
 vim.api.nvim_create_user_command('ASCIIfy', function()
     local replacements = {
