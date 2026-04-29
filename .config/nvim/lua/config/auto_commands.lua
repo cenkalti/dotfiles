@@ -61,6 +61,21 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWinEnter' }, {
 })
 -- }}}
 
+-- {{{ Highlight rules for todo edit buffers
+vim.api.nvim_set_hl(0, 'TodoActive', { fg = '#e5c07b', bold = true })
+vim.api.nvim_set_hl(0, 'TodoCancelled', { fg = '#e06c75', bold = true })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+    pattern = vim.fn.expand('~') .. '/.work/todos/edit-*.md',
+    callback = function()
+        vim.fn.matchadd('NonText', [[^\s*@ .*$]])
+        vim.fn.matchadd('NonText', [[^\s*& .*$]])
+        vim.fn.matchadd('NonText', [[<!--[a-z0-9]\{6}-->]])
+        vim.fn.matchadd('TodoActive', '\\[/\\]')
+        vim.fn.matchadd('TodoCancelled', '\\[-\\]')
+    end,
+})
+-- }}}
+
 -- {{{ Disable line wrapping in quickfix and location lists
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'qf', 'loclist' },
