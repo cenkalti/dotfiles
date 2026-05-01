@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local spawn = require('spawn')
 
 local M = {}
 
@@ -37,12 +38,12 @@ function M.setup()
 
             -- Foreground is a TUI or non-shell process (claude, nvim, less, etc): open nvim in a new tab.
             if not in_shell then
-                local args = { editor }
+                local cmd = { editor }
                 if url.fragment then
-                    table.insert(args, '+' .. url.fragment)
+                    table.insert(cmd, '+' .. url.fragment)
                 end
-                table.insert(args, url.file_path)
-                window:mux_window():spawn_tab({ args = args })
+                table.insert(cmd, url.file_path)
+                window:mux_window():spawn_tab({ args = spawn.wrap(cmd) })
                 return false
             end
 
