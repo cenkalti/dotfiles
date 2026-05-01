@@ -60,6 +60,7 @@ require('launch_menu').setup(config)
 require('transparency').setup(config)
 require('hyperlinks').setup()
 require('tab_colors').setup()
+require('tab_toggle').setup()
 require('work').setup()
 
 -- and finally, return the configuration to wezterm
