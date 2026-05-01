@@ -31,6 +31,7 @@ function M.setup(config)
         { mods = 'SUPER|ALT', key = '-', action = wezterm.action.EmitEvent('decrease-transparency') },
         { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('increase-blur') },
         { mods = 'SUPER|ALT|SHIFT', key = '_', action = wezterm.action.EmitEvent('decrease-blur') },
+        { mods = 'SUPER', key = 'j', action = wezterm.action.EmitEvent('toggle-quake') },
 
         -- Workspace Switcher
         {

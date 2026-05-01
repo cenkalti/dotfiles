@@ -58,6 +58,7 @@ package.path = wezterm.home_dir .. '/projects/work/wezterm/?.lua;' .. package.pa
 require('keys').setup(config)
 require('launch_menu').setup(config)
 require('transparency').setup(config)
+require('quake').setup(config)
 require('hyperlinks').setup()
 require('tab_colors').setup()
 require('tab_toggle').setup()
