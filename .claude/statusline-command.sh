@@ -15,11 +15,16 @@ agent_name=$(echo "$input" | jq -r '.agent.name // empty')
 user=$(whoami)
 host=$(hostname -s)
 
-# Get git branch if in a git repository
+# Get git branch and dirty status if in a git repository
 cd "$cwd" 2>/dev/null
 if git rev-parse --git-dir > /dev/null 2>&1; then
     branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-    git_info=" $(printf '\033[35m')($branch)$(printf '\033[0m')"
+    if git --no-optional-locks status --porcelain 2>/dev/null | grep -q .; then
+        dirty_indicator="$(printf '\033[31m')*$(printf '\033[0m')"
+    else
+        dirty_indicator=""
+    fi
+    git_info=" $(printf '\033[35m')($branch)$(printf '\033[0m')$dirty_indicator"
 else
     git_info=""
 fi
