@@ -4,6 +4,7 @@
     "pr": ""
   },
   "autoMemoryEnabled": false,
+  "effortLevel": "high",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "work@work-dev": true
