@@ -24,6 +24,7 @@ function M.setup(config)
             }),
         },
         { mods = 'SUPER|ALT', key = 't', action = wezterm.action.EmitEvent('toggle-transparency') },
+        { mods = 'SUPER', key = 'd', action = wezterm.action.EmitEvent('work-toggle-dashboard') },
         { mods = 'SUPER|ALT', key = '=', action = wezterm.action.EmitEvent('increase-transparency') },
         { mods = 'SUPER|ALT', key = '-', action = wezterm.action.EmitEvent('decrease-transparency') },
         { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('increase-blur') },

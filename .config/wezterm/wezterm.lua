@@ -13,7 +13,7 @@ wezterm.on('format-window-title', function(tab, pane)
 end)
 
 -- `agent jump` sets agent_jump to a unique timestamp on the target pane's tty after activating it, so raise the window to the foreground.
-wezterm.on('user-var-changed', function(window, pane, name, value)
+wezterm.on('user-var-changed', function(window, _, name, value)
     if name == 'agent_jump' and value ~= '' then
         window:focus()
     end
@@ -52,12 +52,15 @@ config.window_padding = {
     bottom = 0,
 }
 
+package.path = wezterm.home_dir .. '/projects/work/wezterm/?.lua;' .. package.path
+
 -- Setup modules
 require('keys').setup(config)
 require('launch_menu').setup(config)
 require('transparency').setup(config)
 require('hyperlinks').setup()
 require('tab_colors').setup()
+require('work').setup()
 
 -- and finally, return the configuration to wezterm
 return config
