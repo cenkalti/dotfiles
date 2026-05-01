@@ -503,6 +503,7 @@ fi
 zle -N _claude_zsh
 bindkey '^[\' _claude_zsh  # Alt-\
 
+SPACESHIP_PROMPT_ADD_NEWLINE=false
 if [ -f "/opt/homebrew/opt/spaceship/spaceship.zsh" ]; then
   source "/opt/homebrew/opt/spaceship/spaceship.zsh"
 fi
@@ -515,35 +516,25 @@ if [ -f "/Users/cenk/projects/work/shell/work.zsh" ]; then
 fi
 
 # OSC 133 shell integration for WezTerm
-# Use zle hooks which run at the right time
 function _osc133_preexec {
-  print -n "\e]133;C\a"
+  print -n "\e]133;B\a"  # end of prompt / start of user input
+  print -n "\e]133;C\a"  # start of command output
 }
-
 function _osc133_precmd {
-  print -n "\e]133;D;$?\a"
+  print -n "\e]133;D;$?\a"  # end of command output (with exit status)
+  print -n "\e]133;A\a"     # start of prompt
 }
-
-function _osc133_line_init {
-  print -n "\e]133;A\a"
-}
-
-function _osc133_line_finish {
-  print -n "\e]133;B\a"
-}
-
-preexec_functions+=(_osc133_preexec)
-precmd_functions+=(_osc133_precmd)
-zle -N zle-line-init _osc133_line_init
-zle -N zle-line-finish _osc133_line_finish
 
 # Load project specific aliases, etc.
-autoload -U add-zsh-hook
 load-local-aliases() {
   if [[ -f aliases.sh && -r aliases.sh ]]; then
     source aliases.sh
   fi
 }
+
+autoload -U add-zsh-hook
+add-zsh-hook preexec _osc133_preexec
+add-zsh-hook precmd _osc133_precmd
 add-zsh-hook precmd load-local-aliases
 
 # bun
