@@ -20,6 +20,12 @@ Checkout files:
 dotfiles reset --hard
 ```
 
+Disable fsmonitor for this repo (the daemon hangs when `--work-tree` is `$HOME`):
+```sh
+dotfiles config core.fsmonitor false
+dotfiles config core.untrackedCache false
+```
+
 ## Usage
 
 Use `dotfiles` command instead of `git`:
