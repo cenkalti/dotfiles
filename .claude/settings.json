@@ -35,6 +35,46 @@
       "Bash(task set-status *)"
     ]
   },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "failIfUnavailable": true,
+    "filesystem": {
+      "allowWrite": [
+        "~/.work"
+      ],
+      "denyWrite": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass",
+        "~/.zshrc",
+        "~/.bashrc"
+      ],
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass"
+      ]
+    },
+    "network": {
+      "allowedDomains": [
+        "api.anthropic.com",
+        "registry.npmjs.org",
+        "pypi.org",
+        "files.pythonhosted.org",
+        "proxy.golang.org",
+        "sum.golang.org",
+        "github.com",
+        "objects.githubusercontent.com"
+      ]
+    }
+  },
   "skipAutoPermissionPrompt": true,
   "statusLine": {
     "command": "/Users/cenk/.claude/statusline-command.sh",
