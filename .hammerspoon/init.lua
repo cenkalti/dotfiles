@@ -14,6 +14,9 @@ spoon.VoiceToText:start()
 hs.loadSpoon('NoLED')
 spoon.NoLED:startSchedule()
 
+hs.loadSpoon('Work')
+spoon.Work:start()
+
 -- Volume control with visual feedback
 local function adjustVolume(delta)
     local device = hs.audiodevice.defaultOutputDevice()
