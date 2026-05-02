@@ -127,6 +127,8 @@
         editor = nvim
         autocrlf = false
         pager = delta
+	fsmonitor = true
+	untrackedCache = true
 
 [interactive]
         diffFilter = delta --color-only
