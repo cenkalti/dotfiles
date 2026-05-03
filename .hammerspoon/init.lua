@@ -12,7 +12,6 @@ hs.loadSpoon('VoiceToText')
 spoon.VoiceToText:start()
 
 hs.loadSpoon('NoLED')
-spoon.NoLED:startSchedule()
 
 hs.loadSpoon('Work')
 spoon.Work:start()
