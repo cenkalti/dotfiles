@@ -36,7 +36,7 @@
     ]
   },
   "sandbox": {
-    "enabled": true,
+    "enabled": false,
     "autoAllowBashIfSandboxed": true,
     "failIfUnavailable": true,
     "filesystem": {
