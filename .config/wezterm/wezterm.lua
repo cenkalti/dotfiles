@@ -32,6 +32,7 @@ end)
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Macchiato'
+config.font = wezterm.font('Monaspace Argon NF')
 config.font_size = 16.0
 config.quit_when_all_windows_are_closed = false
 config.default_prog = { '/opt/homebrew/bin/zsh', '-li' }
@@ -41,7 +42,7 @@ config.initial_rows = 36
 config.scrollback_lines = 100000
 config.enable_scroll_bar = true
 config.window_decorations = 'RESIZE'
-config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 config.warn_about_missing_glyphs = false
 config.window_padding = {
     left = 0,
