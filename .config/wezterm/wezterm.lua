@@ -32,7 +32,7 @@ end)
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Macchiato'
-config.font = wezterm.font('Monaspace Argon NF')
+config.font = wezterm.font('Monaspace Neon NF')
 config.font_rules = {
     {
         intensity = 'Normal',
