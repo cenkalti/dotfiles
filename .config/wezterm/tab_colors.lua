@@ -74,7 +74,7 @@ local function setup()
         local cwd = cwd_uri and cwd_uri.file_path or ''
 
         local title = tab.tab_title ~= '' and tab.tab_title or pane.title
-        local label = (tab.tab_index + 1) .. ': ' .. title
+        local label = (tab.tab_index + 1) .. ' ' .. title
         local bg = cwd ~= '' and color_for_path(cwd) or '#555555'
 
         local active_bg = tab.is_active and bg or dim_color(bg, 0.4)
