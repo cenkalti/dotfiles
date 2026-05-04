@@ -35,7 +35,7 @@ config.color_scheme = 'Catppuccin Macchiato'
 config.font = wezterm.font('Monaspace Argon NF')
 config.font_size = 16.0
 config.window_frame = {
-    font = wezterm.font('Monaspace Argon NF'),
+    font = wezterm.font('Roboto'),
     font_size = 16.0,
 }
 config.quit_when_all_windows_are_closed = false
