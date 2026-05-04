@@ -33,6 +33,18 @@ local config = wezterm.config_builder()
 
 config.color_scheme = 'Catppuccin Macchiato'
 config.font = wezterm.font('Monaspace Argon NF')
+config.font_rules = {
+    {
+        intensity = 'Normal',
+        italic = true,
+        font = wezterm.font('Monaspace Radon NF', { style = 'Normal' }),
+    },
+    {
+        intensity = 'Bold',
+        italic = true,
+        font = wezterm.font('Monaspace Radon NF', { style = 'Normal', weight = 'Bold' }),
+    },
+}
 config.font_size = 16.0
 config.window_frame = {
     font = wezterm.font('Roboto'),
