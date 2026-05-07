@@ -112,6 +112,19 @@ function M.setup(config)
             }),
         },
 
+        -- Close the entire window (all tabs/panes)
+        {
+            mods = 'SUPER|SHIFT',
+            key = 'w',
+            action = wezterm.action_callback(function(window, _)
+                for _, tab in ipairs(window:mux_window():tabs()) do
+                    for _, p in ipairs(tab:panes()) do
+                        window:perform_action(wezterm.action.CloseCurrentPane({ confirm = false }), p)
+                    end
+                end
+            end),
+        },
+
         -- Disable Ctrl+Shift+N and Ctrl+Shift+P for Neovim tab navigation
         { mods = 'CTRL|SHIFT', key = 'N', action = wezterm.action.DisableDefaultAssignment },
         { mods = 'CTRL|SHIFT', key = 'P', action = wezterm.action.DisableDefaultAssignment },
