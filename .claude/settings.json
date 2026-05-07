@@ -36,12 +36,20 @@
     ]
   },
   "sandbox": {
-    "enabled": false,
     "autoAllowBashIfSandboxed": true,
+    "enabled": false,
     "failIfUnavailable": true,
     "filesystem": {
       "allowWrite": [
         "~/.work"
+      ],
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass"
       ],
       "denyWrite": [
         "~/.ssh",
@@ -52,14 +60,6 @@
         "~/.pgpass",
         "~/.zshrc",
         "~/.bashrc"
-      ],
-      "denyRead": [
-        "~/.ssh",
-        "~/.aws",
-        "~/.config/gh",
-        "~/Library/Keychains",
-        "~/.netrc",
-        "~/.pgpass"
       ]
     },
     "network": {
