@@ -10,6 +10,7 @@ keybinding:
   commits:
     viewResetOptions: 'G'
 git:
+  fetchAll: false
   pagers:
     - colorArg: always
       pager: delta --dark --paging=never
