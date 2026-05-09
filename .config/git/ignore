@@ -42,5 +42,3 @@ compile_commands.json
 **/CLAUDE.local.md
 covprofile
 /workspace
-/.work/
-.agent
