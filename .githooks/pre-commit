@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Block staged files larger than MAX_SIZE (bytes). Default: 10 MB.
+MAX_SIZE=${GIT_MAX_FILE_SIZE:-10485760}
+
+oversized=$(git diff --cached --name-only --diff-filter=AM | while read -r f; do
+  [ -f "$f" ] || continue
+  size=$(stat -f%z "$f" 2>/dev/null || stat -c%s "$f")
+  if [ "$size" -gt "$MAX_SIZE" ]; then
+    printf '%s\t%s\n' "$size" "$f"
+  fi
+done)
+
+if [ -n "$oversized" ]; then
+  echo "ERROR: files exceed $MAX_SIZE bytes:" >&2
+  echo "$oversized" >&2
+  echo "Use Git LFS, add to .gitignore, or set GIT_MAX_FILE_SIZE to override." >&2
+  exit 1
+fi

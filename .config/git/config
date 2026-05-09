@@ -129,6 +129,7 @@
         pager = delta
 	fsmonitor = true
 	untrackedCache = true
+	hooksPath = /Users/cenk/.githooks
 
 [interactive]
         diffFilter = delta --color-only
