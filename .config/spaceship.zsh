@@ -4,8 +4,8 @@ SPACESHIP_PROMPT_ORDER=(
   dir            # Current directory section
   host           # Hostname section
   git            # Git section (git_branch + git_status)
-  aws            # Amazon Web Services section
-  kubectl        # Kubectl context section
+  # aws            # Amazon Web Services section
+  # kubectl        # Kubectl context section
   exec_time      # Execution time
   async          # Async jobs indicator
   line_sep       # Line break
