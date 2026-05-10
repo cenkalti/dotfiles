@@ -36,7 +36,12 @@
   "model": "opus[1m]",
   "permissions": {
     "allow": [
-      "Bash(task set-status *)"
+      "Bash(task set-status *)",
+      "Bash(agent ps *)",
+      "Bash(go vet *)",
+      "Bash(wezterm cli list *)",
+      "Bash(task ls *)",
+      "Bash(gh search *)"
     ]
   },
   "sandbox": {
@@ -45,7 +50,10 @@
     "failIfUnavailable": true,
     "filesystem": {
       "allowWrite": [
-        "~/.work"
+        "~/.work",
+        "~/projects",
+        "~/go",
+        "~/Library/Caches/go-build"
       ],
       "denyRead": [
         "~/.ssh",
@@ -75,7 +83,9 @@
         "proxy.golang.org",
         "sum.golang.org",
         "github.com",
-        "objects.githubusercontent.com"
+        "api.github.com",
+        "objects.githubusercontent.com",
+        "raw.githubusercontent.com"
       ]
     }
   },
