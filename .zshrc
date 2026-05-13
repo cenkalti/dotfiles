@@ -490,7 +490,7 @@ User request: $prompt
 Respond with ONLY the shell command. No explanation, no markdown, no code fences. Just the raw command."
 
     local tmpfile=$(mktemp)
-    claude -p "$full_prompt" --output-format text > "$tmpfile" 2>/dev/null </dev/null
+    env -u ANTHROPIC_API_KEY claude -p "$full_prompt" --output-format text > "$tmpfile" 2>/dev/null </dev/null
     BUFFER=$(<"$tmpfile")
     rm -f "$tmpfile"
     zle end-of-line
