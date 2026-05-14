@@ -4,10 +4,12 @@ return {
     dependencies = {
         'nvim-tree/nvim-web-devicons',
         'folke/which-key.nvim',
+        'catppuccin/nvim',
     },
     config = function()
         vim.opt.termguicolors = true
 
+        local colors = require('catppuccin.palettes').get_palette('macchiato')
         local bufferline = require('bufferline')
         bufferline.setup({
             options = {
@@ -35,6 +37,13 @@ return {
                         highlight = 'Directory',
                         text_align = 'left',
                     },
+                },
+            },
+            highlights = {
+                buffer_selected = {
+                    fg = colors.peach,
+                    bold = true,
+                    italic = false,
                 },
             },
         })
