@@ -14,3 +14,9 @@ git:
   pagers:
     - colorArg: always
       pager: delta --dark --paging=never
+customCommands:
+  - key: 'p'
+    context: 'global'
+    description: 'Pull current branch only'
+    command: 'git pull {{.CheckedOutBranch.UpstreamRemote}} {{.CheckedOutBranch.UpstreamBranch}}'
+    loadingText: 'Pulling current branch...'
