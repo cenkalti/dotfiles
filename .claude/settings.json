@@ -5,13 +5,13 @@
   },
   "autoMemoryEnabled": false,
   "effortLevel": "high",
-  "env": {
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
-  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "work@work-dev": true
+  },
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
   "extraKnownMarketplaces": {
     "work-dev": {
