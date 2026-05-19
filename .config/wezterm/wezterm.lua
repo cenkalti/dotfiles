@@ -60,12 +60,7 @@ config.enable_scroll_bar = true
 config.window_decorations = 'RESIZE'
 config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 config.warn_about_missing_glyphs = false
-config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
-}
+config.window_padding = { top = 0, left = 0 }
 
 package.path = wezterm.home_dir .. '/projects/work/wezterm/?.lua;' .. package.path
 
