@@ -279,11 +279,27 @@ autoload -Uz compinit && compinit
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=2
 
-type kubectl &>/dev/null && source <(kubectl completion zsh)
-type aws &>/dev/null && type aws_completer &>/dev/null && complete -C aws_completer aws
-type direnv &> /dev/null && eval "$(direnv hook zsh)"
-type tsh &> /dev/null && eval "$(tsh --completion-script-zsh)"
-type tctl &> /dev/null && eval "$(tctl --completion-script-zsh)"
+# Cache slow `eval "$(... completion ...)"` outputs to disk.
+# Regenerates when the binary is newer than the cache.
+_zsh_cache_dir="$HOME/.cache/zsh"
+[[ -d $_zsh_cache_dir ]] || mkdir -p $_zsh_cache_dir
+cached_eval() {
+  local name=$1; shift
+  local cache="$_zsh_cache_dir/$name.zsh"
+  local bin
+  bin=$(whence -p "$name" 2>/dev/null) || return
+  if [[ ! -s $cache || $bin -nt $cache ]]; then
+    "$@" > $cache 2>/dev/null
+  fi
+  source $cache
+}
+
+cached_eval kubectl kubectl completion zsh
+cached_eval direnv direnv hook zsh
+cached_eval tsh tsh --completion-script-zsh
+cached_eval tctl tctl --completion-script-zsh
+
+type aws &> /dev/null && type aws_completer &>/dev/null && complete -C aws_completer aws
 type fnm &> /dev/null && eval "$(fnm env --use-on-cd --log-level quiet --shell zsh)"
 
 if type atuin &>/dev/null; then
