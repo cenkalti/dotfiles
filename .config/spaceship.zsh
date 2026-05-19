@@ -3,7 +3,7 @@ SPACESHIP_PROMPT_ORDER=(
   user           # Username section
   dir            # Current directory section
   host           # Hostname section
-  git            # Git section (git_branch + git_status)
+  # git            # Git section (git_branch + git_status)
   # aws            # Amazon Web Services section
   # kubectl        # Kubectl context section
   exec_time      # Execution time
