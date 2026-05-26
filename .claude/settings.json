@@ -4,7 +4,7 @@
     "pr": ""
   },
   "autoMemoryEnabled": false,
-  "effortLevel": "high",
+  "effortLevel": "low",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "work@work-dev": true
@@ -16,7 +16,7 @@
   "extraKnownMarketplaces": {
     "work-dev": {
       "source": {
-        "path": "/Users/cenk/projects/work",
+        "path": "/Users/cenk/projects/harness",
         "source": "directory"
       }
     }
