@@ -1,0 +1,5 @@
+#!/bin/bash
+TOKEN=$(security find-generic-password -s "Claude Code-credentials" -w | jq -r .claudeAiOauth.accessToken)
+curl -sS -H "Authorization: Bearer $TOKEN" https://api.anthropic.com/api/oauth/usage | jq .
+echo
+read -n 1 -s -r -p "Press any key to close..."

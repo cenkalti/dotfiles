@@ -62,7 +62,7 @@ config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 config.warn_about_missing_glyphs = false
 config.window_padding = { top = 0, left = 0 }
 
-package.path = wezterm.home_dir .. '/projects/work/wezterm/?.lua;' .. package.path
+package.path = wezterm.home_dir .. '/projects/harness/wezterm/?.lua;' .. package.path
 
 -- Setup modules
 require('keys').setup(config)
