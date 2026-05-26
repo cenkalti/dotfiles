@@ -16,6 +16,9 @@ hs.loadSpoon('NoLED')
 hs.loadSpoon('Work')
 spoon.Work:start()
 
+hs.loadSpoon('ClaudeUsage')
+spoon.ClaudeUsage:start()
+
 -- Volume control with visual feedback
 local function adjustVolume(delta)
     local device = hs.audiodevice.defaultOutputDevice()
