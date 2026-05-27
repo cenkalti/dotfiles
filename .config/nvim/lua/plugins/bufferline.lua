@@ -41,7 +41,7 @@ return {
             },
             highlights = {
                 buffer_selected = {
-                    fg = colors.peach,
+                    fg = colors.pink,
                     bold = true,
                     italic = false,
                 },
