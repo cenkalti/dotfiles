@@ -1,39 +1,12 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "autoMemoryEnabled": false,
-  "effortLevel": "low",
-  "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true,
-    "work@work-dev": true
-  },
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
-  "extraKnownMarketplaces": {
-    "work-dev": {
-      "source": {
-        "path": "/Users/cenk/projects/harness",
-        "source": "directory"
-      }
-    }
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "afplay /System/Library/Sounds/Glass.aiff",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash(task set-status *)",
@@ -41,39 +14,53 @@
       "Bash(go vet *)",
       "Bash(wezterm cli list *)",
       "Bash(task ls *)",
-      "Bash(gh search *)"
+      "Bash(gh search *)",
+      "WebSearch",
+      "WebFetch(domain:docs.claude.com)",
+      "Bash(go test *)",
+      "Bash(go install *)",
+      "mcp__plugin_work_ground__ground",
+      "WebFetch(domain:cmux.com)",
+      "Read(//Users/cenk/.work/**)",
+      "Read(//Users/cenk/.work/schemas/**)",
+      "mcp__claude_ai_Gmail__search_threads"
+    ],
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/cenk/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "work@work-dev": true
+  },
+  "extraKnownMarketplaces": {
+    "work-dev": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/cenk/projects/harness"
+      }
+    }
+  },
   "sandbox": {
-    "autoAllowBashIfSandboxed": true,
     "enabled": false,
     "failIfUnavailable": true,
-    "filesystem": {
-      "allowWrite": [
-        "~/.work",
-        "~/projects",
-        "~/go",
-        "~/Library/Caches/go-build"
-      ],
-      "denyRead": [
-        "~/.ssh",
-        "~/.aws",
-        "~/.config/gh",
-        "~/Library/Keychains",
-        "~/.netrc",
-        "~/.pgpass"
-      ],
-      "denyWrite": [
-        "~/.ssh",
-        "~/.aws",
-        "~/.config/gh",
-        "~/Library/Keychains",
-        "~/.netrc",
-        "~/.pgpass",
-        "~/.zshrc",
-        "~/.bashrc"
-      ]
-    },
+    "autoAllowBashIfSandboxed": true,
     "network": {
       "allowedDomains": [
         "api.anthropic.com",
@@ -87,11 +74,40 @@
         "objects.githubusercontent.com",
         "raw.githubusercontent.com"
       ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.work",
+        "~/projects",
+        "~/go",
+        "~/Library/Caches/go-build"
+      ],
+      "denyWrite": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass",
+        "~/.zshrc",
+        "~/.bashrc"
+      ],
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass"
+      ]
     }
   },
+  "effortLevel": "low",
+  "autoUpdatesChannel": "stable",
+  "minimumVersion": "2.1.153",
+  "autoMemoryEnabled": false,
+  "preferredNotifChannel": "auto",
+  "autoCompactEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "command": "/Users/cenk/.claude/statusline-command.sh",
-    "type": "command"
-  }
+  "useAutoModeDuringPlan": true
 }
