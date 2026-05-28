@@ -10,6 +10,7 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 vim_mode=$(echo "$input" | jq -r '.vim.mode // empty')
 agent_name=$(echo "$input" | jq -r '.agent.name // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 
 # Work agent handle (from ~/.work/agents/$AGENT_ID.json, populated when
 # Claude Code is launched via `agent run`).
@@ -58,7 +59,7 @@ fi
 status+="$git_info"
 
 # Model info in green
-status+=" $(printf '\033[32m')[$model]$(printf '\033[0m')"
+status+=" $(printf '\033[32m')[$model${effort:+:$effort}]$(printf '\033[0m')"
 
 # Output style if not default
 if [ -n "$output_style" ] && [ "$output_style" != "default" ]; then
