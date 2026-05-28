@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local work = require('work')
 
 local M = {}
 
@@ -46,12 +47,12 @@ function M.setup(config)
         {
             mods = 'SUPER',
             key = ']',
-            action = wezterm.action.SwitchWorkspaceRelative(1),
+            action = wezterm.action_callback(function(window, pane) work.switch_workspace(window, pane, 1) end),
         },
         {
             mods = 'SUPER',
             key = '[',
-            action = wezterm.action.SwitchWorkspaceRelative(-1),
+            action = wezterm.action_callback(function(window, pane) work.switch_workspace(window, pane, -1) end),
         },
 
         -- New Workspace
