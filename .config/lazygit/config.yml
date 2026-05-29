@@ -4,6 +4,8 @@ gui:
   nerdFontsVersion: "3"
   switchTabsWithPanelJumpKeys: true
   showNumstatInFilesView: true
+  spinner:
+    rate: 5000
 keybinding:
   files:
     viewResetOptions: 'G'
