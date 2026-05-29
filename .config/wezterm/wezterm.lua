@@ -23,7 +23,13 @@ wezterm.on('update-status', function(window, pane)
     local workspace = window:active_workspace()
     window:set_left_status(workspace ~= 'default' and ' ' .. workspace .. ' ' or '')
 
-    local basename = cwd_basename(pane:get_current_working_dir())
+    local basename = ''
+    if pane then
+        local ok, cwd = pcall(pane.get_current_working_dir, pane)
+        if ok then
+            basename = cwd_basename(cwd)
+        end
+    end
     window:set_right_status(basename ~= '' and ' ' .. basename .. ' ' or '')
 end)
 
