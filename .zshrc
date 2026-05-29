@@ -56,7 +56,7 @@ alias p="cd ~/projects/private && claude --continue"
 alias h="hostname"
 
 alias lg="lazygit"
-alias lgd="lg --git-dir ~/.dotfiles --work-tree ~"
+alias lgd="lazygit -p ~"
 
 alias c="claude"
 alias a='agent run'
@@ -64,7 +64,7 @@ alias a='agent run'
 alias myip="curl http://ipinfo.io/ip"
 alias mycity="curl http://ipinfo.io/city"
 
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='git -C $HOME'
 
 alias disk-usage='sudo du -xcms * 2>/dev/null | sort -rn | head -11'
 

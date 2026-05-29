@@ -1,8 +1,10 @@
 # cenkalti's dotfiles
 
+The repo is checked out as a normal clone at `~/projects/dotfiles`, with `$HOME` registered as a linked git worktree of the same repo. Both worktrees stay on `master`; commits from either advance the branch and the other catches up with `git reset --hard`.
+
 ## Installation
 
-Clone using following command:
+Clone using the following command:
 ```sh
 export REPO="git@github.com:cenkalti/dotfiles"
 # for read-only access
@@ -10,28 +12,27 @@ export REPO="git@github.com:cenkalti/dotfiles"
 curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
 ```
 
-Add this to your `.bashrc`/`.zshrc` file:
+Add this to your `.zshrc` (or already present after install):
 ```sh
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
-
-Checkout files:
-```sh
-dotfiles reset --hard
-```
-
-Disable fsmonitor for this repo (the daemon hangs when `--work-tree` is `$HOME`):
-```sh
-dotfiles config core.fsmonitor false
-dotfiles config core.untrackedCache false
+alias dotfiles='git -C $HOME'
 ```
 
 ## Usage
 
-Use `dotfiles` command instead of `git`:
+`dotfiles` is just `git` rooted at `$HOME`:
 ```sh
 dotfiles pull
 dotfiles add .vimrc
 dotfiles commit -m "add .vimrc file"
 dotfiles push
+```
+
+After a commit in `~/projects/dotfiles`, refresh `$HOME`:
+```sh
+dotfiles reset --hard
+```
+
+And vice versa: after a commit from `$HOME`, refresh the main checkout:
+```sh
+git -C ~/projects/dotfiles reset --hard
 ```
