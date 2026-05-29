@@ -121,5 +121,6 @@
   "preferredNotifChannel": "auto",
   "autoCompactEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true
+  "useAutoModeDuringPlan": true,
+  "tui": "fullscreen"
 }
