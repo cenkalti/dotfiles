@@ -11,6 +11,7 @@ vim.opt.foldmethod = 'marker'
 vim.opt.foldlevelstart = 99
 vim.opt.showmode = false
 vim.opt.mouse = 'a'
+vim.opt.mousescroll = 'ver:1,hor:1'
 vim.opt.modelines = 0
 vim.opt.fixendofline = false
 vim.opt.updatetime = 250
