@@ -19,7 +19,7 @@ wezterm.on('user-var-changed', function(window, _, name, value)
     end
 end)
 
-wezterm.on('update-right-status', function(window, pane)
+wezterm.on('update-status', function(window, pane)
     local workspace = window:active_workspace()
     window:set_left_status(workspace ~= 'default' and ' ' .. workspace .. ' ' or '')
 
