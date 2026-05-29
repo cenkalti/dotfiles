@@ -114,13 +114,13 @@
       ]
     }
   },
-  "effortLevel": "low",
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.153",
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "preferredNotifChannel": "auto",
   "autoCompactEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true,
-  "tui": "fullscreen"
+  "useAutoModeDuringPlan": true
 }
