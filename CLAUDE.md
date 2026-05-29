@@ -11,11 +11,6 @@ One git repo, two worktrees:
 
 Both worktrees stay on `master`. A commit from either advances the branch; the other worktree is "stale" until refreshed with `git reset --hard`.
 
-The `dotfiles` alias is just `git` rooted at `$HOME`:
-```sh
-alias dotfiles='git -C $HOME'
-```
-
 When the user says "add file X to dotfiles," it can be staged from either worktree — same repo. Use whichever is convenient: edits to files that live in `$HOME` (e.g. `.zshrc`) are easier from there; edits to files inside `~/projects/dotfiles/` (e.g. this `CLAUDE.md`) are easier from the main worktree.
 
 Owner is doing a cleanup pass on historical artifacts, so be willing to recommend deletions of clearly stale files rather than preserving them by default.

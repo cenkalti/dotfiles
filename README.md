@@ -12,27 +12,18 @@ export REPO="git@github.com:cenkalti/dotfiles"
 curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
 ```
 
-Add this to your `.zshrc` (or already present after install):
-```sh
-alias dotfiles='git -C $HOME'
-```
-
 ## Usage
 
-`dotfiles` is just `git` rooted at `$HOME`:
+Plain `git` works from either worktree:
 ```sh
-dotfiles pull
-dotfiles add .vimrc
-dotfiles commit -m "add .vimrc file"
-dotfiles push
+cd ~
+git add .vimrc
+git commit -m "add .vimrc file"
+git push
 ```
 
-After a commit in `~/projects/dotfiles`, refresh `$HOME`:
+After a commit in one worktree, refresh the other:
 ```sh
-dotfiles reset --hard
-```
-
-And vice versa: after a commit from `$HOME`, refresh the main checkout:
-```sh
-git -C ~/projects/dotfiles reset --hard
+git -C ~ reset --hard                    # refresh $HOME
+git -C ~/projects/dotfiles reset --hard  # refresh main checkout
 ```
