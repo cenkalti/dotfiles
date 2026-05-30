@@ -5,35 +5,11 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
-local function cwd_basename(cwd_uri)
-    local cwd = cwd_uri and cwd_uri.file_path or ''
-    return cwd:match('([^/]+)/*$') or ''
-end
-
-wezterm.on('format-window-title', function(tab, pane)
-    local basename = cwd_basename(pane.current_working_dir)
-    return basename ~= '' and basename or tab.active_pane.title
-end)
-
 -- `agent jump` sets agent_jump to a unique timestamp on the target pane's tty after activating it, so raise the window to the foreground.
 wezterm.on('user-var-changed', function(window, _, name, value)
     if name == 'agent_jump' and value ~= '' then
         window:focus()
     end
-end)
-
-wezterm.on('update-status', function(window, pane)
-    local workspace = window:active_workspace()
-    window:set_left_status(workspace ~= 'default' and ' ' .. workspace .. ' ' or '')
-
-    local basename = ''
-    if pane then
-        local ok, cwd = pcall(pane.get_current_working_dir, pane)
-        if ok then
-            basename = cwd_basename(cwd)
-        end
-    end
-    window:set_right_status(basename ~= '' and ' ' .. basename .. ' ' or '')
 end)
 
 -- This will hold the configuration.
@@ -83,6 +59,7 @@ require('tab_colors').setup()
 require('tab_toggle').setup()
 require('file_picker').setup()
 require('default_workspace').setup()
+require('status').setup()
 require('work').setup()
 
 -- and finally, return the configuration to wezterm
