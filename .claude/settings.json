@@ -29,6 +29,7 @@
       "mcp__plugin_work_task__list_tasks",
       "mcp__plugin_work_task__set_task_status",
       "mcp__plugin_work_task__task_tree",
+      "mcp__plugin_work_session__set_phase",
       "WebFetch(domain:cmux.com)",
       "Read(//Users/cenk/.work/**)",
       "Read(//Users/cenk/.work/schemas/**)",
