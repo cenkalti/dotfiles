@@ -59,6 +59,37 @@ if [[ -d $HOME/.krew ]]; then
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
 
+# Wrap nvim so every wezterm-spawned instance listens on a window-scoped socket.
+# Lets external tooling drive the same nvim via `nvim --server <sock> --remote`.
+nvim() {
+    local socket=""
+    if [[ -n "$WEZTERM_PANE" ]] && (( $+commands[wezterm] )) && (( $+commands[jq] )); then
+        local window_id
+        window_id=$(wezterm cli list --format json 2>/dev/null \
+            | jq -r ".[] | select(.pane_id == ${WEZTERM_PANE}) | .window_id" 2>/dev/null \
+            | head -1)
+        if [[ -n "$window_id" ]]; then
+            socket="$HOME/.work/run/nvim-wez-${window_id}.sock"
+            if [[ -S "$socket" ]] && command nvim --server "$socket" --remote-expr '1' >/dev/null 2>&1; then
+                socket=""
+            else
+                rm -f "$socket" 2>/dev/null
+            fi
+        fi
+    fi
+    local -a cmd=(command nvim)
+    if [[ -n "$socket" ]]; then
+        mkdir -p "${socket:h}"
+        cmd+=(--listen "$socket")
+    fi
+    cmd+=("$@")
+    if [[ -o interactive ]]; then
+        "${cmd[@]}"
+    else
+        exec "${cmd[@]}"
+    fi
+}
+
 ###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
 ###############################################################################
