@@ -46,7 +46,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/Users/cenk/.claude/statusline-command.sh"
+    "command": "agent statusline"
   },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
