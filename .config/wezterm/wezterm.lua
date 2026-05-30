@@ -1,4 +1,7 @@
--- Pull in the wezterm API
+-- Keep this file minimal: config values and module wiring only.
+-- New behavior belongs in its own *.lua module with an M.setup() entry point,
+-- required from the setup block at the bottom.
+
 ---@type Wezterm
 local wezterm = require('wezterm')
 
@@ -79,6 +82,7 @@ require('hyperlinks').setup()
 require('tab_colors').setup()
 require('tab_toggle').setup()
 require('file_picker').setup()
+require('default_workspace').setup()
 require('work').setup()
 
 -- and finally, return the configuration to wezterm
