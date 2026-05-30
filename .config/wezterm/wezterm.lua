@@ -5,13 +5,6 @@
 ---@type Wezterm
 local wezterm = require('wezterm')
 
--- `agent jump` sets agent_jump to a unique timestamp on the target pane's tty after activating it, so raise the window to the foreground.
-wezterm.on('user-var-changed', function(window, _, name, value)
-    if name == 'agent_jump' and value ~= '' then
-        window:focus()
-    end
-end)
-
 -- This will hold the configuration.
 ---@class Config
 local config = wezterm.config_builder()
