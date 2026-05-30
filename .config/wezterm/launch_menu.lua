@@ -14,7 +14,7 @@ function M.setup(config)
                     args = {
                         '/opt/homebrew/bin/zsh',
                         '-lic',
-                        'exec /opt/homebrew/bin/nvim -c "Telescope find_files"',
+                        'nvim -c "Telescope find_files"',
                     },
                     cwd = entry,
                 })

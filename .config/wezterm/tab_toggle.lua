@@ -4,15 +4,13 @@ local spawn = require('spawn')
 local M = {}
 
 -- toggle activates the first tab in the current window whose active pane is
--- running the program (matched by basename). If no such tab exists, spawns a
--- new tab in the current pane's cwd and runs `program` there.
-local function toggle(window, pane, program)
+-- running a process matching `target_basename`. If none exists, spawns a new
+-- tab in the current pane's cwd with `spawn_args`.
+local function toggle(window, pane, target_basename, spawn_args)
     local mux_window = window:mux_window()
     if not mux_window then
         return
     end
-
-    local target_basename = program:match('([^/]+)$') or program
 
     for _, tab in ipairs(mux_window:tabs()) do
         for _, p in ipairs(tab:panes()) do
@@ -27,15 +25,15 @@ local function toggle(window, pane, program)
 
     local cwd = pane:get_current_working_dir()
     local cwd_path = cwd and cwd.file_path or nil
-    mux_window:spawn_tab({ args = spawn.wrap(program), cwd = cwd_path })
+    mux_window:spawn_tab({ args = spawn_args, cwd = cwd_path })
 end
 
 function M.setup()
     wezterm.on('toggle-lazygit', function(window, pane)
-        toggle(window, pane, '/opt/homebrew/bin/lazygit')
+        toggle(window, pane, 'lazygit', spawn.wrap('/opt/homebrew/bin/lazygit'))
     end)
     wezterm.on('toggle-nvim', function(window, pane)
-        toggle(window, pane, '/opt/homebrew/bin/nvim')
+        toggle(window, pane, 'nvim', spawn.wrap('nvim'))
     end)
 end
 
