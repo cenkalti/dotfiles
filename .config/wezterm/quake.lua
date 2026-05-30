@@ -2,10 +2,10 @@ local wezterm = require('wezterm')
 
 local M = {}
 
-local quake_panes = {}
-
 function M.setup(_)
     wezterm.on('toggle-quake', function(window, pane)
+        wezterm.GLOBAL.quake_panes = wezterm.GLOBAL.quake_panes or {}
+        local quake_panes = wezterm.GLOBAL.quake_panes
         local tab = window:active_tab()
         local tab_id = tab:tab_id()
         local existing_id = quake_panes[tab_id]
