@@ -3,15 +3,13 @@ local work = require('work')
 
 local M = {}
 
-local skip_close_processes = { 'zsh', 'tmux', 'nvim', 'lazygit', 'agent' }
+local skip_close_titles = { 'zsh', 'tmux', 'nvim', 'lazygit', 'agent' }
 local skip_close_set = {}
-for _, name in ipairs(skip_close_processes) do
+for _, name in ipairs(skip_close_titles) do
     skip_close_set[name] = true
 end
 
 function M.setup(config)
-    config.skip_close_confirmation_for_processes_named = skip_close_processes
-
     local keys = config.keys or {}
     local new_keys = {
         { mods = 'SHIFT', key = 'Enter', action = wezterm.action.SendString('\x1b\r') }, --- Added by Claude Code
@@ -125,16 +123,15 @@ function M.setup(config)
             }),
         },
 
-        -- Close current tab: skip confirmation when the foreground process is one we trust.
-        -- WezTerm's built-in skip_close_confirmation_for_processes_named walks the full
-        -- process tree, so descendants like LSP servers under nvim trigger the prompt.
+        -- Close current tab: skip confirmation when the pane title is one we trust.
+        -- Matching on title (set via OSC 0/2) rather than the foreground process avoids
+        -- the claude-versioned-shim basename and the LSP-server descendants under nvim.
         {
             mods = 'SUPER',
             key = 'w',
             action = wezterm.action_callback(function(window, pane)
-                local fg = pane:get_foreground_process_name() or ''
-                local basename = fg:match('([^/]+)$') or fg
-                window:perform_action(wezterm.action.CloseCurrentTab({ confirm = not skip_close_set[basename] }), pane)
+                local title = pane:get_title() or ''
+                window:perform_action(wezterm.action.CloseCurrentTab({ confirm = not skip_close_set[title] }), pane)
             end),
         },
 
