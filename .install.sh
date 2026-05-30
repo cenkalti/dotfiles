@@ -1,21 +1,23 @@
 #!/bin/bash -e
-git clone "$REPO" "$HOME/projects/dotfiles"
-cd "$HOME/projects/dotfiles"
+git clone --bare "$REPO" "$HOME/projects/dotfiles.git"
+cd "$HOME/projects/dotfiles.git"
 
-# git worktree add refuses non-empty paths, so create at a temp path and relocate
-# to register $HOME as a linked worktree of the same repo.
+# Register $HOME as the single worktree. git worktree add refuses non-empty
+# paths, so add at a temp path and relocate the gitfile to $HOME.
 TMP=$(mktemp -d -t dotfiles-home-wt)
 rmdir "$TMP"
 git worktree add -f --no-checkout "$TMP" master
 META_ID=$(basename "$TMP")
-mv ".git/worktrees/$META_ID" ".git/worktrees/home"
+mv "worktrees/$META_ID" "worktrees/home"
 mv "$TMP/.git" "$HOME/.git"
 rmdir "$TMP"
-printf 'gitdir: %s/projects/dotfiles/.git/worktrees/home\n' "$HOME" > "$HOME/.git"
-printf '%s/.git\n' "$HOME" > ".git/worktrees/home/gitdir"
+printf 'gitdir: %s/projects/dotfiles.git/worktrees/home\n' "$HOME" > "$HOME/.git"
+printf '%s/.git\n' "$HOME" > "worktrees/home/gitdir"
 
-# Per-worktree config so $HOME doesn't trip fsmonitor or list thousands of untracked.
+# Per-worktree config: override the bare flag for $HOME and skip
+# fsmonitor/untracked-cache thrash over the full home directory.
 git config extensions.worktreeConfig true
+git -C "$HOME" config --worktree core.bare false
 git -C "$HOME" config --worktree core.fsmonitor false
 git -C "$HOME" config --worktree core.untrackedCache false
 git -C "$HOME" config --worktree status.showUntrackedFiles no
