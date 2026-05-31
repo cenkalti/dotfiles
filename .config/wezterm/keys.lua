@@ -3,7 +3,7 @@ local work = require('work')
 
 local M = {}
 
-local skip_close_titles = { 'zsh', 'tmux', 'nvim', 'lazygit', 'agent' }
+local skip_close_titles = { 'zsh', 'tmux', 'nvim', 'lazygit', 'agent', 'glow' }
 local skip_close_set = {}
 for _, name in ipairs(skip_close_titles) do
     skip_close_set[name] = true
