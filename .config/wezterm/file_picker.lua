@@ -18,15 +18,19 @@ local function detect_root(pane)
     return cwd
 end
 
-local function list_files(root)
-    local ok, stdout = wezterm.run_child_process({
+local function list_files(root, extra_args)
+    local cmd = {
         '/opt/homebrew/bin/fd',
         '--type', 'f',
         '--hidden',
         '--exclude', '.git',
         '--base-directory', root,
-        '.',
-    })
+    }
+    for _, arg in ipairs(extra_args or {}) do
+        table.insert(cmd, arg)
+    end
+    table.insert(cmd, '.')
+    local ok, stdout = wezterm.run_child_process(cmd)
     if not ok then
         return {}
     end
@@ -90,33 +94,59 @@ local function open_file(window, root, rel_path)
     end
 end
 
+local function pick_file(window, pane, opts)
+    local root = detect_root(pane)
+    if not root then
+        return
+    end
+    local files = list_files(root, opts.fd_args)
+    if #files == 0 then
+        return
+    end
+    local choices = {}
+    for _, rel in ipairs(files) do
+        table.insert(choices, { label = rel, id = rel })
+    end
+    window:perform_action(
+        wezterm.action.InputSelector({
+            title = opts.title,
+            choices = choices,
+            fuzzy = true,
+            action = wezterm.action_callback(function(inner_window, inner_pane, id, _)
+                if id and id ~= '' then
+                    opts.on_select(inner_window, inner_pane, root, id)
+                end
+            end),
+        }),
+        pane
+    )
+end
+
+local function glow_file(window, root, rel_path)
+    local abs = root .. '/' .. rel_path
+    local mux = window:mux_window()
+    if mux then
+        mux:spawn_tab({
+            args = spawn.wrap({ 'glow', '-p', abs }),
+            cwd = root,
+        })
+    end
+end
+
 function M.setup()
     wezterm.on('file-picker-workspace', function(window, pane)
-        local root = detect_root(pane)
-        if not root then
-            return
-        end
-        local files = list_files(root)
-        if #files == 0 then
-            return
-        end
-        local choices = {}
-        for _, rel in ipairs(files) do
-            table.insert(choices, { label = rel, id = rel })
-        end
-        window:perform_action(
-            wezterm.action.InputSelector({
-                title = 'Files',
-                choices = choices,
-                fuzzy = true,
-                action = wezterm.action_callback(function(inner_window, _, id, _)
-                    if id and id ~= '' then
-                        open_file(inner_window, root, id)
-                    end
-                end),
-            }),
-            pane
-        )
+        pick_file(window, pane, {
+            title = 'Files',
+            on_select = function(w, _, root, id) open_file(w, root, id) end,
+        })
+    end)
+
+    wezterm.on('file-picker-glow', function(window, pane)
+        pick_file(window, pane, {
+            title = 'Markdown',
+            fd_args = { '--extension', 'md', '--extension', 'markdown' },
+            on_select = function(w, _, root, id) glow_file(w, root, id) end,
+        })
     end)
 end
 

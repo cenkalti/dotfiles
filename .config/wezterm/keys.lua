@@ -38,6 +38,7 @@ function M.setup(config)
         { mods = 'SUPER', key = 'g', action = wezterm.action.EmitEvent('toggle-lazygit') },
         { mods = 'SUPER', key = 'e', action = wezterm.action.EmitEvent('toggle-nvim') },
         { mods = 'SUPER|SHIFT', key = 'e', action = wezterm.action.EmitEvent('file-picker-workspace') },
+        { mods = 'SUPER|SHIFT', key = 'g', action = wezterm.action.EmitEvent('file-picker-glow') },
         { mods = 'SUPER|ALT', key = '=', action = wezterm.action.EmitEvent('increase-transparency') },
         { mods = 'SUPER|ALT', key = '-', action = wezterm.action.EmitEvent('decrease-transparency') },
         { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('increase-blur') },
