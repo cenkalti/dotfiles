@@ -19,7 +19,6 @@
 autoload -U select-word-style
 select-word-style bash
 
-export EDITOR=nvim
 export PAGER=less
 export LESS="-iR"  # ignore case
 
