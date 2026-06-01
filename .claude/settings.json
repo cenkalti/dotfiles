@@ -1,21 +1,5 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "autoCompactEnabled": true,
-  "autoMemoryEnabled": false,
-  "autoUpdatesChannel": "stable",
   "cleanupPeriodDays": 9999,
-  "disableAgentView": true,
-  "effortLevel": "xhigh",
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "harness-teleport@harness-teleport": true,
-    "skill-creator@claude-plugins-official": true,
-    "work@work-dev": true
-  },
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
@@ -23,34 +7,10 @@
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_TELEMETRY": "1"
   },
-  "extraKnownMarketplaces": {
-    "harness-teleport": {
-      "source": {
-        "path": "/Users/cenk/projects/harness-teleport",
-        "source": "directory"
-      }
-    },
-    "work-dev": {
-      "source": {
-        "path": "/Users/cenk/projects/harness",
-        "source": "directory"
-      }
-    }
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "afplay /System/Library/Sounds/Glass.aiff",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "minimumVersion": "2.1.153",
-  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash(task set-status *)",
@@ -79,37 +39,56 @@
     "defaultMode": "default",
     "disableBypassPermissionsMode": "disable"
   },
-  "preferredNotifChannel": "auto",
+  "model": "opus[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "disableAgentView": true,
+  "statusLine": {
+    "type": "command",
+    "command": "agent statusline"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "harness-teleport@harness-teleport": true,
+    "skill-creator@claude-plugins-official": true,
+    "work@work-dev": true,
+    "monitor-test@monitor-test": true
+  },
+  "extraKnownMarketplaces": {
+    "harness-teleport": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/cenk/projects/harness-teleport"
+      }
+    },
+    "work-dev": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/cenk/projects/harness"
+      }
+    },
+    "monitor-test": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/cenk/projects/monitor-test"
+      }
+    }
+  },
   "sandbox": {
-    "autoAllowBashIfSandboxed": true,
     "enabled": false,
     "failIfUnavailable": true,
-    "filesystem": {
-      "allowWrite": [
-        "~/.work",
-        "~/projects",
-        "~/go",
-        "~/Library/Caches/go-build"
-      ],
-      "denyRead": [
-        "~/.ssh",
-        "~/.aws",
-        "~/.config/gh",
-        "~/Library/Keychains",
-        "~/.netrc",
-        "~/.pgpass"
-      ],
-      "denyWrite": [
-        "~/.ssh",
-        "~/.aws",
-        "~/.config/gh",
-        "~/Library/Keychains",
-        "~/.netrc",
-        "~/.pgpass",
-        "~/.zshrc",
-        "~/.bashrc"
-      ]
-    },
+    "autoAllowBashIfSandboxed": true,
     "network": {
       "allowedDomains": [
         "api.anthropic.com",
@@ -123,13 +102,39 @@
         "objects.githubusercontent.com",
         "raw.githubusercontent.com"
       ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.work",
+        "~/projects",
+        "~/go",
+        "~/Library/Caches/go-build"
+      ],
+      "denyWrite": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass",
+        "~/.zshrc",
+        "~/.bashrc"
+      ],
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.config/gh",
+        "~/Library/Keychains",
+        "~/.netrc",
+        "~/.pgpass"
+      ]
     }
   },
-  "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "command": "agent statusline",
-    "type": "command"
-  },
+  "effortLevel": "xhigh",
   "tui": "fullscreen",
+  "autoMemoryEnabled": false,
+  "preferredNotifChannel": "auto",
+  "autoCompactEnabled": true,
+  "skipAutoPermissionPrompt": true,
   "useAutoModeDuringPlan": true
 }
