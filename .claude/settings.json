@@ -3,9 +3,7 @@
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_TELEMETRY": "1"
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
   "attribution": {
     "commit": "",
@@ -62,8 +60,7 @@
     "gopls-lsp@claude-plugins-official": true,
     "harness-teleport@harness-teleport": true,
     "skill-creator@claude-plugins-official": true,
-    "work@work-dev": true,
-    "monitor-test@monitor-test": true
+    "work@work-dev": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -76,12 +73,6 @@
       "source": {
         "source": "directory",
         "path": "/Users/cenk/projects/harness"
-      }
-    },
-    "monitor-test": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/cenk/projects/monitor-test"
       }
     }
   },
