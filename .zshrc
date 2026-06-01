@@ -16,6 +16,9 @@
 #
 # See http://zsh.sourceforge.net/Intro/intro_3.html
 
+# Use emacs keymap (^A, ^E, ^W, alt-backspace, ...).
+bindkey -e
+
 autoload -U select-word-style
 select-word-style bash
 
