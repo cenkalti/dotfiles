@@ -176,8 +176,6 @@
 
 [fetch]
 	prune = true
-	pruneTags = true
-	all = true
 
 [filter "lfs"]
         clean = git-lfs clean -- %f
@@ -211,3 +209,7 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[remote "origin"]
+	tagOpt = --no-tags
+[remote "private"]
+	tagOpt = --no-tags
