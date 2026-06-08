@@ -18,6 +18,8 @@ vim.opt.updatetime = 250
 vim.opt.wildmode = 'longest:full,full' -- Command completion mode
 vim.opt.showcmd = false
 vim.opt.wrap = false
+vim.opt.linebreak = true -- When wrap is on, break at word boundaries instead of mid-word
+vim.opt.breakat = ' \t' -- Only break at whitespace, not punctuation
 
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
