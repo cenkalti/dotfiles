@@ -42,7 +42,7 @@ unsetopt AUTO_CD
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-alias l="eza -l --icons --git --hyperlink"
+alias l="eza -l --icons --hyperlink"
 alias la="l -aa"
 alias lt="ls -lt | head"
 
