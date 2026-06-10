@@ -1,0 +1,47 @@
+#!/bin/sh
+# open-in-nvim: open a file in the current wezterm window's nvim instance,
+# reusing a live instance if present, else spawning a new nvim tab.
+# Mirrors .config/wezterm/file_picker.lua's open_file(). Used by lazygit os.open.
+
+file="$1"
+[ -n "$file" ] || exit 0
+
+# lazygit passes paths relative to the repo root (= $PWD). nvim --remote resolves
+# relative paths against the *server's* cwd, so make the path absolute here.
+case "$file" in
+  /*) abs="$file" ;;
+  *)  abs="$PWD/$file" ;;
+esac
+
+# Resolve this pane's wezterm window id (same query as the nvim() wrapper in .zshenv).
+window_id=""
+if [ -n "$WEZTERM_PANE" ] && command -v wezterm >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+  window_id=$(wezterm cli list --format json 2>/dev/null \
+    | jq -r ".[] | select(.pane_id == ${WEZTERM_PANE}) | .window_id" 2>/dev/null \
+    | head -1)
+fi
+
+socket=""
+[ -n "$window_id" ] && socket="$HOME/.work/run/nvim-wez-${window_id}.sock"
+
+# Live nvim server for this window? Send the file and focus its pane.
+if [ -n "$socket" ] && [ -S "$socket" ] \
+   && nvim --server "$socket" --remote-expr '1' >/dev/null 2>&1; then
+  nvim --server "$socket" --remote "$abs"
+  nvim_pane=$(nvim --server "$socket" --remote-expr '$WEZTERM_PANE' 2>/dev/null)
+  [ -n "$nvim_pane" ] && wezterm cli activate-pane --pane-id "$nvim_pane" >/dev/null 2>&1
+  exit 0
+fi
+
+# No live instance: spawn a new nvim tab in this window. Going through
+# `zsh -c 'exec nvim ...'` invokes the nvim() wrapper in .zshenv, which sets up
+# the --listen socket (same trick as .config/wezterm/spawn.lua's wrap()).
+if [ -n "$WEZTERM_PANE" ] && command -v wezterm >/dev/null 2>&1; then
+  new_pane=$(wezterm cli spawn --cwd "$PWD" -- \
+    /opt/homebrew/bin/zsh -c 'exec nvim "$@"' nvim "$abs" 2>/dev/null)
+  [ -n "$new_pane" ] && wezterm cli activate-pane --pane-id "$new_pane" >/dev/null 2>&1
+  exit 0
+fi
+
+# Fallback (not inside wezterm): just open nvim.
+exec nvim "$abs"

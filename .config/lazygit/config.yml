@@ -1,5 +1,7 @@
 notARepository: 'skip'
 promptToReturnFromSubprocess: false
+os:
+  open: '$HOME/.local/bin/open-in-nvim {{filename}}'
 gui:
   nerdFontsVersion: "3"
   switchTabsWithPanelJumpKeys: true
