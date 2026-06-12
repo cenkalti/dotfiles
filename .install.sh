@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+# `set -e` from the shebang is ignored under `curl ... | bash`, so set it here.
+set -euo pipefail
 git clone --bare "$REPO" "$HOME/projects/dotfiles.git"
 cd "$HOME/projects/dotfiles.git"
 
@@ -21,6 +23,13 @@ git -C "$HOME" config --worktree core.bare false
 git -C "$HOME" config --worktree core.fsmonitor false
 git -C "$HOME" config --worktree core.untrackedCache false
 git -C "$HOME" config --worktree status.showUntrackedFiles no
+
+# Configure remote tracking. A bare clone only sets remote.origin.url, so plain
+# `git push`/`git pull` from $HOME would have no upstream without these.
+git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+git fetch origin
 
 # Seed the $HOME worktree's index from HEAD without overwriting working-tree files.
 git -C "$HOME" reset

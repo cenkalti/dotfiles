@@ -1,6 +1,6 @@
 # cenkalti's dotfiles
 
-The repo is checked out as a normal clone at `~/projects/dotfiles`, with `$HOME` registered as a linked git worktree of the same repo. Both worktrees stay on `master`; commits from either advance the branch and the other catches up with `git reset --hard`.
+A **bare** git repo at `~/projects/dotfiles.git` with `$HOME` registered as its single linked worktree. `$HOME/.git` is a one-line gitfile pointing into the bare repo, so plain `git` commands run from anywhere under `$HOME` operate on the dotfiles.
 
 ## Installation
 
@@ -14,16 +14,10 @@ curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | 
 
 ## Usage
 
-Plain `git` works from either worktree:
+Plain `git` works from `$HOME`:
 ```sh
 cd ~
 git add .vimrc
 git commit -m "add .vimrc file"
 git push
-```
-
-After a commit in one worktree, refresh the other:
-```sh
-git -C ~ reset --hard                    # refresh $HOME
-git -C ~/projects/dotfiles reset --hard  # refresh main checkout
 ```
