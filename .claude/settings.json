@@ -33,6 +33,7 @@
       "Read(/Users/cenk/.work/**)",
       "Read(/Users/cenk/.work/schemas/**)",
       "Read(/Users/cenk/projects/teleport/**)",
+      "Read(/tmp/**)",
       "mcp__claude_ai_Gmail__search_threads"
     ],
     "defaultMode": "default",
