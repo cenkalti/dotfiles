@@ -20,7 +20,7 @@ Owner is doing a cleanup pass on historical artifacts, so be willing to recommen
 - `.claude/` — Claude Code settings and statusline script for this machine.
 - `.hammerspoon/` — Hammerspoon Lua config (Spoons/EmmyLua.spoon is gitignored).
 - `.githooks/pre-commit` — blocks staged files > 10 MB (override via `GIT_MAX_FILE_SIZE`).
-- `bin/claude-usage` — local helper script.
+- `.local/bin/claude-usage` — local helper script.
 - `.install.sh` — bootstrap that clones the repo as bare to `~/projects/dotfiles.git` and registers `$HOME` as the linked worktree.
 
 ## Conventions
