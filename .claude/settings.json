@@ -125,9 +125,12 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
+  "theme": "dark",
   "editorMode": "normal",
+  "verbose": true,
   "preferredNotifChannel": "auto",
   "autoCompactEnabled": true,
+  "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
   "useAutoModeDuringPlan": true
 }
