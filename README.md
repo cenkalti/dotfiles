@@ -12,6 +12,13 @@ export REPO="git@github.com:cenkalti/dotfiles"
 curl 'https://raw.githubusercontent.com/cenkalti/dotfiles/master/.install.sh' | bash
 ```
 
+The bootstrap seeds the index but does **not** write files into `$HOME`, so it never clobbers configs already there. Deploy the tracked files afterward:
+```sh
+git -C ~ checkout .          # deploy everything (overwrites existing files)
+# or, to keep any files already present:
+git -C ~ checkout-index -a   # only write files that don't exist yet
+```
+
 ## Usage
 
 Plain `git` works from `$HOME`:

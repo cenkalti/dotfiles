@@ -9,9 +9,7 @@ A bare repo plus one worktree:
 - `~/projects/dotfiles.git/` — the **bare repo**. No working tree; just refs, objects, and `worktrees/`.
 - `$HOME` — the only worktree. `$HOME/.git` is a one-line gitfile pointing into `~/projects/dotfiles.git/worktrees/home/`. Deployed dotfiles live here.
 
-All editing of dotfiles happens directly in `$HOME`. The harness spawns additional linked worktrees of this bare repo under `~/.work/tree/dotfiles/<task>/` via `agent run dotfiles/<task>`.
-
-Owner is doing a cleanup pass on historical artifacts, so be willing to recommend deletions of clearly stale files rather than preserving them by default.
+All editing of dotfiles happens directly in `$HOME`.
 
 ## Layout
 
@@ -22,8 +20,3 @@ Owner is doing a cleanup pass on historical artifacts, so be willing to recommen
 - `.githooks/pre-commit` — blocks staged files > 10 MB (override via `GIT_MAX_FILE_SIZE`).
 - `.local/bin/claude-usage` — local helper script.
 - `.install.sh` — bootstrap that clones the repo as bare to `~/projects/dotfiles.git` and registers `$HOME` as the linked worktree.
-
-## Conventions
-
-- One-line commit messages, under 50 chars (e.g. `claude: keep history`, `wez: use harness workspace switcher`). Prefix with the tool/area being touched.
-- `.golangci.yml` and `.actrc` exist at the root but there is no Go or CI code in the repo — they ship as user-level defaults for whatever project the user `cd`s into.
