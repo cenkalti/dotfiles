@@ -128,7 +128,7 @@
   "autoMemoryEnabled": false,
   "theme": "dark",
   "editorMode": "normal",
-  "verbose": true,
+  "verbose": false,
   "preferredNotifChannel": "auto",
   "autoCompactEnabled": true,
   "remoteControlAtStartup": false,
