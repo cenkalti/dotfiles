@@ -13,6 +13,17 @@ function M.setup(config)
     local keys = config.keys or {}
     local new_keys = {
         { mods = 'SHIFT', key = 'Enter', action = wezterm.action.SendString('\x1b\r') }, --- Added by Claude Code
+
+        -- Only copy when there is a selection; otherwise leave the clipboard untouched.
+        {
+            mods = 'SUPER',
+            key = 'c',
+            action = wezterm.action_callback(function(window, pane)
+                if window:get_selection_text_for_pane(pane) ~= '' then
+                    window:perform_action(wezterm.action.CopyTo('Clipboard'), pane)
+                end
+            end),
+        },
         {
             mods = 'SUPER',
             key = 'l',
