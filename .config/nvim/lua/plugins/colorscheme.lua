@@ -51,6 +51,7 @@ local M = {
                     GoChannelSend = { fg = colors.text, bg = colors.red },
                     ['@string.go'] = { fg = colors.overlay2 },
                     ['@module.go'] = { fg = colors.green },
+                    ['@lsp.type.namespace.go'] = { fg = colors.green },
                     ['@type.go'] = { fg = colors.text },
                     ['@type.builtin.go'] = { fg = colors.overlay2 },
                     ['@type.definition.go'] = { fg = colors.mauve },
