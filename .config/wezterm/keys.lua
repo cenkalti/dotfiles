@@ -56,11 +56,11 @@ function M.setup(config)
         { mods = 'SUPER', key = 'j', action = wezterm.action.EmitEvent('toggle-quake') },
         { mods = 'SUPER', key = 'u', action = wezterm.action.SpawnCommandInNewTab({ args = { os.getenv('HOME') .. '/.local/bin/claude-usage' } }) },
 
-        -- Workspace Switcher
+        -- Workspace Switcher (fzf picker; create on no-match)
         {
             mods = 'SUPER',
             key = 's',
-            action = wezterm.action.ShowLauncherArgs({ title = 'Workspaces', flags = 'WORKSPACES' }),
+            action = wezterm.action.EmitEvent('pick-workspace'),
         },
         {
             mods = 'SUPER',
@@ -71,25 +71,6 @@ function M.setup(config)
             mods = 'SUPER',
             key = '[',
             action = wezterm.action_callback(function(window, pane) work.switch_workspace(window, pane, -1) end),
-        },
-
-        -- New Workspace
-        {
-            mods = 'SUPER',
-            key = 'S',
-            action = wezterm.action.PromptInputLine({
-                description = wezterm.format({
-                    { Attribute = { Intensity = 'Bold' } },
-                    { Foreground = { AnsiColor = 'Fuchsia' } },
-                    { Text = 'Enter name for new workspace' },
-                }),
-                action = wezterm.action_callback(function(window, pane, line)
-                    if line then
-                        ---@diagnostic disable-next-line: param-type-mismatch
-                        window:perform_action(wezterm.action.SwitchToWorkspace({ name = line }), pane)
-                    end
-                end),
-            }),
         },
 
         -- Rename Workspace
