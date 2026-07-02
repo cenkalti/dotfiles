@@ -64,7 +64,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "work@work-dev": true,
-    "teleport@harness-teleport": true
+    "teleport@harness-teleport": true,
+    "sandik@sandik": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -77,6 +78,12 @@
       "source": {
         "source": "directory",
         "path": "/Users/cenk/projects/harness"
+      }
+    },
+    "sandik": {
+      "source": {
+        "source": "git",
+        "url": "git@github.com:ermeydani/sandik.git"
       }
     }
   },
