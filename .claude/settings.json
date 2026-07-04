@@ -1,6 +1,7 @@
 {
   "cleanupPeriodDays": 9999,
   "env": {
+    "CLAUDE_AFK_TIMEOUT_MS": "3600000",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
@@ -36,7 +37,9 @@
       "Read(/tmp/**)",
       "Read(/Users/cenk/go/pkg/mod/**)",
       "Read(/Users/cenk/projects/**)",
-      "mcp__claude_ai_Gmail__search_threads"
+      "mcp__claude_ai_Gmail__search_threads",
+      "mcp__claude_ai_Google_Calendar__list_events",
+      "mcp__calendar-sync__sync_calendar"
     ],
     "defaultMode": "default",
     "disableBypassPermissionsMode": "disable"
