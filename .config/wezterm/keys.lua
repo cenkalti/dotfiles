@@ -43,6 +43,9 @@ function M.setup(config)
         },
         { mods = 'SUPER|ALT', key = 't', action = wezterm.action.EmitEvent('toggle-transparency') },
         { mods = 'SUPER', key = 'd', action = wezterm.action.EmitEvent('work-toggle-dashboard') },
+        -- Switch to the "default" workspace; SwitchToWorkspace creates it (with
+        -- the default shell) if it doesn't exist yet.
+        { mods = 'SUPER|SHIFT', key = 'd', action = wezterm.action.SwitchToWorkspace({ name = 'default' }) },
         { mods = 'SUPER', key = 'a', action = wezterm.action.EmitEvent('work-toggle-agent') },
         { mods = 'SUPER|SHIFT', key = 'a', action = wezterm.action.EmitEvent('work-pick-agent') },
         { mods = 'SUPER', key = 'g', action = wezterm.action.EmitEvent('toggle-lazygit') },

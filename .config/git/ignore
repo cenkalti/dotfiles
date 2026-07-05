@@ -42,3 +42,5 @@ compile_commands.json
 **/CLAUDE.local.md
 covprofile
 /workspace
+
+**/.claude/.cc-writes/
