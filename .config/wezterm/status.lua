@@ -20,14 +20,30 @@ function M.setup()
         -- agent's workspace after its handle too, so the two agree for agent
         -- panes; work_handle stays the preferred source as the authoritative
         -- per-pane identity (covers in-place runs and panes moved workspaces).
-        local left = pane and pane:get_user_vars().work_handle or ''
+        --
+        -- Every mux read below is pcall-guarded (same reasoning work.lua's own
+        -- update-status handler documents): when the mux domain channel drops,
+        -- get_user_vars / active_workspace raise, and an unguarded raise would
+        -- abort this handler before set_left_status runs — freezing the bar at
+        -- its last value until the channel recovers. Guarding lets a bad tick
+        -- fall through to empty and the next healthy tick repaint.
+        local left = ''
+        if pane then
+            local ok, vars = pcall(pane.get_user_vars, pane)
+            if ok and vars then
+                left = vars.work_handle or ''
+            end
+        end
         if left == '' then
-            left = window:active_workspace()
+            local ok, ws = pcall(window.active_workspace, window)
+            if ok and ws then
+                left = ws
+            end
         end
         if left == 'default' then
             left = ''
         end
-        window:set_left_status(left ~= '' and ' ' .. left .. ' ' or '')
+        pcall(window.set_left_status, window, left ~= '' and ' ' .. left .. ' ' or '')
 
         local basename = ''
         if pane then
@@ -36,7 +52,7 @@ function M.setup()
                 basename = cwd_basename(cwd)
             end
         end
-        window:set_right_status(basename ~= '' and ' ' .. basename .. ' ' or '')
+        pcall(window.set_right_status, window, basename ~= '' and ' ' .. basename .. ' ' or '')
     end)
 end
 
