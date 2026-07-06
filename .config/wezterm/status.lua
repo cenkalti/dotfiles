@@ -14,17 +14,20 @@ function M.setup()
     end)
 
     wezterm.on('update-status', function(window, pane)
-        -- For an agent pane, prefer its display handle (set by the work harness
-        -- as the work_handle user var) over the raw workspace slug.
-        local handle = pane and pane:get_user_vars().work_handle
-        local left
-        if handle and handle ~= '' then
-            left = ' ' .. handle .. ' '
-        else
-            local workspace = window:active_workspace()
-            left = workspace ~= 'default' and ' ' .. workspace .. ' ' or ''
+        -- Left status: the agent's display handle (work_handle user var, set by
+        -- the work harness) when present, else the workspace name — with
+        -- WezTerm's unnamed 'default' suppressed. The harness now names an
+        -- agent's workspace after its handle too, so the two agree for agent
+        -- panes; work_handle stays the preferred source as the authoritative
+        -- per-pane identity (covers in-place runs and panes moved workspaces).
+        local left = pane and pane:get_user_vars().work_handle or ''
+        if left == '' then
+            left = window:active_workspace()
         end
-        window:set_left_status(left)
+        if left == 'default' then
+            left = ''
+        end
+        window:set_left_status(left ~= '' and ' ' .. left .. ' ' or '')
 
         local basename = ''
         if pane then
