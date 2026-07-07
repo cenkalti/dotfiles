@@ -22,6 +22,7 @@ local function hash_path(path)
 end
 
 local function color_for_path(path)
+    path = path:gsub('/+$', '') -- normalize trailing slashes so same dir hashes alike
     return palette[(hash_path(path) % #palette) + 1]
 end
 
