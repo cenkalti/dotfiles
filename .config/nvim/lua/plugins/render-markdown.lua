@@ -5,6 +5,7 @@ return {
     ---@module 'render-markdown'
     opts = {
         anti_conceal = { enabled = false },
+        heading = { enabled = false },
     },
     config = function(_, opts)
         require('render-markdown').setup(opts)
