@@ -23,10 +23,10 @@ config.font_rules = {
         font = wezterm.font('Monaspace Radon NF', { style = 'Normal', weight = 'Bold' }),
     },
 }
-config.font_size = 16.0
+config.font_size = 17.0
 config.window_frame = {
     font = wezterm.font('Roboto'),
-    font_size = 16.0,
+    font_size = 17.0,
 }
 config.quit_when_all_windows_are_closed = false
 config.default_prog = { '/opt/homebrew/bin/zsh', '-li' }
