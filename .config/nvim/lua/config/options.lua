@@ -24,3 +24,7 @@ vim.opt.breakat = ' \t' -- Only break at whitespace, not punctuation
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
+
+-- Custom statuscolumn so the gitsigns gutter mark also renders on wrapped
+-- screen rows (Neovim otherwise only paints a sign on a line's first row).
+require('config.statuscolumn').setup()
