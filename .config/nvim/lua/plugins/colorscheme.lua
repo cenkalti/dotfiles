@@ -94,6 +94,16 @@ local M = {
             end,
         })
         vim.cmd.colorscheme('catppuccin')
+
+        -- Make LSP highlights (semantic tokens) paint nothing, letting
+        -- treesitter show through. Tokens stay enabled; the groups are blanked.
+        local clear_lsp_hl = function()
+            for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
+                vim.api.nvim_set_hl(0, group, {})
+            end
+        end
+        vim.api.nvim_create_autocmd('ColorScheme', { callback = clear_lsp_hl })
+        clear_lsp_hl()
     end,
 }
 
