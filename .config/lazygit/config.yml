@@ -24,3 +24,13 @@ customCommands:
     description: 'Pull current branch only'
     command: 'git pull {{.CheckedOutBranch.UpstreamRemote}} {{.CheckedOutBranch.UpstreamBranch}}'
     loadingText: 'Pulling current branch...'
+  - key: 'D'
+    context: 'files'
+    description: 'diffmap — structural overview of uncommitted changes'
+    command: 'diffmap | less -R'
+    output: terminal
+  - key: 'D'
+    context: 'commits'
+    description: 'diffmap — structural overview of the selected commit'
+    command: 'diffmap {{.SelectedCommit.Hash}} | less -R'
+    output: terminal
