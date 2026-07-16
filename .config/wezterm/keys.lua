@@ -48,6 +48,8 @@ function M.setup(config)
         { mods = 'SUPER|SHIFT', key = 'd', action = wezterm.action.SwitchToWorkspace({ name = 'default' }) },
         { mods = 'SUPER', key = 'a', action = wezterm.action.EmitEvent('work-toggle-agent') },
         { mods = 'SUPER|SHIFT', key = 'a', action = wezterm.action.EmitEvent('work-pick-agent') },
+        { mods = 'SUPER', key = 'y', action = wezterm.action.EmitEvent('work-pane-to-agent') },
+        { mods = 'SUPER|SHIFT', key = 'y', action = wezterm.action.EmitEvent('work-pane-to-new-agent') },
         { mods = 'SUPER', key = 'g', action = wezterm.action.EmitEvent('toggle-lazygit') },
         { mods = 'SUPER', key = 'e', action = wezterm.action.EmitEvent('toggle-nvim') },
         { mods = 'SUPER|SHIFT', key = 'e', action = wezterm.action.EmitEvent('file-picker-workspace') },
