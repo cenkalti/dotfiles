@@ -22,6 +22,12 @@ fi
 
 self=${0:A}
 
+# Name the transient tab while the picker UI is up — WezTerm's default tab title
+# mirrors the active pane's title, and this tab would otherwise read "zsh".
+# Mirrors the agent picker's "pick agent". Bare OSC 2 to /dev/tty like emit()
+# below; the --preview subshell exits above, so it never clobbers this.
+printf '\033]2;pick workspace\a' > /dev/tty
+
 out=$(printf '%s\n' "$@" | "$fzf" \
     --style minimal \
     --ansi \
