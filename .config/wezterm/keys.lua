@@ -56,10 +56,14 @@ function M.setup(config)
         { mods = 'SUPER|SHIFT', key = 'g', action = wezterm.action.EmitEvent('file-picker-glow') },
         { mods = 'SUPER|ALT', key = '=', action = wezterm.action.EmitEvent('increase-transparency') },
         { mods = 'SUPER|ALT', key = '-', action = wezterm.action.EmitEvent('decrease-transparency') },
-        { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('increase-blur') },
-        { mods = 'SUPER|ALT|SHIFT', key = '_', action = wezterm.action.EmitEvent('decrease-blur') },
+        { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('decrease-blur') },
+        { mods = 'SUPER|ALT|SHIFT', key = '_', action = wezterm.action.EmitEvent('increase-blur') },
         { mods = 'SUPER', key = 'j', action = wezterm.action.EmitEvent('toggle-quake') },
-        { mods = 'SUPER', key = 'u', action = wezterm.action.SpawnCommandInNewTab({ args = { os.getenv('HOME') .. '/.local/bin/claude-usage' } }) },
+        {
+            mods = 'SUPER',
+            key = 'u',
+            action = wezterm.action.SpawnCommandInNewTab({ args = { os.getenv('HOME') .. '/.local/bin/claude-usage' } }),
+        },
 
         -- Workspace Switcher (fzf picker; create on no-match)
         {
@@ -70,12 +74,16 @@ function M.setup(config)
         {
             mods = 'SUPER',
             key = ']',
-            action = wezterm.action_callback(function(window, pane) work.switch_workspace(window, pane, 1) end),
+            action = wezterm.action_callback(function(window, pane)
+                work.switch_workspace(window, pane, 1)
+            end),
         },
         {
             mods = 'SUPER',
             key = '[',
-            action = wezterm.action_callback(function(window, pane) work.switch_workspace(window, pane, -1) end),
+            action = wezterm.action_callback(function(window, pane)
+                work.switch_workspace(window, pane, -1)
+            end),
         },
 
         -- Rename Workspace
@@ -161,7 +169,7 @@ function M.setup(config)
     config.mouse_bindings = {
         {
             event = { Down = { streak = 3, button = 'Left' } },
-            action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+            action = wezterm.action.SelectTextAtMouseCursor('SemanticZone'),
             mods = 'NONE',
         },
     }
