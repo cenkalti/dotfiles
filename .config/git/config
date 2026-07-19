@@ -211,5 +211,3 @@
 	autoupdate = true
 [remote "origin"]
 	tagOpt = --no-tags
-[remote "private"]
-	tagOpt = --no-tags
