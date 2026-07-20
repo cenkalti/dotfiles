@@ -44,3 +44,4 @@ covprofile
 /workspace
 
 **/.claude/.cc-writes/
+.codegraph/
