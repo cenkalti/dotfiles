@@ -39,7 +39,8 @@
       "Read(/Users/cenk/projects/**)",
       "mcp__claude_ai_Gmail__search_threads",
       "mcp__claude_ai_Google_Calendar__list_events",
-      "mcp__calendar-sync__sync_calendar"
+      "mcp__calendar-sync__sync_calendar",
+      "mcp__codegraph__*"
     ],
     "defaultMode": "default",
     "disableBypassPermissionsMode": "disable"
@@ -52,6 +53,16 @@
           {
             "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph prompt-hook"
           }
         ]
       }
@@ -138,6 +149,7 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "editorMode": "normal",
   "verbose": false,
