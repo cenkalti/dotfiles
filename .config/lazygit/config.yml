@@ -15,6 +15,7 @@ keybinding:
     viewResetOptions: 'G'
 git:
   fetchAll: false
+  overrideGpg: true
   pagers:
     - colorArg: always
       pager: delta --dark --paging=never
