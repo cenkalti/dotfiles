@@ -96,13 +96,12 @@ function M.setup(config)
                     { Foreground = { AnsiColor = 'Fuchsia' } },
                     { Text = 'Rename workspace' },
                 }),
-                action = wezterm.action_callback(function(window, pane, line)
-                    if line then
-                        ---@diagnostic disable-next-line: param-type-mismatch
-                        window:perform_action(
-                            wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line),
-                            pane
-                        )
+                action = wezterm.action_callback(function(_, _, line)
+                    -- line is nil when the prompt is cancelled and '' when it
+                    -- is submitted empty; renaming to '' would strand the
+                    -- workspace under an unselectable name.
+                    if line and line ~= '' then
+                        wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
                     end
                 end),
             }),
