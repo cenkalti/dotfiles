@@ -79,7 +79,8 @@
     "skill-creator@claude-plugins-official": true,
     "work@work-dev": true,
     "teleport@harness-teleport": true,
-    "sandik@sandik": true
+    "sandik@sandik": true,
+    "claude-security@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
