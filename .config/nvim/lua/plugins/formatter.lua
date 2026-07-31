@@ -27,7 +27,22 @@ return {
                             },
                         }
                     end,
-                    require('formatter.filetypes.go').goimports,
+                    -- goimports must be told which package the buffer belongs
+                    -- to. Reading only stdin it cannot see sibling files, so
+                    -- package-level symbols declared elsewhere in the package
+                    -- (lib/client's `log`, for one) look undefined and it
+                    -- invents an import for them from the module cache.
+                    function()
+                        local util = require('formatter.util')
+                        return {
+                            exe = 'goimports',
+                            stdin = true,
+                            args = {
+                                '-srcdir',
+                                util.escape_path(util.get_current_buffer_file_dir()),
+                            },
+                        }
+                    end,
                 },
                 python = {
                     require('formatter.filetypes.python').isort,
