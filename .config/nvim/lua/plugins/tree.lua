@@ -11,6 +11,14 @@ return {
         },
         config = function()
             require('nvim-tree').setup({
+                -- nvim-tree binds <C-k> to the file info popup by default, and that
+                -- buffer-local mapping shadows the global <C-k> scroll-up. Delete it so
+                -- the global scroll mapping (see which-key.lua) applies in the tree too.
+                on_attach = function(bufnr)
+                    local api = require('nvim-tree.api')
+                    api.config.mappings.default_on_attach(bufnr)
+                    vim.keymap.del('n', '<C-k>', { buffer = bufnr })
+                end,
                 view = {
                     width = '20%',
                 },
