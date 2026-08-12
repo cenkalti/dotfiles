@@ -551,15 +551,6 @@ add-zsh-hook precmd load-local-aliases
 # bun
 [ -s "/Users/cenk/.bun/_bun" ] && source "/Users/cenk/.bun/_bun"
 
-# cooldowns:yarn:start
-export YARN_NPM_MINIMAL_AGE_GATE="4320"
-# cooldowns:yarn:end
-# cooldowns:uv:start
-export UV_EXCLUDE_NEWER="3 days"
-# cooldowns:uv:end
-# cooldowns:pip:start
-export PIP_UPLOADED_PRIOR_TO="P3D"
-# cooldowns:pip:end
 
 ###############################################################################
 # If you are setting a local environment variable, do it in ~/.local.zshenv
@@ -571,3 +562,12 @@ fi
 # Do not add anything below this line
 ###############################################################################
 
+# cooldowns:yarn:start
+export YARN_NPM_MINIMAL_AGE_GATE="4320"
+# cooldowns:yarn:end
+# cooldowns:uv:start
+export UV_EXCLUDE_NEWER="3 days"
+# cooldowns:uv:end
+# cooldowns:pip:start
+export PIP_UPLOADED_PRIOR_TO="P3D"
+# cooldowns:pip:end
