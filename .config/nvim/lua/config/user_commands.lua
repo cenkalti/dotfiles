@@ -223,6 +223,39 @@ end, {
 })
 -- }}}
 
+-- {{{ Open :Man in the current window instead of a split
+-- Redefined at VimEnter because $VIMRUNTIME/plugin/man.lua is sourced after init.lua.
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        vim.api.nvim_create_user_command('Man', function(params)
+            local man = require('man')
+            if params.bang then
+                man.init_pager()
+                return
+            end
+            local smods = params.smods
+            if smods.tab == -1 and smods.split == '' and not smods.vertical and not smods.horizontal then
+                smods.hide = true
+            end
+            local _, err = pcall(man.open_page, params.count, smods, params.fargs)
+            if err then
+                vim.notify('man.lua: ' .. err, vim.log.levels.ERROR)
+            end
+        end, {
+            bang = true,
+            bar = true,
+            range = true,
+            addr = 'other',
+            nargs = '*',
+            complete = function(...)
+                return require('man').man_complete(...)
+            end,
+            desc = 'Open a man page in the current window',
+        })
+    end,
+})
+-- }}}
+
 -- {{{ Replace Unicode dashes and arrows with ASCII equivalents
 vim.api.nvim_create_user_command('ASCIIfy', function()
     local replacements = {
