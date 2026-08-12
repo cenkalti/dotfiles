@@ -24,6 +24,7 @@ config.font_rules = {
     },
 }
 config.font_size = 17.0
+config.line_height = 1.1
 config.window_frame = {
     font = wezterm.font('Roboto'),
     font_size = 17.0,
