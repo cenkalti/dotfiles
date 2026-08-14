@@ -153,6 +153,10 @@ function M.setup(config)
             end),
         },
 
+        -- Rebuild this window: move every tab into a fresh window and let the
+        -- emptied one close. Recovers a window whose left status has frozen.
+        { mods = 'SUPER|SHIFT', key = 'n', action = wezterm.action.EmitEvent('respawn-window') },
+
         -- Disable Ctrl+Shift+N and Ctrl+Shift+P for Neovim tab navigation
         { mods = 'CTRL|SHIFT', key = 'N', action = wezterm.action.DisableDefaultAssignment },
         { mods = 'CTRL|SHIFT', key = 'P', action = wezterm.action.DisableDefaultAssignment },

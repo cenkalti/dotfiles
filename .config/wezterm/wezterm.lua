@@ -54,6 +54,7 @@ require('tab_toggle').setup()
 require('file_picker').setup()
 require('workspace_switcher').setup()
 require('default_workspace').setup()
+require('respawn_window').setup()
 require('status').setup()
 require('work').setup()
 
