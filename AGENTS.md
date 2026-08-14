@@ -13,7 +13,7 @@ All editing of dotfiles happens directly in `$HOME`.
 
 ## Layout
 
-- `.zshrc`, `.zshenv`, `.zprofile`, `.tmux.conf`, `.aerospace.toml`, `.Brewfile` — top-level shell/wm/tool configs that land directly in `$HOME`.
+- `.zshrc`, `.zshenv`, `.zprofile`, `.tmux.conf`, `.Brewfile` — top-level shell/wm/tool configs that land directly in `$HOME`.
 - `.config/` — XDG configs (nvim, wezterm, alacritty, lazygit, k9s, git, atuin, direnv, ptpython, black, flake8, pycodestyle, stylua, spaceship.zsh, pip).
 - `.claude/` — Claude Code settings and statusline script for this machine.
 - `.hammerspoon/` — Hammerspoon Lua config (Spoons/EmmyLua.spoon is gitignored).
