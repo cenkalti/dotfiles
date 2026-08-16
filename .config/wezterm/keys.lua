@@ -59,6 +59,9 @@ function M.setup(config)
         { mods = 'SUPER|ALT|SHIFT', key = '+', action = wezterm.action.EmitEvent('decrease-blur') },
         { mods = 'SUPER|ALT|SHIFT', key = '_', action = wezterm.action.EmitEvent('increase-blur') },
         { mods = 'SUPER', key = 'j', action = wezterm.action.EmitEvent('toggle-quake') },
+        -- cmd-opt rather than cmd-shift: Notion holds cmd-shift-j as a
+        -- system-wide hotkey, so WezTerm never sees that chord.
+        { mods = 'SUPER|ALT', key = 'j', action = wezterm.action.EmitEvent('toggle-quake-agent') },
         {
             mods = 'SUPER',
             key = 'u',
