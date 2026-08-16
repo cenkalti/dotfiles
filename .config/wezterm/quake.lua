@@ -65,9 +65,14 @@ function M.setup(_)
             size = 0.4,
             top_level = true,
             focus_first = true,
+            -- -lic, not -c: tools installed through fnm (codegraph, and
+            -- anything else node-based) are only on PATH once .zshrc has run,
+            -- and .zshrc is sourced by interactive shells alone. A plain
+            -- `zsh -c` leaves hooks that shell out to them failing with
+            -- "command not found". Matches config.default_prog's `zsh -li`.
             args = {
                 '/opt/homebrew/bin/zsh',
-                '-c',
+                '-lic',
                 'd="${TMPDIR:-/tmp}/quake"; mkdir -p "$d" && cd "$d" && exec claude',
             },
         })
