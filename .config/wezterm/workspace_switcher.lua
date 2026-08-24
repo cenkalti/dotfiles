@@ -11,6 +11,7 @@ local spawn = require('spawn')
 
 local M = {}
 
+local DEFAULT = 'default'
 local script = wezterm.config_dir .. '/workspace-pick.sh'
 
 function M.setup()
@@ -21,9 +22,17 @@ function M.setup()
         end
         local names = wezterm.mux.get_workspace_names()
         table.sort(names)
-        local args = { script }
+        -- 'default' goes first so an untouched picker -- no typing, no cursor
+        -- movement -- lands there on Enter, which is what replaced the old
+        -- cmd-shift-d binding. The picker passes --tiebreak index, so fzf keeps
+        -- this order for an empty query. It is injected unconditionally: the
+        -- workspace may not exist yet, and the user-var handler below creates
+        -- any name it doesn't recognise.
+        local args = { script, DEFAULT }
         for _, n in ipairs(names) do
-            table.insert(args, n)
+            if n ~= DEFAULT then
+                table.insert(args, n)
+            end
         end
         mux_window:spawn_tab({ args = spawn.wrap(args) })
     end)
