@@ -49,13 +49,18 @@ query=$(printf '%s' "$out" | sed -n 1p)
 key=$(printf '%s' "$out" | sed -n 2p)
 sel=$(printf '%s' "$out" | sed -n 3p)
 
-# 130/2 = ESC or error: do nothing. Otherwise: ^X always uses the typed text
+# 130/2 = ESC or error: no target. Otherwise: ^X always uses the typed text
 # verbatim (create it even when it fuzzy-matches a row); plain Enter uses the
 # highlighted match, falling back to the typed text when nothing matched.
+#
+# A cancel leaves target empty and still falls through to the emit below rather
+# than exiting here. Empty means "no switch, just put the focus back": this OSC
+# is workspace_switcher.lua's only notice that the picker is finished, and
+# without it backing out of the picker would drop the user on whichever tab
+# WezTerm promotes when this one dies.
 if [[ $code -ne 0 && $code -ne 1 ]]; then
-    exit 0
-fi
-if [[ $key == ctrl-x ]]; then
+    target=
+elif [[ $key == ctrl-x ]]; then
     target=$query
 elif [[ -n $sel ]]; then
     target=$sel
@@ -63,21 +68,22 @@ else
     target=$query
 fi
 
-[[ -z $target ]] && exit 0
-
 emit() {
     local b64
     b64="$(printf '%s' "$2" | base64 | tr -d '\n')"
     printf '\033]1337;SetUserVar=%s=%s\a' "$1" "$b64" > /dev/tty
 }
 
-# Emit the chosen target as an OSC user-var for workspace_switcher.lua. The salt
-# forces a fresh value each press so WezTerm doesn't dedupe the change event.
+# Emit the chosen target as an OSC user-var for workspace_switcher.lua, empty on
+# a cancel. The salt forces a fresh value each press so WezTerm doesn't dedupe
+# the change event. The trailing space is load-bearing when target is empty: the
+# Lua side splits on it to separate salt from workspace.
 salt="$(date +%s)$RANDOM$$"
 emit pick_workspace "$salt $target"
 
 # Then exit: the process exiting destroys this pane at the mux level, which is
 # how the picker closes itself (no Lua close, so nothing can clobber the switch).
 # The brief sleep lets WezTerm read+process the OSC while the pane is still
-# alive; the switch lands in ~ms, well before this fires.
+# alive; the switch — and the focus restore that precedes it — land in ~ms, well
+# before this fires.
 sleep 0.2

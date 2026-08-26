@@ -14,6 +14,17 @@ local M = {}
 local DEFAULT = 'default'
 local script = wezterm.config_dir .. '/workspace-pick.sh'
 
+-- pick_return maps the picker pane's id -> the MuxTab that was active when we
+-- spawned it. The picker's tab is transient, and when it dies WezTerm promotes
+-- whichever neighbour it likes; re-activating the remembered tab first puts the
+-- user back where they pressed cmd-s.
+--
+-- Keyed by pane id rather than window id because a switch rebinds the GUI window
+-- to a different mux window, so by the time we restore, window:window_id() no
+-- longer names the window the picker's tab lives in. Mirrors work.lua's table of
+-- the same name.
+local pick_return = {}
+
 function M.setup()
     wezterm.on('pick-workspace', function(window, pane)
         local mux_window = window:mux_window()
@@ -34,20 +45,39 @@ function M.setup()
                 table.insert(args, n)
             end
         end
-        mux_window:spawn_tab({ args = spawn.wrap(args) })
+        local return_tab = mux_window:active_tab()
+        local _, tab_pane = mux_window:spawn_tab({ args = spawn.wrap(args) })
+        if return_tab and tab_pane then
+            pick_return[tab_pane:pane_id()] = return_tab
+        end
     end)
 
     -- The picker emits one salted OSC, pick_workspace = "<salt> <workspace>"
-    -- (the salt forces a fresh value so WezTerm doesn't dedupe the event). We
-    -- only switch here; the picker closes itself by exiting (a mux-level pane
-    -- teardown, reliable regardless of which workspace the GUI shows). Doing the
-    -- close from Lua would race/clobber the switch, so we don't.
+    -- (the salt forces a fresh value so WezTerm doesn't dedupe the event). It
+    -- emits on every exit path, cancel included, where the workspace half is
+    -- empty: there is no switch to make then, but the focus still has to be put
+    -- back, and this OSC is the only notice we get that the picker is done.
+    --
+    -- We still don't close the picker here; it closes itself by exiting (a
+    -- mux-level pane teardown, reliable regardless of which workspace the GUI
+    -- shows), and a Lua close would race/clobber the switch. Restoring focus is
+    -- safe in a way closing is not — by the time that tab exits it is no longer
+    -- the active one, so nothing gets promoted in its place.
     wezterm.on('user-var-changed', function(window, pane, name, value)
         if name ~= 'pick_workspace' or not value or value == '' then
             return
         end
-        local ws = value:match('^%S+%s+(.+)$')
-        if not ws or ws == '' then
+        -- %s (not %s+) and (.*) so a cancel's empty workspace still parses.
+        local ws = value:match('^%S+%s(.*)$')
+        if not ws then
+            return
+        end
+        local back = pick_return[pane:pane_id()]
+        pick_return[pane:pane_id()] = nil
+        if back then
+            pcall(back.activate, back)
+        end
+        if ws == '' then -- cancelled: focus restored, nothing to switch to
             return
         end
         local exists = false

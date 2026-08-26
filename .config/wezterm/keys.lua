@@ -43,6 +43,7 @@ function M.setup(config)
         },
         { mods = 'SUPER|ALT', key = 't', action = wezterm.action.EmitEvent('toggle-transparency') },
         { mods = 'SUPER', key = 'd', action = wezterm.action.EmitEvent('work-toggle-dashboard') },
+        { mods = 'SUPER', key = 'i', action = wezterm.action.EmitEvent('work-toggle-github') },
         { mods = 'SUPER', key = 'a', action = wezterm.action.EmitEvent('work-toggle-agent') },
         { mods = 'SUPER|SHIFT', key = 'a', action = wezterm.action.EmitEvent('work-pick-agent') },
         { mods = 'SUPER', key = 'y', action = wezterm.action.EmitEvent('work-pane-to-agent') },
