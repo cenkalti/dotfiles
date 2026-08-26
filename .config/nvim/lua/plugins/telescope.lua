@@ -86,6 +86,26 @@ return {
                 desc = 'LSP Workspace Symbols',
             },
             {
+                -- Re-queries the server on every keystroke, so the server's own matcher
+                -- does the filtering. gopls returns nothing for the empty query <leader>fS
+                -- sends, so seed the prompt with the word under the cursor. Telescope has no
+                -- capability check on this picker, so warn rather than show an empty list.
+                '<leader>fw',
+                function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local supported = false
+                    for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+                        supported = supported or client:supports_method('workspace/symbol', bufnr)
+                    end
+                    if not supported then
+                        vim.notify('No LSP client here supports workspace/symbol', vim.log.levels.WARN)
+                        return
+                    end
+                    builtin.lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand('<cword>') })
+                end,
+                desc = 'LSP Workspace Symbols (dynamic)',
+            },
+            {
                 '<leader>fp',
                 function()
                     local pickers = require('telescope.pickers')
