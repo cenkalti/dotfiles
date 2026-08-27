@@ -86,3 +86,16 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 -- }}}
+
+-- {{{ Dim quickfix entries whose file ends in _test.go
+vim.api.nvim_set_hl(0, 'QuickfixTestFile', { link = 'Comment' })
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    callback = function()
+        if vim.w.qf_test_match_id then
+            pcall(vim.fn.matchdelete, vim.w.qf_test_match_id)
+        end
+        vim.w.qf_test_match_id = vim.fn.matchadd('QuickfixTestFile', [[^[^|]*_test\.go|.*$]])
+    end,
+})
+-- }}}
