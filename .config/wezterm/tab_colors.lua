@@ -76,7 +76,13 @@ local function setup()
 
         local title = tab.tab_title ~= '' and tab.tab_title or pane.title
         local label = (tab.tab_index + 1) .. ' ' .. title
-        local bg = cwd ~= '' and color_for_path(cwd) or '#555555'
+        -- Colour by cwd, so every tab of one agent's workspace shares a hue.
+        -- A remote agent's pane reports no cwd (its path is on the far host, so
+        -- `agent attach-pane` deliberately emits no OSC 7), which sent every one
+        -- of them to the same grey; hash its handle instead.
+        local vars = pane.user_vars or {}
+        local key = cwd ~= '' and cwd or vars.work_handle or ''
+        local bg = key ~= '' and color_for_path(key) or '#555555'
 
         local active_bg = tab.is_active and bg or dim_color(bg, 0.4)
         local full_fg = fg_for_bg(active_bg)
