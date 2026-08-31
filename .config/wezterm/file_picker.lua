@@ -36,7 +36,9 @@ local function list_files(root, extra_args)
     end
     local files = {}
     for line in stdout:gmatch('[^\r\n]+') do
-        table.insert(files, line)
+        if not line:match('^archive/') and not line:match('^ideas/') then
+            table.insert(files, line)
+        end
     end
     return files
 end
