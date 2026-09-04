@@ -12,11 +12,15 @@ end
 function M.setup(config)
     local keys = config.keys or {}
     local new_keys = {
-        { mods = 'SHIFT', key = 'Enter', action = wezterm.action.SendString('\x1b\r') }, --- Added by Claude Code
-
         -- Give alt-enter back to the terminal. WezTerm's default binds it to
         -- ToggleFullScreen and swallows it; DisableDefaultAssignment drops that
         -- registration so the key press is propagated to the pane instead.
+        --
+        -- There used to be a shift-enter binding here sending ESC CR, so that
+        -- Claude Code could see a newline key at all. It is gone because
+        -- ~/.tmux.conf now turns on extended keys: a program that asks for them
+        -- receives shift-enter and alt-enter as distinct keys, and no longer
+        -- needs a hand-rolled sequence standing in for one of them.
         { mods = 'ALT', key = 'Enter', action = wezterm.action.DisableDefaultAssignment },
 
         -- Only copy when there is a selection; otherwise leave the clipboard untouched.
