@@ -79,7 +79,8 @@
     "work@work-dev": true,
     "teleport@harness-teleport": true,
     "sandik@sandik": true,
-    "claude-security@claude-plugins-official": true
+    "claude-security@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
