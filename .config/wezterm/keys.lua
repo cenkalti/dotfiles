@@ -14,6 +14,11 @@ function M.setup(config)
     local new_keys = {
         { mods = 'SHIFT', key = 'Enter', action = wezterm.action.SendString('\x1b\r') }, --- Added by Claude Code
 
+        -- Give alt-enter back to the terminal. WezTerm's default binds it to
+        -- ToggleFullScreen and swallows it; DisableDefaultAssignment drops that
+        -- registration so the key press is propagated to the pane instead.
+        { mods = 'ALT', key = 'Enter', action = wezterm.action.DisableDefaultAssignment },
+
         -- Only copy when there is a selection; otherwise leave the clipboard untouched.
         {
             mods = 'SUPER',
