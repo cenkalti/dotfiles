@@ -7,10 +7,13 @@
 -- names and, on spotting that kind of involuntary switch, redirects to the most
 -- recent workspace still standing.
 --
--- WezTerm has no workspace-changed event, so the switch is spotted by polling:
--- update-status ticks about once a second, and window-focus-changed catches the
--- new window sooner than that. Each tick returns immediately when the workspace
--- in front is the one it saw last.
+-- Driven by workspace-changed, which hands over both the name now in front and
+-- the one it replaced. That pair used to be reconstructed by polling --
+-- update-status ticking about once a second, with window-focus-changed to catch
+-- a new window sooner -- and comparing against a copy of the previous name kept
+-- in GLOBAL. The event reports the switch itself, so nothing has to be inferred
+-- from a name changing between two samples, and it is emitted once for the
+-- switch rather than once per window, so nothing has to be de-duplicated.
 --
 -- The active workspace is a single global value -- window:active_workspace() is
 -- mux.active_workspace(), not a property of the window it is called on -- so the
@@ -38,12 +41,10 @@ end
 
 -- alive reports which workspaces still hold a window with at least one tab.
 --
--- Not mux.get_workspace_names(): a workspace WezTerm has already switched off
--- keeps its name in that list for a second or two, because the emptied mux
--- window behind it is reaped later. The GUI switches away the moment the window
--- loses its last tab, so counting tabs is what makes the death visible on the
--- same tick as the switch it caused -- polling the name list instead just sees
--- the workspace it left still standing and concludes the user asked for this.
+-- Not mux.get_workspace_names(): that list is derived from the mux windows, and
+-- a window stripped of its last tab is reaped a moment after the switch it
+-- caused, so a name can outlive the thing behind it. Counting tabs is what
+-- makes the death visible while the switch it triggered is being handled.
 local function alive()
     local ok, windows = pcall(wezterm.mux.all_windows)
     if not ok then
@@ -62,28 +63,36 @@ local function alive()
     return live
 end
 
--- record puts ws on top of the stack, dropping workspaces that are gone so a
--- long session cannot accumulate dead names.
-local function record(ws, live, names)
+-- record puts ws on top of the stack, with the workspace it displaced directly
+-- beneath, dropping workspaces that are gone so a long session cannot
+-- accumulate dead names.
+--
+-- Seeding from prior is what gets the workspace WezTerm started in onto the
+-- stack. Nothing is recorded until the first switch, and that switch is the
+-- only report the startup workspace ever generates -- it is never itself
+-- switched to, so without this it would stay off the stack until the user
+-- happened to return to it, and would be passed over as a landing spot. A prior
+-- that is gone rather than merely left behind fails the liveness test here, the
+-- same as any other dead name.
+local function record(ws, live, names, prior)
     local mru = { ws }
+    if prior and prior ~= ws and live[prior] then
+        mru[#mru + 1] = prior
+    end
     for _, n in ipairs(split(wezterm.GLOBAL.workspace_mru)) do
-        if n ~= ws and live[n] then
+        if n ~= ws and n ~= prior and live[n] then
             mru[#mru + 1] = n
         end
     end
     wezterm.GLOBAL.workspace_mru = table.concat(mru, SEP)
-    wezterm.GLOBAL.workspace_last = ws
     wezterm.GLOBAL.workspace_names = names
 end
 
-local function follow(window)
-    if not window then
+local function changed(ws, prior)
+    if not ws or ws == '' then
         return
     end
-    local ok, ws = pcall(window.active_workspace, window)
-    if not ok or not ws or ws == '' then
-        return
-    end
+
     local live = alive()
     if not live then
         return
@@ -91,17 +100,15 @@ local function follow(window)
     local listed, names = pcall(wezterm.mux.get_workspace_names)
     names = listed and table.concat(names, SEP) or ''
 
-    local prev = wezterm.GLOBAL.workspace_last
-    if ws == prev then
-        wezterm.GLOBAL.workspace_names = names
-        return
-    end
-
     -- Renaming the workspace we are sitting in (cmd-shift-r, or
     -- default_workspace's claim of a stale name) retires the old name too, and
-    -- must not be read as its death. A rename is the one case where the name now
-    -- in front did not exist a tick ago; every switch, forced or not, lands on a
-    -- workspace that was already there.
+    -- must not be read as its death. By the time this event arrives the two look
+    -- alike from the old name alone -- after a rename and after a death it is
+    -- equally gone from the workspace list and equally not live. What separates
+    -- them is the name now in front: a rename is the one case where it did not
+    -- exist before the change, since every switch, forced or not, lands on a
+    -- workspace that was already there. workspace_names holds the list as it
+    -- stood at the previous change, which is what makes that test possible.
     local known = false
     for _, n in ipairs(split(wezterm.GLOBAL.workspace_names)) do
         if n == ws then
@@ -110,9 +117,9 @@ local function follow(window)
         end
     end
 
-    if prev and known and not live[prev] then
+    if prior and known and not live[prior] then
         for _, n in ipairs(split(wezterm.GLOBAL.workspace_mru)) do
-            if n ~= prev and live[n] then
+            if n ~= prior and live[n] then
                 -- The stack's top entry below the dead workspace is the one the
                 -- user came from. If WezTerm already picked it, leave it be.
                 if n ~= ws then
@@ -125,7 +132,7 @@ local function follow(window)
                     if not switched then
                         wezterm.log_error('workspace_mru: switch to ' .. n .. ' failed: ' .. tostring(err))
                     end
-                    record(n, live, names)
+                    record(n, live, names, prior)
                     return
                 end
                 break
@@ -133,12 +140,11 @@ local function follow(window)
         end
     end
 
-    record(ws, live, names)
+    record(ws, live, names, prior)
 end
 
 function M.setup()
-    wezterm.on('update-status', follow)
-    wezterm.on('window-focus-changed', follow)
+    wezterm.on('workspace-changed', changed)
 end
 
 return M
