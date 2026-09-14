@@ -1,3 +1,13 @@
 .hammerspoon/Spoons/EmmyLua.spoon/
 /.config/git/config.local
 /projects/
+
+# pi coding agent — secrets, caches, transcripts
+/.pi/agent/auth.json
+/.pi/agent/sessions/
+/.pi/agent/*-cache.json
+/.pi/agent/models-store.json
+/.pi/agent/npm/
+/.pi/agent/git/
+/.pi/agent/extensions/
+/.pi/agent/pi-debug.log

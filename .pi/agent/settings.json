@@ -1,0 +1,12 @@
+{
+  "defaultModel": "claude-opus-5",
+  "defaultProvider": "anthropic",
+  "lastChangelogVersion": "0.85.1",
+  "theme": "dark",
+  "packages": [
+    "npm:pi-mcp-adapter@2.33.0",
+    "../../projects/harness",
+    "npm:@gotgenes/pi-permission-system"
+  ],
+  "tuiMode": "fullscreen"
+}
