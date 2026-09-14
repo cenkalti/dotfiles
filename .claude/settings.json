@@ -73,14 +73,14 @@
     "command": "agent statusline"
   },
   "enabledPlugins": {
+    "claude-security@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "work@work-dev": true,
-    "teleport@harness-teleport": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
     "sandik@sandik": true,
-    "claude-security@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "teleport@harness-teleport": true,
+    "work@work-dev": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -89,16 +89,16 @@
         "path": "/Users/cenk/projects/harness-teleport"
       }
     },
-    "work-dev": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/cenk/projects/harness"
-      }
-    },
     "sandik": {
       "source": {
         "source": "git",
         "url": "git@github.com:ermeydani/sandik.git"
+      }
+    },
+    "work-dev": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/cenk/projects/harness"
       }
     }
   },
