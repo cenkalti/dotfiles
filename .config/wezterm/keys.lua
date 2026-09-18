@@ -58,8 +58,16 @@ function M.setup(config)
         { mods = 'SUPER', key = 'y', action = wezterm.action.EmitEvent('work-pane-to-agent') },
         { mods = 'SUPER|SHIFT', key = 'y', action = wezterm.action.EmitEvent('work-pane-to-new-agent') },
         { mods = 'SUPER', key = 'b', action = wezterm.action.EmitEvent('work-show-browser') },
-        { mods = 'SUPER', key = 'g', action = wezterm.action.EmitEvent('toggle-lazygit') },
-        { mods = 'SUPER', key = 'e', action = wezterm.action.EmitEvent('toggle-nvim') },
+        -- ⌘G / ⌘E / ⌘T open lazygit, nvim and a shell for the agent in the
+        -- current pane, as tmux windows inside that agent's own session shown in
+        -- tabs of their own — identically whether the agent is on this machine
+        -- or another. In a pane that is not an agent's, ⌘G and ⌘E spawn a plain
+        -- local tab as they always did, and ⌘T is the ordinary new tab.
+        -- Mechanism lives in the harness repo (wezterm/work.lua), because it
+        -- knows about tmux session naming and how a host is reached.
+        { mods = 'SUPER', key = 'g', action = wezterm.action.EmitEvent('work-open-lazygit') },
+        { mods = 'SUPER', key = 'e', action = wezterm.action.EmitEvent('work-open-nvim') },
+        { mods = 'SUPER', key = 't', action = wezterm.action.EmitEvent('work-open-shell') },
         { mods = 'SUPER|SHIFT', key = 'e', action = wezterm.action.EmitEvent('file-picker-workspace') },
         { mods = 'SUPER|SHIFT', key = 'g', action = wezterm.action.EmitEvent('file-picker-glow') },
         { mods = 'SUPER|ALT', key = '=', action = wezterm.action.EmitEvent('increase-transparency') },
