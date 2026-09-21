@@ -149,14 +149,13 @@ function M.setup(config)
             action = wezterm.action.ScrollToPrompt(1),
         },
 
-        -- My AI shell
-        {
-            mods = 'SUPER|SHIFT',
-            key = 't',
-            action = wezterm.action.SpawnCommandInNewTab({
-                args = { '/Users/cenk/projects/gi/gi-shell' },
-            }),
-        },
+        -- "My AI shell" lived here on SUPER|SHIFT t, spawning
+        -- /Users/cenk/projects/gi/gi-shell. Removed for two reasons: that
+        -- binary does not exist any more (the spawn failed with ENOENT), and
+        -- the duplicate key silently shadowed the shell escape hatch above,
+        -- since a later entry wins. Rebind it on a free key to bring it back —
+        -- of the letters, SUPER|SHIFT b/c/d/f/h/i/j/k/l/m/o/p/q/r/s/u/v/x/z
+        -- are all unused.
 
         -- Close current tab: skip confirmation when the pane title is one we trust.
         -- Matching on title (set via OSC 0/2) rather than the foreground process avoids
