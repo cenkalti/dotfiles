@@ -80,7 +80,8 @@
     "sandik@sandik": true,
     "skill-creator@claude-plugins-official": true,
     "teleport@harness-teleport": true,
-    "work@work-dev": true
+    "work@work-dev": true,
+    "typesafe@typesafe-ai": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -99,6 +100,12 @@
       "source": {
         "source": "directory",
         "path": "/Users/cenk/projects/harness"
+      }
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
       }
     }
   },
