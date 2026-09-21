@@ -71,17 +71,35 @@ end
 local function setup()
     wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
         local pane = tab.active_pane
-        local cwd_uri = pane.current_working_dir
-        local cwd = cwd_uri and cwd_uri.file_path or ''
-
-        local title = tab.tab_title ~= '' and tab.tab_title or pane.title
-        local label = (tab.tab_index + 1) .. ' ' .. title
-        -- Colour by cwd, so every tab of one agent's workspace shares a hue.
-        -- A remote agent's pane reports no cwd (its path is on the far host, so
-        -- `agent attach-pane` deliberately emits no OSC 7), which sent every one
-        -- of them to the same grey; hash its handle instead.
         local vars = pane.user_vars or {}
-        local key = cwd ~= '' and cwd or vars.work_handle or ''
+        local handle = vars.work_handle or ''
+
+        -- The tab names the agent, fully qualified, "@host" and all (INV-20,
+        -- INV-28). Never abbreviated: raise tab_max_width rather than let a
+        -- handle truncate.
+        --
+        -- pane.title behind it is the tmux window name arriving as OSC 2,
+        -- which for an agent is the adapter ("claude") and so names no one in
+        -- particular. It is kept only for a tab holding no agent, where zsh
+        -- reports the cwd basename and that is the most useful thing there is.
+        local title = handle ~= '' and handle
+            or (tab.tab_title ~= '' and tab.tab_title or pane.title)
+        local label = (tab.tab_index + 1) .. ' ' .. title
+
+        -- Colour by project, so one repo's agents share a hue. The key is the
+        -- handle's prefix before the '/' ("harness/pi" -> "harness"), which is
+        -- the harness's own definition of a project and the one identity
+        -- signal every agent carries — a remote agent reports no cwd at all,
+        -- since its path is on the far host.
+        --
+        -- This used to hash the cwd, which grouped an agent's several tabs
+        -- back when an agent had several. It has one now, so a cwd hash
+        -- grouped nothing and left every remote agent the same grey.
+        local key = handle:match('^([^/]+)/') or handle
+        if key == '' then
+            local cwd_uri = pane.current_working_dir
+            key = cwd_uri and cwd_uri.file_path or ''
+        end
         local bg = key ~= '' and color_for_path(key) or '#555555'
 
         local active_bg = tab.is_active and bg or dim_color(bg, 0.4)

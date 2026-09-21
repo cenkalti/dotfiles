@@ -29,6 +29,14 @@ config.window_frame = {
     font = wezterm.font('Roboto'),
     font_size = 17.0,
 }
+-- The tab bar carries agent handles now, one tab per agent, so the default
+-- tab_max_width of 16 would truncate them — and a truncated handle is the one
+-- thing INV-28 forbids. Raise this rather than shortening a title if a longer
+-- handle ever stops fitting.
+config.tab_max_width = 32
+-- No new-tab button: agent tabs are minted by `agent open`, and a plain tab is
+-- cmd-t.
+config.show_new_tab_button_in_tab_bar = false
 config.quit_when_all_windows_are_closed = false
 config.default_prog = { '/opt/homebrew/bin/zsh', '-li' }
 config.adjust_window_size_when_changing_font_size = false
