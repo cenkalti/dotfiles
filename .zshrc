@@ -358,6 +358,18 @@ function precmd {
   set_title "%1~"
 }
 
+# Report the working directory with OSC 7. tmux keeps it as #{pane_path} and,
+# given the osc7 terminal feature in .tmux.conf, forwards it to WezTerm, so new
+# tabs and panes open where this shell is. Everything outside the unreserved
+# set is percent-encoded, so spaces and % survive the round trip.
+function _osc7_cwd {
+  emulate -L zsh
+  setopt extendedglob
+  local url=${PWD//(#m)[^a-zA-Z0-9_.\/-]/%${(l:2::0:)$(([##16]#MATCH))}}
+  printf '\033]7;file://%s%s\033\\' "$HOST" "$url"
+}
+precmd_functions+=(_osc7_cwd)
+
 # Runs before executing the command
 function preexec {
     local cmd="$1"
