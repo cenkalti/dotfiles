@@ -8,6 +8,13 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 
+# Keep the tsh/tctl you invoked. Without this, client tools managed updates
+# download the version the logged-in cluster asks for and re-exec into it, so a
+# locally built tsh silently hands the whole invocation to a stock release.
+# Here rather than in .config/zsh/env.zsh so scripts and other non-interactive
+# shells get it too.
+export TELEPORT_TOOLS_VERSION=off
+
 export CDPATH="$HOME:$HOME/projects:$HOME/workspace:$HOME/.config:/opt"
 
 if [[ -d /opt/homebrew ]]; then  # m1 macos
