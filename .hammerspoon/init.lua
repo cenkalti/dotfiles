@@ -1,3 +1,5 @@
+hs.menuIcon(true)
+
 -- Reload config on keypress
 hs.hotkey.bind({ 'cmd', 'alt', 'ctrl' }, 'R', function()
     hs.reload()
