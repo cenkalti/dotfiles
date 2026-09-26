@@ -43,57 +43,30 @@ local function list_files(root, extra_args)
     return files
 end
 
-local function nvim_socket(window)
-    local mux = window:mux_window()
-    if not mux then
-        return nil
+-- open_file hands the file to open-in-nvim, naming the pane we are acting for.
+--
+-- This used to work the editor out here, two ways and both window-scoped: build
+-- ~/.work/run/nvim-wez-<window_id>.sock, and scan the window's tabs for one with
+-- a pane whose foreground process is nvim. Each assumed one editor per WezTerm
+-- window, which stopped being true when agents became tabs — a window holds
+-- several, so the socket named the window's *first* editor and the scan returned
+-- whichever tab happened to be showing nvim. Picking a file in one agent's tab
+-- dropped it in a neighbour's.
+--
+-- The script resolves it from the pane's own tmux session instead, and it is the
+-- same script lazygit's `o` runs, so "which editor serves this pane" has one
+-- answer rather than two that can disagree. It also handles the no-editor-yet
+-- case (it creates the tool window through `agent tool-argv`), which is why the
+-- spawn_tab fallback is gone from here.
+local function open_file(_, pane, root, rel_path)
+    if not pane then
+        return
     end
-    return wezterm.home_dir .. '/.work/run/nvim-wez-' .. mux:window_id() .. '.sock'
-end
-
-local function find_nvim_tab(window)
-    local mux_window = window:mux_window()
-    if not mux_window then
-        return nil
-    end
-    for _, tab in ipairs(mux_window:tabs()) do
-        for _, p in ipairs(tab:panes()) do
-            local fg = p:get_foreground_process_name() or ''
-            local basename = fg:match('([^/]+)$') or fg
-            if basename == 'nvim' then
-                return tab
-            end
-        end
-    end
-    return nil
-end
-
-local function open_file(window, root, rel_path)
-    local abs = root .. '/' .. rel_path
-    local socket = nvim_socket(window)
-
-    if socket and wezterm.run_child_process({ 'test', '-S', socket }) then
-        local ok = wezterm.run_child_process({
-            '/opt/homebrew/bin/nvim',
-            '--server', socket,
-            '--remote', abs,
-        })
-        if ok then
-            local tab = find_nvim_tab(window)
-            if tab then
-                tab:activate()
-            end
-            return
-        end
-    end
-
-    local mux = window:mux_window()
-    if mux then
-        mux:spawn_tab({
-            args = spawn.wrap({ 'nvim', abs }),
-            cwd = root,
-        })
-    end
+    wezterm.run_child_process({
+        wezterm.home_dir .. '/.local/bin/open-in-nvim',
+        '--wez-pane', tostring(pane:pane_id()),
+        root .. '/' .. rel_path,
+    })
 end
 
 local function pick_file(window, pane, opts)
@@ -139,7 +112,7 @@ function M.setup()
     wezterm.on('file-picker-workspace', function(window, pane)
         pick_file(window, pane, {
             title = 'Files',
-            on_select = function(w, _, root, id) open_file(w, root, id) end,
+            on_select = open_file,
         })
     end)
 

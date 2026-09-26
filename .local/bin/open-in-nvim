@@ -1,47 +1,190 @@
 #!/bin/sh
-# open-in-nvim: open a file in the current wezterm window's nvim instance,
-# reusing a live instance if present, else spawning a new nvim tab.
-# Mirrors .config/wezterm/file_picker.lua's open_file(). Used by lazygit os.open.
+# open-in-nvim: send a file to this tab's editor, reusing the nvim already open
+# there and creating one only when there is none. Used by lazygit's os.open (the
+# `o` key); os.edit* works too, passing the line number as a second argument.
+#
+# The trap this exists to avoid: inside tmux, $WEZTERM_PANE is not this pane.
+# tmux captures it once, when the *session* is created, and every pane in that
+# session inherits the one value — so it names whichever WezTerm tab the session
+# was born in, usually one closed since. Measured on this machine: four lazygit
+# sessions carrying panes 226, 94, 244 and 255 when only 244 and 255 still
+# existed. The previous version derived both the socket and the pane to focus
+# from it, so `o` either spawned an entire new WezTerm window (dead pane) or
+# activated a stranger's tab (live pane, belonging to something else — pane 255
+# is a claude tab, not an editor). internal/muxer's agentPane() documents the
+# same trap and resolves it the same way, from live state each time.
+#
+# $TMUX_PANE is safe for the opposite reason: tmux sets it per pane.
+#
+# Two consequences shape what follows. Inside tmux the editor is a *window of
+# this same session* — internal/toolwindow places it immediately right of
+# lazygit — so showing it is a select-window and needs no wezterm call at all.
+# And a server is found from the editor pane itself, never from a socket
+# filename. The nvim() wrapper in .zshenv used to build those names out of the
+# same stale variable, which is why nvim-wez-14.sock is this machine's
+# tsh-kube-proxy editor and nvim-wez-16.sock the ship-transport-cache one; that
+# wrapper now derives the window live and suffixes a name already in use, so a
+# window's second and third editors are addressable too. Reading the socket off
+# the process keeps this side right either way, and right for an editor that
+# predates the fix. All of it measured here, not assumed.
 
-file="$1"
+set -u
+
+# --wez-pane <id> names the WezTerm pane to act for, instead of inferring it from
+# this process's own tmux. WezTerm's GUI is the caller — file_picker.lua runs in
+# it, so it has no $TMUX and cannot be "in" the tab it is acting on. Giving it
+# this flag is what keeps one implementation of "which editor serves this pane":
+# the picker used to compute a socket from the window id and so always reached
+# the window's *first* editor, which with agents as tabs is a neighbour's.
+wezpane=
+if [ "${1:-}" = --wez-pane ]; then
+    wezpane=${2:-}
+    shift 2
+fi
+
+file=${1:-}
+line=${2:-}
 [ -n "$file" ] || exit 0
 
-# lazygit passes paths relative to the repo root (= $PWD). nvim --remote resolves
-# relative paths against the *server's* cwd, so make the path absolute here.
+# lazygit passes paths relative to the repo root (= $PWD), and --remote resolves
+# a relative path against the *server's* cwd, which is some other repo.
 case "$file" in
-  /*) abs="$file" ;;
-  *)  abs="$PWD/$file" ;;
+    /*) abs=$file ;;
+    *)  abs=$PWD/$file ;;
 esac
 
-# Resolve this pane's wezterm window id (same query as the nvim() wrapper in .zshenv).
-window_id=""
-if [ -n "$WEZTERM_PANE" ] && command -v wezterm >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
-  window_id=$(wezterm cli list --format json 2>/dev/null \
-    | jq -r ".[] | select(.pane_id == ${WEZTERM_PANE}) | .window_id" 2>/dev/null \
-    | head -1)
+# socket_for PANE prints the RPC socket of the nvim running in tmux pane PANE,
+# read out of that process's own argv.
+#
+# Asking the process beats both alternatives. Computing the name is what the old
+# version did and it is wrong at the source (header). Interrogating each
+# candidate socket with `--remote-expr '$TMUX_PANE'` is right in principle but
+# costs a round trip per socket and, measured from inside a tmux pane, answered
+# with a screenful of terminal escapes instead of the pane id — an nvim client
+# holding a tty does not reliably stay headless. This reads one `ps` and cannot
+# be fooled.
+#
+# No --listen means no server, which is a real state rather than an error: an
+# editor started outside the nvim() wrapper never gets one, and editors that were
+# already running when that wrapper was fixed are still living without one.
+socket_for() {
+    pid=$(tmux display-message -p -t "$1" '#{pane_pid}' 2>/dev/null)
+    [ -n "$pid" ] || return 1
+    sock=$(ps -o args= -p "$pid" 2>/dev/null | sed -n 's/.*--listen[ =]\([^ ]*\).*/\1/p')
+    [ -n "$sock" ] && [ -S "$sock" ] || return 1
+    printf '%s\n' "$sock"
+}
+
+# editor_pane prints the pane of SESSION's editor window, empty when it has none.
+editor_pane() {
+    tmux list-panes -s -t "=$1" -F '#{window_name} #{pane_id}' 2>/dev/null |
+        awk '$1 == "nvim" { print $2; exit }'
+}
+
+# session_for_pane prints the tmux session displayed in WezTerm pane $1.
+#
+# The same live pairing the rest of this script rests on, read the other way: a
+# WezTerm pane showing a session is the one running a client attached to it, so
+# the pane's tty is that client's tty. Nothing is stored and nothing can go
+# stale. Empty when the pane runs no tmux client — a plain shell, or WezTerm's
+# own dashboard tab.
+session_for_pane() {
+    command -v jq >/dev/null 2>&1 || return 1
+    tty=$(wezterm cli list --format json 2>/dev/null |
+        jq -r --argjson id "$1" '.[] | select(.pane_id == $id) | .tty_name' 2>/dev/null |
+        head -1)
+    [ -n "$tty" ] || return 1
+    found=$(tmux list-clients -F '#{client_tty} #{session_name}' 2>/dev/null |
+        awk -v t="$tty" '$1 == t { print $2; exit }')
+    [ -n "$found" ] || return 1
+    printf '%s\n' "$found"
+}
+
+# send opens $abs in the server on SOCKET, on $line when we were given one.
+#
+# --headless on the *client* is not decoration. lazygit hands this script a pane
+# with a tty, and an nvim client that finds one brings up a full UI before it
+# gets round to the RPC: measured at 1.05s per call against 40ms down a pipe, and
+# it writes an alternate-screen sequence over whatever is on screen. Two calls
+# made `o` a two-second pause on top of lazygit. The server is a normal nvim; it
+# is only this throwaway client that must stay headless.
+send() {
+    nvim --headless --server "$1" --remote "$abs" >/dev/null 2>&1 || return 1
+    [ -n "$line" ] && nvim --headless --server "$1" --remote-expr "cursor($line,1)" >/dev/null 2>&1
+    return 0
+}
+
+session=
+if [ -n "$wezpane" ]; then
+    session=$(session_for_pane "$wezpane") || session=
+elif [ -n "${TMUX:-}" ]; then
+    session=$(tmux display-message -p '#{session_name}')
 fi
 
-socket=""
-[ -n "$window_id" ] && socket="$HOME/.work/run/nvim-wez-${window_id}.sock"
+if [ -n "$session" ]; then
+    pane=$(editor_pane "$session")
 
-# Live nvim server for this window? Send the file and focus its pane.
-if [ -n "$socket" ] && [ -S "$socket" ] \
-   && nvim --server "$socket" --remote-expr '1' >/dev/null 2>&1; then
-  nvim --server "$socket" --remote "$abs"
-  nvim_pane=$(nvim --server "$socket" --remote-expr '$WEZTERM_PANE' 2>/dev/null)
-  [ -n "$nvim_pane" ] && wezterm cli activate-pane --pane-id "$nvim_pane" >/dev/null 2>&1
-  exit 0
+    # Show the editor window, creating one when there is none. `agent tool-argv`
+    # owns where a tool window goes and what it is called; placing one by hand
+    # here would be a second copy of internal/toolwindow's rule.
+    if command -v agent >/dev/null 2>&1; then
+        agent tool-argv --session "$session" --tool nvim --run >/dev/null 2>&1
+    fi
+
+    # Only a window we just created is worth waiting on, and what it is worth
+    # waiting for is the nvim process, not a socket. Whether that nvim has a
+    # --listen is fixed the moment it execs, so once the pane is running one
+    # there is nothing further to wait for and socket_for can answer at once.
+    # Polling for the socket instead would spend the whole budget every time the
+    # wrapper declined to open one — the five-second stall this rewrite exists to
+    # remove, moved somewhere new.
+    if [ -z "$pane" ]; then
+        n=0
+        while [ "$n" -lt 30 ]; do
+            pane=$(editor_pane "$session")
+            if [ -n "$pane" ] &&
+                [ "$(tmux display-message -p -t "$pane" '#{pane_current_command}' 2>/dev/null)" = nvim ]; then
+                break
+            fi
+            n=$((n + 1))
+            sleep 0.1
+        done
+    fi
+
+    if [ -n "$pane" ] && sock=$(socket_for "$pane"); then
+        send "$sock" && exit 0
+    fi
+
+    # Reached when the editor window has no RPC server — the wrapper's
+    # second-editor-in-one-window case. The window is already in front, so type
+    # the :edit rather than give up. Paths with spaces are not escaped here;
+    # this is the last resort, not the path anything should normally take.
+    if [ -n "$pane" ]; then
+        tmux send-keys -t "$pane" Escape
+        tmux send-keys -t "$pane" ":edit ${line:++$line }$abs" Enter
+        exit 0
+    fi
+
+    echo "open-in-nvim: no editor window in tmux session $session" >&2
+    exit 1
 fi
 
-# No live instance: spawn a new nvim tab in this window. Going through
-# `zsh -c 'exec nvim ...'` invokes the nvim() wrapper in .zshenv, which sets up
-# the --listen socket (same trick as .config/wezterm/spawn.lua's wrap()).
-if [ -n "$WEZTERM_PANE" ] && command -v wezterm >/dev/null 2>&1; then
-  new_pane=$(wezterm cli spawn --cwd "$PWD" -- \
-    /opt/homebrew/bin/zsh -c 'exec nvim "$@"' nvim "$abs" 2>/dev/null)
-  [ -n "$new_pane" ] && wezterm cli activate-pane --pane-id "$new_pane" >/dev/null 2>&1
-  exit 0
+# No tmux session to put this in: either we are not under tmux, or the pane we
+# were handed runs no tmux client. There is no tool window to reuse, so spawn a
+# tab in that pane's own window — WezTerm reads $WEZTERM_PANE to choose it, which
+# is honest here because nothing froze it. Going through `zsh -c 'exec nvim ...'`
+# picks up the nvim() wrapper in .zshenv, which sets up the --listen socket.
+#
+# $PWD is this process's, which is the repo root when lazygit called us and
+# WezTerm's own cwd when the picker did — so a --wez-pane caller gets the file's
+# directory instead of a cwd that means nothing.
+spawn_pane=${wezpane:-${WEZTERM_PANE:-}}
+if [ -n "$spawn_pane" ] && command -v wezterm >/dev/null 2>&1; then
+    if [ -n "$wezpane" ]; then cwd=$(dirname "$abs"); else cwd=$PWD; fi
+    new_pane=$(WEZTERM_PANE=$spawn_pane wezterm cli spawn --cwd "$cwd" -- \
+        /opt/homebrew/bin/zsh -c 'exec nvim "$@"' nvim ${line:+"+$line"} "$abs" 2>/dev/null)
+    [ -n "$new_pane" ] && wezterm cli activate-pane --pane-id "$new_pane" >/dev/null 2>&1
+    exit 0
 fi
 
-# Fallback (not inside wezterm): just open nvim.
-exec nvim "$abs"
+exec nvim ${line:+"+$line"} "$abs"
