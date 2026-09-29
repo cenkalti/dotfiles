@@ -1,16 +1,23 @@
 local wezterm = require('wezterm')
 
+-- Catppuccin Macchiato's 14 accents, to match config.color_scheme. WezTerm's
+-- builtin scheme carries only the ANSI slots, not these named accents, so they
+-- are spelled out here.
 local palette = {
-    '#e06c75',
-    '#e5c07b',
-    '#98c379',
-    '#56b6c2',
-    '#61afef',
-    '#c678dd',
-    '#d19a66',
-    '#be5046',
-    '#46bdcc',
-    '#f9a959',
+    '#f4dbd6', -- rosewater
+    '#f0c6c6', -- flamingo
+    '#f5bde6', -- pink
+    '#c6a0f6', -- mauve
+    '#ed8796', -- red
+    '#ee99a0', -- maroon
+    '#f5a97f', -- peach
+    '#eed49f', -- yellow
+    '#a6da95', -- green
+    '#8bd5ca', -- teal
+    '#91d7e3', -- sky
+    '#7dc4e4', -- sapphire
+    '#8aadf4', -- blue
+    '#b7bdf8', -- lavender
 }
 
 local function hash_path(path)
@@ -86,16 +93,16 @@ local function setup()
             or (tab.tab_title ~= '' and tab.tab_title or pane.title)
         local label = (tab.tab_index + 1) .. ' ' .. title
 
-        -- Colour by project, so one repo's agents share a hue. The key is the
-        -- handle's prefix before the '/' ("harness/pi" -> "harness"), which is
-        -- the harness's own definition of a project and the one identity
-        -- signal every agent carries — a remote agent reports no cwd at all,
-        -- since its path is on the far host.
+        -- Colour by agent: the key is the whole handle, "@host" included, so
+        -- two agents in one repo get their own hues rather than sharing the
+        -- project's. The handle is the one identity signal every agent
+        -- carries — a remote agent reports no cwd at all, since its path is on
+        -- the far host.
         --
-        -- This used to hash the cwd, which grouped an agent's several tabs
-        -- back when an agent had several. It has one now, so a cwd hash
-        -- grouped nothing and left every remote agent the same grey.
-        local key = handle:match('^([^/]+)/') or handle
+        -- This used to hash the cwd, and then the handle's project prefix
+        -- ("harness/pi" -> "harness"), which gave every agent in a repo the
+        -- same colour.
+        local key = handle
         if key == '' then
             local cwd_uri = pane.current_working_dir
             key = cwd_uri and cwd_uri.file_path or ''
