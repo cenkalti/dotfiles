@@ -75,6 +75,15 @@ local function dim_color(hex, factor)
     )
 end
 
+-- Whether the agent in a tab is waiting on the user is the harness's question,
+-- so work.lua answers it (M.wants_attention); this file only draws the answer.
+-- pcall'd so the tab bar still paints on a machine without the harness checkout.
+local has_work, work = pcall(require, 'work')
+
+local function wants_attention(pane)
+    return has_work and work.wants_attention(pane) or false
+end
+
 local function setup()
     wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
         local pane = tab.active_pane
@@ -91,7 +100,8 @@ local function setup()
         -- reports the cwd basename and that is the most useful thing there is.
         local title = handle ~= '' and handle
             or (tab.tab_title ~= '' and tab.tab_title or pane.title)
-        local label = (tab.tab_index + 1) .. ' ' .. title
+        local attention = wants_attention(pane)
+        local label = (tab.tab_index + 1) .. ' ' .. (attention and '🔔 ' or '') .. title
 
         -- Colour by agent: the key is the whole handle, "@host" included, so
         -- two agents in one repo get their own hues rather than sharing the
@@ -111,10 +121,14 @@ local function setup()
 
         local active_bg = tab.is_active and bg or dim_color(bg, 0.4)
         local full_fg = fg_for_bg(active_bg)
-        local active_fg = tab.is_active and full_fg or blend(full_fg, active_bg, 0.4)
+        -- A tab waiting on you keeps its dimmed background, so it still reads
+        -- as not-in-front, but its text is not dimmed: the bell alone is easy
+        -- to miss in a row of eight.
+        local loud = tab.is_active or attention
+        local active_fg = loud and full_fg or blend(full_fg, active_bg, 0.4)
 
         return {
-            { Attribute = { Intensity = tab.is_active and 'Bold' or 'Half' } },
+            { Attribute = { Intensity = loud and 'Bold' or 'Half' } },
             { Background = { Color = active_bg } },
             { Foreground = { Color = active_fg } },
             { Text = ' ' .. label .. ' ' },
