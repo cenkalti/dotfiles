@@ -8,13 +8,14 @@
   "externalEditor": "nvim",
   "steeringMode": "all",
   "showCacheMissNotices": true,
-  "lastChangelogVersion": "1.0.1",
+  "lastChangelogVersion": "1.0.2",
   "theme": "dark",
   "packages": [
     "../../projects/harness",
     "npm:@gotgenes/pi-permission-system",
     "npm:pi-next-cue",
-    "npm:pi-nvim"
+    "npm:pi-nvim",
+    "npm:pi-web-access"
   ],
   "tuiMode": "fullscreen"
 }

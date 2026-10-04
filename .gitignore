@@ -4,6 +4,7 @@
 
 # pi coding agent — secrets, caches, transcripts
 /.pi/agent/auth.json
+/.pi/agent/web-search.json
 /.pi/agent/sessions/
 /.pi/agent/*-cache.json
 /.pi/agent/models-store.json
