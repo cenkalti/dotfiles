@@ -1,6 +1,13 @@
 {
   "defaultModel": "claude-opus-5",
   "defaultProvider": "anthropic",
+  "enabledModels": [
+    "anthropic/claude-opus-5",
+    "anthropic/claude-sonnet-5"
+  ],
+  "externalEditor": "nvim",
+  "steeringMode": "all",
+  "showCacheMissNotices": true,
   "lastChangelogVersion": "1.0.1",
   "theme": "dark",
   "packages": [
