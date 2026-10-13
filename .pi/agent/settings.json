@@ -8,7 +8,7 @@
   "externalEditor": "nvim",
   "steeringMode": "all",
   "showCacheMissNotices": true,
-  "lastChangelogVersion": "1.0.4",
+  "lastChangelogVersion": "1.1.0",
   "theme": "dark",
   "packages": [
     "../../projects/harness",
