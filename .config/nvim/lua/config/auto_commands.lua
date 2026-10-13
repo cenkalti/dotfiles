@@ -78,6 +78,22 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 -- }}}
 
+-- {{{ Reload files changed on disk when focus/buffer is (re)entered
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
+    callback = function()
+        -- Skip special buffers and command-line mode (checktime misbehaves there)
+        if vim.bo.buftype ~= '' or vim.fn.mode() == 'c' then return end
+        vim.cmd('checktime')
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+    callback = function()
+        vim.notify('File changed on disk — buffer reloaded', vim.log.levels.WARN)
+    end,
+})
+-- }}}
+
 -- {{{ Disable line wrapping in quickfix and location lists
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'qf', 'loclist' },
