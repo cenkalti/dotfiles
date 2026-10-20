@@ -43,7 +43,6 @@
     "defaultMode": "default",
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
