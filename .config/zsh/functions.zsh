@@ -7,6 +7,26 @@ function ssht() { ssh -t $1 "tmux attach -t cenk || tmux new -s cenk" }
 function mt() { mosh $1 -- sh -c "tmux attach -t cenk || tmux new -s cenk" }
 function home() { mt "arch.home.cenkalti.com" }
 
+# my tsh & tmux helper. Names the WezTerm tab for the host, so the tab reads
+# "home" whatever the remote tmux has in front of it. `new-session -A` attaches
+# to the session or creates it, which is ssht's `attach || new` in one word.
+function tsht() {
+  _wez_tab_title "${${1##*@}%%.*}"
+  tsh ssh -t "$1" tmux new-session -A -s cenk
+  local rc=$?
+  _wez_tab_title ''
+  return $rc
+}
+
+# WezTerm's explicit tab title, which outranks the OSC 2 title the far host's
+# tmux keeps sending; '' restores the fallback (the pane title, i.e. whatever
+# that tmux says). Needs $WEZTERM_PANE to name a live pane, so it no-ops inside
+# tmux, where that variable is the pane the tmux session was created in.
+function _wez_tab_title() {
+  [[ -n $WEZTERM_PANE ]] || return 0
+  wezterm cli set-tab-title --pane-id "$WEZTERM_PANE" "$1" 2>/dev/null
+}
+
 function tunnel() { ssh -N -R "172.17.0.1:8080:127.0.0.1:$1" "cenk@arch.home.cenkalti.com" & }
 
 function mkcd () {

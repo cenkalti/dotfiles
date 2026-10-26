@@ -42,6 +42,7 @@ function preexec {
         "sudo"
         "ssh"
         "ssht"
+        "tsht"
         "mosh"
         "mt"
         "poetry run"
