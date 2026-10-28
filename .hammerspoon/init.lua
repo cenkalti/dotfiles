@@ -18,8 +18,11 @@ hs.loadSpoon('NoLED')
 hs.loadSpoon('Work')
 spoon.Work:start()
 
-hs.loadSpoon('ClaudeUsage')
-spoon.ClaudeUsage:start()
+-- Disabled on cenk-macbookpro; other hosts still get the menubar item.
+if hs.host.localizedName() ~= 'cenk-macbookpro' then
+    hs.loadSpoon('ClaudeUsage')
+    spoon.ClaudeUsage:start()
+end
 
 -- Volume control with visual feedback
 local function adjustVolume(delta)
