@@ -89,14 +89,24 @@ end
 -- state *is*, this file decides what it looks like.
 --
 -- Two marks for three states, on purpose. A blocked or errored agent wants you
--- and gets the loud one. A finished agent wants to be *noticed* and gets the
--- quiet one — it fires at the end of every turn, so it has to be ignorable.
+-- and gets the bell. A finished agent wants to be *noticed* and gets the tick.
 -- Every other state is unmarked: `working` is the common case and a mark that
 -- is almost always present says nothing.
+--
+-- Both are emoji rather than the monochrome ✓ this started with, and the reason
+-- is the dimming below rather than the shape. A finished tab is deliberately not
+-- undimmed, so a monochrome glyph inherits that faded foreground and all but
+-- disappears; an emoji carries its own colour and ignores it. What makes the
+-- tick quieter than the bell is that the *text* beside it stays dim, not that
+-- the mark itself is hard to see.
+--
+-- Both measure 2 columns (lipgloss.Width — not bytes, which are 3 and 4, nor
+-- runes, which are 1 and 1), so a tab is the same width whichever mark it
+-- carries. ✓ was 1 column and made the two states disagree.
 local glyphs = {
     needs_input = '🔔',
     errored = '🔔',
-    done = '✓',
+    done = '✅',
 }
 
 -- attention_glyph gates on wants_attention first and only then picks by state,
