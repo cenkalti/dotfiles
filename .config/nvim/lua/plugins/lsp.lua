@@ -28,6 +28,21 @@ return {
             { 'folke/which-key.nvim' },
         },
         config = function()
+            -- gopls rejects any document URI whose scheme is not file://, so keep it
+            -- off virtual buffers such as fugitive:// blobs. Not calling on_dir means
+            -- the client never attaches. A vim.lsp.config() call outranks the
+            -- runtimepath lsp/gopls.lua files, so wrap the merged root_dir here
+            -- rather than replacing it, and keep lspconfig's module-cache handling.
+            local gopls_root_dir = vim.lsp.config.gopls.root_dir
+            vim.lsp.config('gopls', {
+                root_dir = function(bufnr, on_dir)
+                    if vim.api.nvim_buf_get_name(bufnr):match('^%a[%w+.-]*://') then
+                        return
+                    end
+                    gopls_root_dir(bufnr, on_dir)
+                end,
+            })
+
             -- This is where you enable features that only work
             -- if there is a language server active in the file
             vim.api.nvim_create_autocmd('LspAttach', {
