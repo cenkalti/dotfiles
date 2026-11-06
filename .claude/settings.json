@@ -132,6 +132,7 @@
     }
   },
   "effortLevel": "xhigh",
+  "askUserQuestionTimeout": "never",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipWorkflowUsageWarning": true,
