@@ -59,7 +59,8 @@
     "skill-creator@claude-plugins-official": true,
     "teleport@harness-teleport": true,
     "work@work-dev": true,
-    "typesafe@typesafe-ai": true
+    "typesafe@typesafe-ai": true,
+    "antithesis@antithesis": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -84,6 +85,12 @@
       "source": {
         "source": "github",
         "repo": "typesafe-ai/skills"
+      }
+    },
+    "antithesis": {
+      "source": {
+        "source": "github",
+        "repo": "antithesishq/antithesis-plugin"
       }
     }
   },
