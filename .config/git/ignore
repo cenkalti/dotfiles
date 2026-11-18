@@ -45,3 +45,4 @@ covprofile
 **/.claude/.cc-writes/
 .codegraph/
 .pi/extensions/
+/cenkbot/
