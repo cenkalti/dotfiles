@@ -60,7 +60,8 @@
     "teleport@harness-teleport": true,
     "work@work-dev": true,
     "typesafe@typesafe-ai": true,
-    "antithesis@antithesis": true
+    "antithesis@antithesis": true,
+    "understand-anything@understand-anything": true
   },
   "extraKnownMarketplaces": {
     "harness-teleport": {
@@ -91,6 +92,12 @@
       "source": {
         "source": "github",
         "repo": "antithesishq/antithesis-plugin"
+      }
+    },
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Egonex-AI/Understand-Anything"
       }
     }
   },
