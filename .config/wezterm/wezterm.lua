@@ -38,6 +38,9 @@ config.tab_max_width = 32
 -- cmd-t.
 config.show_new_tab_button_in_tab_bar = false
 config.quit_when_all_windows_are_closed = false
+-- Replaces WezTerm's default list. ssh/tsh are here so closing a remote or
+-- VM agent's tab (a view; the agent keeps running) does not ask either.
+config.skip_close_confirmation_for_processes_named = { 'bash', 'sh', 'zsh', 'tmux', 'ssh', 'tsh' }
 config.default_prog = { '/opt/homebrew/bin/zsh', '-li' }
 config.adjust_window_size_when_changing_font_size = false
 config.initial_cols = 120
