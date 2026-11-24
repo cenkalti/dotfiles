@@ -26,6 +26,10 @@ cached_eval kubectl kubectl completion zsh
 cached_eval direnv direnv hook zsh
 cached_eval tsh tsh --completion-script-zsh
 cached_eval tctl tctl --completion-script-zsh
+cached_eval agent agent completion zsh
+cached_eval todo todo completion zsh
+cached_eval task task completion zsh
+cached_eval transcript transcript completion zsh
 
 type aws &> /dev/null && type aws_completer &>/dev/null && complete -C aws_completer aws
 type fnm &> /dev/null && eval "$(fnm env --use-on-cd --log-level quiet --shell zsh)"
