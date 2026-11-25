@@ -19,3 +19,4 @@ require('config.auto_commands')
 
 -- Load custom highlights
 require('field_receiver')
+require('go_imports')

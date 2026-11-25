@@ -9,7 +9,6 @@ local M = {
         -- Highlight custom keywords
         local custom_matches = {
             go = {
-                GoPackage = [["[^"]\+\.[^"]\+/.\+"]],
                 GoPanic = '^\\s*\\<panic\\>',
                 GoSelect = '^\\s*\\<select\\>',
                 GoContinue = '^\\s*\\<continue\\>',
@@ -45,11 +44,15 @@ local M = {
                 GoContinue = { fg = colors.red },
                 GoBreak = { fg = colors.red },
                 GoFallthrough = { fg = colors.red },
-                GoPackage = { fg = colors.green },
                 GoChannelReceive = { fg = colors.text, bg = colors.red },
                 GoChannelSend = { fg = colors.text, bg = colors.red },
                 ['@string.go'] = { fg = colors.overlay2 },
                 ['@module.go'] = { fg = colors.green },
+                -- Imports (lua/go_imports.lua): `_` dimmed; `.` and a package
+                -- name missing from its path flagged as warnings.
+                ['@import.blank.go'] = { fg = colors.surface2 },
+                ['@import.dot.go'] = { fg = colors.yellow, bg = colors.surface0 },
+                ['@import.unknown.go'] = { fg = colors.yellow, bg = colors.surface0 },
                 ['@lsp.type.namespace.go'] = { fg = colors.green },
                 ['@type.go'] = { fg = colors.text },
                 ['@type.builtin.go'] = { fg = colors.overlay2 },

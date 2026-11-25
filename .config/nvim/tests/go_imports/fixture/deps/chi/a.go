@@ -1,0 +1,3 @@
+package chi
+
+func F() {}
